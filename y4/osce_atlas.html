@@ -137,14 +137,13 @@
 <header>
   <div class="bar">
     <h1><span class="dot"></span> OSCE Atlas</h1>
-    <div class="spacer"></div>
-    <label class="quiz-toggle" id="quizWrap"><span>Quiz mode</span><span class="switch"></span></label>
   </div>
   <div class="tabs">
     <button class="tab active" data-view="signs">Signs</button>
     <button class="tab" data-view="map">Investigations</button>
     <button class="tab" data-view="atlas">Differentials</button>
     <a class="tab quiz-link" href="quiz.html">Quiz →</a>
+    <a class="tab quiz-link" href="technique.html">Technique →</a>
   </div>
 </header>
 
@@ -154,7 +153,7 @@
     <div class="hero">
       <div class="kicker">Oxford ICC · Year 4 · 2025–26</div>
       <h2>Examiner says it. You name it.</h2>
-      <p>Sign → differential → investigations (bedside → bloods → imaging). Each examination carries its own colour, used across all three tabs. Flip <b>Quiz mode</b> to hide answers.</p>
+      <p>Sign → differential → investigations (bedside → bloods → imaging). Each examination carries its own colour, used across all three tabs.</p>
     </div>
     <nav class="chips" id="chips"></nav>
     <div id="signs-main"></div>
@@ -480,7 +479,6 @@ SIGNS.forEach(sec=>{
 atlasMain.addEventListener('click',e=>{const t=e.target.closest('.tile');if(t)t.classList.toggle('open');});
 
 /* ============ TABS ============ */
-const quizWrap=document.getElementById('quizWrap');
 document.querySelectorAll('.tab').forEach(tab=>{
   tab.addEventListener('click',()=>{
     if (!tab.dataset.view) return;
@@ -488,19 +486,8 @@ document.querySelectorAll('.tab').forEach(tab=>{
     document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
     tab.classList.add('active');
     document.getElementById('view-'+tab.dataset.view).classList.add('active');
-    quizWrap.style.visibility = tab.dataset.view==='signs' ? 'visible':'hidden';
     window.scrollTo({top:0});
   });
-});
-
-/* ============ QUIZ MODE ============ */
-const body=document.body;
-quizWrap.addEventListener('click',()=>{
-  body.classList.toggle('quiz');
-  document.querySelectorAll('.card').forEach(c=>{c.classList.remove('revealed');if(body.classList.contains('quiz'))c.removeAttribute('open');});
-});
-document.querySelectorAll('.card').forEach(card=>{
-  card.addEventListener('click',e=>{if(body.classList.contains('quiz')){e.preventDefault();card.classList.toggle('revealed');}});
 });
 </script>
 </body>

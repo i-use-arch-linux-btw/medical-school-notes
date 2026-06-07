@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Examination Technique · Oxford Y4</title>
+<style>
+  :root{
+    --bg:#f5f5f7; --surface:#fff; --ink:#1d1d1f; --ink-2:#6e6e73; --ink-3:#86868b;
+    --hair:#d2d2d7; --hair-soft:#e8e8ed; --accent:#0071e3;
+    --radius:18px; --radius-sm:12px; --shadow:0 1px 2px rgba(0,0,0,.04),0 8px 30px rgba(0,0,0,.06);
+    --font:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Helvetica Neue",sans-serif;
+    --c-cvs:#e5484d; --c-resp:#0091ff; --c-abdo:#f5a623; --c-neuro:#8b5cf6;
+    --c-lump:#14b8a6; --c-breast:#ec4899; --c-neck:#10b981; --c-vasc:#6366f1;
+    --exam-c:#0071e3;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-font-smoothing:antialiased;}
+  body{font-family:var(--font);background:var(--bg);color:var(--ink);min-height:100vh;padding-bottom:80px;line-height:1.5;letter-spacing:-.01em;}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(245,245,247,.85);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:.5px solid var(--hair);}
+  .bar{max-width:720px;margin:0 auto;padding:12px 22px;display:flex;align-items:center;gap:12px;}
+  .back-btn{font-size:14px;font-weight:500;color:var(--accent);background:none;border:none;cursor:pointer;font-family:var(--font);display:flex;align-items:center;gap:4px;padding:4px 0;flex:none;}
+  .back-btn svg{width:16px;height:16px;}
+  .bar-title{font-size:17px;font-weight:600;flex:1;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .bar-end{min-width:72px;}
+
+  main{max-width:720px;margin:0 auto;padding:28px 22px 0;}
+
+  /* ── Selector screen ── */
+  .selector-hero{padding:0 0 28px;}
+  .selector-hero .kicker{font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;}
+  .selector-hero h2{font-size:30px;font-weight:700;letter-spacing:-.03em;line-height:1.15;}
+  .selector-hero p{margin-top:10px;font-size:15px;color:var(--ink-2);max-width:560px;}
+  .exam-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;}
+  .exam-card{background:var(--surface);border:.5px solid var(--hair-soft);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px 18px 18px;cursor:pointer;border-left:4px solid var(--exam-c);transition:transform .14s,box-shadow .14s;user-select:none;}
+  .exam-card:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,0,0,.10);}
+  .exam-card:active{transform:translateY(0);}
+  .exam-icon{font-size:26px;margin-bottom:10px;display:block;line-height:1;}
+  .exam-num{font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);margin-bottom:4px;}
+  .exam-title{font-size:16px;font-weight:650;letter-spacing:-.015em;margin-bottom:3px;}
+  .exam-sub{font-size:12.5px;color:var(--ink-3);line-height:1.4;}
+  .exam-arrow{font-size:18px;color:var(--ink-3);float:right;margin-top:-2px;}
+
+  /* ── Sub-type screen ── */
+  .subtype-hero{padding:0 0 24px;}
+  .subtype-hero h2{font-size:26px;font-weight:700;letter-spacing:-.03em;margin-bottom:6px;}
+  .subtype-hero p{font-size:14.5px;color:var(--ink-2);}
+  .subtype-grid{display:flex;flex-direction:column;gap:10px;}
+  .subtype-card{background:var(--surface);border:.5px solid var(--hair-soft);border-radius:var(--radius-sm);box-shadow:var(--shadow);padding:18px 20px;cursor:pointer;display:flex;align-items:center;gap:14px;border-left:4px solid var(--exam-c);transition:transform .12s;}
+  .subtype-card:hover{transform:translateY(-1px);}
+  .subtype-card-icon{font-size:22px;flex:none;}
+  .subtype-card-title{font-size:16px;font-weight:650;letter-spacing:-.015em;}
+  .subtype-card-sub{font-size:13px;color:var(--ink-3);margin-top:2px;}
+  .subtype-card-arrow{margin-left:auto;font-size:18px;color:var(--ink-3);}
+
+  /* ── Phase strip ── */
+  .phase-strip{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:14px 0 10px;margin-bottom:4px;}
+  .phase-strip::-webkit-scrollbar{display:none;}
+  .phase-chip{flex:none;font-size:12px;font-weight:600;padding:5px 12px;border-radius:980px;background:var(--hair-soft);color:var(--ink-3);transition:all .2s;white-space:nowrap;}
+  .phase-chip.active{color:#fff;background:var(--exam-c);}
+
+  /* ── Step card ── */
+  .step-card{background:var(--surface);border:.5px solid var(--hair-soft);border-radius:var(--radius);box-shadow:var(--shadow);padding:28px 26px 24px;margin-bottom:16px;border-top:3.5px solid var(--exam-c);}
+  .step-phase-label{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin-bottom:8px;}
+  .step-title{font-size:22px;font-weight:700;letter-spacing:-.025em;line-height:1.2;margin-bottom:18px;}
+  .step-actions{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:18px;}
+  .step-actions li{font-size:15.5px;display:flex;gap:12px;align-items:flex-start;line-height:1.45;}
+  .step-actions li .n{font-size:12px;font-weight:700;color:#fff;background:var(--exam-c);width:22px;height:22px;border-radius:7px;display:flex;align-items:center;justify-content:center;flex:none;margin-top:1px;}
+  .step-actions li .txt{flex:1;}
+  .step-actions li .txt b{font-weight:600;}
+
+  .mnemonic-box{display:inline-flex;align-items:center;gap:7px;background:#fff8e6;border:.5px solid #f5c842;border-radius:10px;padding:9px 14px;margin-bottom:14px;font-size:14px;color:#7a5200;}
+  .mnemonic-box .m-label{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#a07000;margin-right:4px;}
+  .mnemonic-box .m-text{font-weight:650;letter-spacing:.02em;}
+
+  .tip-box{background:#f2f7ff;border:.5px solid #b8d4f8;border-radius:10px;padding:11px 14px;font-size:13.5px;color:#1a4a8a;line-height:1.5;margin-bottom:14px;}
+  .tip-box .tip-label{font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#5080c0;margin-bottom:4px;}
+
+  .graphic-box{margin-bottom:14px;display:flex;justify-content:center;}
+  .graphic-box svg{max-width:100%;height:auto;}
+
+  /* ── Nav footer ── */
+  .step-footer{display:flex;align-items:center;gap:10px;}
+  .step-counter{font-size:13px;font-weight:600;color:var(--ink-3);flex:1;text-align:center;}
+  .nav-btn{font-size:15px;font-weight:650;padding:13px 28px;border-radius:var(--radius-sm);border:none;cursor:pointer;font-family:var(--font);letter-spacing:-.01em;transition:opacity .15s,transform .1s;flex:none;}
+  .nav-btn:active{transform:scale(.97);}
+  .nav-btn.prev{background:var(--hair-soft);color:var(--ink-2);}
+  .nav-btn.next{color:#fff;background:var(--exam-c);}
+  .nav-btn:disabled{opacity:.35;cursor:default;}
+  .nav-btn.next:disabled{opacity:.35;}
+
+  /* ── Done screen ── */
+  .done-card{background:var(--surface);border:.5px solid var(--hair-soft);border-radius:var(--radius);box-shadow:var(--shadow);padding:40px 28px;text-align:center;border-top:3.5px solid var(--exam-c);}
+  .done-icon{font-size:48px;margin-bottom:14px;}
+  .done-title{font-size:22px;font-weight:700;letter-spacing:-.025em;margin-bottom:8px;}
+  .done-sub{font-size:15px;color:var(--ink-2);margin-bottom:24px;}
+  .done-again{font-size:15px;font-weight:600;padding:13px 32px;border-radius:var(--radius-sm);border:none;cursor:pointer;font-family:var(--font);color:#fff;background:var(--exam-c);}
+
+  /* screens */
+  .screen{display:none;}
+  .screen.active{display:block;}
+
+  @media(max-width:600px){
+    .exam-grid{grid-template-columns:1fr 1fr;}
+    .step-title{font-size:19px;}
+    .nav-btn{padding:12px 18px;font-size:14px;}
+  }
+  @media(max-width:380px){
+    .exam-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="bar">
+    <button class="back-btn" id="headerBack" style="visibility:hidden" onclick="handleBack()">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 12L6 8l4-4"/></svg>
+      Back
+    </button>
+    <span class="bar-title" id="barTitle">Examination Technique</span>
+    <div class="bar-end"></div>
+  </div>
+</header>
+
+<main>
+  <!-- SELECTOR -->
+  <div class="screen active" id="screen-select">
+    <div class="selector-hero">
+      <div class="kicker">Oxford Y4 · 2025–26</div>
+      <h2>Click through the examination.</h2>
+      <p>Each step follows the MedEd booklet exactly — position, opening, technique, closing. Pick an exam to begin.</p>
+    </div>
+    <div class="exam-grid" id="examGrid"></div>
+  </div>
+
+  <!-- SUB-TYPE -->
+  <div class="screen" id="screen-subtype">
+    <div class="subtype-hero">
+      <h2 id="subtypeTitle"></h2>
+      <p id="subtypeSub"></p>
+    </div>
+    <div class="subtype-grid" id="subtypeGrid"></div>
+  </div>
+
+  <!-- STEP-THROUGH -->
+  <div class="screen" id="screen-step">
+    <div class="phase-strip" id="phaseStrip"></div>
+    <div class="step-card" id="stepCard"></div>
+    <div class="step-footer">
+      <button class="nav-btn prev" id="btnPrev" onclick="stepNav(-1)">← Prev</button>
+      <span class="step-counter" id="stepCounter"></span>
+      <button class="nav-btn next" id="btnNext" onclick="stepNav(1)">Next →</button>
+    </div>
+  </div>
+
+  <!-- DONE -->
+  <div class="screen" id="screen-done">
+    <div class="done-card" id="doneCard">
+      <div class="done-icon">✓</div>
+      <div class="done-title" id="doneTitle">Examination complete.</div>
+      <div class="done-sub" id="doneSub"></div>
+      <button class="done-again" onclick="restartWalk()">Start again</button>
+    </div>
+  </div>
+</main>
+
+<script>
+/* ============================================================
+   DATA
+   ============================================================ */
+
+const COL = {cvs:"#e5484d",resp:"#0091ff",abdo:"#f5a623",neuro:"#8b5cf6",lump:"#14b8a6",breast:"#ec4899",neck:"#10b981",vasc:"#6366f1"};
+
+/* Each exam: { id, icon, title, sub, subtypes?, steps? }
+   If subtypes present: array of { id, icon, title, sub, steps }
+   steps: [{ phase, title, actions[], mnemonic?, tip?, graphic? }]        */
+
+const EXAMS = [
+
+/* ── 1 · CARDIOVASCULAR ── */
+{id:"cvs", icon:"🫀", title:"Cardiovascular", sub:"Pulse, JVP, murmurs", steps:[
+ {phase:"Opening", title:"WI²P⁴E — position at 45°", actions:[
+  "Wash hands",
+  "Introduce yourself and your role",
+  "Confirm patient <b>identity</b> (name + DoB)",
+  "Explain the examination, ask <b>permission</b>",
+  "Ensure <b>privacy</b> (draw curtains)",
+  "Ask about <b>pain</b> — note any location",
+  "<b>Position</b> at 45°, <b>expose</b> chest to the waist",
+ ], mnemonic:"WI²P⁴E", tip:"Say the opening out loud as you do it — 'I'd like to start with the general inspection...'"},
+
+ {phase:"Inspection", title:"General inspection + around the bed", actions:[
+  "Stand at the end of the bed — pause and look",
+  "Around the bed: O₂, drips, GTN spray, cardiac monitoring, pacemaker box",
+  "Patient appearance: comfortable or distressed? Breathless at rest?",
+  "Body habitus: Marfan's (tall, long fingers), Down's, Turner's",
+  "Colour: pallor, peripheral cyanosis, malar flush",
+  "Visible scars: sternotomy (midline), lateral thoracotomy, pacemaker (left infraclavicular)",
+ ], tip:"Comment on everything you see before moving closer. Examiners want to see systematic thinking."},
+
+ {phase:"Hands & Arms", title:"Hands, radial pulse and collapsing pulse", actions:[
+  "<b>Inspect hands:</b> clubbing, splinter haemorrhages, Osler's nodes, Janeway lesions, koilonychia, xanthomata",
+  "<b>Temperature:</b> back of your hand along the arms",
+  "<b>CRT:</b> press nail bed 5 s — normal < 2 s",
+  "<b>Radial pulse:</b> rate, rhythm, character (volume, collapsing quality), radio-radial delay",
+  "<b>Collapsing pulse (5 steps):</b> ask about shoulder pain → cup the wrist → support the elbow → elevate arm overhead → feel pulsation increase",
+  "Offer to measure <b>blood pressure</b> (both arms if coarctation suspected)",
+ ], tip:"Always ask about shoulder pain before the collapsing pulse test — painful shoulder is a contraindication."},
+
+ {phase:"Head & Neck", title:"Eyes, mouth, carotid, JVP", actions:[
+  "<b>Eyes:</b> corneal arcus (< 50 yrs = lipid disorder), xanthelasma, pallor (conjunctivae), Kayser-Fleischer rings",
+  "<b>Mouth:</b> high-arched palate (Marfan's), central cyanosis (tongue), dentition (IE risk)",
+  "<b>Carotid pulse:</b> character — slow-rising (AS) vs collapsing (AR); listen for bruit",
+  "<b>JVP:</b> position at 45°, turn head left, look for double waveform at the medial SCM border",
+  "JVP height: measure vertical from sternal angle — > 4 cm is elevated",
+  "Hepatojugular reflux: press RUQ for 10 s — JVP rises if right heart failure",
+ ], graphic:"jvp_position", tip:"If you can't see the JVP, try 30° or 60° patient angle. Confirm it's JVP (not carotid) — JVP is non-pulsatile to palpation, drops on inspiration, can be occluded."},
+
+ {phase:"Chest", title:"Inspect and palpate the precordium", actions:[
+  "<b>Inspect:</b> sternotomy scar, pacemaker bulge, visible apex beat, chest deformity",
+  "<b>Apex beat:</b> 5th ICS, mid-clavicular line — note if displaced (laterally = LV dilation), character (heaving = pressure load; thrusting = volume load; tapping = palpable S1 of MS)",
+  "<b>Heaves:</b> heel of hand at left sternal edge — parasternal heave = RV hypertrophy",
+  "<b>Thrills:</b> palpable murmur — note location and timing",
+ ], tip:"Palpate the apex with the whole hand first, then localise with fingertip. A sustained, forceful apex = pressure overload (AS); a displaced, thrusting apex = volume overload (AR, MR)."},
+
+ {phase:"Auscultation", title:"Auscultate all four valve areas", actions:[
+  "<b>Mitral (M):</b> 5th ICS, mid-clavicular line — bell for low-pitched sounds (MS), diaphragm for murmurs",
+  "<b>Tricuspid (T):</b> 4th ICS, left sternal edge",
+  "<b>Pulmonary (P):</b> 2nd ICS, left sternal edge",
+  "<b>Aortic (A):</b> 2nd ICS, right sternal edge",
+  "Identify <b>S1</b> (mitral/tricuspid closure = systole) by palpating carotid simultaneously",
+  "Note added sounds: <b>S3</b> (LV dilation / heart failure), <b>S4</b> (stiff LV / hypertrophy)",
+  "Characterise any murmur: timing (systolic/diastolic), character, grade, radiation",
+ ], graphic:"cvs_auscultation", mnemonic:"ATOM (Aortic → Tricuspid → pulmOnary → Mitral)", tip:"Always palpate the carotid during auscultation to identify systole reliably."},
+
+ {phase:"Auscultation", title:"Reinforcement manoeuvres — RILE", actions:[
+  "<b>Aortic area:</b> sit patient forward, breath held in expiration, diaphragm at left sternal edge → accentuates <b>AR</b> (early diastolic murmur)",
+  "<b>Mitral area:</b> roll patient to left lateral, diaphragm at apex, breath held in expiration → accentuates <b>MS</b>",
+  "Right-sided murmurs louder on <b>inspiration</b>; left-sided louder on <b>expiration</b>",
+  "Axillary radiation: place diaphragm in left axilla → MR radiates here",
+  "Carotid radiation: place diaphragm over carotid → AS radiates here",
+ ], mnemonic:"RILE: Right = Inspiration, Left = Expiration"},
+
+ {phase:"Back & Legs", title:"Lung bases, sacral oedema, leg oedema", actions:[
+  "Sit patient forward — inspect the back for thoracotomy scars, kyphoscoliosis",
+  "<b>Lung bases:</b> auscultate both bases — bibasal fine crackles = pulmonary oedema (LVF)",
+  "<b>Sacral oedema:</b> press sacrum — pitting oedema here indicates fluid overload / RHF",
+  "Lie patient flat — inspect legs: saphenous vein harvest scars, pitting oedema (note highest level)",
+  "Peripheral pulses: femoral, popliteal, DP, PT — brief check",
+ ]},
+
+ {phase:"Close", title:"Thank patient and summarise", actions:[
+  "Replace clothing, ensure patient is comfortable",
+  "Thank the patient",
+  "Present findings: 'On examination this patient has... consistent with...'",
+  "<b>Further tests to offer:</b> urine dipstick (proteinuria), fundoscopy (hypertensive changes), lying/standing BP (postural hypotension), ECG, echo, CXR",
+ ]},
+]}, /* end CVS */
+
+
+/* ── 2 · RESPIRATORY ── */
+{id:"resp", icon:"🫁", title:"Respiratory", sub:"Percussion, breath sounds, the grid", steps:[
+ {phase:"Opening", title:"WI²P⁴E — position at 45°", actions:[
+  "Wash hands, introduce, confirm identity, permission, privacy, pain",
+  "<b>Position</b> patient at 45°, expose the chest (front and back)",
+ ], mnemonic:"WI²P⁴E"},
+
+ {phase:"Inspection", title:"General inspection + around the bed", actions:[
+  "Around the bed: inhalers, nebuliser, O₂ (and flow rate), sputum pot, spirometer",
+  "Patient: comfortable or using accessory muscles? Pursed-lip breathing?",
+  "Count <b>respiratory rate</b> over 30 s (normal 12–18/min)",
+  "Tracheal tug (finger on trachea during inspiration), intercostal recession, paradoxical breathing",
+  "Colour: central cyanosis (tongue), anaemic pallor",
+ ]},
+
+ {phase:"Hands & Face", title:"Hands, arms, and face — the 5Cs", actions:[
+  "<b>Clubbing</b> (bronchiectasis, ILD, malignancy, CF, empyema)",
+  "<b>Colour:</b> peripheral cyanosis (nail beds)",
+  "<b>Cigarette</b> tar staining",
+  "<b>Cancer signs:</b> Pancoast — wasting of intrinsic hand muscles, Horner's (ptosis, miosis, anhidrosis)",
+  "<b>CO₂ retention:</b> asterixis (arms outstretched, wrists extended 15 s), bounding radial pulse, fine tremor",
+  "Steroids: skin thinning, bruising, proximal myopathy",
+  "<b>Face:</b> Horner's, conjunctival pallor, facial plethora, central cyanosis (tongue/lips)",
+  "<b>Neck:</b> JVP elevation (cor pulmonale), lymphadenopathy",
+ ], mnemonic:"5Cs: Clubbing, Colour, Cigarette, Cancer, CO₂"},
+
+ {phase:"Neck", title:"Trachea and neck nodes", actions:[
+  "<b>Tracheal position:</b> index and ring fingers on clavicular heads, middle finger in sternal notch — any deviation?",
+  "<b>Cricosternal distance:</b> < 3 fingerbreadths = hyperinflation",
+  "Lymphadenopathy: all cervical chains, axillae",
+ ], tip:"Tracheal deviation: away from tension pneumothorax (+ haemodynamic compromise), towards collapse."},
+
+ {phase:"Chest", title:"Inspect, palpate expansion, TVF", actions:[
+  "<b>Inspect:</b> barrel chest (COPD), pectus excavatum/carinatum, scoliosis/kyphosis, scars (thoracotomy, VATS ports, pleurodesis), asymmetry",
+  "<b>Expansion (anterior):</b> hands either side of the manubrium, thumbs touching — deep breath, thumbs should separate equally ≥ 5 cm",
+  "<b>Expansion (lateral):</b> hands around lower chest, thumbs midline — same check",
+  "<b>TVF (tactile vocal fremitus):</b> ulnar border of hand on each zone, patient says 'ninety-nine' — increased = consolidation; decreased = effusion/PTX",
+ ]},
+
+ {phase:"Percussion", title:"S-shape percussion — all zones", actions:[
+  "Middle finger of left hand flat on chest, strike with right middle finger sharply",
+  "Percuss <b>supraclavicular</b> (apex) → upper, middle, lower zones bilaterally",
+  "Compare <b>side-to-side</b> at each level",
+  "Then <b>axillae</b> — important for middle lobe/lingula and effusions",
+  "Sit patient forward — repeat <b>all zones on the back</b>",
+  "<b>Interpretation:</b> resonant = normal; dull = consolidation/collapse/tumour; stony dull = effusion; hyperresonant = pneumothorax",
+ ], graphic:"resp_percussion", mnemonic:"Stony dull = Effusion (fluid doesn't resonate)", tip:"Use the same force at every site. Compare like-for-like — always the mirror image position."},
+
+ {phase:"Auscultation", title:"Auscultate — same S-shape, add VR", actions:[
+  "Same systematic S-shape path, anterior then posterior",
+  "<b>Breath sounds:</b> vesicular (normal) or bronchial (consolidation — high-pitched, harsh, equal I:E with gap)",
+  "<b>Added sounds:</b> fine crackles (ILD/pulm oedema), coarse crackles (infection/secretions), wheeze (obstruction), pleural rub (pleuritis)",
+  "<b>Vocal resonance:</b> 'say ninety-nine' — listen at each zone; increased = consolidation; decreased/absent = effusion or PTX",
+ ], tip:"Vocal resonance + bronchial breathing together = consolidation with an open airway (e.g. lobar pneumonia)."},
+
+ {phase:"Legs", title:"Lower peripheries", actions:[
+  "DVT signs: calf tenderness, swelling, erythema (PE source)",
+  "Bilateral pitting oedema (cor pulmonale / right heart failure)",
+  "Erythema nodosum (sarcoidosis, TB, Crohn's)",
+ ]},
+
+ {phase:"Close", title:"Thank patient — SPOT-X", actions:[
+  "Reposition, cover, thank the patient",
+  "<b>Sputum sample</b> (MC+S, cytology)",
+  "<b>Peak flow</b> + spirometry (obstruction vs restriction)",
+  "<b>Oximetry</b> (resting SpO₂, with exertion)",
+  "<b>Temperature</b> (infection)",
+  "<b>X-ray</b> chest (CXR, ± CT thorax)",
+ ], mnemonic:"SPOT-X: Sputum, Peak flow, Oximetry, Temperature, X-ray"},
+]}, /* end Resp */
+
+
+/* ── 3 · ABDOMINAL ── */
+{id:"abdo", icon:"🫃", title:"Abdominal", sub:"Organomegaly, CLD stigmata, masses", steps:[
+ {phase:"Opening", title:"WI²P⁴E — position flat", actions:[
+  "Wash hands, introduce, confirm identity, permission, privacy, pain (note location — start palpation furthest away)",
+  "<b>Position:</b> start at 45°, then lie flat with one pillow; arms at sides",
+  "<b>Expose:</b> nipples to knees (drape groin)",
+ ], mnemonic:"WI²P⁴E"},
+
+ {phase:"Inspection", title:"General inspection + around the bed", actions:[
+  "Around the bed: fluid balance chart, stoma bags, NG tube, nutritional supplements, medications (steroids, immunosuppressants)",
+  "Patient: comfortable or writhing (colic) or very still (peritonism)?",
+  "Colour: jaundice, pallor, pigmentation (Addison's)",
+  "Body habitus: cachexia (malignancy), cushingoid (steroids), ascites",
+ ]},
+
+ {phase:"Hands & Arms", title:"Nails, hands, arms", actions:[
+  "<b>Nails:</b> clubbing (4Cs — Cirrhosis, Crohn's, Colitis, Coeliac); koilonychia (spoon = iron deficiency); leukonychia (white = low albumin)",
+  "<b>Hands:</b> palmar erythema, Dupuytren's contracture, tar staining, hyperpigmentation",
+  "<b>Arms:</b> CRT, asterixis (outstretched arms, wrists dorsiflexed — flapping = hepatic encephalopathy), bruising/excoriations (cholestatic itch)",
+ ], mnemonic:"Clubbing 4Cs: Cirrhosis, Crohn's, Colitis, Coeliac"},
+
+ {phase:"Head & Neck", title:"Face, mouth, neck nodes", actions:[
+  "<b>Eyes:</b> conjunctival pallor (anaemia), scleral icterus (jaundice ≥ 35 µmol/L), Kayser-Fleischer rings (Wilson's — slit lamp)",
+  "<b>Mouth:</b> angular stomatitis (Fe/B12/folate), aphthous ulcers (IBD), glossitis, foetor hepaticus (liver failure), parotid enlargement (alcohol)",
+  "<b>Neck:</b> Virchow's node (left supraclavicular — gastric/pancreatic metastasis)",
+ ]},
+
+ {phase:"Chest", title:"Chest and abdominal inspection", actions:[
+  "<b>Chest:</b> spider naevi (> 5 in SVC territory = liver disease), gynaecomastia, loss of axillary/chest hair",
+  "<b>Abdominal inspection:</b> scars (note position and age), PEG tube, stomas (site and content)",
+  "Distension, striae (ascites, Cushing's), caput medusae (portal hypertension)",
+  "Grey-Turner's sign (flanks) / Cullen's sign (periumbilical) — retroperitoneal haemorrhage",
+  "Visible peristalsis (obstruction), pulsation (AAA)",
+ ]},
+
+ {phase:"Screening", title:"Abdominal screening tests before palpating", actions:[
+  "Ask patient to <b>take a deep breath</b> — any pain suggests peritonism",
+  "Ask patient to <b>cough</b> over the inguinal region — pain/impulse = hernia/peritonism",
+  "Ask patient to <b>lift head and touch chest</b> — divarication of recti appears as midline bulge",
+ ]},
+
+ {phase:"Palpation", title:"Superficial and deep palpation", actions:[
+  "Kneel to patient's level — start at the quadrant <b>furthest from pain</b>",
+  "<b>Superficial (9 regions):</b> flat of hand, watch face for grimacing — localise tenderness, guarding",
+  "<b>Deep palpation:</b> same 9 regions, two hands — identify masses",
+  "<b>Liver:</b> RIF → right hypochondrium, radial border of hand, parallel to costal margin — feel edge descend on inspiration",
+  "<b>Spleen:</b> RIF → left hypochondrium, angled to left costal margin — notch, can't get above it, dull to percussion, ballotable only if massively enlarged",
+  "<b>Kidneys:</b> ballot — hand in flank posteriorly + hand on anterior abdomen, push from below",
+  "<b>Aorta:</b> both hands above umbilicus, fingertips touching, press on expiration — expansile?",
+  "<b>Murphy's sign:</b> press RUQ, ask deep breath — catch = cholecystitis",
+ ], graphic:"abdo_regions", tip:"Report liver size in cm below costal margin. Spleen size: mild < 5 cm, moderate 5–10 cm, massive > 10 cm below costal margin."},
+
+ {phase:"Percussion", title:"Percuss organomegaly and ascites", actions:[
+  "<b>Liver:</b> percuss upper border (from resonant chest → dull), then lower — span normally 6–12 cm MCL",
+  "<b>Spleen:</b> percuss left hypochondrium — dull if enlarged (Traube's space)",
+  "<b>Bladder:</b> tap from umbilicus to pubis — dull if full",
+  "<b>Shifting dullness (ascites):</b> percuss from midline to flank until dull — keep finger there, patient rolls away — percuss again; resonance now = fluid shifted",
+  "<b>Fluid thrill:</b> have patient put edge of hand on midline, tap one flank, feel impulse on other",
+ ]},
+
+ {phase:"Auscultation", title:"Bowel sounds and bruits", actions:[
+  "<b>Bowel sounds:</b> listen 30 s per quadrant — normal (intermittent gurgles); tinkling = obstruction; absent 3 min = ileus/peritonitis",
+  "<b>Renal bruits:</b> 2 cm lateral to umbilicus each side — renal artery stenosis",
+  "<b>Aortic bruit:</b> midline, above umbilicus — AAA / atherosclerosis",
+ ]},
+
+ {phase:"Legs", title:"Lower peripheries", actions:[
+  "Pitting oedema: press medial ankle 5 s — record highest level affected",
+  "Bruising, erythema nodosum (IBD, sarcoidosis)",
+ ]},
+
+ {phase:"Close", title:"Thank patient — HEN DO U", actions:[
+  "Reposition and cover the patient, thank them",
+  "<b>Hernial orifices:</b> inguinal (direct vs indirect), femoral (below and lateral to pubic tubercle), umbilical",
+  "<b>External genitalia:</b> offer if clinically indicated",
+  "<b>Nodes:</b> inguinal lymphadenopathy",
+  "<b>Digital rectal examination:</b> offer",
+  "<b>Observations:</b> pulse, BP, temp, O₂ sats",
+  "<b>Urine dipstick:</b> blood, protein, glucose, bilirubin",
+ ], mnemonic:"HEN DO U: Hernias, External genitalia, Nodes, Digital rectal, Observations, Urine"},
+]}, /* end Abdo */
+
+
+/* ── 4 · LUMP ── */
+{id:"lump", icon:"🔍", title:"Lump", sub:"6S + 3T + CAMPFIRE", steps:[
+ {phase:"Opening", title:"WI²P⁴E", actions:[
+  "Wash hands, introduce, confirm identity, permission, privacy, pain",
+  "Ask patient to point to the lump before exposing",
+ ], mnemonic:"WI²P⁴E"},
+
+ {phase:"Inspection", title:"Inspect the lump from the end of the bed", actions:[
+  "Site — which anatomical region?",
+  "Skin changes: redness, ulceration, puckering, hair loss, dilated veins, telangiectasia, sinus",
+  "Size and shape: visible dimensions, regular/irregular",
+  "Single or multiple?",
+  "Transilluminate (if appropriate): pen torch pressed to one side — light transmitted = clear fluid (cyst, hydrocoele); does NOT transilluminate if blood (varicocoele)",
+ ]},
+
+ {phase:"Palpation", title:"Palpate — 6 Students + 3 Teachers", actions:[
+  "<b>Site</b> (anatomical position, relation to landmarks)",
+  "<b>Size</b> (cm in two dimensions)",
+  "<b>Shape</b> (spherical, lobulated, irregular)",
+  "<b>Surface</b> (smooth, craggy, bosselated)",
+  "<b>Skin</b> (attached, tethered, free — pinch test)",
+  "<b>Single or multiple</b>",
+  "<b>Temperature:</b> back of hand — warm = inflammatory/vascular",
+  "<b>Tenderness:</b> ask first, watch face",
+  "<b>Transillumination:</b> in dark room with torch",
+ ], mnemonic:"6S: Site, Size, Shape, Surface, Skin, Single | 3T: Temperature, Tenderness, Transillumination"},
+
+ {phase:"Palpation", title:"CAMPFIRE", actions:[
+  "<b>Consistency:</b> soft (lipoma/cyst), firm (fibrous), hard (bone/malignancy), fluctuant (fluid)",
+  "<b>Attachment:</b> to skin? to deep structures? (move lump in two planes)",
+  "<b>Mobility:</b> freely mobile, tethered, fixed",
+  "<b>Pulsation:</b> transmitted (artery behind) vs expansile (AAA, aneurysm) vs thrill (AV fistula)",
+  "<b>Fluctuation:</b> two fingers fix lump, third displaces — impulse felt perpendicular = fluid",
+  "<b>Irreducibility:</b> can it be pushed back? (hernia)",
+  "<b>Regional lymph nodes:</b> drain the lump site — also check distant nodes",
+  "<b>Edge:</b> well-defined (lipoma, cyst) vs poorly-defined (malignancy, abscess)",
+ ], mnemonic:"CAMPFIRE: Consistency, Attachment, Mobility, Pulsation, Fluctuation, Irreducibility, Regional nodes, Edge"},
+
+ {phase:"Percussion", title:"Percuss the lump", actions:[
+  "Percuss over the lump — resonant (gas-containing, e.g. hernia with bowel) vs dull (solid/fluid)",
+  "Useful to define impalpable extent of deep lumps",
+ ]},
+
+ {phase:"Auscultation", title:"Auscultate the lump", actions:[
+  "<b>Bruit:</b> vascular lump (AVM, aneurysm, highly vascular tumour)",
+  "<b>Bowel sounds:</b> hernia containing bowel — gurgles audible over lump",
+ ]},
+
+ {phase:"Close", title:"Closing the lump examination", actions:[
+  "Reposition, cover, thank patient",
+  "Ensure regional lymph nodes examined if not already done",
+  "Offer: aspiration/biopsy, USS (first line for most lumps), CT/MRI for deep or concerning lumps",
+ ]},
+]}, /* end Lump */
+
+
+/* ── 5 · BREAST ── */
+{id:"breast", icon:"🩺", title:"Breast", sub:"Skin/nipple signs, triple assessment", steps:[
+ {phase:"Opening", title:"WI²P⁴E + chaperone", actions:[
+  "Wash hands, introduce, confirm identity",
+  "<b>Chaperone:</b> always offer — document their presence",
+  "Explain the examination in detail before starting",
+  "Ask about pain, any lumps the patient has noticed",
+  "Position: sitting upright on the couch edge to begin",
+  "Expose: from waist up (maintain dignity)",
+ ], mnemonic:"WI²P⁴E + chaperone always"},
+
+ {phase:"Inspection", title:"Inspect sitting — arms by sides", actions:[
+  "Ask patient to point to any area of concern",
+  "<b>Skin:</b> puckering, peau d'orange, dimpling, erythema, oedema, ulceration, scars",
+  "<b>Contour:</b> asymmetry, visible lumps, abnormal fullness",
+  "<b>Nipple:</b> asymmetry, inversion/retraction (new vs longstanding?), distortion, Paget's (eczematoid rash)",
+  "<b>Discharge:</b> present? Bilateral or unilateral? Colour? Single duct?",
+  "<b>Axilla:</b> scars (axillary clearance), skin changes, visible nodes",
+ ]},
+
+ {phase:"Inspection", title:"Inspect — arms raised then pectoral contraction", actions:[
+  "<b>Arms raised slowly above head:</b> tethering to skin or pectoralis visible as asymmetric dimpling",
+  "<b>Hands on hips, tense pectorals:</b> fixed deep tethering of a lump becomes apparent",
+  "Repeat inspection from both sides",
+ ]},
+
+ {phase:"Lymph nodes", title:"Axillary and supraclavicular nodes", actions:[
+  "<b>Supraclavicular:</b> stand behind — palpate both fossae, deep pressure (Virchow's)",
+  "<b>Axillary:</b> support patient's arm with yours (takes weight off), use opposite hand",
+  "Systematically palpate: apical (top), medial (chest wall), lateral (arm), anterior (pectoral), posterior (subscapular)",
+  "<b>Assess any nodes:</b> size, consistency, mobility, tenderness — reactive (soft, mobile, tender) vs malignant (hard, fixed, painless)",
+  "Repeat both sides",
+ ]},
+
+ {phase:"Palpation", title:"Palpate breasts — lying at 45°, hands behind head", actions:[
+  "Examine <b>asymptomatic breast first</b> to establish the normal",
+  "Flat of the middle three fingers, gentle circular movements",
+  "Systematic method: clockface / inward spiral / quadrant-by-quadrant",
+  "All four quadrants + axillary tail + subareolar",
+  "Support the breast with the other hand",
+  "Repeat on the symptomatic side",
+  "Any lump found → apply full lump examination (6S + 3T + CAMPFIRE)",
+ ], tip:"Warn patient before you start. Use firm but gentle pressure — you need to feel breast tissue against the chest wall."},
+
+ {phase:"Nipple", title:"Nipple examination", actions:[
+  "Inspect nipple and areola closely",
+  "If discharge present: ask patient to express — note colour (clear, bloody, green)",
+  "Single duct discharge (localised pressure) vs multiple duct (generalised compression)",
+  "Offer urine dipstick for occult blood if serous discharge",
+ ]},
+
+ {phase:"Close", title:"Closing — metastatic screen if suspicious", actions:[
+  "Thank patient, allow to redress in privacy",
+  "If suspicious lump → offer metastatic screen:",
+  "  — <b>Lungs:</b> wheeze, pleural effusion",
+  "  — <b>Bone:</b> spine tenderness",
+  "  — <b>Liver:</b> hepatomegaly, ascites",
+  "  — <b>CNS:</b> focal neurological signs",
+  "<b>Triple assessment:</b> clinical exam + imaging (USS < 35 yrs / mammogram ≥ 35) + core biopsy",
+ ], mnemonic:"Triple assessment: Clinical + Imaging + Biopsy — all three required"},
+]}, /* end Breast */
+
+
+/* ── 6 · NEURO (with subtypes) ── */
+{id:"neuro", icon:"🧠", title:"Neurological", sub:"Upper/lower limbs, cranial nerves",
+ subtypes:[
+  {id:"neuro-upper", icon:"💪", title:"Upper Limb Neuro", sub:"SWIFTI → TPRCS", steps:[
+   {phase:"Opening", title:"WI²P⁴E — patient sitting in chair", actions:[
+    "Wash hands, introduce, confirm identity, permission, privacy, pain",
+    "Position patient <b>sitting upright in a chair</b>",
+    "Greet with a handshake — quick screen for power, grip, tremor, neglect",
+   ], mnemonic:"WI²P⁴E"},
+
+   {phase:"Inspection", title:"Inspect — SWIFTI", actions:[
+    "<b>Scars:</b> cause or effect of neurological disease (craniotomy, spinal surgery, nerve repair)",
+    "<b>Wasting:</b> thenar/hypothenar eminence, dorsal interossei, deltoid, supra/infraspinatus — LMN pattern",
+    "<b>Involuntary movements:</b> chorea (dance-like, flowing), dystonia (twisting sustained), athetosis (slow writhing), tics",
+    "<b>Fasciculations:</b> fine muscle twitching at rest — cardinal early sign of MND",
+    "<b>Tremor:</b> rest (Parkinson's — pill-rolling), postural (essential/physiological), intention (cerebellar)",
+    "<b>Important signs:</b> asymmetry, abnormal posture, mask-like facies, ptosis",
+   ], mnemonic:"SWIFTI: Scars, Wasting, Involuntary, Fasciculations, Tremor, Important signs"},
+
+   {phase:"Screening", title:"Screening tests", actions:[
+    "<b>Pseudoathetosis:</b> arms outstretched, pronated, eyes closed — fingers 'piano play' = dorsal column loss",
+    "<b>Pronator drift:</b> arms outstretched, palms up, eyes closed — arm drifts/pronates = UMN lesion contralaterally",
+    "<b>Rebound test:</b> push down on outstretched arm and release — overshoot = cerebellar; no check = spastic",
+   ]},
+
+   {phase:"Tone", title:"Assess tone", actions:[
+    "Ask patient to relax completely — 'let me take the full weight of your arm'",
+    "<b>Shoulder:</b> rotate and abduct passively",
+    "<b>Elbow:</b> flex and extend at varying speeds",
+    "<b>Wrist:</b> flex, extend, pronate, supinate",
+    "<b>Supinator catch:</b> rapid pronation → sudden flick to supination — catch = spasticity (UMN)",
+    "<b>Hypotonia:</b> floppy (LMN, cerebellar, acute UMN stroke)",
+    "<b>Cogwheel rigidity:</b> ratchet at wrist = Parkinson's (tremor + rigidity)",
+    "<b>Lead-pipe rigidity:</b> constant resistance throughout = NMS, severe Parkinson's",
+   ]},
+
+   {phase:"Power", title:"Test power — MRC grade 0–5", actions:[
+    "Test proximally → distally, compare sides",
+    "<b>Shoulder abduction (C5):</b> 'hold your arms like a chicken' — push down",
+    "<b>Elbow flexion (C5/6):</b> 'pull me in like a boxing guard' — try to extend",
+    "<b>Elbow extension (C7):</b> arm bent, 'push me away'",
+    "<b>Wrist extension (C6/7):</b> 'cock your wrist up, don't let me push down'",
+    "<b>Finger extension (C7):</b> 'straighten your fingers'",
+    "<b>Finger abduction (T1):</b> 'spread your fingers, don't let me squeeze'",
+    "<b>Thumb abduction (T1):</b> 'thumb to ceiling, don't let me push it down'",
+   ], mnemonic:"MRC: 0 = none, 1 = flicker, 2 = gravity eliminated, 3 = against gravity, 4 = against resistance, 5 = normal"},
+
+   {phase:"Reflexes", title:"Elicit reflexes — Jendrassik if absent", actions:[
+    "Offer Jendrassik (hook fingers and pull) if any reflex appears absent",
+    "<b>Biceps (C5/6, musculocutaneous):</b> arm slightly bent, thumb on biceps tendon, tap thumb — watch flexion",
+    "<b>Triceps (C6/7, radial):</b> support arm flexed, palpate triceps tendon above olecranon, tap — watch extension",
+    "<b>Supinator (C5/6, radial):</b> palpate brachioradialis tendon on posterolateral forearm, tap — watch supination",
+    "<b>Grading:</b> 0 = absent, + = present with reinforcement, ++ = normal, +++ = brisk, ++++ = clonus",
+   ]},
+
+   {phase:"Coordination", title:"Coordination — omit if power < 3", actions:[
+    "<b>Finger-nose test:</b> alternate touching your moving finger and their nose — look for intention tremor (worsens at target), dysmetria, past-pointing",
+    "<b>Dysdiadochokinesis:</b> rapid alternating hand movements (palm up/down on other palm) — slow or irregular = cerebellar",
+   ]},
+
+   {phase:"Sensation", title:"Sensation — light touch, vibration, proprioception", actions:[
+    "<b>Light touch:</b> cotton wool, eyes closed, test each dermatome C5→T1 sequentially, compare bilaterally; show normal area on sternum first",
+    "<b>Vibration (128 Hz):</b> tuning fork on bony prominences — DIP joint, wrist, elbow; ask 'does it buzz?' (not just feel cold)",
+    "<b>Proprioception:</b> hold distal phalanx laterally (not the nail), eyes closed, move up or down — start distally, move proximally if impaired",
+    "<b>Pain/temperature:</b> Neurotip or cold tuning fork if indicated",
+    "Note: glove distribution (peripheral neuropathy) vs dermatomal (nerve root) vs hemisensory (CNS)",
+   ]},
+
+   {phase:"Close", title:"Close upper limb neuro exam", actions:[
+    "Reposition, thank patient",
+    "Offer: lower limb neuro, cranial nerve exam, cerebellar exam (DANISH), stroke signs, Guillain-Barré tests (EMG/NCS)",
+   ], mnemonic:"DANISH: Dysdiadochokinesis, Ataxia, Nystagmus, Intention tremor, Slurred speech, Hypotonia"},
+  ]}, /* end neuro-upper */
+
+  {id:"neuro-lower", icon:"🦵", title:"Lower Limb Neuro", sub:"Gait → TPRCS", steps:[
+   {phase:"Opening", title:"WI²P⁴E — patient sitting initially", actions:[
+    "Wash hands, introduce, confirm identity, permission, privacy, pain",
+    "Position sitting on couch edge initially — you will need them to stand for gait",
+    "Note any aids: wheelchair, orthoses, catheter bag",
+   ], mnemonic:"WI²P⁴E"},
+
+   {phase:"Inspection", title:"Inspect sitting and lying", actions:[
+    "Quadriceps wasting (L3/4), tibialis anterior, extensor digitorum brevis (L5)",
+    "Fasciculations in quadriceps (LMN / MND)",
+    "Pes cavus (Charcot-Marie-Tooth and other hereditary neuropathies)",
+    "Foot drop at rest, pressure sores, calluses",
+    "Catheter, orthoses, frame",
+   ]},
+
+   {phase:"Gait", title:"Gait and balance — assess before lying down", actions:[
+    "<b>Normal gait:</b> ask to walk across room, turn, return — watch foot clearance, arm swing, turning",
+    "<b>Parkinsonian:</b> hesitation starting, shuffling short steps, decreased arm swing, festination, retropulsion",
+    "<b>Hemiplegic:</b> arm flexed and adducted, leg extended and circumducted",
+    "<b>Ataxic:</b> wide-based staggering (cerebellar) or narrow-based unsteady with eyes closed (sensory)",
+    "<b>Spastic scissoring:</b> legs cross (bilateral UMN — cerebral palsy, cord compression)",
+    "<b>High-stepping:</b> foot drop (L5/common peroneal palsy)",
+    "<b>Heel-toe walking:</b> inability = cerebellar or sensory ataxia",
+    "<b>Romberg's test:</b> feet together, eyes open (cerebellar ok) then eyes closed — stand ready to catch; falling = dorsal column/proprioception loss",
+   ]},
+
+   {phase:"Tone", title:"Assess tone — lying", actions:[
+    "<b>Roll ankle (pastry-roll):</b> heel should lag behind rotation if tone normal — no lag = increased tone",
+    "<b>Lift knee suddenly:</b> heel lifts off bed = increased tone (spasticity)",
+    "<b>Ankle clonus:</b> flex knee, dorsiflex ankle sharply and hold — > 5 sustained beats = UMN (spastic paraparesis, cervical myelopathy)",
+   ]},
+
+   {phase:"Power", title:"Test power — MRC 0–5, proximal to distal", actions:[
+    "<b>Hip flexion (L1/2):</b> 'lift your leg off the bed, don't let me push it down'",
+    "<b>Hip extension (L5/S1):</b> press down on the bed with the back of the thigh",
+    "<b>Knee flexion (L5/S1):</b> 'pull your heel towards you'",
+    "<b>Knee extension (L3/4):</b> 'kick me away'",
+    "<b>Ankle dorsiflexion (L4/5):</b> 'pull your foot up towards you'",
+    "<b>Ankle plantarflexion (S1/2):</b> 'push your foot down like a car accelerator'",
+    "<b>Big toe extension (L5):</b> 'push your big toe up'",
+   ]},
+
+   {phase:"Reflexes", title:"Knee, ankle, plantars — Jendrassik if absent", actions:[
+    "<b>Knee jerk (L3/4, femoral):</b> support knee at 30–40°, tap patellar tendon directly — watch quad contraction",
+    "<b>Ankle jerk (S1/2, sciatic):</b> hip abducted, knee flexed, ankle dorsiflexed to 90° — tap Achilles; or kneel on couch and tap",
+    "<b>Plantar reflex (L5/S1):</b> scratch lateral sole (heel → ball → MTP) with orange stick / Neurotip blunt end — normal = toe flexion; UMN = big toe extension + fanning (Babinski positive)",
+    "Jendrassik: teeth clenched or hook fingers and pull — if reflex still absent then truly absent",
+   ]},
+
+   {phase:"Coordination", title:"Coordination — heel-shin and foot tapping", actions:[
+    "<b>Heel-shin test:</b> 'run your heel precisely up your shin from ankle to knee, then tap my hand' — look for past-pointing, intention tremor, decomposition",
+    "<b>Foot tapping:</b> alternate tapping each foot on your hand — slow/irregular = cerebellar or pyramidal",
+   ]},
+
+   {phase:"Sensation", title:"Sensation — focus on big toe distally", actions:[
+    "Light touch: cotton wool, eyes closed — test from distal to proximal bilaterally; check dermatomal distribution",
+    "Vibration (128 Hz tuning fork): hallux → medial malleolus → tibial tuberosity → iliac crest if impaired distally",
+    "Proprioception: hold hallux laterally, eyes closed — up or down? Start at IP joint",
+    "Pain (Neurotip) if indicated",
+    "Look for: stocking distribution (peripheral neuropathy), dermatomal (nerve root — L4 medial calf, L5 dorsum foot, S1 lateral foot)",
+   ]},
+
+   {phase:"Close", title:"Close lower limb neuro exam", actions:[
+    "Reposition, thank patient",
+    "Offer: upper limb neuro, cranial nerves, cerebellar exam (DANISH), imaging (MRI spine/brain)",
+   ]},
+  ]}, /* end neuro-lower */
+
+  {id:"neuro-cn", icon:"😐", title:"Cranial Nerves", sub:"CN I–XII in order", steps:[
+   {phase:"Opening", title:"WI²P⁴E — patient sitting", actions:[
+    "Wash hands, introduce, confirm identity, permission, privacy, pain",
+    "Patient seated, examiner at eye level",
+   ], mnemonic:"WI²P⁴E"},
+
+   {phase:"Inspection", title:"General inspection before starting", actions:[
+    "Speech: dysarthria (cerebellar, CN XII, pseudobulbar), dysphasia (dominant hemisphere)",
+    "Facial asymmetry or droop (CN VII), ptosis (CN III, Horner's)",
+    "Abnormal eye position: squint, proptosis",
+    "Abnormal involuntary movements: hemifacial spasm, blepharospasm",
+    "Muscle wasting: temporalis (CN V motor), sternocleidomastoid (CN XI)",
+   ]},
+
+   {phase:"CN I–II", title:"CN I: Olfactory | CN II: Optic — PAFRO", actions:[
+    "<b>CN I:</b> 'Have you noticed any change in your sense of smell?' — offer formal testing (coffee/orange per nostril) if indicated",
+    "<b>Pupils (P):</b> shape, size, equality — note any anisocoria",
+    "<b>Acuity (A):</b> cover each eye — read small print on a card; if impaired → finger count → hand movements → light perception",
+    "<b>Fields (F):</b> cover one eye each, you cover opposite eye — finger in four quadrants; compare to yours (confrontation)",
+    "<b>Reflexes (R):</b> shine light in one eye — direct + consensual constriction; swinging light test (RAPD = consensual stronger than direct = optic nerve lesion)",
+    "<b>Ophthalmoscopy (O):</b> offer only",
+   ], mnemonic:"PAFRO: Pupils, Acuity, Fields, Reflexes, Ophthalmoscopy"},
+
+   {phase:"CN III–VI", title:"CN III/IV/VI: Eye movements — H-shape", actions:[
+    "'Keep your head still and follow my finger only with your eyes'",
+    "Move finger in an <b>H-shape</b> covering all six directions",
+    "Watch for: failure of abduction (CN VI), failure of elevation/depression in adduction (CN IV), full ophthalmoplegia with ptosis and dilated pupil (CN III)",
+    "<b>Nystagmus:</b> note direction of fast phase and whether horizontal/vertical/rotatory; at extremes vs primary position",
+    "<b>Saccades:</b> two fingers apart, 'look quickly from one to the other' — slow/hypometric = cerebellar",
+    "Ask about <b>diplopia</b> in any direction",
+    "<b>INO:</b> failure of adduction (MLF lesion in MS — ask about MS history)",
+   ], graphic:"eye_movements", tip:"CN III palsy: down-and-out, ptosis, dilated pupil. CN IV: diplopia looking down-and-in (head tilts away). CN VI: cannot abduct."},
+
+   {phase:"CN V", title:"CN V: Trigeminal — sensation and motor", actions:[
+    "<b>Sensation:</b> show normal reference on sternum first; then test forehead (V1), cheeks (V2), chin near midline (V3) — both sides",
+    "Eyes closed, 'does this feel the same on both sides?'",
+    "<b>Motor:</b> 'clench your teeth' — palpate temporalis and masseter bilaterally; push jaw sideways — deviation to weak side",
+    "Jaw jerk (offer): finger on chin, tap — brisk = UMN (bilateral) lesion above pons",
+    "Corneal reflex (offer): cotton wool to cornea — blink tests V afferent / VII efferent",
+   ]},
+
+   {phase:"CN VII", title:"CN VII: Facial nerve", actions:[
+    "Inspect: facial asymmetry at rest, nasolabial flattening",
+    "'<b>Raise your eyebrows</b>' — forehead spared in UMN (bilateral cortical supply); complete loss in LMN (Bell's palsy)",
+    "'<b>Screw up your eyes tight</b>' — try to open; weakness on affected side",
+    "'<b>Puff out your cheeks</b>' — push lightly to check equal pressure",
+    "'<b>Show me your teeth / big smile</b>' — note nasolabial fold depth",
+    "Ask about: taste changes (anterior 2/3 tongue — chorda tympani), hyperacusis (stapedius branch)",
+   ], tip:"UMN VII: lower face only (forehead spared — bilateral cortical innervation to forehead). LMN VII: entire ipsilateral face including forehead."},
+
+   {phase:"CN VIII", title:"CN VIII: Vestibulocochlear — Weber's and Rinne's", actions:[
+    "<b>Gross hearing:</b> rub fingers near ear — 'can you hear this?' — repeat other side; or whisper number in opposite ear",
+    "<b>Weber's (512 Hz fork, vertex):</b> place on forehead centre — 'does it sound louder in one ear?'",
+    "  — Unilateral sensorineural loss → lateralises to GOOD ear",
+    "  — Unilateral conductive loss → lateralises to AFFECTED ear",
+    "<b>Rinne's:</b> place fork on mastoid (bone) until inaudible → move to external meatus (air) — 'which is louder?'",
+    "  — Air > bone = Rinne positive (normal or sensorineural loss)",
+    "  — Bone > air = Rinne negative (conductive loss on that side)",
+    "Offer otoscope if clinically indicated",
+   ]},
+
+   {phase:"CN IX–XII", title:"CN IX/X: Palate/gag | CN XI: Accessory | CN XII: Hypoglossal", actions:[
+    "<b>CN X:</b> 'Open your mouth, say ahh' — look for palatal asymmetry; uvula deviates AWAY from affected side",
+    "Ask about dysphagia, hoarseness (recurrent laryngeal nerve, CN X)",
+    "Offer gag reflex: touch posterior pharynx (CN IX afferent, CN X efferent)",
+    "<b>CN XII:</b> 'Stick your tongue out' — deviation TOWARD lesion (ipsilateral LMN); wasting + fasciculations (LMN, MND)",
+    "<b>CN XI:</b> 'Shrug your shoulders, don't let me push them down' (trapezius — contralateral cortex)",
+    "'Turn your head into my hand' — feel opposite SCM (turning right tests left SCM)",
+   ]},
+
+   {phase:"Close", title:"Close cranial nerve exam", actions:[
+    "Reposition, thank patient",
+    "Offer: limb neuro, cerebellar exam (DANISH), Parkinson's exam, imaging (MRI brain)",
+   ], mnemonic:"DANISH: Dysdiadochokinesis, Ataxia, Nystagmus, Intention tremor, Slurred speech, Hypotonia"},
+  ]}, /* end neuro-cn */
+ ]
+}, /* end Neuro */
+
+
+/* ── 7 · NECK & THYROID (with subtypes) ── */
+{id:"neck", icon:"🦒", title:"Neck & Thyroid", sub:"Nodes, gland, thyroid status",
+ subtypes:[
+  {id:"neck-exam", icon:"🔎", title:"Neck Examination", sub:"Lumps, nodes, thyroid, trachea", steps:[
+   {phase:"Opening", title:"WI²P⁴E — bring a glass of water", actions:[
+    "Wash hands, introduce, confirm identity, permission, privacy, pain",
+    "Bring a <b>glass of water</b> (for swallowing test)",
+    "Position patient sitting upright; you start behind them",
+   ], mnemonic:"WI²P⁴E + glass of water"},
+
+   {phase:"Inspection", title:"General inspection — hyper vs hypo features", actions:[
+    "<b>Hyperthyroid:</b> thin, restless, hot (light clothing), flushed, fine tremor, exophthalmos",
+    "<b>Hypothyroid:</b> overweight, slow, cold (heavy clothing), pale, periorbital puffiness, coarse hair",
+    "Voice change: hoarse (recurrent laryngeal nerve / goitre compressing)",
+   ]},
+
+   {phase:"Inspection", title:"Inspect the neck — anterior and posterior triangles", actions:[
+    "Patient extends neck slightly — inspect from front and sides",
+    "SVC obstruction: facial plethora, distended neck veins, non-pulsatile oedema",
+    "Anterior triangle (medial to SCM): midline, submandibular, anterior cervical",
+    "Posterior triangle (lateral to SCM): posterior cervical, supraclavicular",
+    "Note: scars (thyroid surgery = horizontal Langer crease incision), lumps, sinuses",
+   ]},
+
+   {phase:"Inspection", title:"Neck manoeuvres — tongue and swallow", actions:[
+    "'<b>Stick out your tongue</b>' — lump rises with tongue = thyroglossal cyst (attached to hyoid bone)",
+    "'<b>Take a sip of water, hold it, now swallow when I tell you</b>' — lump rises with swallowing = thyroid-related (attached to larynx)",
+    "True thyroid nodule rises; lymph node and branchial cyst do NOT rise",
+   ]},
+
+   {phase:"Palpation", title:"Palpate from behind — thyroid and nodes", actions:[
+    "Stand behind the patient, hands around the neck",
+    "<b>Thyroid:</b> little fingers on clavicles, palpate isthmus first (midline below cricoid), then each lobe individually",
+    "While palpating, ask patient to swallow — feel the gland move up under your fingers",
+    "Normal: not palpable; if enlarged: single nodule / multinodular / diffuse enlargement?",
+    "<b>Lymph nodes (in order):</b> submental → submandibular → jugulodigastric → superficial cervical → posterior cervical → supraclavicular → pre-auricular → post-auricular → occipital",
+    "Assess: size, consistency, mobility, tenderness",
+   ]},
+
+   {phase:"Palpation", title:"Palpate from front — trachea and carotid", actions:[
+    "Move to stand in front of the patient",
+    "<b>Tracheal position:</b> index + ring on clavicular heads, middle finger in sternal notch — warn this may be slightly uncomfortable",
+    "<b>Carotid pulses:</b> one side at a time (never both — vagal bradycardia risk) — character and any mass pulsation",
+   ]},
+
+   {phase:"Percussion", title:"Percuss for retrosternal goitre", actions:[
+    "Percuss over the manubrium and upper sternum",
+    "Dullness extending below clavicles = retrosternal goitre",
+   ]},
+
+   {phase:"Auscultation", title:"Auscultate — thyroid bruit", actions:[
+    "Place bell/diaphragm over each thyroid lobe",
+    "Ask patient to hold breath briefly (eliminate breath sounds)",
+    "Thyroid <b>bruit</b> = increased vascularity = Graves' disease (hyperthyroidism)",
+    "Auscultate any pulsatile mass separately",
+   ]},
+
+   {phase:"Close", title:"Close neck exam + Pemberton's offer", actions:[
+    "Thank patient, reposition",
+    "Offer <b>Pemberton's sign</b> (if thoracic outlet obstruction suspected): both arms raised above head for 1 min — facial plethora, cyanosis, distended veins, stridor = positive (retrosternal goitre compressing SVC)",
+    "Further investigations: TFTs, FBC, USS neck ± FNAC/biopsy, CT chest (retrosternal extension)",
+   ]},
+  ]}, /* end neck-exam */
+
+  {id:"thyroid-status", icon:"⚖️", title:"Thyroid Status", sub:"Assess hyper vs hypothyroid", steps:[
+   {phase:"Opening", title:"WI²P⁴E — assess thyroid status systemically", actions:[
+    "Wash hands, introduce, confirm identity, permission, privacy, pain",
+    "Explain you will assess thyroid function from head to toe",
+   ], mnemonic:"WI²P⁴E"},
+
+   {phase:"Inspection", title:"General appearance — hyper vs hypo", actions:[
+    "<b>Hyperthyroid:</b> anxious, thin, sweaty, restless, warm, light clothing, exophthalmos",
+    "<b>Hypothyroid:</b> slow, tired, overweight, cold, dry skin, thin/coarse hair, loss of lateral eyebrow third, puffy face",
+    "Voice: hoarse (hypothyroid) or high-pitched",
+   ]},
+
+   {phase:"Hands & Arms", title:"Hands, pulse, and tremor", actions:[
+    "<b>Temperature:</b> warm/sweaty (hyper) vs cool/dry (hypo)",
+    "<b>Pulse:</b> tachycardia, AF, bounding (hyper); bradycardia (hypo)",
+    "<b>Tremor:</b> place paper on outstretched hands — fine rapid tremor (hyperthyroid); no tremor (hypo)",
+    "<b>Thyroid acropachy:</b> clubbing + digit swelling (Graves' specific)",
+    "<b>BP:</b> secondary hypertension (hyperthyroid)",
+    "<b>Palms:</b> sweaty, warm (hyper)",
+   ]},
+
+   {phase:"Face", title:"Face — thyroid eye disease", actions:[
+    "<b>Hypothyroid facies:</b> myxoedematous — coarse, puffy, 'peaches and cream' pallor, periorbital oedema, loss of outer eyebrow",
+    "<b>Exophthalmos:</b> stand above and behind, look down over forehead — proptosis visible (Graves' specific)",
+    "<b>Lid retraction:</b> excess sclera visible above iris at rest (sympathetic overactivity)",
+    "<b>Lid lag:</b> follow finger down slowly — sclera visible between upper lid and iris on downward gaze (von Graefe's sign)",
+    "<b>Ophthalmoplegia:</b> H-shape movements — diplopia (infiltrative ophthalmopathy, inferior and medial recti)",
+    "Periorbital oedema, chemosis (conjunctival oedema)",
+   ]},
+
+   {phase:"Neck", title:"Neck — thyroid palpation", actions:[
+    "As per neck examination: palpate thyroid (from behind), assess size/nodularity/consistency",
+    "Swallowing test; auscultate for thyroid bruit (Graves')",
+    "Lymphadenopathy",
+   ]},
+
+   {phase:"Legs", title:"Legs — myopathy, pretibial myxoedema, reflexes", actions:[
+    "<b>Proximal myopathy (hyper):</b> 'cross your arms across your chest, stand up without using them' — difficulty = proximal weakness",
+    "<b>Pretibial myxoedema (Graves'):</b> raised, violaceous, waxy plaques on anterior shins — peau d'orange texture, non-pitting",
+    "<b>Ankle reflexes:</b> brisk with fast relaxation (hyperthyroid); slow-relaxing 'hung-up' reflex (hypothyroid)",
+   ]},
+
+   {phase:"Close", title:"Close thyroid status exam", actions:[
+    "Thank patient, reposition",
+    "Further investigations: TFTs (TSH, free T4, free T3), thyroid antibodies (anti-TPO, anti-TSH-R), TRAb",
+    "ECG (AF in hyperthyroidism), USS thyroid, radio-iodine uptake scan",
+   ]},
+  ]}, /* end thyroid-status */
+ ]
+}, /* end Neck & Thyroid */
+
+
+/* ── 8 · VASCULAR (with subtypes) ── */
+{id:"vasc", icon:"🩸", title:"Vascular", sub:"Arterial (upper/lower), venous",
+ subtypes:[
+  {id:"vasc-arterial", icon:"🔴", title:"Arterial Examination", sub:"Pulses proximal → distal, Buerger's", steps:[
+   {phase:"Opening", title:"WI²P⁴E — position flat", actions:[
+    "Wash hands, introduce, confirm identity, permission, privacy, pain",
+    "<b>Position:</b> patient lying flat, legs exposed (remove socks/trousers); drape across hips",
+    "Ask about: claudication distance, rest pain, ulcers, previous vascular interventions",
+   ], mnemonic:"WI²P⁴E"},
+
+   {phase:"Inspection", title:"Inspect the legs thoroughly", actions:[
+    "Stand at the foot — inspect both legs systematically",
+    "<b>Colour:</b> pallor (ischaemia), mottling (livedo reticularis), cyanosis, dusky red (dependency)",
+    "<b>Trophic changes:</b> hair loss, shiny atrophic skin, thickened nails",
+    "<b>Ulcers:</b> check all surfaces including heel and between toes — arterial ulcers: punched-out, well-demarcated, painful, on pressure areas (heel, toe tips)",
+    "<b>Gangrene:</b> dry (arterial — black, demarcated) vs wet (infected)",
+    "<b>Scars:</b> previous bypass (medial leg — LSV harvest), amputation stumps",
+    "Also inspect hands and arms if upper limb arterial disease suspected",
+   ]},
+
+   {phase:"Palpation", title:"Temperature and CRT", actions:[
+    "<b>Temperature:</b> back of your hand, compare both limbs, proximal to distal — feel for level of temperature change (transition zone)",
+    "<b>CRT:</b> press big toe pulp 5 s — normal < 2 s; prolonged = poor perfusion",
+    "<b>Sensation:</b> run finger along dorsum of foot — ask if feels same both sides (stocking distribution in diabetic neuropathy)",
+   ]},
+
+   {phase:"Palpation", title:"Pulses — proximal to distal", actions:[
+    "<b>Upper limb first:</b> radial (rate/rhythm/volume), brachial (antecubital fossa)",
+    "<b>Aorta:</b> epigastric, bimanual — pulsatile vs expansile (AAA = expansile in lateral dimension; > 5.5 cm = elective repair threshold)",
+    "<b>Femoral (mid-inguinal point):</b> halfway between pubic symphysis and ASIS; palpate for bruit",
+    "<b>Popliteal:</b> knee 30° bent, thumbs on tibial tuberosity, fingers deep in popliteal fossa pressing against femur — requires firm pressure",
+    "<b>Dorsalis pedis:</b> dorsum of foot, lateral to extensor hallucis longus tendon",
+    "<b>Posterior tibial:</b> posterior to medial malleolus, between malleolus and Achilles",
+    "Grade: present / reduced / absent — offer Doppler if impalpable",
+   ], graphic:"vasc_pulses", tip:"The popliteal is notoriously hard to feel. Knee slightly flexed, press firmly against the tibial plateau. An expansile popliteal = aneurysm (associated with AAA in 50% — always check aorta)."},
+
+   {phase:"Palpation", title:"Buerger's test", actions:[
+    "<b>Elevation (Buerger's angle):</b> elevate legs to 45° — pallor within 2 min indicates critical ischaemia; note angle at which pallor occurs (< 20° = severe)",
+    "<b>Dependency rubor:</b> lower legs over couch side — reactive hyperaemia; bright red ('sunset foot') = severe ischaemia",
+    "Buerger's angle < 20° + dependency rubor = critical limb ischaemia",
+   ]},
+
+   {phase:"Auscultation", title:"Auscultate for bruits", actions:[
+    "Auscultate over femoral arteries (inguinal) — bruit = turbulent flow = stenosis proximal to this point",
+    "Renal arteries (2 cm lateral to umbilicus) if hypertension or weak femoral pulse",
+    "Aorta (epigastric)",
+   ]},
+
+   {phase:"Close", title:"Close arterial exam", actions:[
+    "Thank patient, reposition",
+    "Offer: ABPI (Doppler — normal > 1.0; claudication 0.5–0.9; critical < 0.5), duplex USS, CT angiography",
+    "<b>6 Ps of acute limb ischaemia:</b> Pain, Pale, Pulseless, Paraesthetic, Paralysed, Perishingly cold — surgical emergency",
+   ], mnemonic:"6 Ps: Pain, Pale, Pulseless, Paraesthesia, Paralysis, Perishingly cold"},
+  ]}, /* end vasc-arterial */
+
+  {id:"vasc-venous", icon:"🔵", title:"Venous Examination", sub:"Varicosities, Trendelenburg", steps:[
+   {phase:"Opening", title:"WI²P⁴E — patient standing", actions:[
+    "Wash hands, introduce, confirm identity, permission, privacy, pain",
+    "<b>Position: patient standing</b> (varicosities are best seen standing — veins empty when lying)",
+    "Remove trousers and socks, expose from groin to foot",
+   ], mnemonic:"WI²P⁴E — patient must stand"},
+
+   {phase:"Inspection", title:"Inspect standing — varicosities and skin changes", actions:[
+    "<b>Varicosities:</b> dilated, tortuous superficial veins — medial calf/thigh (GSV territory) or posterior/lateral (SSV territory)",
+    "<b>Skin changes:</b> lipodermatosclerosis (fibrotic, 'champagne bottle' leg — worse above ankle), haemosiderin staining (brown pigmentation from haemolysis), venous eczema (erythematous, weeping)",
+    "<b>Venous ulcers:</b> gaiter area (medial lower leg, between malleolus and calf) — shallow, sloughy, irregular, painless or mildly painful",
+    "Oedema: pitting, worse at end of day",
+    "<b>Scars:</b> previous stripping, SEPS (subfascial endoscopic perforator surgery)",
+    "Saphenous varix at SFJ (groin): bluish bulge",
+   ]},
+
+   {phase:"Palpation", title:"Palpate varicosities and SFJ/SPJ", actions:[
+    "<b>Palpate varicosities:</b> warm, soft, compressible; note any tenderness (thrombophlebitis)",
+    "<b>Cough impulse at SFJ:</b> finger over saphenofemoral junction (4 cm below and lateral to pubic tubercle) — ask to cough; impulse = SFJ incompetence",
+    "<b>Temperature:</b> compare both legs — varicosities may feel warm",
+    "<b>Palpate perforators:</b> fascial defects felt as 'gaps' along medial calf",
+   ]},
+
+   {phase:"Palpation", title:"Percussion (Tap) test", actions:[
+    "Two-examiner technique: one hand on proximal vein, other taps distally",
+    "Impulse transmitted upward through incompetent valves = varices connected proximally",
+    "Useful to map continuity of varicosities",
+   ]},
+
+   {phase:"Special tests", title:"Trendelenburg test — SFJ or perforator?", actions:[
+    "Lie patient down, elevate leg to 45° until veins empty completely",
+    "Occlude SFJ with thumb (4 cm below/lateral to pubic tubercle)",
+    "Ask patient to stand — keep thumb over SFJ",
+    "<b>Controlled (veins stay empty when standing):</b> SFJ is source of incompetence",
+    "<b>Uncontrolled (veins fill rapidly):</b> incompetent perforators below are the source",
+    "Tourniquet test (if available): apply high, release — same principle",
+   ]},
+
+   {phase:"Auscultation", title:"Auscultate — exclude arteriovenous malformation", actions:[
+    "Auscultate over varicosities — continuous machinery murmur = AVM (rare but important)",
+   ]},
+
+   {phase:"Close", title:"Close venous exam + DVT check", actions:[
+    "Thank patient, reposition",
+    "Offer: duplex USS (first-line to map incompetence and exclude DVT), DVT signs check (calf tenderness, swelling, Homan's sign — poor specificity)",
+    "<b>CEAP classification:</b> C0–C6 (C0 = no visible, C6 = active ulcer)",
+    "Further management: compression stockings, foam sclerotherapy, endovenous ablation (EVLA/RFA), surgical stripping",
+   ]},
+  ]}, /* end vasc-venous */
+ ]
+}, /* end Vascular */
+
+]; /* end EXAMS */
+
+
+/* ============================================================
+   GRAPHICS (inline SVG)
+   ============================================================ */
+const GRAPHICS = {
+
+cvs_auscultation: `<svg viewBox="0 0 320 230" width="320" height="230" xmlns="http://www.w3.org/2000/svg" style="font-family:-apple-system,sans-serif">
+  <!-- orientation — as examiner looks at patient -->
+  <text x="14" y="18" fill="#86868b" font-size="9.5" font-weight="600">← Pt RIGHT</text>
+  <text x="234" y="18" fill="#86868b" font-size="9.5" font-weight="600">Pt LEFT →</text>
+  <!-- chest outline -->
+  <ellipse cx="160" cy="120" rx="90" ry="98" fill="#f8f8f8" stroke="#d2d2d7" stroke-width="1.5"/>
+  <!-- sternum (midline) -->
+  <line x1="160" y1="38" x2="160" y2="182" stroke="#b0b0b8" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <!-- clavicles -->
+  <path d="M80,62 Q120,55 160,58 Q200,55 240,62" fill="none" stroke="#b0b0b8" stroke-width="1.5"/>
+  <!-- A: Aortic — 2nd ICS, patient RIGHT sternal edge → examiner LEFT of sternum -->
+  <circle cx="138" cy="80" r="12" fill="#e5484d" opacity=".9"/>
+  <text x="138" y="84" text-anchor="middle" fill="white" font-size="11" font-weight="700">A</text>
+  <line x1="126" y1="80" x2="96" y2="82" stroke="#e5484d" stroke-width="1" stroke-dasharray="3 2" opacity=".5"/>
+  <text x="14" y="79" fill="#e5484d" font-size="11" font-weight="600">Aortic</text>
+  <text x="14" y="91" fill="#86868b" font-size="9.5">2nd ICS, R edge</text>
+  <!-- P: Pulmonary — 2nd ICS, patient LEFT sternal edge → examiner RIGHT of sternum -->
+  <circle cx="182" cy="80" r="12" fill="#0091ff" opacity=".9"/>
+  <text x="182" y="84" text-anchor="middle" fill="white" font-size="11" font-weight="700">P</text>
+  <line x1="194" y1="80" x2="214" y2="82" stroke="#0091ff" stroke-width="1" stroke-dasharray="3 2" opacity=".5"/>
+  <text x="216" y="79" fill="#0091ff" font-size="11" font-weight="600">Pulmonary</text>
+  <text x="216" y="91" fill="#86868b" font-size="9.5">2nd ICS, L edge</text>
+  <!-- T: Tricuspid — 4th ICS, patient LEFT sternal edge → examiner RIGHT of sternum -->
+  <circle cx="176" cy="118" r="12" fill="#f5a623" opacity=".9"/>
+  <text x="176" y="122" text-anchor="middle" fill="white" font-size="11" font-weight="700">T</text>
+  <line x1="188" y1="118" x2="210" y2="118" stroke="#f5a623" stroke-width="1" stroke-dasharray="3 2" opacity=".5"/>
+  <text x="212" y="116" fill="#f5a623" font-size="11" font-weight="600">Tricuspid</text>
+  <text x="212" y="128" fill="#86868b" font-size="9.5">4th ICS, L edge</text>
+  <!-- M: Mitral — 5th ICS, patient LEFT MCL → examiner RIGHT and further lateral -->
+  <circle cx="206" cy="150" r="12" fill="#8b5cf6" opacity=".9"/>
+  <text x="206" y="154" text-anchor="middle" fill="white" font-size="11" font-weight="700">M</text>
+  <line x1="218" y1="150" x2="232" y2="150" stroke="#8b5cf6" stroke-width="1" stroke-dasharray="3 2" opacity=".5"/>
+  <text x="234" y="148" fill="#8b5cf6" font-size="11" font-weight="600">Mitral</text>
+  <text x="234" y="160" fill="#86868b" font-size="9.5">5th ICS, MCL</text>
+  <!-- RILE -->
+  <rect x="10" y="198" width="300" height="26" rx="7" fill="#fff8e6" stroke="#f5c842" stroke-width=".8"/>
+  <text x="160" y="215" text-anchor="middle" fill="#7a5200" font-size="11" font-weight="600">RILE: Right = Inspiration · Left = Expiration</text>
+</svg>`,
+
+resp_percussion: `<svg viewBox="0 0 280 230" width="280" height="230" xmlns="http://www.w3.org/2000/svg" style="font-family:-apple-system,sans-serif">
+  <!-- chest outline -->
+  <ellipse cx="140" cy="115" rx="80" ry="95" fill="#f0f7ff" stroke="#d2d2d7" stroke-width="1.5"/>
+  <!-- S-shape percussion path with arrows -->
+  <path d="M105,55 L175,55" stroke="#0091ff" stroke-width="2" stroke-dasharray="none" fill="none" marker-end="url(#arr)"/>
+  <path d="M175,55 L105,85" stroke="#0091ff" stroke-width="2" fill="none"/>
+  <path d="M105,85 L175,85" stroke="#0091ff" stroke-width="2" fill="none"/>
+  <path d="M175,85 L105,115" stroke="#0091ff" stroke-width="2" fill="none"/>
+  <path d="M105,115 L175,115" stroke="#0091ff" stroke-width="2" fill="none"/>
+  <path d="M175,115 L105,145" stroke="#0091ff" stroke-width="2" fill="none"/>
+  <path d="M105,145 L175,145" stroke="#0091ff" stroke-width="2" fill="none"/>
+  <!-- Zone labels -->
+  <text x="80" y="58" fill="#0091ff" font-size="10" font-weight="700">Upper</text>
+  <text x="80" y="88" fill="#0091ff" font-size="10" font-weight="700">Mid</text>
+  <text x="80" y="118" fill="#0091ff" font-size="10" font-weight="700">Lower</text>
+  <text x="80" y="148" fill="#0091ff" font-size="10" font-weight="700">Axilla</text>
+  <!-- Percussion dots -->
+  <circle cx="105" cy="55" r="4" fill="#0091ff"/>
+  <circle cx="175" cy="55" r="4" fill="#0091ff"/>
+  <circle cx="105" cy="85" r="4" fill="#0091ff"/>
+  <circle cx="175" cy="85" r="4" fill="#0091ff"/>
+  <circle cx="105" cy="115" r="4" fill="#0091ff"/>
+  <circle cx="175" cy="115" r="4" fill="#0091ff"/>
+  <circle cx="105" cy="145" r="4" fill="#0091ff"/>
+  <circle cx="175" cy="145" r="4" fill="#0091ff"/>
+  <!-- Legend -->
+  <rect x="10" y="190" width="260" height="36" rx="8" fill="#f0f7ff" stroke="#b8d4f8" stroke-width=".8"/>
+  <text x="140" y="204" text-anchor="middle" fill="#1a4a8a" font-size="10.5" font-weight="600">Compare side-to-side at each level</text>
+  <text x="140" y="218" text-anchor="middle" fill="#1a4a8a" font-size="10">Dull=consolidation · Stony dull=effusion · Resonant=PTX</text>
+</svg>`,
+
+abdo_regions: `<svg viewBox="0 0 280 250" width="280" height="250" xmlns="http://www.w3.org/2000/svg" style="font-family:-apple-system,sans-serif">
+  <!-- orientation -->
+  <text x="8" y="16" fill="#86868b" font-size="9.5" font-weight="600">← Pt RIGHT</text>
+  <text x="196" y="16" fill="#86868b" font-size="9.5" font-weight="600">Pt LEFT →</text>
+  <!-- abdo outline -->
+  <ellipse cx="140" cy="128" rx="105" ry="95" fill="#fff8f0" stroke="#d2d2d7" stroke-width="1.5"/>
+  <!-- grid lines -->
+  <line x1="95" y1="50" x2="95" y2="205" stroke="#d2d2d7" stroke-width="1"/>
+  <line x1="185" y1="50" x2="185" y2="205" stroke="#d2d2d7" stroke-width="1"/>
+  <line x1="50" y1="110" x2="230" y2="110" stroke="#d2d2d7" stroke-width="1"/>
+  <line x1="50" y1="160" x2="230" y2="160" stroke="#d2d2d7" stroke-width="1"/>
+  <!-- Region labels -->
+  <text x="72" y="90" text-anchor="middle" fill="#f5a623" font-size="9.5" font-weight="600">Right</text>
+  <text x="72" y="101" text-anchor="middle" fill="#f5a623" font-size="9.5" font-weight="600">Hypochon.</text>
+  <text x="140" y="88" text-anchor="middle" fill="#1d1d1f" font-size="9.5" font-weight="600">Epigastric</text>
+  <text x="208" y="90" text-anchor="middle" fill="#1d1d1f" font-size="9.5" font-weight="600">Left</text>
+  <text x="208" y="101" text-anchor="middle" fill="#1d1d1f" font-size="9.5" font-weight="600">Hypochon.</text>
+  <text x="72" y="138" text-anchor="middle" fill="#1d1d1f" font-size="9.5" font-weight="600">Right</text>
+  <text x="72" y="149" text-anchor="middle" fill="#1d1d1f" font-size="9.5" font-weight="600">Lumbar</text>
+  <text x="140" y="140" text-anchor="middle" fill="#1d1d1f" font-size="9.5" font-weight="600">Umbilical</text>
+  <text x="208" y="138" text-anchor="middle" fill="#1d1d1f" font-size="9.5" font-weight="600">Left</text>
+  <text x="208" y="149" text-anchor="middle" fill="#1d1d1f" font-size="9.5" font-weight="600">Lumbar</text>
+  <text x="72" y="182" text-anchor="middle" fill="#1d1d1f" font-size="9.5" font-weight="600">Right Iliac</text>
+  <text x="72" y="193" text-anchor="middle" fill="#86868b" font-size="8.5">Appendix</text>
+  <text x="140" y="182" text-anchor="middle" fill="#1d1d1f" font-size="9.5" font-weight="600">Hypogastric</text>
+  <text x="140" y="193" text-anchor="middle" fill="#86868b" font-size="8.5">Bladder/uterus</text>
+  <text x="208" y="182" text-anchor="middle" fill="#1d1d1f" font-size="9.5" font-weight="600">Left Iliac</text>
+  <text x="208" y="193" text-anchor="middle" fill="#86868b" font-size="8.5">Sigmoid</text>
+  <!-- Liver dot (patient right = examiner left) -->
+  <circle cx="80" cy="82" r="4" fill="#f5a623" opacity=".7"/>
+  <!-- Start palpation label -->
+  <rect x="10" y="217" width="260" height="28" rx="7" fill="#fff8e6" stroke="#f5c842" stroke-width=".8"/>
+  <text x="140" y="235" text-anchor="middle" fill="#7a5200" font-size="10.5" font-weight="600">Always start palpation furthest from pain</text>
+</svg>`,
+
+vasc_pulses: `<svg viewBox="0 0 240 320" width="240" height="320" xmlns="http://www.w3.org/2000/svg" style="font-family:-apple-system,sans-serif">
+  <!-- body outline simplified -->
+  <ellipse cx="120" cy="42" rx="25" ry="30" fill="#f5f5f7" stroke="#d2d2d7" stroke-width="1.2"/>
+  <!-- torso -->
+  <rect x="82" y="70" width="76" height="90" rx="12" fill="#f5f5f7" stroke="#d2d2d7" stroke-width="1.2"/>
+  <!-- legs -->
+  <rect x="82" y="155" width="33" height="120" rx="10" fill="#f5f5f7" stroke="#d2d2d7" stroke-width="1.2"/>
+  <rect x="125" y="155" width="33" height="120" rx="10" fill="#f5f5f7" stroke="#d2d2d7" stroke-width="1.2"/>
+  <!-- Pulse points with numbers -->
+  <!-- 1: Aorta -->
+  <circle cx="120" cy="120" r="7" fill="#6366f1"/>
+  <text x="120" y="124" text-anchor="middle" fill="white" font-size="8" font-weight="700">1</text>
+  <text x="135" y="123" fill="#6366f1" font-size="9.5" font-weight="600">Aorta</text>
+  <!-- 2: Femoral (left) -->
+  <circle cx="96" cy="158" r="7" fill="#6366f1"/>
+  <text x="96" y="162" text-anchor="middle" fill="white" font-size="8" font-weight="700">2</text>
+  <text x="60" y="155" fill="#6366f1" font-size="9.5" font-weight="600">Femoral</text>
+  <!-- 3: Popliteal -->
+  <circle cx="99" cy="222" r="7" fill="#6366f1"/>
+  <text x="99" y="226" text-anchor="middle" fill="white" font-size="8" font-weight="700">3</text>
+  <text x="55" y="220" fill="#6366f1" font-size="9.5" font-weight="600">Popliteal</text>
+  <text x="55" y="231" fill="#86868b" font-size="8">(posterior)</text>
+  <!-- 4: DP -->
+  <circle cx="99" cy="262" r="7" fill="#6366f1"/>
+  <text x="99" y="266" text-anchor="middle" fill="white" font-size="8" font-weight="700">4</text>
+  <text x="55" y="260" fill="#6366f1" font-size="9.5" font-weight="600">DP</text>
+  <text x="55" y="271" fill="#86868b" font-size="8">dorsum foot</text>
+  <!-- 5: PT -->
+  <circle cx="99" cy="285" r="7" fill="#6366f1"/>
+  <text x="99" y="289" text-anchor="middle" fill="white" font-size="8" font-weight="700">5</text>
+  <text x="55" y="284" fill="#6366f1" font-size="9.5" font-weight="600">PT</text>
+  <text x="55" y="295" fill="#86868b" font-size="8">post. malleolus</text>
+  <!-- arrow line -->
+  <line x1="120" y1="127" x2="100" y2="151" stroke="#6366f1" stroke-width="1" stroke-dasharray="3 2"/>
+  <line x1="96" y1="165" x2="99" y2="215" stroke="#6366f1" stroke-width="1" stroke-dasharray="3 2"/>
+  <line x1="99" y1="229" x2="99" y2="255" stroke="#6366f1" stroke-width="1" stroke-dasharray="3 2"/>
+  <line x1="99" y1="269" x2="99" y2="278" stroke="#6366f1" stroke-width="1" stroke-dasharray="3 2"/>
+</svg>`,
+
+eye_movements: `<svg viewBox="0 0 300 160" width="300" height="160" xmlns="http://www.w3.org/2000/svg" style="font-family:-apple-system,sans-serif">
+  <!-- H-shape for eye movements -->
+  <!-- Left eye circle -->
+  <ellipse cx="85" cy="80" rx="40" ry="28" fill="#f8f8f8" stroke="#d2d2d7" stroke-width="1.5"/>
+  <circle cx="85" cy="80" r="12" fill="#1d1d1f" opacity=".8"/>
+  <circle cx="89" cy="76" r="4" fill="white"/>
+  <!-- Right eye circle -->
+  <ellipse cx="215" cy="80" rx="40" ry="28" fill="#f8f8f8" stroke="#d2d2d7" stroke-width="1.5"/>
+  <circle cx="215" cy="80" r="12" fill="#1d1d1f" opacity=".8"/>
+  <circle cx="219" cy="76" r="4" fill="white"/>
+  <!-- H-shape movement path -->
+  <path d="M40,55 L40,105 M40,80 L150,80 M260,80 L150,80 M260,55 L260,105" stroke="#0071e3" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <!-- Labels at corners -->
+  <text x="26" y="50" fill="#86868b" font-size="9">SR</text>
+  <text x="26" y="114" fill="#86868b" font-size="9">IR</text>
+  <text x="250" y="50" fill="#86868b" font-size="9">SL</text>
+  <text x="250" y="114" fill="#86868b" font-size="9">IL</text>
+  <!-- Nerve labels -->
+  <rect x="20" y="128" width="260" height="26" rx="7" fill="#f0f7ff" stroke="#b8d4f8" stroke-width=".8"/>
+  <text x="150" y="143" text-anchor="middle" fill="#1a4a8a" font-size="10" font-weight="600">CN III = up/down/in · CN IV = down+in · CN VI = abduction</text>
+</svg>`,
+
+jvp_position: `<svg viewBox="0 0 260 180" width="260" height="180" xmlns="http://www.w3.org/2000/svg" style="font-family:-apple-system,sans-serif">
+  <!-- Bed/pillow at 45° -->
+  <rect x="20" y="80" width="220" height="18" rx="6" fill="#e8e8ed" stroke="#d2d2d7" stroke-width="1"/>
+  <!-- Body at 45° -->
+  <rect x="90" y="18" width="130" height="68" rx="10" fill="#f5f5f7" stroke="#d2d2d7" stroke-width="1.2" transform="rotate(-45,155,52)"/>
+  <!-- Head -->
+  <ellipse cx="58" cy="42" rx="20" ry="18" fill="#f5f5f7" stroke="#d2d2d7" stroke-width="1.2"/>
+  <!-- 45° angle arc -->
+  <path d="M20,98 A70,70 0 0,1 69,49" fill="none" stroke="#86868b" stroke-width="1" stroke-dasharray="3 2"/>
+  <text x="18" y="125" fill="#86868b" font-size="10">45°</text>
+  <!-- JVP measurement line -->
+  <line x1="58" y1="55" x2="58" y2="90" stroke="#e5484d" stroke-width="2" stroke-dasharray="none"/>
+  <line x1="48" y1="55" x2="68" y2="55" stroke="#e5484d" stroke-width="1.5"/>
+  <line x1="48" y1="90" x2="68" y2="90" stroke="#e5484d" stroke-width="1.5"/>
+  <text x="72" y="73" fill="#e5484d" font-size="10" font-weight="600">JVP height</text>
+  <text x="72" y="85" fill="#86868b" font-size="9">&lt;4cm = normal</text>
+  <!-- Sternal angle label -->
+  <text x="20" y="165" fill="#1d1d1f" font-size="10" font-weight="600">Sternal angle</text>
+  <text x="20" y="177" fill="#86868b" font-size="9">Measure vertical height of pulsation</text>
+</svg>`,
+
+};
+
+
+/* ============================================================
+   STATE
+   ============================================================ */
+let state = {
+  examIdx: null,
+  subtypeIdx: null,
+  stepIdx: 0,
+};
+
+function currentSteps() {
+  if (state.examIdx === null) return [];
+  const exam = EXAMS[state.examIdx];
+  if (exam.subtypes) {
+    if (state.subtypeIdx === null) return [];
+    return exam.subtypes[state.subtypeIdx].steps;
+  }
+  return exam.steps;
+}
+
+function currentExamColor() {
+  if (state.examIdx === null) return '#0071e3';
+  return COL[EXAMS[state.examIdx].id];
+}
+
+function currentTitle() {
+  if (state.examIdx === null) return 'Examination Technique';
+  const exam = EXAMS[state.examIdx];
+  if (exam.subtypes && state.subtypeIdx !== null) {
+    return exam.subtypes[state.subtypeIdx].title;
+  }
+  return exam.title;
+}
+
+
+/* ============================================================
+   RENDERING
+   ============================================================ */
+function setExamColor(c) {
+  document.documentElement.style.setProperty('--exam-c', c);
+}
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-' + id).classList.add('active');
+}
+
+function renderSelector() {
+  setExamColor('#0071e3');
+  document.getElementById('barTitle').textContent = 'Examination Technique';
+  document.getElementById('headerBack').style.visibility = 'hidden';
+
+  const grid = document.getElementById('examGrid');
+  grid.innerHTML = EXAMS.map((e, i) => `
+    <div class="exam-card" style="--exam-c:${COL[e.id]}" onclick="selectExam(${i})">
+      <span class="exam-icon">${e.icon}</span>
+      <div class="exam-num">Examination ${i+1}</div>
+      <div class="exam-title">${e.title}</div>
+      <div class="exam-sub">${e.sub}</div>
+    </div>
+  `).join('');
+  showScreen('select');
+}
+
+function selectExam(idx) {
+  state.examIdx = idx;
+  state.subtypeIdx = null;
+  state.stepIdx = 0;
+  const exam = EXAMS[idx];
+  setExamColor(COL[exam.id]);
+
+  if (exam.subtypes) {
+    renderSubtypes(exam);
+  } else {
+    renderStep();
+  }
+}
+
+function renderSubtypes(exam) {
+  document.getElementById('barTitle').textContent = exam.title;
+  document.getElementById('headerBack').style.visibility = 'visible';
+  document.getElementById('subtypeTitle').textContent = exam.title;
+  document.getElementById('subtypeSub').textContent = 'Choose which examination to work through:';
+
+  const grid = document.getElementById('subtypeGrid');
+  grid.innerHTML = exam.subtypes.map((s, i) => `
+    <div class="subtype-card" style="--exam-c:${COL[exam.id]}" onclick="selectSubtype(${i})">
+      <span class="subtype-card-icon">${s.icon}</span>
+      <div>
+        <div class="subtype-card-title">${s.title}</div>
+        <div class="subtype-card-sub">${s.sub}</div>
+      </div>
+      <span class="subtype-card-arrow">›</span>
+    </div>
+  `).join('');
+  showScreen('subtype');
+}
+
+function selectSubtype(idx) {
+  state.subtypeIdx = idx;
+  state.stepIdx = 0;
+  renderStep();
+}
+
+function renderStep() {
+  const steps = currentSteps();
+  const step = steps[state.stepIdx];
+  const color = currentExamColor();
+  const title = currentTitle();
+
+  document.getElementById('barTitle').textContent = title;
+  document.getElementById('headerBack').style.visibility = 'visible';
+
+  /* Phase strip */
+  const phases = [...new Set(steps.map(s => s.phase))];
+  const currentPhase = step.phase;
+  document.getElementById('phaseStrip').innerHTML = phases.map(p => `
+    <div class="phase-chip ${p === currentPhase ? 'active' : ''}">${p}</div>
+  `).join('');
+
+  /* Step card */
+  let html = `
+    <div class="step-phase-label">${step.phase}</div>
+    <div class="step-title">${step.title}</div>
+    <ol class="step-actions">
+      ${step.actions.map((a, i) => `
+        <li><span class="n">${i+1}</span><span class="txt">${a}</span></li>
+      `).join('')}
+    </ol>
+  `;
+
+  if (step.graphic && GRAPHICS[step.graphic]) {
+    html += `<div class="graphic-box">${GRAPHICS[step.graphic]}</div>`;
+  }
+
+  if (step.mnemonic) {
+    html += `<div class="mnemonic-box"><span class="m-label">Mnemonic</span><span class="m-text">${step.mnemonic}</span></div>`;
+  }
+
+  if (step.tip) {
+    html += `<div class="tip-box"><div class="tip-label">Examiner tip</div>${step.tip}</div>`;
+  }
+
+  document.getElementById('stepCard').innerHTML = html;
+
+  /* Counter and buttons */
+  document.getElementById('stepCounter').textContent = `${state.stepIdx + 1} / ${steps.length}`;
+  document.getElementById('btnPrev').disabled = state.stepIdx === 0;
+  const isLast = state.stepIdx === steps.length - 1;
+  const nextBtn = document.getElementById('btnNext');
+  nextBtn.textContent = isLast ? 'Finish ✓' : 'Next →';
+  nextBtn.disabled = false;
+
+  showScreen('step');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function renderDone() {
+  const title = currentTitle();
+  const color = currentExamColor();
+  document.getElementById('doneTitle').textContent = title + ' — complete';
+  document.getElementById('doneSub').textContent = 'You\'ve worked through every step. Run it again to build the muscle memory.';
+  document.getElementById('doneCard').style.setProperty('--exam-c', color);
+  document.getElementById('headerBack').style.visibility = 'visible';
+  showScreen('done');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+function stepNav(delta) {
+  const steps = currentSteps();
+  const next = state.stepIdx + delta;
+  if (next < 0) return;
+  if (next >= steps.length) {
+    renderDone();
+    return;
+  }
+  state.stepIdx = next;
+  renderStep();
+}
+
+function handleBack() {
+  const screen = document.querySelector('.screen.active').id;
+  if (screen === 'screen-step') {
+    const exam = EXAMS[state.examIdx];
+    if (exam.subtypes) {
+      state.subtypeIdx = null;
+      state.stepIdx = 0;
+      renderSubtypes(exam);
+    } else {
+      state.examIdx = null;
+      state.stepIdx = 0;
+      renderSelector();
+    }
+  } else if (screen === 'screen-subtype') {
+    state.examIdx = null;
+    renderSelector();
+  } else if (screen === 'screen-done') {
+    const exam = EXAMS[state.examIdx];
+    if (exam.subtypes) {
+      state.subtypeIdx = null;
+      renderSubtypes(exam);
+    } else {
+      state.examIdx = null;
+      renderSelector();
+    }
+  } else {
+    renderSelector();
+  }
+}
+
+function restartWalk() {
+  state.stepIdx = 0;
+  renderStep();
+}
+
+/* Keyboard navigation */
+document.addEventListener('keydown', e => {
+  const screen = document.querySelector('.screen.active').id;
+  if (screen !== 'screen-step') return;
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') stepNav(1);
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') stepNav(-1);
+});
+
+/* Init */
+renderSelector();
+</script>
+</body>
+</html>
