@@ -1,6 +1,6 @@
 # medical-school-notes
 
-Oxford Medicine Year 4 OSCE revision. Everything is AI-generated from the actual Y4 source docs (MedEd Booklet 2025 + Clinical Syllabus 2025-26), so it should be accurate — but it's not a substitute for reading the real thing.
+Oxford Medicine Year 4 OSCE revision. Built from the actual Y4 source docs (MedEd Booklet 2025 + Clinical Syllabus 2025-26) — but it's not a substitute for reading the real thing.
 
 Live at: **[msn.arshpatankar.com](https://msn.arshpatankar.com)**
 
