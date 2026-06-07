@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OSCE Atlas · Oxford Y4</title>
+<style>
+  :root{
+    --bg:#f5f5f7; --surface:#fff; --ink:#1d1d1f; --ink-2:#6e6e73; --ink-3:#86868b;
+    --hair:#d2d2d7; --hair-soft:#e8e8ed; --accent:#0071e3;
+    --dx:#1d6f42; --dx-bg:#eaf6ef; --ix:#8a5a00; --ix-bg:#fbf3e2;
+    --radius:18px; --radius-sm:12px; --shadow:0 1px 2px rgba(0,0,0,.04),0 8px 30px rgba(0,0,0,.06);
+    --font:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Helvetica Neue",sans-serif;
+    /* signature exam colours — carried across every tab */
+    --c-cvs:#e5484d; --c-resp:#0091ff; --c-abdo:#f5a623; --c-neuro:#8b5cf6;
+    --c-lump:#14b8a6; --c-breast:#ec4899; --c-neck:#10b981; --c-vasc:#6366f1;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-font-smoothing:antialiased;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.5;letter-spacing:-.01em;padding-bottom:80px;}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(245,245,247,.82);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:.5px solid var(--hair);}
+  .bar{max-width:1040px;margin:0 auto;padding:12px 22px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+  .bar h1{font-size:18px;font-weight:600;display:flex;align-items:center;gap:9px;}
+  .bar h1 .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);}
+  .spacer{flex:1;}
+  .quiz-toggle{display:flex;align-items:center;gap:9px;font-size:14px;color:var(--ink-2);font-weight:500;cursor:pointer;user-select:none;}
+  .switch{position:relative;width:46px;height:28px;border-radius:14px;background:var(--hair);transition:background .25s;flex:none;}
+  .switch::after{content:"";position:absolute;top:2px;left:2px;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:transform .25s cubic-bezier(.4,0,.2,1);}
+  body.quiz .switch{background:var(--accent);}
+  body.quiz .switch::after{transform:translateX(18px);}
+
+  /* tab bar */
+  .tabs{max-width:1040px;margin:0 auto;padding:0 22px;display:flex;gap:4px;}
+  .tab{flex:none;font-size:14px;font-weight:550;color:var(--ink-2);padding:11px 18px;cursor:pointer;border:none;background:none;position:relative;letter-spacing:-.01em;}
+  .tab.active{color:var(--ink);}
+  .tab.active::after{content:"";position:absolute;left:14px;right:14px;bottom:0;height:2.5px;border-radius:2px;background:var(--accent);}
+
+  main{max-width:1040px;margin:0 auto;padding:0 22px;}
+  .view{display:none;}
+  .view.active{display:block;}
+
+  /* hero */
+  .hero{padding:38px 0 6px;}
+  .hero .kicker{font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;}
+  .hero h2{font-size:34px;font-weight:700;letter-spacing:-.03em;line-height:1.1;}
+  .hero p{margin-top:12px;font-size:16px;color:var(--ink-2);max-width:680px;}
+  .quiz-only-toggle{display:none;}
+
+  /* ============ TAB 1 · SIGNS BANK ============ */
+  .chips{margin:22px 0 0;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:6px;}
+  .chips::-webkit-scrollbar{display:none;}
+  .chip{flex:none;font-size:13px;font-weight:500;color:var(--ink-2);background:var(--surface);border:.5px solid var(--hair);padding:7px 14px;border-radius:980px;cursor:pointer;text-decoration:none;white-space:nowrap;transition:all .18s;}
+  .chip:hover{color:var(--ink);border-color:var(--ink-3);}
+  section{margin-top:42px;scroll-margin-top:120px;}
+  .sec-head{display:flex;align-items:center;gap:12px;margin-bottom:4px;}
+  .sec-head .num{font-size:13px;font-weight:700;color:#fff;width:26px;height:26px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex:none;}
+  .sec-head h3{font-size:24px;font-weight:700;letter-spacing:-.025em;}
+  .sec-sub{font-size:14px;color:var(--ink-3);margin:2px 0 16px 38px;}
+  .group-label{font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);margin:24px 0 10px 2px;}
+  .card{background:var(--surface);border:.5px solid var(--hair-soft);border-radius:var(--radius);margin-bottom:10px;overflow:hidden;box-shadow:var(--shadow);border-left:3px solid var(--card-c,var(--hair));}
+  .card>summary{list-style:none;cursor:pointer;padding:16px 20px;display:flex;align-items:center;gap:14px;}
+  .card>summary::-webkit-details-marker{display:none;}
+  .sign-label{font-size:11.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);}
+  .sign-name{font-size:16px;font-weight:600;letter-spacing:-.015em;}
+  .sign-name .cue{display:block;font-size:13.5px;font-weight:400;color:var(--ink-2);margin-top:3px;font-style:italic;}
+  .chev{width:22px;height:22px;flex:none;color:var(--ink-3);transition:transform .28s cubic-bezier(.4,0,.2,1);}
+  .card[open] .chev{transform:rotate(90deg);}
+  .body{padding:0 20px 4px;}
+  .row{border-top:.5px solid var(--hair-soft);padding:14px 0;display:grid;grid-template-columns:118px 1fr;gap:16px;}
+  .tag{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:4px 9px;border-radius:7px;height:fit-content;width:fit-content;}
+  .tag.dx{color:var(--dx);background:var(--dx-bg);} .tag.ix{color:var(--ix);background:var(--ix-bg);}
+  .row ul{list-style:none;display:flex;flex-direction:column;gap:7px;}
+  .row li{font-size:15px;position:relative;padding-left:16px;}
+  .row li::before{content:"";position:absolute;left:2px;top:9px;width:5px;height:5px;border-radius:50%;background:var(--ink-3);}
+  .row li b{font-weight:600;} .ix-step{font-weight:600;color:#0058b9;}
+  body.quiz .card .body{display:none;} body.quiz .card.revealed .body{display:block;}
+  .reveal-hint{display:none;font-size:13px;color:var(--accent);font-weight:500;margin-left:auto;}
+  body.quiz .reveal-hint{display:inline;} body.quiz .chev{display:none;}
+
+  /* ============ TAB 2 · INVESTIGATION MAP (VENN POOLS) ============ */
+  .legend{display:flex;flex-wrap:wrap;gap:10px 18px;margin:18px 0 28px;padding:16px 18px;background:var(--surface);border-radius:var(--radius);border:.5px solid var(--hair-soft);box-shadow:var(--shadow);}
+  .legend .li{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--ink-2);font-weight:500;}
+  .legend .sw{width:13px;height:13px;border-radius:4px;flex:none;}
+  .pool{margin-bottom:14px;background:var(--surface);border:.5px solid var(--hair-soft);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;}
+  .pool-head{padding:15px 20px;display:flex;align-items:center;gap:14px;border-bottom:.5px solid var(--hair-soft);}
+  .pool-rank{font-size:30px;font-weight:800;letter-spacing:-.04em;line-height:1;width:54px;text-align:center;flex:none;}
+  .pool-rank span{display:block;font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin-top:3px;}
+  .pool-title{font-size:16px;font-weight:650;letter-spacing:-.02em;}
+  .pool-title .sub{display:block;font-size:13px;font-weight:400;color:var(--ink-2);margin-top:2px;}
+  .pool-grid{display:flex;flex-wrap:wrap;gap:8px;padding:16px 20px;}
+  .test{font-size:13.5px;font-weight:550;padding:7px 13px;border-radius:980px;background:var(--bg);border:.5px solid var(--hair);display:flex;align-items:center;gap:8px;cursor:default;transition:transform .12s;}
+  .test:hover{transform:translateY(-1px);}
+  .test .dots{display:flex;gap:3px;}
+  .test .d{width:8px;height:8px;border-radius:50%;}
+  .test .tier{font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);}
+  .pool.core{border:1.5px solid var(--accent);}
+  .pool.core .pool-rank{color:var(--accent);}
+  /* expandable test tiles — pill stays same size at rest, reveals a panel below */
+  .test{flex-direction:column;align-items:flex-start;gap:0;cursor:pointer;border-radius:14px;padding:0;overflow:hidden;width:auto;}
+  .test .test-pill{display:flex;align-items:center;gap:8px;padding:7px 13px;width:100%;}
+  .test .chev-t{width:15px;height:15px;color:var(--ink-3);margin-left:2px;transition:transform .25s cubic-bezier(.4,0,.2,1);flex:none;}
+  .test.open .chev-t{transform:rotate(90deg);}
+  .test-detail{display:none;width:100%;border-top:.5px solid var(--hair-soft);background:var(--surface);padding:12px 14px;}
+  .test.open{background:var(--surface);border-color:var(--hair);box-shadow:var(--shadow);align-self:flex-start;}
+  .test.open .test-detail{display:block;}
+  .test-detail .tl{font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);margin:0 0 4px;}
+  .test-detail .tl.think{color:#0058b9;}
+  .test-detail p{font-size:13px;color:var(--ink);line-height:1.5;margin:0 0 11px;max-width:520px;}
+  .test-detail p:last-child{margin-bottom:0;}
+  .test-detail p b{font-weight:600;}
+  .test.open .tier{display:none;}
+
+  /* ============ TAB 3 · DIFFERENTIAL ATLAS ============ */
+  .atlas-sec{margin-top:30px;}
+  .atlas-head{display:flex;align-items:center;gap:11px;margin-bottom:12px;}
+  .atlas-head .bead{width:14px;height:14px;border-radius:5px;flex:none;}
+  .atlas-head h3{font-size:20px;font-weight:700;letter-spacing:-.02em;}
+  .atlas-head .count{font-size:12px;color:var(--ink-3);font-weight:600;background:var(--bg);padding:3px 9px;border-radius:980px;}
+  .tilewall{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:9px;}
+  .tile{background:var(--surface);border:.5px solid var(--hair-soft);border-left:3px solid var(--tile-c);border-radius:var(--radius-sm);padding:13px 14px;cursor:pointer;box-shadow:var(--shadow);transition:transform .12s,border-color .15s;}
+  .tile:hover{transform:translateY(-2px);}
+  .tile .dx-name{font-size:14.5px;font-weight:600;letter-spacing:-.015em;line-height:1.25;}
+  .tile .dx-detail{font-size:13px;color:var(--ink-2);margin-top:7px;display:none;line-height:1.45;}
+  .tile.open .dx-detail{display:block;}
+  .tile .dx-cue{font-size:11px;color:var(--ink-3);margin-top:6px;display:none;font-style:italic;}
+  .tile.open .dx-cue{display:block;}
+
+  footer{max-width:1040px;margin:54px auto 0;padding:24px 22px;border-top:.5px solid var(--hair);font-size:13px;color:var(--ink-3);}
+  footer b{color:var(--ink-2);font-weight:600;}
+  @media(max-width:640px){.hero h2{font-size:27px;}.row{grid-template-columns:1fr;gap:8px;}.tilewall{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="bar">
+    <h1><span class="dot"></span> OSCE Atlas</h1>
+    <div class="spacer"></div>
+    <label class="quiz-toggle" id="quizWrap"><span>Quiz mode</span><span class="switch"></span></label>
+  </div>
+  <div class="tabs">
+    <button class="tab active" data-view="signs">Signs Bank</button>
+    <button class="tab" data-view="map">Investigation Map</button>
+    <button class="tab" data-view="atlas">Differential Atlas</button>
+  </div>
+</header>
+
+<main>
+  <!-- ============ VIEW 1 ============ -->
+  <div class="view active" id="view-signs">
+    <div class="hero">
+      <div class="kicker">Oxford ICC · Year 4 · 2025–26</div>
+      <h2>Examiner says it. You name it.</h2>
+      <p>Sign → differential → investigations (bedside → bloods → imaging). Each examination carries its own colour, used across all three tabs. Flip <b>Quiz mode</b> to hide answers.</p>
+    </div>
+    <nav class="chips" id="chips"></nav>
+    <div id="signs-main"></div>
+  </div>
+
+  <!-- ============ VIEW 2 ============ -->
+  <div class="view" id="view-map">
+    <div class="hero">
+      <div class="kicker">Investigation Map</div>
+      <h2>Tests, pooled by how many exams share them.</h2>
+      <p>The wider a test's reach, the higher it sits. The blue <b>core</b> at the top is the spine you run almost everywhere; the singletons at the bottom are the exam-specific tests. Each coloured dot on a test marks one examination that uses it.</p>
+    </div>
+    <div class="legend" id="legend"></div>
+    <div id="map-main"></div>
+  </div>
+
+  <!-- ============ VIEW 3 ============ -->
+  <div class="view" id="view-atlas">
+    <div class="hero">
+      <div class="kicker">Differential Atlas</div>
+      <h2>Every differential, by examination.</h2>
+      <p>The full differential wall in your OSCE order. Glance to photograph the shape; tap any tile for the cue and detail.</p>
+    </div>
+    <div id="atlas-main"></div>
+  </div>
+</main>
+
+<footer>
+  <b>Source-aligned:</b> Year 4 ICC Syllabus (2025–26) + MedEd examination booklet. A revision aid at Year-4 level (simple differentials, sensible investigations, principles of management) — verify against current NICE/trust guidance before clinical use.
+</footer>
+
+<script>
+/* ===== signature colours per exam ===== */
+const COL = {cvs:"#e5484d",resp:"#0091ff",abdo:"#f5a623",neuro:"#8b5cf6",lump:"#14b8a6",breast:"#ec4899",neck:"#10b981",vasc:"#6366f1"};
+const EXAM_NAME = {cvs:"Cardiovascular",resp:"Respiratory",abdo:"Abdominal",neuro:"Neuro (limbs & cranial)",lump:"Lump",breast:"Breast",neck:"Neck & Thyroid",vasc:"Vascular"};
+
+/* ===== SIGNS DATA (condensed from the bank; key signs per exam) ===== */
+const SIGNS = [
+{id:"cvs",num:1,title:"Cardiovascular",sub:"Pulse character, JVP, the murmur table.",groups:[
+ {label:"Pulse & BP",signs:[
+  {label:"Pulse",name:"Slow-rising pulse",cue:"“Slow, sustained upstroke, narrow pulse pressure.”",dx:["**Aortic stenosis**","HOCM (softer, dynamic)"],ix:["**Bedside:** ECG (LVH), BP","**Bloods:** FBC, BNP","**Imaging:** echo (gradient/area), CXR"]},
+  {label:"Pulse",name:"Collapsing pulse",cue:"“Bounding then suddenly collapses on raising the arm.”",dx:["**Aortic regurgitation**","High-output: anaemia, thyrotoxicosis, pregnancy, AV fistula"],ix:["**Bedside:** ECG, BP (wide pulse pressure)","**Bloods:** FBC, TFTs, BNP","**Imaging:** echo, CXR"]},
+  {label:"Rhythm",name:"Irregularly irregular",cue:"“No pattern to the rhythm.”",dx:["**Atrial fibrillation**","Atrial flutter (variable block), ectopics"],ix:["**Bedside:** 12-lead ECG (no P waves)","**Bloods:** TFTs, U&E, FBC","**Imaging:** echo; CHA₂DS₂-VASc"]},
+  {label:"Radial",name:"Radio-radial / radio-femoral delay",cue:"“Radials mismatched; femoral late vs radial.”",dx:["Radio-radial → subclavian stenosis, **aortic dissection**","Radio-femoral → **coarctation**"],ix:["**Bedside:** four-limb BP, ECG","**Imaging:** CXR (rib notching, ‘3’ sign), CT aorta/echo"]},
+ ]},
+ {label:"JVP & praecordium",signs:[
+  {label:"Neck",name:"Raised JVP",cue:"“>3 cm above the sternal angle.”",dx:["**Right heart failure**","Tricuspid regurgitation, fluid overload, pericardial effusion, SVC obstruction"],ix:["**Bedside:** ECG, fluid balance","**Bloods:** BNP, U&E, FBC","**Imaging:** CXR, echo"]},
+  {label:"Palpation",name:"Displaced apex beat",cue:"“Displaced to anterior axillary line.”",dx:["LV dilatation — **DCM, MR, AR, prior MI**","Cardiomegaly"],ix:["**Bedside:** ECG, BP","**Bloods:** BNP, FBC, U&E","**Imaging:** echo, CXR"]},
+  {label:"Palpation",name:"Parasternal heave",cue:"“Sustained left parasternal heave.”",dx:["**RV hypertrophy** (pulmonary HTN, cor pulmonale)","Severe MR"],ix:["**Bedside:** ECG (RV strain)","**Imaging:** echo, CXR","**Bloods:** BNP"]},
+ ]},
+ {label:"Murmur table",signs:[
+  {label:"Auscultation",name:"ESM radiating to carotids",cue:"“Ejection systolic, URSE, to carotids; slow-rising pulse.”",dx:["**Aortic stenosis**","Aortic sclerosis, flow murmur, HOCM"],ix:["**Bedside:** ECG (LVH), BP","**Bloods:** FBC, BNP","**Imaging:** echo, CXR"]},
+  {label:"Auscultation",name:"PSM radiating to axilla",cue:"“Pansystolic at apex → axilla, louder in expiration.”",dx:["**Mitral regurgitation**","Tricuspid regurg, VSD"],ix:["**Bedside:** ECG","**Bloods:** BNP, FBC","**Imaging:** echo, CXR"]},
+  {label:"Auscultation",name:"Early diastolic at LSE",cue:"“EDM, sat forward, expiration; collapsing pulse.”",dx:["**Aortic regurgitation**","Pulmonary regurg (rare)"],ix:["**Bedside:** ECG, BP","**Bloods:** FBC, BNP, ±cultures","**Imaging:** echo, CXR"]},
+  {label:"Auscultation",name:"Mid-diastolic at apex",cue:"“Rumbling, bell, rolled left; malar flush, small pulse.”",dx:["**Mitral stenosis**","Atrial myxoma (rare)"],ix:["**Bedside:** ECG (AF, P-mitrale)","**Bloods:** FBC, BNP","**Imaging:** echo, CXR"]},
+ ]},
+ {label:"Periphery",signs:[
+  {label:"Hands",name:"Splinters / Osler / Janeway",cue:"“Splinter haemorrhages, painful pulp nodules.”",dx:["**Infective endocarditis**","Trauma/vasculitis (splinters alone)"],ix:["**Bedside:** ECG, urine dip, temp","**Bloods:** 3× cultures, FBC, CRP","**Imaging:** echo (TTE→TOE) — Duke criteria"]},
+  {label:"Legs",name:"Pitting oedema + basal crackles",cue:"“Oedema to knees, fine bibasal crackles.”",dx:["**Congestive cardiac failure**","Renal/nephrotic, hypoalbuminaemia"],ix:["**Bedside:** ECG, weight, fluid balance","**Bloods:** BNP, U&E, albumin, FBC","**Imaging:** CXR, echo"]},
+ ]},
+]},
+{id:"resp",num:2,title:"Respiratory",sub:"The percussion / breath-sound / tracheal grid.",groups:[
+ {label:"The grid",signs:[
+  {label:"Auscultation",name:"Dull, bronchial, ↑VR",cue:"“Dull, bronchial breathing, ↑ vocal resonance, central trachea.”",dx:["**Consolidation / pneumonia**","Dense collapse near patent airway"],ix:["**Bedside:** obs, SpO₂, temp, sputum","**Bloods:** FBC, CRP, U&E (CURB-65), cultures, ABG","**Imaging:** CXR"]},
+  {label:"Auscultation",name:"Stony dull, absent BS & VR",cue:"“Stony dull, breath sounds & resonance absent.”",dx:["**Pleural effusion**"],ix:["**Bedside:** obs, SpO₂","**Bloods:** FBC, CRP, albumin; pleural fluid (Light's)","**Imaging:** CXR, pleural USS, CT"]},
+  {label:"Auscultation",name:"Hyper-resonant, ↓BS, ↓VR",cue:"“Hyper-resonant, ↓ breath sounds & resonance, central trachea.”",dx:["**Pneumothorax** (simple)","Large bullae"],ix:["**Bedside:** obs, SpO₂, ABG","**Imaging:** erect CXR","(Trachea AWAY + shock → **tension** = decompress, don't image)"]},
+  {label:"Auscultation",name:"Dull, ↓all, trachea TOWARDS",cue:"“Dull, ↓ breath sounds & resonance, trachea pulled towards.”",dx:["**Lobar/lung collapse**","Pneumonectomy"],ix:["**Bedside:** obs, SpO₂","**Imaging:** CXR, CT chest, bronchoscopy"]},
+ ]},
+ {label:"Added sounds & periphery",signs:[
+  {label:"Auscultation",name:"Fine end-inspiratory crackles",cue:"“Fine Velcro crackles, don't clear on cough.”",dx:["**Pulmonary fibrosis / ILD**","Pulmonary oedema (+ cardiac signs)"],ix:["**Bedside:** SpO₂, spirometry","**Bloods:** ABG, autoimmune screen","**Imaging:** CXR, HRCT; lung function"]},
+  {label:"Auscultation",name:"Expiratory wheeze",cue:"“Widespread expiratory wheeze.”",dx:["**Asthma**","**COPD**, bronchospasm"],ix:["**Bedside:** peak flow + reversibility, SpO₂","**Bloods:** ABG if severe","**Imaging:** CXR; spirometry"]},
+  {label:"Hands",name:"Clubbing (respiratory)",cue:"“Finger clubbing.”",dx:["**Lung cancer, bronchiectasis, fibrosis**","Empyema, cyanotic CHD"],ix:["**Bedside:** SpO₂, sputum","**Bloods:** FBC, CRP","**Imaging:** CXR → CT chest; bronchoscopy"]},
+  {label:"Hands",name:"CO₂ retention flap",cue:"“Coarse flap, wrists cocked back.”",dx:["**Type 2 respiratory failure** (COPD)","Hepatic, uraemic (other contexts)"],ix:["**Bedside:** ABG (↑CO₂, ↓pH), SpO₂","**Imaging:** CXR","**Bloods:** bicarbonate"]},
+  {label:"Eyes",name:"Horner's syndrome",cue:"“Ptosis, miosis, anhidrosis on one side.”",dx:["**Pancoast tumour**","Carotid dissection, brainstem lesion"],ix:["**Bedside:** check hand wasting (T1)","**Imaging:** CXR → CT chest apex, MRI"]},
+ ]},
+]},
+{id:"abdo",num:3,title:"Abdominal",sub:"Organomegaly, CLD stigmata, masses by region.",groups:[
+ {label:"Organomegaly",signs:[
+  {label:"Palpation",name:"Hepatomegaly",cue:"“Smooth liver edge 4 cm below costal margin, moves with breathing.”",dx:["**Chronic liver disease, RHF, malignancy**","Lymphoma, sarcoid, amyloid"],ix:["**Bedside:** obs, urine dip","**Bloods:** LFTs, clotting, FBC, hep serology, AFP","**Imaging:** USS → CT; biopsy"]},
+  {label:"Palpation",name:"Splenomegaly",cue:"“LUQ mass with notch, can't get above it, dull, moves on inspiration.”",dx:["**Haematological** — lymphoma, leukaemia, MPN","Portal HTN, infection, haemolysis"],ix:["**Bedside:** obs","**Bloods:** FBC + film, LFTs, LDH, serology","**Imaging:** USS, CT; marrow"]},
+  {label:"Palpation",name:"Ballotable flank mass(es)",cue:"“Bilateral, ballotable, resonant, can get above.”",dx:["**Polycystic kidneys** (bilateral)","RCC, hydronephrosis (unilateral)"],ix:["**Bedside:** BP, urine dip","**Bloods:** U&E, FBC","**Imaging:** renal USS, CT"]},
+  {label:"Palpation",name:"Expansile central mass",cue:"“Pulsatile and expansile above umbilicus.”",dx:["**Abdominal aortic aneurysm**"],ix:["**Bedside:** BP, obs","**Imaging:** USS (size) → CT angiogram if ≥5.5 cm"]},
+ ]},
+ {label:"CLD stigmata",signs:[
+  {label:"Inspection",name:"Spider naevi + gynaecomastia",cue:"“>5 spider naevi, gynaecomastia, palmar erythema.”",dx:["**Chronic liver disease / cirrhosis**"],ix:["**Bedside:** obs, urine dip","**Bloods:** LFTs, INR, albumin, FBC, liver screen","**Imaging:** USS/fibroscan; OGD for varices"]},
+  {label:"Arms",name:"Asterixis (hepatic flap)",cue:"“Coarse flap, arms out, wrists dorsiflexed.”",dx:["**Hepatic encephalopathy**","CO₂ retention, uraemia"],ix:["**Bedside:** glucose, GCS","**Bloods:** ammonia, LFTs, clotting, U&E","Find precipitant (bleed, infection, constipation)"]},
+  {label:"Neck",name:"Virchow's node",cue:"“Hard fixed left supraclavicular node.”",dx:["**Gastric/intra-abdominal malignancy** (Troisier)","Lymphoma"],ix:["**Bedside:** node + abdo exam","**Bloods:** FBC, LFTs, LDH","**Imaging:** CT CAP, biopsy, OGD"]},
+ ]},
+ {label:"Surgical & special tests",signs:[
+  {label:"Inspection",name:"Stoma",cue:"“RIF stoma, spouted, green liquid.”",dx:["**Ileostomy** (RIF, spouted)","Colostomy (LIF, flush), urostomy"],ix:["**Bedside:** inspect output, obs","Context: IBD, colorectal Ca, diverticular"]},
+  {label:"Groin",name:"Reducible cough-impulse lump",cue:"“Groin lump, cough impulse, reduces lying flat.”",dx:["**Inguinal hernia**","Femoral hernia, saphena varix, node"],ix:["**Bedside:** standing & lying","**Imaging:** USS; surgical review"]},
+  {label:"Special",name:"Shifting dullness",cue:"“Shifting dullness, fluid thrill.”",dx:["**Ascites** — cirrhosis, malignancy, RHF, hypoalbuminaemia"],ix:["**Bedside:** obs, weight","**Bloods:** LFTs/albumin, FBC","**Imaging:** USS; ascitic tap (SAAG, cytology)"]},
+  {label:"Special",name:"Murphy's sign",cue:"“RUQ palpation in inspiration → catch of breath.”",dx:["**Acute cholecystitis**"],ix:["**Bedside:** obs, temp, urine dip","**Bloods:** FBC, CRP, LFTs, amylase","**Imaging:** USS"]},
+ ]},
+]},
+{id:"neuro",num:4,title:"Neuro (limbs & cranial)",sub:"UMN/LMN split, gait, the cranial-nerve patterns.",groups:[
+ {label:"Pattern recognition",signs:[
+  {label:"Pattern",name:"UMN pattern",cue:"“↑tone, brisk reflexes, upgoing plantars, no wasting.”",dx:["Lesion **above anterior horn** — stroke, MS, cord compression, tumour"],ix:["**Bedside:** glucose, BP, ECG","**Imaging:** CT/MRI brain or cord","**Bloods:** per cause"]},
+  {label:"Pattern",name:"LMN pattern",cue:"“Wasting, fasciculations, ↓tone, ↓reflexes, downgoing plantars.”",dx:["Lesion **along motor neuron** — MND, root, plexus, nerve, NMJ, muscle"],ix:["**Bedside:** map distribution","**Bloods:** B12, glucose, TFTs","**Special:** nerve conduction; MRI"]},
+  {label:"Cerebellar",name:"DANISH signs",cue:"“Past-pointing, intention tremor, slurred speech.”",dx:["**Cerebellar disease** — stroke, MS, alcohol, posterior-fossa tumour"],ix:["**Bedside:** glucose, gait, Romberg","**Bloods:** B12, TFTs","**Imaging:** MRI brain"]},
+ ]},
+ {label:"Limb signs",signs:[
+  {label:"Inspection",name:"Thenar wasting",cue:"“Wasted thenar eminence.”",dx:["**Median nerve / carpal tunnel**","C8/T1 root, MND"],ix:["**Bedside:** Tinel's/Phalen's, sensory map","**Bloods:** glucose, TFTs","**Special:** nerve conduction"]},
+  {label:"Inspection",name:"Fasciculations",cue:"“Fasciculations across muscle groups.”",dx:["**Motor neurone disease**","Benign, radiculopathy"],ix:["**Bedside:** UMN+LMN + bulbar exam","**Special:** EMG","**Imaging:** MRI (exclude mimics)"]},
+  {label:"Screening",name:"Pronator drift",cue:"“Arm pronates and drifts, eyes closed.”",dx:["**Contralateral UMN lesion** (stroke)"],ix:["**Bedside:** glucose, BP","**Imaging:** CT/MRI brain"]},
+  {label:"Gait",name:"High-stepping gait (foot drop)",cue:"“Lifts foot high to clear toes.”",dx:["**Common peroneal palsy**","L5 radiculopathy, neuropathy"],ix:["**Bedside:** dorsiflexion/eversion, sensory","**Special:** nerve conduction; MRI L-spine"]},
+  {label:"Sensation",name:"Glove/stocking loss",cue:"“Sensory loss in glove/stocking pattern.”",dx:["**Peripheral neuropathy** — diabetes, alcohol, B12, CKD, drugs"],ix:["**Bedside:** glucose, urine dip","**Bloods:** HbA1c, B12, TFTs, U&E","**Special:** nerve conduction"]},
+ ]},
+ {label:"Cranial nerves",signs:[
+  {label:"CN II",name:"RAPD",cue:"“Affected pupil dilates on swinging light.”",dx:["**Optic neuritis** (MS)","Optic compression, retinal disease"],ix:["**Bedside:** acuity, colour, fundoscopy, fields","**Imaging:** MRI brain/orbits","**Special:** VEPs"]},
+  {label:"Fields",name:"Bitemporal hemianopia",cue:"“Both temporal fields lost.”",dx:["**Chiasm lesion** — pituitary adenoma, craniopharyngioma"],ix:["**Bloods:** pituitary profile","**Imaging:** MRI pituitary","**Special:** perimetry"]},
+  {label:"CN III",name:"Third nerve palsy",cue:"“Down and out, ptosis, dilated pupil.”",dx:["**Surgical** — PCom aneurysm (pupil involved)","**Medical** — microvascular (pupil spared)"],ix:["**Bedside:** glucose, BP, pupil","**Imaging:** CT/MR angiogram","**Bloods:** glucose/HbA1c"]},
+  {label:"CN VII",name:"LMN facial palsy (forehead involved)",cue:"“Whole side of face weak incl. forehead.”",dx:["**Bell's palsy**","Ramsay Hunt, parotid tumour, CPA lesion"],ix:["**Bedside:** ear (vesicles), taste, eye care","MRI if atypical/progressive"]},
+  {label:"CN VII",name:"UMN facial palsy (forehead spared)",cue:"“Lower face weak, forehead spared.”",dx:["**Contralateral UMN lesion** — stroke, tumour"],ix:["**Bedside:** stroke assessment, glucose, BP","**Imaging:** CT/MRI brain"]},
+  {label:"VIII",name:"Weber/Rinne pattern",cue:"“Weber lateralises; Rinne bone>air that side.”",dx:["**Conductive loss** that side","Sensorineural on the other if air>bone"],ix:["**Bedside:** otoscopy","**Special:** audiometry; MRI IAM if asymmetric SN loss"]},
+ ]},
+]},
+{id:"lump",num:5,title:"Lump",sub:"CAMPFIRE behaviour → differential.",groups:[
+ {label:"By behaviour",signs:[
+  {label:"Transillumination",name:"Transilluminates",cue:"“Lights up with a torch.”",dx:["**Fluid-filled** — cyst, hydrocoele","NOT blood (varicocoele)"],ix:["**Bedside:** CAMPFIRE, nodes","**Imaging:** USS (cystic vs solid)"]},
+  {label:"Pulsatility",name:"Expansile pulsatile",cue:"“Pulsatile and expansile.”",dx:["**Aneurysm** (AAA, popliteal)","Transmitted = not expansile"],ix:["**Bedside:** auscultate bruit","**Imaging:** USS / CT angiogram"]},
+  {label:"Auscultation",name:"Bruit over lump",cue:"“Bruit / machinery murmur.”",dx:["**Vascular / AV fistula / high flow**"],ix:["**Imaging:** duplex USS; angiography"]},
+  {label:"Cough impulse",name:"Reducible cough impulse",cue:"“Cough impulse, reduces.”",dx:["**Hernia**","Saphena varix"],ix:["**Bedside:** standing & lying","**Imaging:** USS; surgical review"]},
+  {label:"Consistency",name:"Hard fixed irregular + hard nodes",cue:"“Hard, tethered, irregular; hard regional nodes.”",dx:["**Malignancy**","(Soft mobile tender → benign/reactive)"],ix:["**Bedside:** node survey","**Imaging:** USS, FNA/core biopsy, staging CT"]},
+ ]},
+]},
+{id:"breast",num:6,title:"Breast",sub:"Skin/nipple signs + triple assessment.",groups:[
+ {label:"Skin & nipple",signs:[
+  {label:"Inspection",name:"Tethering/puckering on arm raise",cue:"“Skin puckers over lump as arms raise.”",dx:["**Breast carcinoma**","Fat necrosis, prior surgery"],ix:["**Bedside:** breast + axillary nodes","**Triple assessment:** clinical + imaging (USS<35 / mammogram≥35) + core biopsy"]},
+  {label:"Inspection",name:"Peau d'orange",cue:"“Orange-peel skin dimpling.”",dx:["**Inflammatory breast cancer**","Locally advanced carcinoma"],ix:["**Triple assessment** (urgent); staging"]},
+  {label:"Inspection",name:"Nipple scaling not responding",cue:"“Persistent scaly eczematous nipple.”",dx:["**Paget's of the nipple**","Eczema (spares nipple)"],ix:["**Triple assessment** + nipple biopsy"]},
+  {label:"Inspection",name:"Newly inverted nipple",cue:"“New inversion, can't evert.”",dx:["**Underlying carcinoma**","Duct ectasia, periductal mastitis"],ix:["**Triple assessment**"]},
+  {label:"Discharge",name:"Bloody single-duct discharge",cue:"“Blood-stained, single duct.”",dx:["**Duct papilloma**","Ductal carcinoma, duct ectasia"],ix:["**Bedside:** dipstick for blood","**Imaging:** USS/mammogram, ductography; biopsy"]},
+ ]},
+]},
+{id:"neck",num:7,title:"Neck & Thyroid",sub:"Midline manoeuvres, node vs gland, thyroid status.",groups:[
+ {label:"Midline manoeuvres",signs:[
+  {label:"Swallow",name:"Rises on swallowing",cue:"“Moves up on swallowing.”",dx:["**Thyroid mass** — goitre, nodule, cyst, carcinoma"],ix:["**Bedside:** thyroid status, percuss retrosternal","**Bloods:** TFTs","**Imaging:** thyroid USS ± FNA"]},
+  {label:"Tongue",name:"Rises on tongue protrusion",cue:"“Moves up on tongue protrusion.”",dx:["**Thyroglossal cyst**"],ix:["**Imaging:** USS; confirm normal thyroid (Sistrunk)"]},
+ ]},
+ {label:"Nodes & status",signs:[
+  {label:"Palpation",name:"Hard fixed cervical nodes",cue:"“Hard, non-tender, tethered nodes.”",dx:["**Metastatic carcinoma, lymphoma**"],ix:["**Bedside:** ENT/node exam","**Bloods:** FBC, LDH","**Imaging:** USS, core biopsy, CT; nasendoscopy"]},
+  {label:"Palpation",name:"Soft mobile tender nodes",cue:"“Soft, mobile, tender nodes.”",dx:["**Reactive lymphadenopathy** (infective)","EBV, pharyngitis"],ix:["**Bedside:** throat exam","**Bloods:** FBC, monospot","Safety-net, re-examine"]},
+  {label:"Hands/eyes",name:"Tremor + warm palms + AF",cue:"“Fine tremor, warm moist palms, irregular pulse.”",dx:["**Hyperthyroidism** — Graves', toxic nodule, thyroiditis"],ix:["**Bedside:** ECG (AF)","**Bloods:** TFTs, TSH-receptor Ab","**Imaging:** thyroid USS, uptake scan"]},
+  {label:"Eyes",name:"Exophthalmos / lid lag",cue:"“Proptosis, lid retraction, lid lag.”",dx:["**Graves' disease** (exophthalmos specific)"],ix:["**Bloods:** TFTs, TSH-R Ab","**Imaging:** CT/MRI orbits if compressive"]},
+  {label:"General",name:"Coarse facies + slow-relaxing reflexes",cue:"“Dry skin, lost outer eyebrow, slow ankle jerk.”",dx:["**Hypothyroidism** — Hashimoto's, iatrogenic"],ix:["**Bloods:** TFTs, anti-TPO","**Bedside:** ECG (bradycardia), lipids"]},
+ ]},
+]},
+{id:"vasc",num:8,title:"Vascular",sub:"Arterial (upper/lower), venous, the emergency leg.",groups:[
+ {label:"Arterial",signs:[
+  {label:"Auscultation",name:"Carotid bruit",cue:"“Bruit over the carotid.”",dx:["**Carotid stenosis**","(Radiating AS murmur — exclude)"],ix:["**Bedside:** don't palpate hard, BP both arms","**Imaging:** carotid duplex; CT/MR angiogram"]},
+  {label:"Inspection",name:"Punched-out ulcer on foot/toes",cue:"“Deep, well-demarcated ulcer over malleolus/toes.”",dx:["**Arterial ulcer** (PAD)","Neuropathic (painless, pressure points)"],ix:["**Bedside:** pulses, CRT, ABPI, glucose","**Bloods:** HbA1c, lipids","**Imaging:** arterial duplex; angiography"]},
+  {label:"Inspection",name:"Shiny hairless cool foot",cue:"“Shiny hairless skin, cool, weak pulses.”",dx:["**Chronic PAD / claudication**"],ix:["**Bedside:** ABPI (0.5–0.8), pulses","**Imaging:** duplex","**Bloods:** glucose, lipids"]},
+  {label:"Emergency",name:"The 6 Ps",cue:"“Pain, pale, pulseless, paraesthetic, paralysed, perishingly cold.”",dx:["**Acute limb ischaemia** — surgical emergency"],ix:["**Bedside:** ABPI<0.5, Doppler, ECG (AF)","**Bloods:** FBC, U&E, clotting, G&S, lactate","**Imaging:** urgent CT angiogram — don't delay referral"]},
+ ]},
+ {label:"Venous",signs:[
+  {label:"Inspection",name:"Gaiter skin changes",cue:"“Haemosiderin, venous eczema, inverted champagne bottle.”",dx:["**Chronic venous insufficiency**"],ix:["**Bedside:** exclude arterial, **ABPI before compression**","**Imaging:** venous duplex (reflux)"]},
+  {label:"Inspection",name:"Sloping-edge medial ulcer",cue:"“Shallow sloping ulcer, sloughy base, medial gaiter.”",dx:["**Venous ulcer** (LSV medial; SSV lateral)","Mixed — check ABPI"],ix:["**Bedside:** ABPI (exclude arterial first)","**Imaging:** venous duplex"]},
+  {label:"Palpation",name:"Hot tender swollen calf",cue:"“Red, hot, swollen, tender calf.”",dx:["**DVT** until proven otherwise","Cellulitis, ruptured Baker's cyst"],ix:["**Bedside:** Wells score, obs","**Bloods:** D-dimer (if Wells low)","**Imaging:** venous duplex USS"]},
+  {label:"Special",name:"Thrill/cough impulse at SFJ",cue:"“Palpable thrill & cough impulse at SFJ; tap test transmits.”",dx:["**SFJ incompetence** (varicose veins)","Saphena varix"],ix:["**Bedside:** handheld Doppler at SFJ/SPJ","**Imaging:** venous duplex"]},
+ ]},
+]},
+];
+
+/* ===== INVESTIGATION POOLS (computed: test -> exams) ===== */
+const POOLS = [
+ {n:7,core:true,tests:[["FBC","bloods",["abdo","cvs","lump","neck","neuro","resp","vasc"]]]},
+ {n:5,core:true,tests:[["Obs / SpO₂","bedside",["abdo","cvs","neuro","resp","vasc"]]]},
+ {n:4,core:true,tests:[["U&E","bloods",["abdo","cvs","resp","vasc"]]]},
+ {n:3,tests:[
+   ["ECG","bedside",["cvs","neck","vasc"]],
+   ["TFTs","bloods",["cvs","neck","neuro"]],
+   ["Node survey","bedside",["breast","lump","neck"]],
+   ["FNA / core biopsy","imaging",["breast","lump","neck"]],
+   ["Staging CT","imaging",["breast","lump","neck"]],
+ ]},
+ {n:2,tests:[
+   ["BP","bedside",["cvs","neuro"]],
+   ["CXR","imaging",["cvs","resp"]],
+   ["CRP","bloods",["abdo","resp"]],
+   ["Capillary glucose","bedside",["neuro","vasc"]],
+   ["Clotting","bloods",["abdo","vasc"]],
+   ["Duplex USS","imaging",["lump","vasc"]],
+   ["Urine dip","bedside",["abdo","cvs"]],
+ ]},
+ {n:1,tests:[
+   ["Troponin","bloods",["cvs"]],["BNP","bloods",["cvs"]],["Echo","imaging",["cvs"]],["Coronary angiogram","imaging",["cvs"]],
+   ["ABG","bedside",["resp"]],["Peak flow","bedside",["resp"]],["Sputum","bedside",["resp"]],["CT chest","imaging",["resp"]],["HRCT","imaging",["resp"]],["Spirometry","imaging",["resp"]],["Bronchoscopy","imaging",["resp"]],
+   ["LFTs","bloods",["abdo"]],["Amylase","bloods",["abdo"]],["Abdominal USS","imaging",["abdo"]],["CT abdomen","imaging",["abdo"]],["Endoscopy","imaging",["abdo"]],
+   ["B12 / folate","bloods",["neuro"]],["HbA1c","bloods",["neuro"]],["CT/MRI brain","imaging",["neuro"]],["MRI spine","imaging",["neuro"]],["Nerve conduction","imaging",["neuro"]],["LP","imaging",["neuro"]],
+   ["USS","imaging",["lump"]],
+   ["Mammogram / USS","imaging",["breast"]],
+   ["Thyroid antibodies","bloods",["neck"]],["LDH","bloods",["neck"]],["Thyroid USS","imaging",["neck"]],
+   ["ABPI","bedside",["vasc"]],["Doppler","bedside",["vasc"]],["D-dimer","bloods",["vasc"]],["Glucose / lipids","bloods",["vasc"]],["CT angiogram","imaging",["vasc"]],["Angiography","imaging",["vasc"]],
+ ]},
+];
+
+/* ============ RENDER: SIGNS BANK ============ */
+const fmt = t => t.replace(/^\*\*(.+?):\*\*/,'<span class="ix-step">$1:</span>').replace(/\*\*(.+?)\*\*/g,'<b>$1</b>');
+const chev = '<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"></polyline></svg>';
+const chips = document.getElementById('chips'), signsMain = document.getElementById('signs-main');
+SIGNS.forEach(sec=>{
+  const a=document.createElement('a');a.className='chip';a.href='#sec-'+sec.id;a.textContent=sec.title;
+  a.style.borderColor=COL[sec.id]+'55';chips.appendChild(a);
+  const s=document.createElement('section');s.id='sec-'+sec.id;
+  let h=`<div class="sec-head"><span class="num" style="background:${COL[sec.id]}">${sec.num}</span><h3>${sec.title}</h3></div><div class="sec-sub">${sec.sub}</div>`;
+  sec.groups.forEach(g=>{
+    h+=`<div class="group-label">${g.label}</div>`;
+    g.signs.forEach(sg=>{
+      h+=`<details class="card" style="--card-c:${COL[sec.id]}"><summary><div style="flex:1"><div class="sign-label">${sg.label}</div><div class="sign-name">${sg.name}<span class="cue">${sg.cue}</span></div></div><span class="reveal-hint">Tap to reveal</span>${chev}</summary><div class="body"><div class="row"><span class="tag dx">Differential</span><ul>${sg.dx.map(d=>'<li>'+fmt(d)+'</li>').join('')}</ul></div><div class="row"><span class="tag ix">Investigations</span><ul>${sg.ix.map(i=>'<li>'+fmt(i)+'</li>').join('')}</ul></div></div></details>`;
+    });
+  });
+  s.innerHTML=h;signsMain.appendChild(s);
+});
+
+/* ============ RENDER: INVESTIGATION MAP ============ */
+/* per-test: how = how to deploy/interpret; think = trigger logic so it comes to mind */
+const TEST_INFO = {
+ "FBC":{how:"Venous sample, EDTA (purple) tube. Reports Hb, WCC + differential, platelets, MCV. Reflex to a <b>blood film</b> if any line is abnormal or cells look odd.",think:"Anaemia mimics or worsens almost everything — breathlessness, angina, fatigue, flow murmurs. WCC flags infection (endocarditis, sepsis). Platelets must be known before any anticoagulant or procedure. Think FBC whenever the diagnosis could be <b>caused, masked, or made unsafe to treat</b> by a blood abnormality."},
+ "Obs / SpO₂":{how:"The bedside set: HR, BP, RR, SpO₂, temperature → feeds NEWS2. Takes seconds, repeatable, trends matter more than one value.",think:"The first question is never the diagnosis — it's <b>'is this patient sick right now?'</b> Obs answer that. A normal set buys you time to think; an abnormal set forces escalation before investigation. Think obs the moment acuity is in doubt."},
+ "U&E":{how:"Serum sample. Reports Na, K, urea, creatinine → eGFR, AKI staging. Compare to the patient's baseline, not just the lab range.",think:"Kidneys sit downstream of perfusion, drugs and fluid balance. Think U&E when you're about to give a renally-cleared drug, when fluid status is uncertain (oedema, dehydration), when K could be dangerous (arrhythmia), or when the kidney is the victim (heart failure, sepsis, obstruction)."},
+ "ECG":{how:"12-lead, correct lead placement. Read systematically: rate, rhythm, axis, then P-QRS-T morphology. Free, instant, repeatable — get serial ECGs if the picture evolves.",think:"Any chest symptom, any palpitation, any collapse, any abnormal pulse → ECG before you theorise. It's also the test that converts a vague story (syncope, AF, ischaemia) into a hard finding. Think ECG as the <b>default first move</b> in cardiovascular and vascular work."},
+ "TFTs":{how:"Serum TSH first (most sensitive), with free T4 ± T3. TSH moves <i>opposite</i> to thyroid hormone in primary disease. Add antibodies to find the cause (TSH-receptor = Graves', anti-TPO = Hashimoto's).",think:"Thyroid disease is the great mimic: AF and tremor (hyper), bradycardia and fatigue (hypo), weight change, mood. Think TFTs whenever a presentation is <b>multi-system and otherwise unexplained</b> — and always in new AF or a neck lump."},
+ "Node survey":{how:"Systematic palpation of all regional basins (cervical chain, axilla, groin, supraclavicular). Characterise: soft-mobile-tender (reactive) vs hard-fixed-painless (malignant).",think:"Lymph nodes are the drainage map. Think node survey with any lump (where does this area drain to?) and any suspected malignancy — the node tells you whether it has spread, and Virchow's node points back to the abdomen."},
+ "FNA / core biopsy":{how:"FNA = cytology (cells); core = histology (architecture — preferred for solid lumps). Often image-guided. The tissue endpoint of triple assessment.",think:"Imaging tells you a lump's shape; only tissue tells you what it <b>is</b>. Think biopsy whenever a lump could be malignant and the management hinges on the diagnosis — breast, thyroid, node, soft-tissue."},
+ "Staging CT":{how:"CT chest/abdomen/pelvis with contrast to map spread (TNM). Done after tissue confirms malignancy.",think:"Once you know it's cancer, the next question is <b>'how far has it gone?'</b> — that decides curative vs palliative intent. Think staging CT as the step <i>after</i> diagnosis, not part of it."},
+ "BP":{how:"Correct cuff size, supported arm. Consider both arms (>20 mmHg difference → dissection/subclavian) and lying/standing (postural drop).",think:"BP is perfusion pressure. Think of asymmetry in dissection/coarctation, postural drop in falls/syncope, and the upper-limb-high/lower-limb-low pattern that gives coarctation away."},
+ "CXR":{how:"Erect PA if possible. Systematic read: A-E or your own routine. Cheap, fast, high yield for chest and some abdominal emergencies (free air).",think:"Almost every respiratory and cardiac sign earns a CXR — it confirms or reshapes the differential (effusion, consolidation, pneumothorax, heart failure, masses). Think CXR as the <b>workhorse first image</b>."},
+ "CRP":{how:"Serum inflammatory marker; rises and falls faster than ESR. A trend tracks response to treatment.",think:"CRP doesn't diagnose — it quantifies inflammation. Think CRP to gauge severity (CURB-65, sepsis), to track an infection's response, and to support (never replace) a clinical infective diagnosis."},
+ "Capillary glucose":{how:"Bedside fingerprick (CBG). Instant. The fastest reversible cause to exclude in any acute neurology.",think:"Hypo- and hyperglycaemia masquerade as stroke, seizure, collapse, confusion, coma. Think glucose <b>first</b> in any altered consciousness or focal deficit — it's free, instant, and you can fix it on the spot."},
+ "Clotting":{how:"Citrate (blue) tube: PT/INR, APTT, fibrinogen. INR also reflects liver synthetic function.",think:"Think clotting before any procedure or anticoagulation, in liver disease (the liver makes clotting factors — a rising INR is a failing liver), and in any major bleed or sepsis (DIC)."},
+ "Duplex USS":{how:"Combined B-mode + Doppler — shows the vessel and the flow. Non-invasive, no radiation. First-line for limb arterial and venous disease.",think:"Whenever the question is <b>'is this vessel flowing, blocked, or refluxing?'</b> — DVT, varicose vein incompetence, carotid stenosis, graft surveillance. Think duplex as the go-to vascular image."},
+ "Urine dip":{how:"Bedside multistix: blood, protein, leucocytes, nitrites, glucose, ketones. Cheap, instant; culture confirms infection.",think:"A tiny test that touches many systems — haematuria (renal/malignancy), proteinuria (renal/endocarditis), nitrites+leucocytes (UTI), glucose/ketones (diabetes). Think urine dip as a near-free screen in renal, cardiac (endocarditis) and metabolic work."},
+ "Troponin":{how:"Serum cardiac-specific protein. Serial samples (0 and 3–6 h) — the <i>rise/fall</i> matters, not one number. Sensitive but not specific.",think:"Think troponin when myocardium might be dying — but remember it leaks in PE, sepsis, renal failure too. It answers <b>'is there myocardial injury?'</b>, the ECG answers 'where and how urgent'."},
+ "BNP":{how:"Serum. Released when ventricular walls are stretched. A normal BNP makes heart failure unlikely (strong rule-out); a high one prompts echo.",think:"Think BNP as the heart saying <b>'I'm under strain.'</b> Use it to screen breathlessness for heart failure before committing to echo — but know it also rises in AF, PE, sepsis, renal impairment."},
+ "Echo":{how:"Transthoracic first (non-invasive); transoesophageal for valves/vegetations/LA. Gives EF, chamber sizes, valve gradients, regurgitant jets.",think:"Echo is the structural answer. Think echo to confirm what BNP screened (heart failure), to size and grade a murmur, and to hunt vegetations in suspected endocarditis."},
+ "Coronary angiogram":{how:"Invasive contrast study of the coronaries; can proceed to PCI. The definitive map of coronary disease.",think:"Think angiogram when ischaemic disease is confirmed or strongly suspected and you need to know <b>which vessel</b> — and potentially treat it in the same sitting (STEMI → PCI)."},
+ "ABG":{how:"Radial arterial sample. Reports pH, PaO₂, PaCO₂, HCO₃, lactate. Defines Type 1 vs Type 2 respiratory failure and acid-base state.",think:"Think ABG when oxygenation or ventilation is in doubt — the CO₂ retention flap, the acutely breathless patient, the septic patient (lactate). It's the test that quantifies <b>how sick the lungs/metabolism really are</b>."},
+ "Peak flow":{how:"Best of three forced blows. Compare to predicted/personal best; serial readings track obstruction and reversibility.",think:"Think peak flow in any wheeze or breathlessness that could be airways disease — it objectifies obstruction and, with bronchodilator reversibility, separates asthma from fixed COPD."},
+ "Sputum":{how:"Sample for MC&S; add AFB if TB suspected, viral swabs/legionella urinary antigen as indicated.",think:"Think sputum whenever there's a productive cough and you want to name the organism — it turns 'chest infection' into a targeted antibiotic choice."},
+ "CT chest":{how:"Cross-sectional, usually contrast. CTPA protocol for PE. Resolves what CXR can only hint at.",think:"Think CT chest when CXR shows something needing characterisation (mass, nodule, complex effusion) or when PE is suspected (CTPA). It's the step <b>up</b> from the plain film."},
+ "HRCT":{how:"Thin-slice, high-detail CT tuned for lung tissue. Shows reticular pattern, honeycombing, traction bronchiectasis.",think:"Think HRCT for <b>parenchymal</b> disease — fibrosis/ILD, bronchiectasis. When fine crackles + clubbing point to lung tissue itself, HRCT names the pattern and the pattern points to the cause."},
+ "Spirometry":{how:"FEV₁, FVC, ratio. Obstructive (↓ratio, asthma/COPD) vs restrictive (preserved ratio, ↓volumes, fibrosis). Add reversibility for asthma.",think:"Think spirometry to classify chronic breathlessness — it sorts obstructive from restrictive and confirms the airway diagnosis the wheeze suggested."},
+ "Bronchoscopy":{how:"Flexible scope to visualise airways, sample (lavage, biopsy), or relieve obstruction.",think:"Think bronchoscopy when imaging shows a <b>central lesion or unexplained mass</b> needing tissue, or for haemoptysis with a visible target."},
+ "LFTs":{how:"Serum. Hepatocellular (↑ALT/AST) vs cholestatic (↑ALP/GGT/bilirubin) pattern; albumin + INR show synthetic function.",think:"Think LFTs in jaundice, organomegaly, alcohol history, and before hepatically-metabolised drugs. The <b>pattern</b> localises the problem — liver cell vs bile duct."},
+ "Amylase":{how:"Serum; >3× upper limit supports pancreatitis. Lipase is more specific. Always check calcium too.",think:"Think amylase in acute epigastric pain radiating to the back — it's the test that pulls <b>pancreatitis</b> out of the abdominal-pain differential."},
+ "Abdominal USS":{how:"First-line, no radiation. Excellent for gallstones, biliary tree, liver texture, kidneys, free fluid, AAA size.",think:"Think abdominal USS as the <b>first image</b> for RUQ pain (stones, cholecystitis), organomegaly, ascites and AAA screening — cheap, safe, high yield."},
+ "CT abdomen":{how:"Cross-sectional, usually contrast. Defines obstruction, perforation, masses, collections, bleeding.",think:"Think CT abdomen when USS is inconclusive or the picture is surgical — the acute abdomen, staging, or a mass needing a full map."},
+ "Endoscopy":{how:"OGD (upper) or colonoscopy (lower): direct view + biopsy + therapy (banding, haemostasis). Indications for sigmoidoscopy only at Y4.",think:"Think endoscopy when the mucosa is the answer — dysphagia, haematemesis/melaena (OGD), change in bowel habit or rectal bleeding (colonoscopy), or varices in liver disease."},
+ "B12 / folate":{how:"Serum. Low B12 → subacute combined degeneration (dorsal columns + corticospinal). Check alongside FBC (macrocytosis).",think:"Think B12 in any peripheral neuropathy, proprioceptive loss (pseudoathetosis, +ve Romberg), or the odd mix of absent ankle jerks with upgoing plantars."},
+ "HbA1c":{how:"3-month average glycaemia, one serum sample, no fasting needed.",think:"Think HbA1c in any glove-and-stocking neuropathy, arterial disease, or unexplained multi-system presentation — diabetes underlies so much vascular and neurological pathology."},
+ "CT/MRI brain":{how:"CT first for acute (bleed, fast, available); MRI for detail (posterior fossa, MS, tumour, early ischaemia).",think:"Think brain imaging once the exam <b>localises</b> a lesion centrally — UMN signs, cranial nerve deficits, cerebellar signs, field defects. CT rules out the emergency; MRI characterises."},
+ "MRI spine":{how:"Detailed cord and root imaging, no radiation. The test for myelopathy and radiculopathy.",think:"Think MRI spine when signs point to <b>cord or root</b> — a sensory level, dermatomal loss, mixed UMN/LMN at different levels, or suspected compression."},
+ "Nerve conduction":{how:"NCS/EMG measures conduction speed and muscle electrical activity. Localises and characterises peripheral lesions.",think:"Think nerve conduction studies for peripheral problems — carpal tunnel, peripheral neuropathy, suspected MND — when you need to prove and localise an LMN process."},
+ "LP":{how:"Lumbar puncture for CSF: opening pressure, cells, protein, glucose, oligoclonal bands. Image first if raised ICP suspected.",think:"Think LP for CSF answers — meningitis/encephalitis, subarachnoid (if CT negative), and oligoclonal bands in MS."},
+ "USS":{how:"Bedside/radiology ultrasound of a lump — cystic vs solid, vascularity, depth. No radiation, can guide biopsy.",think:"Think USS as the <b>first image of any lump</b> — it answers cystic-vs-solid (the transillumination question, objectively) and guides the needle."},
+ "Mammogram / USS":{how:"USS under 35 (denser breast), mammogram 35+. The imaging arm of triple assessment.",think:"Think breast imaging as one leg of the triple-assessment stool — never alone: clinical + imaging + biopsy together."},
+ "Thyroid antibodies":{how:"TSH-receptor antibodies → Graves'; anti-TPO → Hashimoto's. Run with TFTs to find the cause.",think:"Once TFTs tell you the <b>status</b>, antibodies tell you the <b>cause</b>. Think antibodies when you've confirmed hyper/hypothyroidism and need the aetiology."},
+ "LDH":{how:"Serum enzyme; non-specific marker of cell turnover/breakdown. Part of the haemolysis screen and a tumour-bulk marker.",think:"Think LDH when cells are being destroyed or proliferating — haemolysis (with bilirubin) or lymphoma/leukaemia (disease bulk and prognosis)."},
+ "ABPI":{how:"Highest ankle systolic ÷ brachial systolic, using Doppler. <0.5 critical, 0.5–0.8 PAD, 0.8–1.3 normal, >1.3 calcified (unreliable: diabetes, CKD).",think:"Think ABPI to quantify arterial disease — and <b>always before compression</b> of a venous ulcer, because compressing an ischaemic leg causes harm."},
+ "Doppler":{how:"Handheld probe to detect flow where pulses are impalpable; also assesses venous reflux at SFJ/SPJ.",think:"Think Doppler the moment a pulse can't be felt, or when you need to test valve competence in varicose veins — it hears what your fingers can't."},
+ "D-dimer":{how:"Serum fibrin breakdown product. High sensitivity, low specificity — only useful to <b>rule out</b> when pre-test probability is low (use with Wells score).",think:"Think D-dimer only after the Wells score: a low-probability patient with a normal D-dimer needs no scan. A positive result proves nothing on its own."},
+ "Glucose / lipids":{how:"Fasting glucose/HbA1c and lipid profile — the modifiable vascular risk factors.",think:"Think glucose and lipids in any arterial disease — they're the <b>cause you can treat</b>, and finding them changes long-term management more than the imaging does."},
+ "CT angiogram":{how:"Contrast CT mapping the arterial tree. Urgent in acute limb ischaemia and dissection.",think:"Think CT angiogram when you need the arterial <b>roadmap</b> urgently — the cold pulseless leg, suspected dissection, or planning revascularisation. Don't let it delay the vascular referral."},
+ "Angiography":{how:"Catheter contrast study; can be diagnostic and therapeutic (angioplasty/stent).",think:"Think formal angiography when intervention is on the table — it both confirms the lesion and treats it."},
+};
+
+const legend=document.getElementById('legend');
+Object.keys(COL).forEach(k=>{
+  legend.innerHTML+=`<span class="li"><span class="sw" style="background:${COL[k]}"></span>${EXAM_NAME[k]}</span>`;
+});
+const mapMain=document.getElementById('map-main');
+const rankLabel={7:"all",5:"5×",4:"4×",3:"3×",2:"2×",1:"1×"};
+POOLS.forEach(pool=>{
+  const dotsFor = exs => '<span class="dots">'+exs.map(e=>`<span class="d" style="background:${COL[e]}" title="${EXAM_NAME[e]}"></span>`).join('')+'</span>';
+  const tests = pool.tests.map(([name,tier,exs])=>{
+    const info = TEST_INFO[name];
+    const detail = info ? `<div class="test-detail"><div class="tl">How to deploy</div><p>${info.how}</p><div class="tl think">Think of it when…</div><p>${info.think}</p></div>` : '';
+    return `<span class="test"><span class="test-pill">${dotsFor(exs)}<span>${name}</span><span class="tier">${tier}</span><svg class="chev-t" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"></polyline></svg></span>${detail}</span>`;
+  }).join('');
+  const title = pool.n>=5?`Shared by ${pool.n}+ examinations`:pool.n===1?`Exam-specific (1 examination)`:`Shared by ${pool.n} examinations`;
+  const sub = pool.core?"The universal core — run almost everywhere":pool.n===1?"The unique tail — distinctive to one exam":"Cross-over tests";
+  mapMain.innerHTML+=`<div class="pool ${pool.core?'core':''}"><div class="pool-head"><div class="pool-rank">${pool.n}<span>${rankLabel[pool.n]}</span></div><div><div class="pool-title">${title}<span class="sub">${sub}</span></div></div></div><div class="pool-grid">${tests}</div></div>`;
+});
+mapMain.addEventListener('click',e=>{const t=e.target.closest('.test');if(t)t.classList.toggle('open');});
+
+/* ============ RENDER: DIFFERENTIAL ATLAS ============ */
+const atlasMain=document.getElementById('atlas-main');
+SIGNS.forEach(sec=>{
+  // collect unique differentials (first/primary dx per sign), dedup
+  const seen=new Set(), tiles=[];
+  sec.groups.forEach(g=>g.signs.forEach(sg=>{
+    const primary = sg.dx[0].replace(/\*\*/g,'').replace(/ \(.*?\)/,'').split(',')[0].trim();
+    if(!seen.has(primary)){
+      seen.add(primary);
+      tiles.push({name:primary,cue:sg.cue,sign:sg.name,others:sg.dx.slice(1).map(d=>d.replace(/\*\*/g,'')).join(' · ')});
+    }
+  }));
+  let h=`<div class="atlas-head"><span class="bead" style="background:${COL[sec.id]}"></span><h3>${sec.title}</h3><span class="count">${tiles.length} differentials</span></div><div class="tilewall">`;
+  tiles.forEach(t=>{
+    h+=`<div class="tile" style="--tile-c:${COL[sec.id]}"><div class="dx-name">${t.name}</div><div class="dx-cue">${t.cue}</div><div class="dx-detail"><b>Sign:</b> ${t.sign}${t.others?'<br><b>Also consider:</b> '+t.others:''}</div></div>`;
+  });
+  h+=`</div>`;
+  const d=document.createElement('div');d.className='atlas-sec';d.innerHTML=h;atlasMain.appendChild(d);
+});
+atlasMain.addEventListener('click',e=>{const t=e.target.closest('.tile');if(t)t.classList.toggle('open');});
+
+/* ============ TABS ============ */
+const quizWrap=document.getElementById('quizWrap');
+document.querySelectorAll('.tab').forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('view-'+tab.dataset.view).classList.add('active');
+    quizWrap.style.visibility = tab.dataset.view==='signs' ? 'visible':'hidden';
+    window.scrollTo({top:0});
+  });
+});
+
+/* ============ QUIZ MODE ============ */
+const body=document.body;
+quizWrap.addEventListener('click',()=>{
+  body.classList.toggle('quiz');
+  document.querySelectorAll('.card').forEach(c=>{c.classList.remove('revealed');if(body.classList.contains('quiz'))c.removeAttribute('open');});
+});
+document.querySelectorAll('.card').forEach(card=>{
+  card.addEventListener('click',e=>{if(body.classList.contains('quiz')){e.preventDefault();card.classList.toggle('revealed');}});
+});
+</script>
+</body>
+</html>
