@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OSCE Quiz · Oxford Y4</title>
+<style>
+  :root{
+    --bg:#f5f5f7; --surface:#fff; --ink:#1d1d1f; --ink-2:#6e6e73; --ink-3:#86868b;
+    --hair:#d2d2d7; --hair-soft:#e8e8ed; --accent:#0071e3;
+    --dx:#1d6f42; --dx-bg:#eaf6ef; --ix:#8a5a00; --ix-bg:#fbf3e2;
+    --radius:18px; --radius-sm:12px; --shadow:0 1px 2px rgba(0,0,0,.04),0 8px 30px rgba(0,0,0,.06);
+    --font:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Helvetica Neue",sans-serif;
+    --c-cvs:#e5484d; --c-resp:#0091ff; --c-abdo:#f5a623; --c-neuro:#8b5cf6;
+    --c-lump:#14b8a6; --c-breast:#ec4899; --c-neck:#10b981; --c-vasc:#6366f1;
+    --card-exam:#0071e3;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-font-smoothing:antialiased;}
+  body{font-family:var(--font);background:var(--bg);color:var(--ink);min-height:100vh;padding-bottom:60px;line-height:1.5;letter-spacing:-.01em;}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(245,245,247,.82);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:.5px solid var(--hair);}
+  .bar{max-width:680px;margin:0 auto;padding:12px 22px;display:flex;align-items:center;}
+  .back{font-size:14px;font-weight:500;color:var(--accent);text-decoration:none;display:flex;align-items:center;gap:3px;min-width:72px;}
+  .back svg{width:16px;height:16px;flex:none;}
+  .bar h1{font-size:17px;font-weight:600;flex:1;text-align:center;}
+  .bar-end{min-width:72px;display:flex;justify-content:flex-end;}
+  .reset-btn{font-size:13px;color:var(--ink-3);font-weight:500;background:none;border:none;cursor:pointer;font-family:var(--font);padding:4px 6px;}
+  .reset-btn:hover{color:var(--ink-2);}
+
+  main{max-width:680px;margin:0 auto;padding:22px 22px 0;}
+
+  /* Progress */
+  .progress-row{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+  .progress-track{flex:1;height:4px;background:var(--hair);border-radius:3px;overflow:hidden;}
+  .progress-fill{height:100%;background:var(--accent);border-radius:3px;transition:width .4s cubic-bezier(.4,0,.2,1);}
+  .progress-label{font-size:13px;color:var(--ink-2);font-weight:550;white-space:nowrap;min-width:42px;text-align:right;}
+
+  /* Filter chips */
+  .filter-row{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;margin-bottom:22px;padding-bottom:2px;}
+  .filter-row::-webkit-scrollbar{display:none;}
+  .fchip{flex:none;font-size:12.5px;font-weight:550;color:var(--ink-2);background:var(--surface);border:.5px solid var(--hair);padding:6px 13px;border-radius:980px;cursor:pointer;white-space:nowrap;transition:all .15s;user-select:none;}
+  .fchip.on{color:#fff;border-color:transparent;}
+
+  /* Card flip */
+  .card-wrap{perspective:1200px;margin-bottom:14px;}
+  .card{background:var(--surface);border:.5px solid var(--hair-soft);border-top:3px solid var(--card-exam);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px 22px 22px;transition:transform .18s cubic-bezier(.4,0,.2,1),opacity .18s;}
+  .card.flipping{transform:scaleX(0);opacity:0;}
+
+  /* Card content */
+  .card-meta{display:flex;align-items:center;gap:9px;margin-bottom:18px;}
+  .exam-badge{font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:4px 10px;border-radius:7px;color:#fff;background:var(--card-exam);}
+  .group-tag{font-size:12px;color:var(--ink-3);font-weight:500;}
+  .sign-label{font-size:11.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);margin-bottom:5px;}
+  .sign-name{font-size:21px;font-weight:700;letter-spacing:-.025em;margin-bottom:12px;}
+  .sign-cue{font-size:15px;color:var(--ink-2);font-style:italic;line-height:1.55;margin-bottom:24px;}
+
+  /* Back face */
+  .sec-head{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin:14px 0 8px;}
+  .sec-head:first-of-type,.sec-head.first{margin-top:0;}
+  .dx-list,.ix-list{list-style:none;display:flex;flex-direction:column;gap:6px;}
+  .dx-item{font-size:15px;padding-left:16px;position:relative;line-height:1.45;}
+  .dx-item::before{content:"";position:absolute;left:2px;top:8px;width:5px;height:5px;border-radius:50%;background:var(--ink-3);}
+  .dx-item.primary{font-weight:500;}
+  .dx-item.primary::before{background:var(--dx);}
+  .ix-item{font-size:13.5px;color:var(--ink-2);padding-left:16px;position:relative;line-height:1.45;}
+  .ix-item::before{content:"";position:absolute;left:2px;top:7px;width:5px;height:5px;border-radius:50%;background:var(--hair);}
+  .ix-step{font-weight:600;color:#0058b9;}
+
+  /* Buttons */
+  .btn{font-size:14.5px;font-weight:600;padding:12px 14px;border-radius:var(--radius-sm);border:none;cursor:pointer;transition:opacity .15s,transform .1s;font-family:var(--font);letter-spacing:-.01em;}
+  .btn:active{transform:scale(.97);}
+  .btn-show{display:block;width:100%;background:var(--accent);color:#fff;font-size:15px;padding:14px;border-radius:var(--radius-sm);border:none;cursor:pointer;font-family:var(--font);font-weight:600;letter-spacing:-.01em;transition:opacity .15s;}
+  .btn-show:hover{opacity:.88;}
+  .rating-row{display:flex;gap:8px;margin-top:20px;}
+  .rating-row .btn{flex:1;}
+  .btn.missed{background:#fde8e8;color:#c0392b;}
+  .btn.hard{background:#fef3e2;color:#92400e;}
+  .btn.got{background:var(--dx-bg);color:var(--dx);}
+  .btn.missed:hover{background:#fcd2d2;}
+  .btn.hard:hover{background:#fde8c8;}
+  .btn.got:hover{background:#d4edda;}
+
+  /* Done screen */
+  #done{display:none;text-align:center;padding:52px 0;}
+  #done h2{font-size:30px;font-weight:700;letter-spacing:-.03em;margin-bottom:10px;}
+  #done .sub{font-size:16px;color:var(--ink-2);margin-bottom:28px;}
+  .stats-row{display:flex;gap:10px;justify-content:center;margin-bottom:30px;}
+  .stat-box{background:var(--surface);border:.5px solid var(--hair-soft);border-radius:var(--radius);padding:16px 20px;min-width:90px;box-shadow:var(--shadow);}
+  .stat-n{font-size:30px;font-weight:800;letter-spacing:-.04em;line-height:1;}
+  .stat-l{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-3);margin-top:4px;}
+  .stat-box.g .stat-n{color:var(--dx);}
+  .stat-box.h .stat-n{color:#92400e;}
+  .stat-box.m .stat-n{color:#c0392b;}
+  .next-info{font-size:14px;color:var(--ink-3);margin-bottom:24px;}
+  .btn-restart{display:inline-block;padding:13px 30px;background:var(--accent);color:#fff;border-radius:var(--radius-sm);font-size:15px;font-weight:600;border:none;cursor:pointer;font-family:var(--font);letter-spacing:-.01em;}
+  .btn-restart:hover{opacity:.88;}
+
+  /* Empty screen */
+  #empty{display:none;text-align:center;padding:52px 0;}
+  #empty h2{font-size:26px;font-weight:700;letter-spacing:-.025em;margin-bottom:10px;}
+  #empty p{font-size:15px;color:var(--ink-2);line-height:1.6;}
+
+  @media(max-width:460px){
+    .sign-name{font-size:19px;}
+    .rating-row .btn{font-size:13.5px;padding:11px 8px;}
+    .stats-row{gap:8px;}
+    .stat-box{min-width:80px;padding:14px 14px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="bar">
+    <a class="back" href="osce_atlas.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      Signs
+    </a>
+    <h1>Quiz</h1>
+    <div class="bar-end">
+      <button class="reset-btn" id="btn-reset" title="Reset all progress">Reset</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div id="quiz-area">
+    <div class="progress-row">
+      <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+      <div class="progress-label" id="progress-label">— / —</div>
+    </div>
+    <div class="filter-row" id="filter-chips"></div>
+    <div class="card-wrap">
+      <div class="card" id="card"></div>
+    </div>
+  </div>
+
+  <div id="done">
+    <h2>Session complete</h2>
+    <p class="sub" id="done-sub"></p>
+    <div class="stats-row">
+      <div class="stat-box g"><div class="stat-n" id="s-got">0</div><div class="stat-l">Got it</div></div>
+      <div class="stat-box h"><div class="stat-n" id="s-hard">0</div><div class="stat-l">Hard</div></div>
+      <div class="stat-box m"><div class="stat-n" id="s-missed">0</div><div class="stat-l">Missed</div></div>
+    </div>
+    <p class="next-info" id="done-next"></p>
+    <button class="btn-restart" id="btn-restart">Review again</button>
+  </div>
+
+  <div id="empty">
+    <h2>Nothing due today</h2>
+    <p>All cards reviewed — come back tomorrow.<br>Toggle an exam above to add more.</p>
+  </div>
+</main>
+
+<script>
+const COL = {cvs:"#e5484d",resp:"#0091ff",abdo:"#f5a623",neuro:"#8b5cf6",lump:"#14b8a6",breast:"#ec4899",neck:"#10b981",vasc:"#6366f1"};
+const EXAM_NAME = {cvs:"Cardiovascular",resp:"Respiratory",abdo:"Abdominal",neuro:"Neuro (limbs & cranial)",lump:"Lump",breast:"Breast",neck:"Neck & Thyroid",vasc:"Vascular"};
+
+/* ===== SIGNS DATA ===== */
+const SIGNS = [
+{id:"cvs",num:1,title:"Cardiovascular",sub:"Pulse character, JVP, the murmur table.",groups:[
+ {label:"Pulse & BP",signs:[
+  {label:"Pulse",name:"Slow-rising pulse",cue:"“Slow, sustained upstroke, narrow pulse pressure.”",dx:["**Aortic stenosis**","HOCM (softer, dynamic)"],ix:["**Bedside:** ECG (LVH), BP","**Bloods:** FBC, BNP","**Imaging:** echo (gradient/area), CXR"]},
+  {label:"Pulse",name:"Collapsing pulse",cue:"“Bounding then suddenly collapses on raising the arm.”",dx:["**Aortic regurgitation**","High-output: anaemia, thyrotoxicosis, pregnancy, AV fistula"],ix:["**Bedside:** ECG, BP (wide pulse pressure)","**Bloods:** FBC, TFTs, BNP","**Imaging:** echo, CXR"]},
+  {label:"Rhythm",name:"Irregularly irregular",cue:"“No pattern to the rhythm.”",dx:["**Atrial fibrillation**","Atrial flutter (variable block), ectopics"],ix:["**Bedside:** 12-lead ECG (no P waves)","**Bloods:** TFTs, U&E, FBC","**Imaging:** echo; CHA₂DS₂-VASc"]},
+  {label:"Radial",name:"Radio-radial / radio-femoral delay",cue:"“Radials mismatched; femoral late vs radial.”",dx:["Radio-radial → subclavian stenosis, **aortic dissection**","Radio-femoral → **coarctation**"],ix:["**Bedside:** four-limb BP, ECG","**Imaging:** CXR (rib notching, ‘3’ sign), CT aorta/echo"]},
+ ]},
+ {label:"JVP & praecordium",signs:[
+  {label:"Neck",name:"Raised JVP",cue:"“>3 cm above the sternal angle.”",dx:["**Right heart failure**","Tricuspid regurgitation, fluid overload, pericardial effusion, SVC obstruction"],ix:["**Bedside:** ECG, fluid balance","**Bloods:** BNP, U&E, FBC","**Imaging:** CXR, echo"]},
+  {label:"Palpation",name:"Displaced apex beat",cue:"“Displaced to anterior axillary line.”",dx:["LV dilatation — **DCM, MR, AR, prior MI**","Cardiomegaly"],ix:["**Bedside:** ECG, BP","**Bloods:** BNP, FBC, U&E","**Imaging:** echo, CXR"]},
+  {label:"Palpation",name:"Parasternal heave",cue:"“Sustained left parasternal heave.”",dx:["**RV hypertrophy** (pulmonary HTN, cor pulmonale)","Severe MR"],ix:["**Bedside:** ECG (RV strain)","**Imaging:** echo, CXR","**Bloods:** BNP"]},
+ ]},
+ {label:"Murmur table",signs:[
+  {label:"Auscultation",name:"ESM radiating to carotids",cue:"“Ejection systolic, URSE, to carotids; slow-rising pulse.”",dx:["**Aortic stenosis**","Aortic sclerosis, flow murmur, HOCM"],ix:["**Bedside:** ECG (LVH), BP","**Bloods:** FBC, BNP","**Imaging:** echo, CXR"]},
+  {label:"Auscultation",name:"PSM radiating to axilla",cue:"“Pansystolic at apex → axilla, louder in expiration.”",dx:["**Mitral regurgitation**","Tricuspid regurg, VSD"],ix:["**Bedside:** ECG","**Bloods:** BNP, FBC","**Imaging:** echo, CXR"]},
+  {label:"Auscultation",name:"Early diastolic at LSE",cue:"“EDM, sat forward, expiration; collapsing pulse.”",dx:["**Aortic regurgitation**","Pulmonary regurg (rare)"],ix:["**Bedside:** ECG, BP","**Bloods:** FBC, BNP, ±cultures","**Imaging:** echo, CXR"]},
+  {label:"Auscultation",name:"Mid-diastolic at apex",cue:"“Rumbling, bell, rolled left; malar flush, small pulse.”",dx:["**Mitral stenosis**","Atrial myxoma (rare)"],ix:["**Bedside:** ECG (AF, P-mitrale)","**Bloods:** FBC, BNP","**Imaging:** echo, CXR"]},
+ ]},
+ {label:"Periphery",signs:[
+  {label:"Hands",name:"Splinters / Osler / Janeway",cue:"“Splinter haemorrhages, painful pulp nodules.”",dx:["**Infective endocarditis**","Trauma/vasculitis (splinters alone)"],ix:["**Bedside:** ECG, urine dip, temp","**Bloods:** 3× cultures, FBC, CRP","**Imaging:** echo (TTE→TOE) — Duke criteria"]},
+  {label:"Legs",name:"Pitting oedema + basal crackles",cue:"“Oedema to knees, fine bibasal crackles.”",dx:["**Congestive cardiac failure**","Renal/nephrotic, hypoalbuminaemia"],ix:["**Bedside:** ECG, weight, fluid balance","**Bloods:** BNP, U&E, albumin, FBC","**Imaging:** CXR, echo"]},
+ ]},
+]},
+{id:"resp",num:2,title:"Respiratory",sub:"The percussion / breath-sound / tracheal grid.",groups:[
+ {label:"The grid",signs:[
+  {label:"Auscultation",name:"Dull, bronchial, ↑VR",cue:"“Dull, bronchial breathing, ↑ vocal resonance, central trachea.”",dx:["**Consolidation / pneumonia**","Dense collapse near patent airway"],ix:["**Bedside:** obs, SpO₂, temp, sputum","**Bloods:** FBC, CRP, U&E (CURB-65), cultures, ABG","**Imaging:** CXR"]},
+  {label:"Auscultation",name:"Stony dull, absent BS & VR",cue:"“Stony dull, breath sounds & resonance absent.”",dx:["**Pleural effusion**"],ix:["**Bedside:** obs, SpO₂","**Bloods:** FBC, CRP, albumin; pleural fluid (Light’s)","**Imaging:** CXR, pleural USS, CT"]},
+  {label:"Auscultation",name:"Hyper-resonant, ↓BS, ↓VR",cue:"“Hyper-resonant, ↓ breath sounds & resonance, central trachea.”",dx:["**Pneumothorax** (simple)","Large bullae"],ix:["**Bedside:** obs, SpO₂, ABG","**Imaging:** erect CXR","(Trachea AWAY + shock → **tension** = decompress, don’t image)"]},
+  {label:"Auscultation",name:"Dull, ↓all, trachea TOWARDS",cue:"“Dull, ↓ breath sounds & resonance, trachea pulled towards.”",dx:["**Lobar/lung collapse**","Pneumonectomy"],ix:["**Bedside:** obs, SpO₂","**Imaging:** CXR, CT chest, bronchoscopy"]},
+ ]},
+ {label:"Added sounds & periphery",signs:[
+  {label:"Auscultation",name:"Fine end-inspiratory crackles",cue:"“Fine Velcro crackles, don’t clear on cough.”",dx:["**Pulmonary fibrosis / ILD**","Pulmonary oedema (+ cardiac signs)"],ix:["**Bedside:** SpO₂, spirometry","**Bloods:** ABG, autoimmune screen","**Imaging:** CXR, HRCT; lung function"]},
+  {label:"Auscultation",name:"Expiratory wheeze",cue:"“Widespread expiratory wheeze.”",dx:["**Asthma**","**COPD**, bronchospasm"],ix:["**Bedside:** peak flow + reversibility, SpO₂","**Bloods:** ABG if severe","**Imaging:** CXR; spirometry"]},
+  {label:"Hands",name:"Clubbing (respiratory)",cue:"“Finger clubbing.”",dx:["**Lung cancer, bronchiectasis, fibrosis**","Empyema, cyanotic CHD"],ix:["**Bedside:** SpO₂, sputum","**Bloods:** FBC, CRP","**Imaging:** CXR → CT chest; bronchoscopy"]},
+  {label:"Hands",name:"CO₂ retention flap",cue:"“Coarse flap, wrists cocked back.”",dx:["**Type 2 respiratory failure** (COPD)","Hepatic, uraemic (other contexts)"],ix:["**Bedside:** ABG (↑CO₂, ↓pH), SpO₂","**Imaging:** CXR","**Bloods:** bicarbonate"]},
+  {label:"Eyes",name:"Horner’s syndrome",cue:"“Ptosis, miosis, anhidrosis on one side.”",dx:["**Pancoast tumour**","Carotid dissection, brainstem lesion"],ix:["**Bedside:** check hand wasting (T1)","**Imaging:** CXR → CT chest apex, MRI"]},
+ ]},
+]},
+{id:"abdo",num:3,title:"Abdominal",sub:"Organomegaly, CLD stigmata, masses by region.",groups:[
+ {label:"Organomegaly",signs:[
+  {label:"Palpation",name:"Hepatomegaly",cue:"“Smooth liver edge 4 cm below costal margin, moves with breathing.”",dx:["**Chronic liver disease, RHF, malignancy**","Lymphoma, sarcoid, amyloid"],ix:["**Bedside:** obs, urine dip","**Bloods:** LFTs, clotting, FBC, hep serology, AFP","**Imaging:** USS → CT; biopsy"]},
+  {label:"Palpation",name:"Splenomegaly",cue:"“LUQ mass with notch, can’t get above it, dull, moves on inspiration.”",dx:["**Haematological** — lymphoma, leukaemia, MPN","Portal HTN, infection, haemolysis"],ix:["**Bedside:** obs","**Bloods:** FBC + film, LFTs, LDH, serology","**Imaging:** USS, CT; marrow"]},
+  {label:"Palpation",name:"Ballotable flank mass(es)",cue:"“Bilateral, ballotable, resonant, can get above.”",dx:["**Polycystic kidneys** (bilateral)","RCC, hydronephrosis (unilateral)"],ix:["**Bedside:** BP, urine dip","**Bloods:** U&E, FBC","**Imaging:** renal USS, CT"]},
+  {label:"Palpation",name:"Expansile central mass",cue:"“Pulsatile and expansile above umbilicus.”",dx:["**Abdominal aortic aneurysm**"],ix:["**Bedside:** BP, obs","**Imaging:** USS (size) → CT angiogram if ≥5.5 cm"]},
+ ]},
+ {label:"CLD stigmata",signs:[
+  {label:"Inspection",name:"Spider naevi + gynaecomastia",cue:"“>5 spider naevi, gynaecomastia, palmar erythema.”",dx:["**Chronic liver disease / cirrhosis**"],ix:["**Bedside:** obs, urine dip","**Bloods:** LFTs, INR, albumin, FBC, liver screen","**Imaging:** USS/fibroscan; OGD for varices"]},
+  {label:"Arms",name:"Asterixis (hepatic flap)",cue:"“Coarse flap, arms out, wrists dorsiflexed.”",dx:["**Hepatic encephalopathy**","CO₂ retention, uraemia"],ix:["**Bedside:** glucose, GCS","**Bloods:** ammonia, LFTs, clotting, U&E","Find precipitant (bleed, infection, constipation)"]},
+  {label:"Neck",name:"Virchow’s node",cue:"“Hard fixed left supraclavicular node.”",dx:["**Gastric/intra-abdominal malignancy** (Troisier)","Lymphoma"],ix:["**Bedside:** node + abdo exam","**Bloods:** FBC, LFTs, LDH","**Imaging:** CT CAP, biopsy, OGD"]},
+ ]},
+ {label:"Surgical & special tests",signs:[
+  {label:"Inspection",name:"Stoma",cue:"“RIF stoma, spouted, green liquid.”",dx:["**Ileostomy** (RIF, spouted)","Colostomy (LIF, flush), urostomy"],ix:["**Bedside:** inspect output, obs","Context: IBD, colorectal Ca, diverticular"]},
+  {label:"Groin",name:"Reducible cough-impulse lump",cue:"“Groin lump, cough impulse, reduces lying flat.”",dx:["**Inguinal hernia**","Femoral hernia, saphena varix, node"],ix:["**Bedside:** standing & lying","**Imaging:** USS; surgical review"]},
+  {label:"Special",name:"Shifting dullness",cue:"“Shifting dullness, fluid thrill.”",dx:["**Ascites** — cirrhosis, malignancy, RHF, hypoalbuminaemia"],ix:["**Bedside:** obs, weight","**Bloods:** LFTs/albumin, FBC","**Imaging:** USS; ascitic tap (SAAG, cytology)"]},
+  {label:"Special",name:"Murphy’s sign",cue:"“RUQ palpation in inspiration → catch of breath.”",dx:["**Acute cholecystitis**"],ix:["**Bedside:** obs, temp, urine dip","**Bloods:** FBC, CRP, LFTs, amylase","**Imaging:** USS"]},
+ ]},
+]},
+{id:"neuro",num:4,title:"Neuro (limbs & cranial)",sub:"UMN/LMN split, gait, the cranial-nerve patterns.",groups:[
+ {label:"Pattern recognition",signs:[
+  {label:"Pattern",name:"UMN pattern",cue:"“↑tone, brisk reflexes, upgoing plantars, no wasting.”",dx:["Lesion **above anterior horn** — stroke, MS, cord compression, tumour"],ix:["**Bedside:** glucose, BP, ECG","**Imaging:** CT/MRI brain or cord","**Bloods:** per cause"]},
+  {label:"Pattern",name:"LMN pattern",cue:"“Wasting, fasciculations, ↓tone, ↓reflexes, downgoing plantars.”",dx:["Lesion **along motor neuron** — MND, root, plexus, nerve, NMJ, muscle"],ix:["**Bedside:** map distribution","**Bloods:** B12, glucose, TFTs","**Special:** nerve conduction; MRI"]},
+  {label:"Cerebellar",name:"DANISH signs",cue:"“Past-pointing, intention tremor, slurred speech.”",dx:["**Cerebellar disease** — stroke, MS, alcohol, posterior-fossa tumour"],ix:["**Bedside:** glucose, gait, Romberg","**Bloods:** B12, TFTs","**Imaging:** MRI brain"]},
+ ]},
+ {label:"Limb signs",signs:[
+  {label:"Inspection",name:"Thenar wasting",cue:"“Wasted thenar eminence.”",dx:["**Median nerve / carpal tunnel**","C8/T1 root, MND"],ix:["**Bedside:** Tinel’s/Phalen’s, sensory map","**Bloods:** glucose, TFTs","**Special:** nerve conduction"]},
+  {label:"Inspection",name:"Fasciculations",cue:"“Fasciculations across muscle groups.”",dx:["**Motor neurone disease**","Benign, radiculopathy"],ix:["**Bedside:** UMN+LMN + bulbar exam","**Special:** EMG","**Imaging:** MRI (exclude mimics)"]},
+  {label:"Screening",name:"Pronator drift",cue:"“Arm pronates and drifts, eyes closed.”",dx:["**Contralateral UMN lesion** (stroke)"],ix:["**Bedside:** glucose, BP","**Imaging:** CT/MRI brain"]},
+  {label:"Gait",name:"High-stepping gait (foot drop)",cue:"“Lifts foot high to clear toes.”",dx:["**Common peroneal palsy**","L5 radiculopathy, neuropathy"],ix:["**Bedside:** dorsiflexion/eversion, sensory","**Special:** nerve conduction; MRI L-spine"]},
+  {label:"Sensation",name:"Glove/stocking loss",cue:"“Sensory loss in glove/stocking pattern.”",dx:["**Peripheral neuropathy** — diabetes, alcohol, B12, CKD, drugs"],ix:["**Bedside:** glucose, urine dip","**Bloods:** HbA1c, B12, TFTs, U&E","**Special:** nerve conduction"]},
+ ]},
+ {label:"Cranial nerves",signs:[
+  {label:"CN II",name:"RAPD",cue:"“Affected pupil dilates on swinging light.”",dx:["**Optic neuritis** (MS)","Optic compression, retinal disease"],ix:["**Bedside:** acuity, colour, fundoscopy, fields","**Imaging:** MRI brain/orbits","**Special:** VEPs"]},
+  {label:"Fields",name:"Bitemporal hemianopia",cue:"“Both temporal fields lost.”",dx:["**Chiasm lesion** — pituitary adenoma, craniopharyngioma"],ix:["**Bloods:** pituitary profile","**Imaging:** MRI pituitary","**Special:** perimetry"]},
+  {label:"CN III",name:"Third nerve palsy",cue:"“Down and out, ptosis, dilated pupil.”",dx:["**Surgical** — PCom aneurysm (pupil involved)","**Medical** — microvascular (pupil spared)"],ix:["**Bedside:** glucose, BP, pupil","**Imaging:** CT/MR angiogram","**Bloods:** glucose/HbA1c"]},
+  {label:"CN VII",name:"LMN facial palsy (forehead involved)",cue:"“Whole side of face weak incl. forehead.”",dx:["**Bell’s palsy**","Ramsay Hunt, parotid tumour, CPA lesion"],ix:["**Bedside:** ear (vesicles), taste, eye care","MRI if atypical/progressive"]},
+  {label:"CN VII",name:"UMN facial palsy (forehead spared)",cue:"“Lower face weak, forehead spared.”",dx:["**Contralateral UMN lesion** — stroke, tumour"],ix:["**Bedside:** stroke assessment, glucose, BP","**Imaging:** CT/MRI brain"]},
+  {label:"VIII",name:"Weber/Rinne pattern",cue:"“Weber lateralises; Rinne bone>air that side.”",dx:["**Conductive loss** that side","Sensorineural on the other if air>bone"],ix:["**Bedside:** otoscopy","**Special:** audiometry; MRI IAM if asymmetric SN loss"]},
+ ]},
+]},
+{id:"lump",num:5,title:"Lump",sub:"CAMPFIRE behaviour → differential.",groups:[
+ {label:"By behaviour",signs:[
+  {label:"Transillumination",name:"Transilluminates",cue:"“Lights up with a torch.”",dx:["**Fluid-filled** — cyst, hydrocoele","NOT blood (varicocoele)"],ix:["**Bedside:** CAMPFIRE, nodes","**Imaging:** USS (cystic vs solid)"]},
+  {label:"Pulsatility",name:"Expansile pulsatile",cue:"“Pulsatile and expansile.”",dx:["**Aneurysm** (AAA, popliteal)","Transmitted = not expansile"],ix:["**Bedside:** auscultate bruit","**Imaging:** USS / CT angiogram"]},
+  {label:"Auscultation",name:"Bruit over lump",cue:"“Bruit / machinery murmur.”",dx:["**Vascular / AV fistula / high flow**"],ix:["**Imaging:** duplex USS; angiography"]},
+  {label:"Cough impulse",name:"Reducible cough impulse",cue:"“Cough impulse, reduces.”",dx:["**Hernia**","Saphena varix"],ix:["**Bedside:** standing & lying","**Imaging:** USS; surgical review"]},
+  {label:"Consistency",name:"Hard fixed irregular + hard nodes",cue:"“Hard, tethered, irregular; hard regional nodes.”",dx:["**Malignancy**","(Soft mobile tender → benign/reactive)"],ix:["**Bedside:** node survey","**Imaging:** USS, FNA/core biopsy, staging CT"]},
+ ]},
+]},
+{id:"breast",num:6,title:"Breast",sub:"Skin/nipple signs + triple assessment.",groups:[
+ {label:"Skin & nipple",signs:[
+  {label:"Inspection",name:"Tethering/puckering on arm raise",cue:"“Skin puckers over lump as arms raise.”",dx:["**Breast carcinoma**","Fat necrosis, prior surgery"],ix:["**Bedside:** breast + axillary nodes","**Triple assessment:** clinical + imaging (USS<35 / mammogram≥35) + core biopsy"]},
+  {label:"Inspection",name:"Peau d’orange",cue:"“Orange-peel skin dimpling.”",dx:["**Inflammatory breast cancer**","Locally advanced carcinoma"],ix:["**Triple assessment** (urgent); staging"]},
+  {label:"Inspection",name:"Nipple scaling not responding",cue:"“Persistent scaly eczematous nipple.”",dx:["**Paget’s of the nipple**","Eczema (spares nipple)"],ix:["**Triple assessment** + nipple biopsy"]},
+  {label:"Inspection",name:"Newly inverted nipple",cue:"“New inversion, can’t evert.”",dx:["**Underlying carcinoma**","Duct ectasia, periductal mastitis"],ix:["**Triple assessment**"]},
+  {label:"Discharge",name:"Bloody single-duct discharge",cue:"“Blood-stained, single duct.”",dx:["**Duct papilloma**","Ductal carcinoma, duct ectasia"],ix:["**Bedside:** dipstick for blood","**Imaging:** USS/mammogram, ductography; biopsy"]},
+ ]},
+]},
+{id:"neck",num:7,title:"Neck & Thyroid",sub:"Midline manoeuvres, node vs gland, thyroid status.",groups:[
+ {label:"Midline manoeuvres",signs:[
+  {label:"Swallow",name:"Rises on swallowing",cue:"“Moves up on swallowing.”",dx:["**Thyroid mass** — goitre, nodule, cyst, carcinoma"],ix:["**Bedside:** thyroid status, percuss retrosternal","**Bloods:** TFTs","**Imaging:** thyroid USS ± FNA"]},
+  {label:"Tongue",name:"Rises on tongue protrusion",cue:"“Moves up on tongue protrusion.”",dx:["**Thyroglossal cyst**"],ix:["**Imaging:** USS; confirm normal thyroid (Sistrunk)"]},
+ ]},
+ {label:"Nodes & status",signs:[
+  {label:"Palpation",name:"Hard fixed cervical nodes",cue:"“Hard, non-tender, tethered nodes.”",dx:["**Metastatic carcinoma, lymphoma**"],ix:["**Bedside:** ENT/node exam","**Bloods:** FBC, LDH","**Imaging:** USS, core biopsy, CT; nasendoscopy"]},
+  {label:"Palpation",name:"Soft mobile tender nodes",cue:"“Soft, mobile, tender nodes.”",dx:["**Reactive lymphadenopathy** (infective)","EBV, pharyngitis"],ix:["**Bedside:** throat exam","**Bloods:** FBC, monospot","Safety-net, re-examine"]},
+  {label:"Hands/eyes",name:"Tremor + warm palms + AF",cue:"“Fine tremor, warm moist palms, irregular pulse.”",dx:["**Hyperthyroidism** — Graves’, toxic nodule, thyroiditis"],ix:["**Bedside:** ECG (AF)","**Bloods:** TFTs, TSH-receptor Ab","**Imaging:** thyroid USS, uptake scan"]},
+  {label:"Eyes",name:"Exophthalmos / lid lag",cue:"“Proptosis, lid retraction, lid lag.”",dx:["**Graves’ disease** (exophthalmos specific)"],ix:["**Bloods:** TFTs, TSH-R Ab","**Imaging:** CT/MRI orbits if compressive"]},
+  {label:"General",name:"Coarse facies + slow-relaxing reflexes",cue:"“Dry skin, lost outer eyebrow, slow ankle jerk.”",dx:["**Hypothyroidism** — Hashimoto’s, iatrogenic"],ix:["**Bloods:** TFTs, anti-TPO","**Bedside:** ECG (bradycardia), lipids"]},
+ ]},
+]},
+{id:"vasc",num:8,title:"Vascular",sub:"Arterial (upper/lower), venous, the emergency leg.",groups:[
+ {label:"Arterial",signs:[
+  {label:"Auscultation",name:"Carotid bruit",cue:"“Bruit over the carotid.”",dx:["**Carotid stenosis**","(Radiating AS murmur — exclude)"],ix:["**Bedside:** don’t palpate hard, BP both arms","**Imaging:** carotid duplex; CT/MR angiogram"]},
+  {label:"Inspection",name:"Punched-out ulcer on foot/toes",cue:"“Deep, well-demarcated ulcer over malleolus/toes.”",dx:["**Arterial ulcer** (PAD)","Neuropathic (painless, pressure points)"],ix:["**Bedside:** pulses, CRT, ABPI, glucose","**Bloods:** HbA1c, lipids","**Imaging:** arterial duplex; angiography"]},
+  {label:"Inspection",name:"Shiny hairless cool foot",cue:"“Shiny hairless skin, cool, weak pulses.”",dx:["**Chronic PAD / claudication**"],ix:["**Bedside:** ABPI (0.5–0.8), pulses","**Imaging:** duplex","**Bloods:** glucose, lipids"]},
+  {label:"Emergency",name:"The 6 Ps",cue:"“Pain, pale, pulseless, paraesthetic, paralysed, perishingly cold.”",dx:["**Acute limb ischaemia** — surgical emergency"],ix:["**Bedside:** ABPI<0.5, Doppler, ECG (AF)","**Bloods:** FBC, U&E, clotting, G&S, lactate","**Imaging:** urgent CT angiogram — don’t delay referral"]},
+ ]},
+ {label:"Venous",signs:[
+  {label:"Inspection",name:"Gaiter skin changes",cue:"“Haemosiderin, venous eczema, inverted champagne bottle.”",dx:["**Chronic venous insufficiency**"],ix:["**Bedside:** exclude arterial, **ABPI before compression**","**Imaging:** venous duplex (reflux)"]},
+  {label:"Inspection",name:"Sloping-edge medial ulcer",cue:"“Shallow sloping ulcer, sloughy base, medial gaiter.”",dx:["**Venous ulcer** (LSV medial; SSV lateral)","Mixed — check ABPI"],ix:["**Bedside:** ABPI (exclude arterial first)","**Imaging:** venous duplex"]},
+  {label:"Palpation",name:"Hot tender swollen calf",cue:"“Red, hot, swollen, tender calf.”",dx:["**DVT** until proven otherwise","Cellulitis, ruptured Baker’s cyst"],ix:["**Bedside:** Wells score, obs","**Bloods:** D-dimer (if Wells low)","**Imaging:** venous duplex USS"]},
+  {label:"Special",name:"Thrill/cough impulse at SFJ",cue:"“Palpable thrill & cough impulse at SFJ; tap test transmits.”",dx:["**SFJ incompetence** (varicose veins)","Saphena varix"],ix:["**Bedside:** handheld Doppler at SFJ/SPJ","**Imaging:** venous duplex"]},
+ ]},
+]},
+];
+
+/* ===== FLATTEN INTO CARD ARRAY ===== */
+const ALL_CARDS = [];
+SIGNS.forEach(sec => {
+  sec.groups.forEach(g => {
+    g.signs.forEach(sg => {
+      const rawId = sec.id + '__' + sg.name.toLowerCase().replace(/[^a-z0-9]+/g,'_');
+      ALL_CARDS.push({ id:rawId, exam:sec.id, examName:EXAM_NAME[sec.id], group:g.label, label:sg.label, name:sg.name, cue:sg.cue, dx:sg.dx, ix:sg.ix });
+    });
+  });
+});
+
+/* ===== SPACED REPETITION ===== */
+const STORAGE_KEY = 'osce_quiz_v1';
+
+function localDate(d) {
+  return [d.getFullYear(), String(d.getMonth()+1).padStart(2,'0'), String(d.getDate()).padStart(2,'0')].join('-');
+}
+const today = localDate(new Date());
+
+function addDays(n) {
+  const d = new Date(); d.setDate(d.getDate() + Math.round(n)); return localDate(d);
+}
+function loadProgress() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch { return {}; }
+}
+function saveProgress(p) { localStorage.setItem(STORAGE_KEY, JSON.stringify(p)); }
+
+function isDue(rec) { return !rec || rec.due <= today; }
+
+function applyRating(progress, id, r) {
+  const rec = progress[id] || { interval:1 };
+  if (r === 'got') {
+    rec.interval = Math.max(1, Math.round(rec.interval * 2.5));
+    rec.due = addDays(rec.interval);
+  } else if (r === 'hard') {
+    rec.interval = Math.max(1, Math.round(rec.interval * 1.2));
+    rec.due = addDays(1);
+  } else {
+    rec.interval = 1;
+    rec.due = today;
+  }
+  progress[id] = rec;
+}
+
+/* ===== STATE ===== */
+let activeExams = new Set(Object.keys(COL));
+let queue = [], queuePos = 0;
+let sessionStats = {got:0, hard:0, missed:0};
+let sessionSeen = {};  // id -> count (cap replays at 1)
+let progress = {};
+
+function buildQueue() {
+  progress = loadProgress();
+  const base = ALL_CARDS.filter(c => activeExams.has(c.exam) && isDue(progress[c.id]));
+  // Fisher-Yates shuffle
+  for (let i = base.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i+1));
+    [base[i], base[j]] = [base[j], base[i]];
+  }
+  queue = base; queuePos = 0;
+  sessionStats = {got:0, hard:0, missed:0};
+  sessionSeen = {};
+}
+
+/* ===== FORMAT ===== */
+function fmt(t) {
+  return t
+    .replace(/^\*\*(.+?):\*\*/, '<span class="ix-step">$1:</span>')
+    .replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
+}
+
+/* ===== RENDER ===== */
+function updateProgress() {
+  const total = queue.length, done = queuePos;
+  document.getElementById('progress-fill').style.width = (total ? (done/total)*100 : 0) + '%';
+  document.getElementById('progress-label').textContent = done + ' / ' + total;
+}
+
+function setExamColor(exam) {
+  document.documentElement.style.setProperty('--card-exam', COL[exam]);
+}
+
+function showFront() {
+  const c = queue[queuePos];
+  setExamColor(c.exam);
+  document.getElementById('card').innerHTML = `
+    <div class="card-meta">
+      <span class="exam-badge">${c.examName}</span>
+      <span class="group-tag">${c.label}</span>
+    </div>
+    <div class="sign-label">${c.group}</div>
+    <div class="sign-name">${c.name}</div>
+    <div class="sign-cue">${c.cue}</div>
+    <button class="btn-show" id="btn-show">Show answer</button>
+  `;
+  document.getElementById('btn-show').addEventListener('click', doFlip);
+  updateProgress();
+}
+
+function doFlip() {
+  const cardEl = document.getElementById('card');
+  const c = queue[queuePos];
+  cardEl.classList.add('flipping');
+  setTimeout(() => {
+    const dxHTML = c.dx.map((d,i) =>
+      `<li class="dx-item${i===0?' primary':''}">${fmt(d)}</li>`
+    ).join('');
+    const ixHTML = c.ix.map(i => `<li class="ix-item">${fmt(i)}</li>`).join('');
+    cardEl.innerHTML = `
+      <div class="card-meta">
+        <span class="exam-badge">${c.examName}</span>
+        <span class="group-tag">${c.label}</span>
+      </div>
+      <div class="sign-name">${c.name}</div>
+      <div class="sec-head first">Differentials</div>
+      <ul class="dx-list">${dxHTML}</ul>
+      <div class="sec-head">Investigations</div>
+      <ul class="ix-list">${ixHTML}</ul>
+      <div class="rating-row">
+        <button class="btn missed" data-r="missed">Missed</button>
+        <button class="btn hard" data-r="hard">Hard</button>
+        <button class="btn got" data-r="got">Got it ✓</button>
+      </div>
+    `;
+    cardEl.classList.remove('flipping');
+    cardEl.querySelectorAll('.rating-row .btn').forEach(b =>
+      b.addEventListener('click', () => rate(b.dataset.r))
+    );
+  }, 190);
+}
+
+function rate(r) {
+  const c = queue[queuePos];
+  sessionStats[r]++;
+  applyRating(progress, c.id, r);
+  saveProgress(progress);
+
+  if (r === 'missed') {
+    const seen = sessionSeen[c.id] || 0;
+    if (seen < 1) queue.push(c); // replay once
+  }
+  sessionSeen[c.id] = (sessionSeen[c.id] || 0) + 1;
+
+  queuePos++;
+  if (queuePos >= queue.length) { showDone(); return; }
+
+  const cardEl = document.getElementById('card');
+  cardEl.classList.add('flipping');
+  setTimeout(() => { showFront(); cardEl.classList.remove('flipping'); }, 190);
+}
+
+function showDone() {
+  document.getElementById('quiz-area').style.display = 'none';
+  document.getElementById('done').style.display = 'block';
+  document.getElementById('s-got').textContent = sessionStats.got;
+  document.getElementById('s-hard').textContent = sessionStats.hard;
+  document.getElementById('s-missed').textContent = sessionStats.missed;
+
+  const total = sessionStats.got + sessionStats.hard + sessionStats.missed;
+  document.getElementById('done-sub').textContent =
+    total + ' card' + (total !== 1 ? 's' : '') + ' reviewed';
+
+  const prog = loadProgress();
+  const tom = addDays(1);
+  const dueT = ALL_CARDS.filter(c => {
+    if (!activeExams.has(c.exam)) return false;
+    const r = prog[c.id]; return r && r.due <= tom && r.due > today;
+  }).length;
+  document.getElementById('done-next').textContent = dueT
+    ? dueT + ' card' + (dueT !== 1 ? 's' : '') + ' due tomorrow'
+    : 'Nothing due tomorrow — well done.';
+}
+
+function showEmpty() {
+  document.getElementById('quiz-area').style.display = 'none';
+  document.getElementById('done').style.display = 'none';
+  document.getElementById('empty').style.display = 'block';
+}
+
+function resetToQuiz() {
+  document.getElementById('done').style.display = 'none';
+  document.getElementById('empty').style.display = 'none';
+  document.getElementById('quiz-area').style.display = 'block';
+}
+
+/* ===== FILTER CHIPS ===== */
+function renderFilters() {
+  const row = document.getElementById('filter-chips');
+  row.innerHTML = '';
+  Object.keys(COL).forEach(exam => {
+    const btn = document.createElement('button');
+    btn.className = 'fchip' + (activeExams.has(exam) ? ' on' : '');
+    btn.textContent = EXAM_NAME[exam];
+    if (activeExams.has(exam)) btn.style.background = COL[exam];
+    btn.addEventListener('click', () => {
+      if (activeExams.has(exam)) {
+        if (activeExams.size <= 1) return;
+        activeExams.delete(exam);
+        btn.classList.remove('on');
+        btn.style.background = '';
+      } else {
+        activeExams.add(exam);
+        btn.classList.add('on');
+        btn.style.background = COL[exam];
+      }
+      buildQueue();
+      if (queue.length === 0) { showEmpty(); }
+      else { resetToQuiz(); showFront(); }
+    });
+    row.appendChild(btn);
+  });
+}
+
+/* ===== INIT ===== */
+document.getElementById('btn-restart').addEventListener('click', () => {
+  buildQueue();
+  if (queue.length === 0) { showEmpty(); }
+  else { resetToQuiz(); showFront(); }
+});
+
+document.getElementById('btn-reset').addEventListener('click', () => {
+  if (!confirm('Reset all quiz progress? This clears your spaced-repetition history.')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  buildQueue();
+  if (queue.length === 0) { showEmpty(); }
+  else { resetToQuiz(); showFront(); }
+});
+
+buildQueue();
+renderFilters();
+if (queue.length === 0) { showEmpty(); }
+else { showFront(); }
+</script>
+</body>
+</html>
