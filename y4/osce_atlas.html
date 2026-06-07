@@ -197,7 +197,7 @@ const SIGNS = [
  {label:"Pulse & BP",signs:[
   {label:"Pulse",name:"Slow-rising pulse",cue:"“Slow, sustained upstroke, narrow pulse pressure.”",dx:["**Aortic stenosis**","HOCM (softer, dynamic)"],ix:["**Bedside:** ECG (LVH), BP","**Bloods:** FBC, BNP","**Imaging:** echo (gradient/area), CXR"]},
   {label:"Pulse",name:"Collapsing pulse",cue:"“Bounding then suddenly collapses on raising the arm.”",dx:["**Aortic regurgitation**","High-output: anaemia, thyrotoxicosis, pregnancy, AV fistula"],ix:["**Bedside:** ECG, BP (wide pulse pressure)","**Bloods:** FBC, TFTs, BNP","**Imaging:** echo, CXR"]},
-  {label:"Rhythm",name:"Irregularly irregular",cue:"“No pattern to the rhythm.”",dx:["**Atrial fibrillation**","Atrial flutter (variable block), ectopics"],ix:["**Bedside:** 12-lead ECG (no P waves)","**Bloods:** TFTs, U&E, FBC","**Imaging:** echo; CHA₂DS₂-VASc"]},
+  {label:"Rhythm",name:"Irregularly irregular",cue:"“No pattern to the rhythm.”",dx:["**Atrial fibrillation**","Atrial flutter (variable block), ectopics"],ix:["**Bedside:** 12-lead ECG (no P waves)","**Bloods:** TFTs, U&E, FBC","**Imaging:** echo"]},
   {label:"Radial",name:"Radio-radial / radio-femoral delay",cue:"“Radials mismatched; femoral late vs radial.”",dx:["Radio-radial → subclavian stenosis, **aortic dissection**","Radio-femoral → **coarctation**"],ix:["**Bedside:** four-limb BP, ECG","**Imaging:** CXR (rib notching, ‘3’ sign), CT aorta/echo"]},
  ]},
  {label:"JVP & praecordium",signs:[
@@ -339,16 +339,17 @@ const POOLS = [
    ["Clotting","bloods",["abdo","vasc"]],
    ["Duplex USS","imaging",["lump","vasc"]],
    ["Urine dip","bedside",["abdo","cvs"]],
+   ["Four-limb BP","bedside",["cvs","vasc"]],
  ]},
  {n:1,tests:[
-   ["Troponin","bloods",["cvs"]],["BNP","bloods",["cvs"]],["Echo","imaging",["cvs"]],["Coronary angiogram","imaging",["cvs"]],
+   ["Troponin","bloods",["cvs"]],["BNP","bloods",["cvs"]],["Echo","imaging",["cvs"]],["Coronary angiogram","imaging",["cvs"]],["Blood cultures","bloods",["cvs"]],
    ["ABG","bedside",["resp"]],["Peak flow","bedside",["resp"]],["Sputum","bedside",["resp"]],["CT chest","imaging",["resp"]],["HRCT","imaging",["resp"]],["Spirometry","imaging",["resp"]],["Bronchoscopy","imaging",["resp"]],
-   ["LFTs","bloods",["abdo"]],["Amylase","bloods",["abdo"]],["Abdominal USS","imaging",["abdo"]],["CT abdomen","imaging",["abdo"]],["Endoscopy","imaging",["abdo"]],
-   ["B12 / folate","bloods",["neuro"]],["HbA1c","bloods",["neuro"]],["CT/MRI brain","imaging",["neuro"]],["MRI spine","imaging",["neuro"]],["Nerve conduction","imaging",["neuro"]],["LP","imaging",["neuro"]],
+   ["LFTs","bloods",["abdo"]],["Amylase","bloods",["abdo"]],["Abdominal USS","imaging",["abdo"]],["CT abdomen","imaging",["abdo"]],["Endoscopy","imaging",["abdo"]],["Liver screen","bloods",["abdo"]],["Hep serology","bloods",["abdo"]],["AFP","bloods",["abdo"]],["Blood film","bloods",["abdo"]],["Serum ammonia","bloods",["abdo"]],["Ascitic tap","imaging",["abdo"]],
+   ["B12 / folate","bloods",["neuro"]],["HbA1c","bloods",["neuro"]],["CT/MRI brain","imaging",["neuro"]],["MRI spine","imaging",["neuro"]],["Nerve conduction","imaging",["neuro"]],["LP","imaging",["neuro"]],["Pituitary profile","bloods",["neuro"]],["VEPs","imaging",["neuro"]],["Audiometry","imaging",["neuro"]],
    ["USS","imaging",["lump"]],
-   ["Mammogram / USS","imaging",["breast"]],
-   ["Thyroid antibodies","bloods",["neck"]],["LDH","bloods",["neck"]],["Thyroid USS","imaging",["neck"]],
-   ["ABPI","bedside",["vasc"]],["Doppler","bedside",["vasc"]],["D-dimer","bloods",["vasc"]],["Glucose / lipids","bloods",["vasc"]],["CT angiogram","imaging",["vasc"]],["Angiography","imaging",["vasc"]],
+   ["Mammogram / USS","imaging",["breast"]],["Triple assessment","bedside",["breast"]],
+   ["Thyroid antibodies","bloods",["neck"]],["LDH","bloods",["neck"]],["Thyroid USS","imaging",["neck"]],["Thyroid uptake scan","imaging",["neck"]],["MRI orbits","imaging",["neck"]],["Monospot / EBV serology","bloods",["neck"]],
+   ["ABPI","bedside",["vasc"]],["Doppler","bedside",["vasc"]],["D-dimer","bloods",["vasc"]],["Glucose / lipids","bloods",["vasc"]],["CT angiogram","imaging",["vasc"]],["Angiography","imaging",["vasc"]],["Wells score","bedside",["vasc"]],
  ]},
 ];
 
@@ -420,6 +421,22 @@ const TEST_INFO = {
  "Glucose / lipids":{how:"Fasting glucose/HbA1c and lipid profile — the modifiable vascular risk factors.",think:"Think glucose and lipids in any arterial disease — they're the <b>cause you can treat</b>, and finding them changes long-term management more than the imaging does."},
  "CT angiogram":{how:"Contrast CT mapping the arterial tree. Urgent in acute limb ischaemia and dissection.",think:"Think CT angiogram when you need the arterial <b>roadmap</b> urgently — the cold pulseless leg, suspected dissection, or planning revascularisation. Don't let it delay the vascular referral."},
  "Angiography":{how:"Catheter contrast study; can be diagnostic and therapeutic (angioplasty/stent).",think:"Think formal angiography when intervention is on the table — it both confirms the lesion and treats it."},
+ "Four-limb BP":{how:"BP in all four limbs using appropriate cuff. Upper-high/lower-low difference is pathognomonic of coarctation.",think:"Think four-limb BP whenever radio-femoral delay is found or coarctation is suspected."},
+ "Blood cultures":{how:"3 sets from different sites before antibiotics. Incubate 5 days. Sensitivity ~65–70% in bacteraemia.",think:"Think blood cultures in any fever with a cardiac prosthesis/murmur, or when IE is on the differential."},
+ "Liver screen":{how:"Hep B/C serology, ANA, ASMA, AMA, LKM antibodies, caeruloplasmin, alpha-1-antitrypsin, ferritin.",think:"Think liver screen when CLD is confirmed but the cause is unknown — it changes management."},
+ "Hep serology":{how:"HBsAg, HCV antibody, HBcAb. Baseline before treatment; if positive, genotype and viral load.",think:"Think hep serology in any unexplained liver disease, especially with risk factors."},
+ "AFP":{how:"Alpha-fetoprotein: a tumour marker for HCC. Also raised in pregnancy and some germ-cell tumours.",think:"Think AFP in a cirrhotic patient with new hepatomegaly or a hepatic mass on USS — screens for HCC."},
+ "Blood film":{how:"Peripheral blood smear reviewed by haematologist. Identifies cell morphology (spherocytes, blasts, target cells).",think:"Think blood film when FBC flags an abnormality — it moves from 'something's wrong' to 'what exactly'."},
+ "Serum ammonia":{how:"Serum sample processed immediately (ice). Correlates with encephalopathy grade but not perfectly.",think:"Think ammonia in any patient with liver disease and reduced consciousness or confusion."},
+ "Ascitic tap":{how:"Diagnostic: fluid for SAAG, protein, cytology, MC&S, LDH. SAAG ≥11 g/L → portal hypertension.",think:"Think ascitic tap to characterise new ascites — the SAAG tells you portal vs non-portal cause."},
+ "Pituitary profile":{how:"GH, IGF-1, prolactin, LH, FSH, cortisol, TSH — assesses pituitary axis function and mass effect.",think:"Think pituitary profile when a chiasm/sellar lesion is found — it characterises both function and tumour type."},
+ "VEPs":{how:"Visual evoked potentials — delayed P100 latency suggests demyelination of the optic nerve.",think:"Think VEPs when optic neuritis is suspected clinically but MRI is equivocal — confirms demyelinating conduction delay."},
+ "Audiometry":{how:"Pure-tone audiogram. Air and bone conduction at each frequency. Localises conductive vs sensorineural loss.",think:"Think audiometry after bedside Weber/Rinne to formally quantify and characterise a hearing loss."},
+ "Triple assessment":{how:"Three components must all be done: clinical exam + imaging (USS<35/mammogram≥35) + core biopsy. No single component is sufficient.",think:"Think triple assessment for any breast lump or nipple change. The combination has >99% sensitivity for carcinoma."},
+ "Thyroid uptake scan":{how:"Tc99m or I123 scintiscan. Hot nodule = benign; cold nodule = higher malignancy risk; diffuse uptake = Graves'.",think:"Think uptake scan when hyperthyroidism needs a cause — Graves' vs toxic nodule vs thyroiditis."},
+ "MRI orbits":{how:"MRI with fat suppression to assess extraocular muscles and optic nerve compression in Graves' orbitopathy.",think:"Think MRI orbits when exophthalmos is severe or vision is threatened — rules out compressive optic neuropathy."},
+ "Monospot / EBV serology":{how:"Heterophile antibody test (monospot) for EBV. False negative in early disease; EBV-specific serology if negative.",think:"Think monospot in any teenager/young adult with tender cervical lymphadenopathy + pharyngitis + splenomegaly."},
+ "Wells score":{how:"Clinical probability scoring for DVT or PE. Guides D-dimer use — only order D-dimer if Wells is low.",think:"Think Wells score before D-dimer or imaging for suspected DVT/PE — it prevents unnecessary scanning."},
 };
 
 const legend=document.getElementById('legend');
@@ -466,6 +483,7 @@ atlasMain.addEventListener('click',e=>{const t=e.target.closest('.tile');if(t)t.
 const quizWrap=document.getElementById('quizWrap');
 document.querySelectorAll('.tab').forEach(tab=>{
   tab.addEventListener('click',()=>{
+    if (!tab.dataset.view) return;
     document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
     document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
     tab.classList.add('active');
