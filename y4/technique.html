@@ -91,6 +91,10 @@
   .nav-btn:disabled{opacity:.35;cursor:default;}
   .nav-btn.next:disabled{opacity:.35;}
 
+  .present-lines{display:flex;flex-direction:column;gap:8px;margin-bottom:18px;}
+  .present-line{font-size:16px;line-height:1.7;color:var(--ink);}
+  .present-blank{background:var(--hair-soft);border-radius:6px;padding:1px 8px;color:var(--ink-2);font-style:italic;font-size:15px;display:inline-block;}
+
   /* ── Done screen ── */
   .done-card{background:var(--surface);border:.5px solid var(--hair-soft);border-radius:var(--radius);box-shadow:var(--shadow);padding:40px 28px;text-align:center;border-top:3.5px solid var(--exam-c);}
   .done-icon{font-size:48px;margin-bottom:14px;}
@@ -258,6 +262,19 @@ const EXAMS = [
   "Present findings: 'On examination this patient has... consistent with...'",
   "<b>Further tests to offer:</b> urine dipstick (proteinuria), fundoscopy (hypertensive changes), lying/standing BP (postural hypotension), ECG, echo, CXR",
  ]},
+
+ {phase:"Present", title:"Present your findings", present:[
+  "On examination of the cardiovascular system,",
+  "the patient appeared [well/comfortable at rest / breathless / distressed].",
+  "The pulse was [rate] bpm, [regular/irregularly irregular], with a [normal/slow-rising/collapsing/bounding] character.",
+  "The JVP was [not elevated / elevated X cm] with [normal waveform / prominent a or v waves].",
+  "The apex beat was [5th ICS MCL / displaced to the Xth ICS, Y cm lateral to MCL], [normal character / heaving / thrusting / tapping].",
+  "[There were / There were no] parasternal heaves or thrills.",
+  "Heart sounds: S1 + S2 + [0 / S3 / S4] with [no murmur / a (timing) murmur at (site), grade (X/6), radiating to (site)].",
+  "Lung bases were [clear / with bibasal fine crackles].",
+  "There was [no / pitting] oedema to the [ankles / knees / sacrum].",
+  "In summary, the findings are consistent with [diagnosis]. I would request [ECG, echo, CXR, BNP, troponin].",
+ ], tip:"Lead with the most important positive finding. If there's a murmur, characterise it fully: timing → site → grade → radiation → reinforcement."},
 ]}, /* end CVS */
 
 
@@ -330,6 +347,19 @@ const EXAMS = [
   "<b>Temperature</b> (infection)",
   "<b>X-ray</b> chest (CXR, ± CT thorax)",
  ], mnemonic:"SPOT-X: Sputum, Peak flow, Oximetry, Temperature, X-ray"},
+
+ {phase:"Present", title:"Present your findings", present:[
+  "On examination of the respiratory system,",
+  "the patient appeared [comfortable / breathless at rest / using accessory muscles].",
+  "The respiratory rate was [X]/min. Oxygen saturations were [X]% on [air / Xflow O₂].",
+  "The trachea was [central / deviated to the (left/right)].",
+  "Chest expansion was [equal and adequate / reduced on the (left/right)].",
+  "Percussion was [resonant throughout / dull at (site) / stony dull at (site) / hyperresonant at (site)].",
+  "Breath sounds were [vesicular throughout / bronchial at (site) / reduced at (site)].",
+  "[There were / There were no] added sounds: [fine crackles / coarse crackles / wheeze / pleural rub].",
+  "Vocal resonance was [normal / increased at (site) / decreased at (site)].",
+  "In summary, the findings are consistent with [diagnosis]. I would request [CXR, sputum, spirometry, CTPA].",
+ ], tip:"The grid: expansion → percussion → breath sounds → vocal resonance → trachea. State each clearly and compare sides."},
 ]}, /* end Resp */
 
 
@@ -413,6 +443,18 @@ const EXAMS = [
   "<b>Observations:</b> pulse, BP, temp, O₂ sats",
   "<b>Urine dipstick:</b> blood, protein, glucose, bilirubin",
  ], mnemonic:"HEN DO U: Hernias, External genitalia, Nodes, Digital rectal, Observations, Urine"},
+
+ {phase:"Present", title:"Present your findings", present:[
+  "On examination of the abdomen,",
+  "the patient appeared [comfortable / jaundiced / clearly unwell / cachectic].",
+  "There were [no / the following] stigmata of chronic liver disease: [spider naevi, palmar erythema, leukonychia, Dupuytren's, gynaecomastia].",
+  "The abdomen was [soft / rigid / distended], with [no / localised / generalised] tenderness.",
+  "The liver was [not palpable / palpable X cm below the right costal margin, smooth/irregular/tender].",
+  "The spleen was [not palpable / palpable X cm below the left costal margin].",
+  "[There was / There was no] evidence of ascites on shifting dullness.",
+  "Bowel sounds were [normal / hyperactive / absent].",
+  "In summary, the findings are consistent with [diagnosis]. I would request [USS abdomen, LFTs, FBC, coagulation].",
+ ], tip:"Quantify organomegaly in cm below costal margin. Mention key negatives (e.g. no splenomegaly, no ascites) to round out the picture."},
 ]}, /* end Abdo */
 
 
@@ -469,6 +511,17 @@ const EXAMS = [
   "Ensure regional lymph nodes examined if not already done",
   "Offer: aspiration/biopsy, USS (first line for most lumps), CT/MRI for deep or concerning lumps",
  ]},
+
+ {phase:"Present", title:"Present your findings", present:[
+  "There is a lump in the [anatomical site].",
+  "It measures approximately [X × Y cm], [spherical/irregular/lobulated] in shape with a [smooth/craggy] surface.",
+  "The overlying skin is [normal / erythematous / puckered / ulcerated].",
+  "On palpation it is [soft/firm/hard] in consistency, [fluctuant / not fluctuant], [transilluminable / not transilluminable].",
+  "It is [freely mobile / tethered to skin / tethered to deep structures / fixed].",
+  "[There was / There was no] pulsation — [transmitted / expansile].",
+  "Regional lymph nodes are [not palpable / enlarged — soft and tender (reactive) / hard and fixed (malignant)].",
+  "In summary, the most likely diagnosis is [diagnosis]. I would request [USS, core biopsy, MRI].",
+ ], tip:"Work through CAMPFIRE systematically. The most important question: is it malignant? Hard, fixed, irregular, with lymphadenopathy = suspicious until proven otherwise."},
 ]}, /* end Lump */
 
 
@@ -532,6 +585,17 @@ const EXAMS = [
   "  — <b>CNS:</b> focal neurological signs",
   "<b>Triple assessment:</b> clinical exam + imaging (USS < 35 yrs / mammogram ≥ 35) + core biopsy",
  ], mnemonic:"Triple assessment: Clinical + Imaging + Biopsy — all three required"},
+
+ {phase:"Present", title:"Present your findings", present:[
+  "On examination of the breasts,",
+  "inspection revealed [no abnormality / asymmetry / skin puckering / peau d'orange / nipple inversion or retraction] on the [left/right].",
+  "There was [no / a] lump in the [quadrant] of the [left/right] breast, measuring [X × Y cm].",
+  "It was [soft/firm/hard], [smooth/irregular], [mobile / tethered to skin / tethered to pectoralis].",
+  "[There was / There was no] nipple discharge — [colour, single/multiple duct].",
+  "Axillary lymph nodes were [not palpable / palpable — [reactive / hard and fixed — suspicious for malignancy]].",
+  "Supraclavicular lymph nodes were [not palpable / enlarged].",
+  "In summary, consistent with [diagnosis]. Triple assessment required: clinical + [USS/mammogram] + core biopsy.",
+ ], tip:"Any suspicious lump needs triple assessment documented. If malignant features, state them clearly: hard, irregular, tethered, with lymphadenopathy."},
 ]}, /* end Breast */
 
 
@@ -607,6 +671,19 @@ const EXAMS = [
     "Reposition, thank patient",
     "Offer: lower limb neuro, cranial nerve exam, cerebellar exam (DANISH), stroke signs, Guillain-Barré tests (EMG/NCS)",
    ], mnemonic:"DANISH: Dysdiadochokinesis, Ataxia, Nystagmus, Intention tremor, Slurred speech, Hypotonia"},
+
+   {phase:"Present", title:"Present your findings", present:[
+    "On examination of the upper limbs neurologically,",
+    "there was [no / the following] wasting: [thenar/hypothenar eminence, deltoid, interossei].",
+    "[There were / There were no] fasciculations, involuntary movements, or tremor at rest.",
+    "Tone was [normal / increased — spastic/cogwheel rigid / reduced].",
+    "Power was [5/5 throughout / reduced at (joint and movement) — MRC grade (X)].",
+    "Reflexes were [normal and symmetrical / brisk at (site) / absent at (site) ± Jendrassik].",
+    "Coordination was [intact / impaired — intention tremor / dysdiadochokinesis].",
+    "Sensation was [intact in all modalities / reduced to (modality) in a (glove/dermatomal — specify) distribution].",
+    "The pattern is consistent with a [UMN / LMN / cerebellar / peripheral nerve / dorsal column] lesion.",
+    "In summary, findings are consistent with [diagnosis]. I would request [MRI brain/spine, NCS/EMG].",
+   ], tip:"Always synthesise UMN vs LMN pattern at the end: UMN = spastic, brisk, upgoing plantar; LMN = flaccid, wasted, fasciculating, depressed reflexes."},
   ]}, /* end neuro-upper */
 
   {id:"neuro-lower", icon:"🦵", title:"Lower Limb Neuro", sub:"Gait → TPRCS", steps:[
@@ -675,6 +752,19 @@ const EXAMS = [
     "Reposition, thank patient",
     "Offer: upper limb neuro, cranial nerves, cerebellar exam (DANISH), imaging (MRI spine/brain)",
    ]},
+
+   {phase:"Present", title:"Present your findings", present:[
+    "On examination of the lower limbs neurologically,",
+    "gait was [normal / Parkinsonian — shuffling, reduced arm swing / hemiplegic / ataxic / high-stepping].",
+    "Romberg's test was [negative / positive — indicating dorsal column or proprioceptive loss].",
+    "Tone was [normal / increased — spastic / reduced].",
+    "[There was / There was no] ankle clonus.",
+    "Power was [5/5 throughout / reduced at (joint and movement) — MRC grade (X)].",
+    "Knee jerk was [normal / brisk / absent] bilaterally. Ankle jerk was [normal / brisk / absent].",
+    "Plantars were [flexor (normal) / extensor (Babinski positive — UMN sign)].",
+    "Sensation was [intact / reduced to (modality) in a (stocking/dermatomal) distribution].",
+    "In summary, consistent with [diagnosis]. I would request [MRI spine/brain, NCS/EMG, urodynamics].",
+   ], tip:"State the Babinski response clearly — it's an easy win. Localise the lesion: cord, root, peripheral nerve."},
   ]}, /* end neuro-lower */
 
   {id:"neuro-cn", icon:"😐", title:"Cranial Nerves", sub:"CN I–XII in order", steps:[
@@ -751,6 +841,20 @@ const EXAMS = [
     "Reposition, thank patient",
     "Offer: limb neuro, cerebellar exam (DANISH), Parkinson's exam, imaging (MRI brain)",
    ], mnemonic:"DANISH: Dysdiadochokinesis, Ataxia, Nystagmus, Intention tremor, Slurred speech, Hypotonia"},
+
+   {phase:"Present", title:"Present your findings", present:[
+    "On examination of the cranial nerves,",
+    "CN I: [intact / impaired — anosmia].",
+    "CN II: acuity [X/X], fields [full / defect at (site)], pupils [equal and reactive / RAPD on (side)].",
+    "CN III/IV/VI: eye movements [full / restricted — (direction) on (side)], [no / horizontal / rotatory] nystagmus.",
+    "CN V: facial sensation [intact / reduced over (V1/V2/V3) on (side)], masseters [equal / wasted on (side)].",
+    "CN VII: [symmetric / lower facial droop on (side) — UMN / complete palsy on (side) — LMN].",
+    "CN VIII: [intact / reduced hearing on (side) — conductive (Rinne negative) / sensorineural (Rinne positive, Weber lateralises to good ear)].",
+    "CN IX/X: palate [rises symmetrically / deviates away from (side)], voice [normal / hoarse].",
+    "CN XI: [intact / weakness of trapezius / SCM on (side)].",
+    "CN XII: tongue [protrudes centrally / deviates to (side), with/without wasting].",
+    "In summary, findings localise to [site — cortex/brainstem/peripheral nerve]. Consistent with [diagnosis].",
+   ], tip:"Name which CNs are affected, then localise. A combination of cranial nerve deficits points to brainstem or skull base pathology."},
   ]}, /* end neuro-cn */
  ]
 }, /* end Neuro */
@@ -818,6 +922,19 @@ const EXAMS = [
     "Offer <b>Pemberton's sign</b> (if thoracic outlet obstruction suspected): both arms raised above head for 1 min — facial plethora, cyanosis, distended veins, stridor = positive (retrosternal goitre compressing SVC)",
     "Further investigations: TFTs, FBC, USS neck ± FNAC/biopsy, CT chest (retrosternal extension)",
    ]},
+
+   {phase:"Present", title:"Present your findings", present:[
+    "On examination of the neck,",
+    "the patient appeared [euthyroid / clinically hyperthyroid / clinically hypothyroid].",
+    "Inspection revealed [no visible abnormality / a [midline/anterior/posterior triangle] swelling].",
+    "The lump [did / did not] rise with swallowing, [did / did not] move with tongue protrusion.",
+    "On palpation from behind, the thyroid was [impalpable (normal) / diffusely enlarged (goitre) / a single nodule / multinodular].",
+    "The gland was [smooth / nodular], [non-tender / tender], [soft / firm].",
+    "Lymph nodes: [no lymphadenopathy / lymphadenopathy at (site) — [reactive / suspicious]].",
+    "The trachea was [central / deviated to the (side)].",
+    "[There was / There was no] thyroid bruit on auscultation.",
+    "In summary, findings are consistent with [diagnosis]. I would request [TFTs, USS neck ± FNAC].",
+   ], tip:"The swallowing test is the most important manoeuvre — it distinguishes thyroid from non-thyroid masses."},
   ]}, /* end neck-exam */
 
   {id:"thyroid-status", icon:"⚖️", title:"Thyroid Status", sub:"Assess hyper vs hypothyroid", steps:[
@@ -867,6 +984,18 @@ const EXAMS = [
     "Further investigations: TFTs (TSH, free T4, free T3), thyroid antibodies (anti-TPO, anti-TSH-R), TRAb",
     "ECG (AF in hyperthyroidism), USS thyroid, radio-iodine uptake scan",
    ]},
+
+   {phase:"Present", title:"Present your findings", present:[
+    "On assessment of thyroid status,",
+    "the patient appeared [clinically hyperthyroid / hypothyroid / euthyroid].",
+    "There was [no / a fine bilateral] tremor on outstretched hands.",
+    "The pulse was [X] bpm, [regular / in AF], [bounding (hyper) / slow (hypo)].",
+    "Hands were [warm and sweaty (hyperthyroid) / cool and dry (hypothyroid)].",
+    "[There was / There was no] thyroid eye disease: [lid retraction / exophthalmos / lid lag / ophthalmoplegia].",
+    "The thyroid was [impalpable / enlarged — (description)]. [There was / There was no] bruit.",
+    "[There was / There was no] proximal myopathy. Ankle reflexes were [normal / brisk (hyper) / slow-relaxing (hypo)].",
+    "In summary, this patient is [hyperthyroid — likely Graves' / hypothyroid — likely Hashimoto's / toxic nodule]. I would request TFTs, thyroid antibodies, and ECG.",
+   ], tip:"Summarise with a clear hyper or hypo conclusion and a likely cause. Examiners want to know you can synthesise the clinical picture."},
   ]}, /* end thyroid-status */
  ]
 }, /* end Neck & Thyroid */
@@ -925,6 +1054,17 @@ const EXAMS = [
     "Offer: ABPI (Doppler — normal > 1.0; claudication 0.5–0.9; critical < 0.5), duplex USS, CT angiography",
     "<b>6 Ps of acute limb ischaemia:</b> Pain, Pale, Pulseless, Paraesthetic, Paralysed, Perishingly cold — surgical emergency",
    ], mnemonic:"6 Ps: Pain, Pale, Pulseless, Paraesthesia, Paralysis, Perishingly cold"},
+
+   {phase:"Present", title:"Present your findings", present:[
+    "On examination of the [lower/upper] limb arterial system,",
+    "inspection revealed [hair loss, shiny atrophic skin / pallor / mottling / gangrene] on the [left/right/both] leg(s).",
+    "[There were / There were no] arterial ulcers — [description: site, edge, depth].",
+    "The limb was [warm / cool] with a [normal / prolonged] capillary refill time.",
+    "Pulses: [aorta — pulsatile/expansile], [femoral — present/absent bilaterally], [popliteal — present/absent], [DP — present/absent], [PT — present/absent].",
+    "[There were / There were no] femoral bruits.",
+    "Buerger's test: [negative / positive — pallor at [X]° elevation with dependency rubor].",
+    "In summary, findings are consistent with [chronic PAD / acute limb ischaemia / aortic aneurysm]. ABPI and duplex USS required.",
+   ], tip:"Map the pulses systematically proximal to distal. A positive Buerger's test (angle < 20°) indicates critical ischaemia."},
   ]}, /* end vasc-arterial */
 
   {id:"vasc-venous", icon:"🔵", title:"Venous Examination", sub:"Varicosities, Trendelenburg", steps:[
@@ -975,6 +1115,17 @@ const EXAMS = [
     "<b>CEAP classification:</b> C0–C6 (C0 = no visible, C6 = active ulcer)",
     "Further management: compression stockings, foam sclerotherapy, endovenous ablation (EVLA/RFA), surgical stripping",
    ]},
+
+   {phase:"Present", title:"Present your findings", present:[
+    "On examination of the lower limb venous system (patient standing),",
+    "there were [no / bilateral / left-sided / right-sided] varicosities in the [medial (GSV) / posterior (SSV)] distribution.",
+    "Skin changes: [no changes / lipodermatosclerosis / haemosiderin staining / venous eczema] at the [gaiter area / medial lower leg].",
+    "[There was / There was no] a venous ulcer — [site, dimensions, appearance].",
+    "A cough impulse was [present / absent] at the saphenofemoral junction.",
+    "Trendelenburg test: controlled with pressure over SFJ [— SFJ incompetence / uncontrolled — perforator incompetence].",
+    "[There was / There was no] pitting oedema.",
+    "In summary, findings are consistent with [GSV / SSV varicosities] secondary to [SFJ / perforator] incompetence. CEAP class [X]. Duplex USS for mapping.",
+   ], tip:"Always examine the patient standing — varicosities collapse when supine. State the distribution (GSV vs SSV) and the site of reflux."},
   ]}, /* end vasc-venous */
  ]
 }, /* end Vascular */
@@ -1300,12 +1451,15 @@ function renderStep() {
   let html = `
     <div class="step-phase-label">${step.phase}</div>
     <div class="step-title">${step.title}</div>
-    <ol class="step-actions">
-      ${step.actions.map((a, i) => `
-        <li><span class="n">${i+1}</span><span class="txt">${a}</span></li>
-      `).join('')}
-    </ol>
   `;
+  if (step.present) {
+    html += `<div class="present-lines">${step.present.map(line => {
+      const formatted = line.replace(/\[([^\]]+)\]/g, '<span class="present-blank">[$1]</span>');
+      return `<div class="present-line">${formatted}</div>`;
+    }).join('')}</div>`;
+  } else {
+    html += `<ol class="step-actions">${step.actions.map((a, i) => `<li><span class="n">${i+1}</span><span class="txt">${a}</span></li>`).join('')}</ol>`;
+  }
 
   if (step.graphic && GRAPHICS[step.graphic]) {
     html += `<div class="graphic-box">${GRAPHICS[step.graphic]}</div>`;

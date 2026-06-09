@@ -126,6 +126,9 @@
   .tile.open .dx-detail{display:block;}
   .tile .dx-cue{font-size:11px;color:var(--ink-3);margin-top:6px;display:none;font-style:italic;}
   .tile.open .dx-cue{display:block;}
+  .tile .dx-mgmt{font-size:12.5px;color:#1a5c2e;margin-top:7px;display:none;border-top:.5px solid var(--hair-soft);padding-top:7px;line-height:1.5;}
+  .tile.open .dx-mgmt{display:block;}
+  .tile .dx-mgmt::before{content:"Mx · ";font-weight:700;font-size:11px;letter-spacing:.03em;text-transform:uppercase;}
 
   footer{max-width:1040px;margin:54px auto 0;padding:24px 22px;border-top:.5px solid var(--hair);font-size:13px;color:var(--ink-3);}
   footer b{color:var(--ink-2);font-weight:600;}
@@ -144,6 +147,7 @@
     <button class="tab" data-view="atlas">Differentials</button>
     <a class="tab quiz-link" href="quiz.html">Quiz →</a>
     <a class="tab quiz-link" href="technique.html">Technique →</a>
+    <a class="tab quiz-link" href="data.html">Data →</a>
   </div>
 </header>
 
@@ -190,6 +194,88 @@
 /* ===== signature colours per exam ===== */
 const COL = {cvs:"#e5484d",resp:"#0091ff",abdo:"#f5a623",neuro:"#8b5cf6",lump:"#14b8a6",breast:"#ec4899",neck:"#10b981",vasc:"#6366f1"};
 const EXAM_NAME = {cvs:"Cardiovascular",resp:"Respiratory",abdo:"Abdominal",neuro:"Neuro (limbs & cranial)",lump:"Lump",breast:"Breast",neck:"Neck & Thyroid",vasc:"Vascular"};
+
+/* ===== MANAGEMENT LOOKUP (keyed by exact tile name from Differential Atlas) ===== */
+const MGMT = {
+ /* CVS */
+ "Aortic stenosis":"Valve replacement (surgical or TAVI) if severe symptomatic (angina, syncope, dyspnoea). Avoid vasodilators. Treat precipitants. Diuretics for fluid overload.",
+ "Aortic regurgitation":"ACE-inhibitor or nifedipine if symptomatic/LV dysfunction. Surgical valve replacement if severe symptomatic or LV decompensating. Endocarditis prophylaxis.",
+ "Atrial fibrillation":"Rate control (beta-blocker, digoxin, or CCB). Anticoagulation (DOAC/warfarin) based on CHA₂DS₂-VASc. Rhythm control (DC cardioversion, flecainide, amiodarone) if indicated. Treat precipitants.",
+ "Radio-radial → subclavian stenosis":"Type A dissection: emergency surgery. Subclavian stenosis: antiplatelet + endovascular revascularisation if symptomatic. Coarctation: balloon angioplasty ± stent or surgical repair.",
+ "Right heart failure":"Treat underlying cause (e.g. COPD, PAH). Diuretics for fluid overload. Treat PAH: sildenafil, bosentan, prostacyclins.",
+ "LV dilatation — DCM":"ACE-inhibitor, beta-blocker, spironolactone, diuretics. ICD/CRT if indicated. Consider transplant if refractory.",
+ "RV hypertrophy":"Treat underlying cause (e.g. PE: anticoagulation; pulmonary hypertension: targeted therapy; chronic lung disease: LTOT).",
+ "Mitral regurgitation":"ACE-inhibitor/diuretics for symptoms. Surgical repair (preferred) or replacement if severe symptomatic or LV dysfunction. Treat AF if present.",
+ "Mitral stenosis":"Rate control (beta-blocker, digoxin). Anticoagulation if AF or high thromboembolic risk. Balloon mitral valvuloplasty if suitable anatomy; surgical commissurotomy/replacement otherwise.",
+ "Infective endocarditis":"Prolonged IV antibiotics (guided by blood cultures — typically 4–6 weeks). Surgical valve repair/replacement if: severe regurgitation, abscess, refractory infection, large vegetation.",
+ "Congestive cardiac failure":"ACE-inhibitor (or ARB), beta-blocker, spironolactone/eplerenone, SGLT2 inhibitor, diuretics. ICD/CRT if indicated. Treat precipitants.",
+ /* RESP */
+ "Consolidation / pneumonia":"Antibiotics guided by severity (CURB-65): amoxicillin ± clarithromycin (mild–moderate); co-amoxiclav + clarithromycin ± IV (severe). Oxygen. Fluids. Physiotherapy.",
+ "Pleural effusion":"Treat underlying cause. Diagnostic thoracocentesis if exudate uncertain. Therapeutic drainage if large/symptomatic. Chest drain + fibrinolytics for empyema.",
+ "Pneumothorax":"Primary small (< 2 cm): observe, discharge with safety net. Primary large or secondary: aspiration or chest drain. VATS pleurodesis for recurrent.",
+ "Lobar/lung collapse":"Treat underlying cause (physiotherapy, bronchoscopy to remove mucus plug; antibiotics for infection; bronchoscopy/resection for obstructing lesion).",
+ "Pulmonary fibrosis / ILD":"Antifibrotics: pirfenidone or nintedanib (slow progression). Supportive: O₂, pulmonary rehab. Lung transplant if eligible.",
+ "Asthma":"Acute: SABA nebulisers, O₂, oral/IV steroids, IV magnesium if severe. Chronic: stepwise — SABA PRN → low-dose ICS → ICS + LABA → add-on therapies (LAMA, biologics).",
+ "Lung cancer":"MDT approach. NSCLC: resection if early stage; platinum chemotherapy ± radiotherapy; targeted therapy (EGFR, ALK) if driver mutation. SCLC: chemotherapy ± radiotherapy. Palliative care.",
+ "Type 2 respiratory failure":"Treat underlying cause. Controlled O₂ (target 88–92%). NIV (BiPAP) if persisting hypercapnia despite max medical therapy. Invasive ventilation as last resort.",
+ "Pancoast tumour":"Chemoradiotherapy followed by surgical resection if response. Radiotherapy alone if inoperable. Palliative: analgesia, treat Horner's, brachial plexus pain management.",
+ /* ABDO */
+ "Chronic liver disease":"Treat underlying cause (alcohol abstinence, antivirals for hepatitis, venesection for haemochromatosis). Salt restriction + diuretics (spironolactone ± furosemide) for ascites. Propranolol for portal hypertension. Lactulose ± rifaximin for encephalopathy. Transplant if end-stage.",
+ "Haematological — lymphoma":"Treat underlying condition (e.g. hydroxyurea for CML; chemotherapy for lymphoma; antimalarials for tropical causes). Splenectomy for severe hypersplenism.",
+ "Polycystic kidneys":"Tolvaptan (vasopressin antagonist) to slow cyst growth if eligible. Treat hypertension (ACE-i/ARB). Renal replacement therapy (dialysis/transplant) for ESRD.",
+ "Abdominal aortic aneurysm":"< 5.5 cm: surveillance USS 3–12 monthly. ≥ 5.5 cm or rapidly expanding (> 1 cm/year): elective endovascular repair (EVAR) or open surgery. Ruptured: emergency surgery.",
+ "Chronic liver disease / cirrhosis":"Treat underlying cause (alcohol abstinence, antivirals for hepatitis, venesection for haemochromatosis). Salt restriction + diuretics (spironolactone ± furosemide) for ascites. Propranolol for portal hypertension. Lactulose ± rifaximin for encephalopathy. Transplant if end-stage.",
+ "Hepatic encephalopathy":"Treat precipitant (GI bleed, infection, dehydration, constipation). Lactulose (titrate to 2–3 soft stools/day). Rifaximin for secondary prevention. Avoid protein restriction (modern guidance).",
+ "Gastric/intra-abdominal malignancy":"Staging investigations (CT chest/abdomen/pelvis). Tissue biopsy. MDT for oncological management per primary tumour.",
+ "Ileostomy":"Stoma management education. Monitor electrolytes (high output stoma → Na/K/Mg losses). High-fibre diet avoided. Review medications (modified-release drugs unreliable).",
+ "Inguinal hernia":"Elective laparoscopic or open surgical repair. Emergency repair if strangulated (urgent — bowel ischaemia risk).",
+ "Ascites — cirrhosis":"Low-salt diet. Spironolactone ± furosemide. Large-volume paracentesis + IV albumin if refractory. TIPSS for refractory cases. Treat underlying cause.",
+ "Acute cholecystitis":"Analgesia (NSAIDs/opioids). IV antibiotics (co-amoxiclav). IV fluids. Laparoscopic cholecystectomy (early preferred over delayed in fit patient).",
+ /* NEURO */
+ "Lesion above anterior horn — stroke":"Treat underlying cause (stroke: thrombolysis/thrombectomy if ischaemic < 4.5h; antiplatelets + statin + BP control; MS: disease-modifying therapy; cord compression: urgent decompression). Rehabilitation: physio, OT, SALT.",
+ "Lesion along motor neuron — MND":"Treat underlying cause. Physiotherapy to prevent contractures. If GBS: IV immunoglobulin or plasmapheresis. DMDs for MND.",
+ "Cerebellar disease — stroke":"Treat underlying cause (alcohol abstinence, thiamine for Wernicke's; chemotherapy/radiotherapy for tumour; immunotherapy for paraneoplastic). Physiotherapy for ataxia.",
+ "Median nerve / carpal tunnel":"Wrist splint (especially nocturnal). Corticosteroid injection for short-term relief. Surgical carpal tunnel decompression if persistent/severe.",
+ "Motor neurone disease":"Riluzole (modest survival benefit). Symptomatic: NIV for respiratory failure, PEG for dysphagia, baclofen for spasticity. MDT: physio, OT, SALT, palliative care.",
+ "Contralateral UMN lesion":"Treat underlying cause (stroke: thrombolysis/thrombectomy if ischaemic < 4.5h; antiplatelets + statin + BP control; MS: disease-modifying therapy). Rehabilitation: physio, OT, SALT.",
+ "Common peroneal palsy":"Remove causative pressure. Ankle-foot orthosis (foot drop splint). Physiotherapy. Surgery if entrapment persists.",
+ "Peripheral neuropathy — diabetes":"Treat underlying cause (glycaemic control in DM, B12 replacement, alcohol abstinence, treat vasculitis). Neuropathic pain: amitriptyline, duloxetine, or gabapentin/pregabalin.",
+ "Optic neuritis":"IV methylprednisolone (speeds recovery but does not affect final visual acuity). Investigate for MS. Long-term: disease-modifying therapy if MS confirmed.",
+ "Chiasm lesion — pituitary adenoma":"Prolactinoma: dopamine agonist (cabergoline). Other functioning: surgery (trans-sphenoidal). Non-functioning: monitor or surgery if mass effect. Craniopharyngioma: surgical resection + radiotherapy for residual.",
+ "Surgical — PCom aneurysm":"Emergency imaging (CT/MRI + angiography) — exclude posterior communicating artery aneurysm. Neurosurgical or interventional radiology for aneurysm. Treat underlying cause.",
+ "Bell's palsy":"Oral prednisolone within 72h. Eye care (lubricating drops, tape eye shut at night). Aciclovir added if Ramsay Hunt suspected. Most recover fully.",
+ "Contralateral UMN lesion — stroke":"Treat underlying cause (stroke: thrombolysis/thrombectomy if ischaemic < 4.5h; antiplatelets + statin + BP control; MS: disease-modifying therapy). Rehabilitation: physio, OT, SALT.",
+ "Conductive loss that side":"Treat underlying cause: wax — microsuction; OM with effusion — watchful waiting, grommets; otosclerosis — hearing aid or stapedectomy.",
+ /* LUMP */
+ "Fluid-filled — cyst":"Aspiration (diagnostic ± therapeutic). Excision if symptomatic, recurrent, or uncertain. Hydrocoele: surgical repair (hydrocoelectomy) if large/symptomatic.",
+ "Aneurysm":"Surgical or endovascular repair. Popliteal aneurysm: repair due to thromboembolism risk. Antiplatelet therapy.",
+ "Vascular / AV fistula / high flow":"Treat underlying cause. Endovascular or surgical intervention for symptomatic AV fistula.",
+ "Hernia":"Elective laparoscopic or open surgical repair. Emergency repair if strangulated. Femoral hernia: urgent repair due to high strangulation risk.",
+ "Malignancy":"Urgent MDT referral. Staging (CT/MRI/PET). Tissue biopsy. Treatment per tumour type: surgery ± chemo ± radiotherapy ± targeted therapy.",
+ /* BREAST */
+ "Breast carcinoma":"MDT. Surgery: wide local excision (with radiotherapy) or mastectomy ± reconstruction. Axillary staging (sentinel node biopsy ± clearance). Adjuvant: chemotherapy, radiotherapy, hormone therapy (tamoxifen or aromatase inhibitor), Herceptin if HER2+.",
+ "Inflammatory breast cancer":"Neoadjuvant chemotherapy followed by surgery then radiotherapy. Hormone/targeted therapy as indicated. Prognosis poor.",
+ "Paget's of the nipple":"Treat as breast carcinoma — staging, MDT, surgery. Usually associated with underlying DCIS or invasive cancer.",
+ "Underlying carcinoma":"MDT. Surgery: wide local excision (with radiotherapy) or mastectomy ± reconstruction. Adjuvant therapy per tumour biology.",
+ "Duct papilloma":"Surgical excision of affected duct (microdochectomy). Histology essential to exclude atypia/malignancy.",
+ /* NECK */
+ "Thyroid mass — goitre":"MDT assessment. Benign nodule: USS surveillance. Suspicious/malignant: total thyroidectomy + central node dissection. Radioiodine ablation post-surgery for differentiated thyroid cancer. TSH suppression.",
+ "Thyroglossal cyst":"Surgical excision (Sistrunk procedure — removes cyst + hyoid bone mid-section to prevent recurrence).",
+ "Metastatic carcinoma":"MDT. Identify and treat primary. Systemic treatment per tumour type. Palliative care if disseminated.",
+ "Reactive lymphadenopathy":"Treat underlying infection (antibiotics for bacterial; supportive for viral). Observe — should resolve in 4–6 weeks. Biopsy if persistent/worsening.",
+ "Hyperthyroidism — Graves'":"Carbimazole (or propylthiouracil in pregnancy). Propranolol for symptomatic relief. Radioiodine (definitive). Thyroidectomy if large goitre/failure of medical therapy.",
+ "Graves' disease":"Carbimazole (or propylthiouracil in pregnancy). Propranolol for symptomatic relief. Radioiodine (definitive). Thyroidectomy if large goitre/failure of medical therapy. Treat ophthalmopathy separately (IV steroids, orbital decompression).",
+ "Hypothyroidism — Hashimoto's":"Levothyroxine replacement when hypothyroid (target TSH 0.5–2.5). Monitor TFTs annually. No treatment needed if euthyroid.",
+ /* VASC */
+ "Carotid stenosis":"Symptomatic ≥ 50%: carotid endarterectomy within 2 weeks. Asymptomatic ≥ 70%: consider surgery in selected patients. Antiplatelet + statin + BP control for all.",
+ "Arterial ulcer":"Revascularisation (angioplasty or bypass) if amenable. Wound care. Analgesia. Treat infection. Amputation if non-viable.",
+ "Chronic PAD / claudication":"Risk factor modification (smoking cessation, antiplatelet, statin, BP and glucose control). Supervised exercise programme. Angioplasty ± stent or surgical bypass for critical or lifestyle-limiting disease.",
+ "Acute limb ischaemia — surgical emergency":"Urgent vascular referral + CT angiogram; do not delay.",
+ "Chronic venous insufficiency":"Compression hosiery (class II–III). Leg elevation. Weight loss. Wound care for ulceration. Endovenous ablation (EVLA/RFA) or foam sclerotherapy for varicosities.",
+ "Venous ulcer":"Four-layer compression bandaging. Wound dressings. Treat infection. Address venous reflux once healed (endovenous ablation). Compression stockings indefinitely.",
+ "DVT until proven otherwise":"Anticoagulation: DOAC (apixaban or rivaroxaban preferred). Minimum 3 months. Extended anticoagulation for unprovoked/recurrent. Graduated compression stockings.",
+ "SFJ incompetence":"Endovenous laser ablation (EVLA) or radiofrequency ablation (RFA) as first-line. Foam sclerotherapy. Surgical high tie and stripping. Compression stockings.",
+};
 
 /* ===== SIGNS DATA (condensed from the bank; key signs per exam) ===== */
 const SIGNS = [
@@ -472,7 +558,9 @@ SIGNS.forEach(sec=>{
   }));
   let h=`<div class="atlas-head"><span class="bead" style="background:${COL[sec.id]}"></span><h3>${sec.title}</h3><span class="count">${tiles.length} differentials</span></div><div class="tilewall">`;
   tiles.forEach(t=>{
-    h+=`<div class="tile" style="--tile-c:${COL[sec.id]}"><div class="dx-name">${t.name}</div><div class="dx-cue">${t.cue}</div><div class="dx-detail"><b>Sign:</b> ${t.sign}${t.others?'<br><b>Also consider:</b> '+t.others:''}</div></div>`;
+    const mgmt = MGMT[t.name];
+    const mgmtDiv = mgmt ? `<div class="dx-mgmt">${mgmt}</div>` : '';
+    h+=`<div class="tile" style="--tile-c:${COL[sec.id]}"><div class="dx-name">${t.name}</div><div class="dx-cue">${t.cue}</div><div class="dx-detail"><b>Sign:</b> ${t.sign}${t.others?'<br><b>Also consider:</b> '+t.others:''}</div>${mgmtDiv}</div>`;
   });
   h+=`</div>`;
   const d=document.createElement('div');d.className='atlas-sec';d.innerHTML=h;atlasMain.appendChild(d);

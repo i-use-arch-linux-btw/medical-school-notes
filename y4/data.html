@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Interpretation · Oxford Y4</title>
+<style>
+  :root{
+    --bg:#f5f5f7; --surface:#fff; --ink:#1d1d1f; --ink-2:#6e6e73; --ink-3:#86868b;
+    --hair:#d2d2d7; --hair-soft:#e8e8ed; --accent:#0071e3;
+    --dx:#1d6f42; --dx-bg:#eaf6ef; --ix:#8a5a00; --ix-bg:#fbf3e2;
+    --radius:18px; --radius-sm:12px; --shadow:0 1px 2px rgba(0,0,0,.04),0 8px 30px rgba(0,0,0,.06);
+    --font:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Helvetica Neue",sans-serif;
+    --c-cvs:#e5484d; --c-resp:#0091ff; --c-abdo:#f5a623; --c-neuro:#8b5cf6;
+    --c-lump:#14b8a6; --c-breast:#ec4899; --c-neck:#10b981; --c-vasc:#6366f1;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-font-smoothing:antialiased;}
+  body{font-family:var(--font);background:var(--bg);color:var(--ink);min-height:100vh;padding-bottom:60px;line-height:1.5;letter-spacing:-.01em;}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(245,245,247,.82);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:.5px solid var(--hair);}
+  .bar{max-width:680px;margin:0 auto;padding:12px 22px;display:flex;align-items:center;}
+  .back{font-size:14px;font-weight:500;color:var(--accent);text-decoration:none;display:flex;align-items:center;gap:3px;min-width:72px;}
+  .back svg{width:16px;height:16px;flex:none;}
+  .bar h1{font-size:17px;font-weight:600;flex:1;text-align:center;}
+  .bar-end{min-width:72px;display:flex;justify-content:flex-end;}
+  .reset-btn{font-size:13px;color:var(--ink-3);font-weight:500;background:none;border:none;cursor:pointer;font-family:var(--font);padding:4px 6px;}
+  .reset-btn:hover{color:var(--ink-2);}
+
+  main{max-width:680px;margin:0 auto;padding:22px 22px 0;}
+
+  /* Progress */
+  .progress-row{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+  .progress-track{flex:1;height:4px;background:var(--hair);border-radius:3px;overflow:hidden;}
+  .progress-fill{height:100%;background:var(--accent);border-radius:3px;transition:width .4s cubic-bezier(.4,0,.2,1);}
+  .progress-label{font-size:13px;color:var(--ink-2);font-weight:550;white-space:nowrap;min-width:42px;text-align:right;}
+
+  /* Filter chips */
+  .filter-row{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;margin-bottom:22px;padding-bottom:2px;}
+  .filter-row::-webkit-scrollbar{display:none;}
+  .fchip{flex:none;font-size:12.5px;font-weight:550;color:var(--ink-2);background:var(--surface);border:.5px solid var(--hair);padding:6px 13px;border-radius:980px;cursor:pointer;white-space:nowrap;transition:all .15s;user-select:none;}
+  .fchip.on{color:#fff;background:var(--accent);border-color:transparent;}
+
+  /* Card flip */
+  .card-wrap{perspective:1200px;margin-bottom:14px;}
+  .card{background:var(--surface);border:.5px solid var(--hair-soft);border-top:3px solid var(--accent);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px 22px 22px;transition:transform .18s cubic-bezier(.4,0,.2,1),opacity .18s;}
+  .card.flipping{transform:scaleX(0);opacity:0;}
+
+  /* Card content */
+  .card-meta{display:flex;align-items:center;gap:9px;margin-bottom:18px;}
+  .cat-badge{font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:4px 10px;border-radius:7px;color:#fff;background:var(--accent);}
+  .sign-name{font-size:21px;font-weight:700;letter-spacing:-.025em;margin-bottom:10px;}
+  .sign-cue{font-size:15px;color:var(--ink-2);font-style:italic;line-height:1.55;margin-bottom:24px;}
+
+  /* Back face */
+  .sec-head{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin:14px 0 8px;}
+  .sec-head.first{margin-top:0;}
+  .meaning-text{font-size:15px;line-height:1.5;color:var(--ink);}
+  .mx-text{font-size:15px;line-height:1.5;color:var(--ink);}
+  .cause-list{list-style:none;display:flex;flex-direction:column;gap:6px;}
+  .cause-item{font-size:15px;padding-left:16px;position:relative;line-height:1.45;color:var(--ink);}
+  .cause-item::before{content:"";position:absolute;left:2px;top:8px;width:5px;height:5px;border-radius:50%;background:var(--ink-3);}
+  .cause-item:first-child{font-weight:500;}
+  .cause-item:first-child::before{background:var(--dx);}
+
+  /* Buttons */
+  .btn{font-size:14.5px;font-weight:600;padding:12px 14px;border-radius:var(--radius-sm);border:none;cursor:pointer;transition:opacity .15s,transform .1s;font-family:var(--font);letter-spacing:-.01em;}
+  .btn:active{transform:scale(.97);}
+  .btn-show{display:block;width:100%;background:var(--accent);color:#fff;font-size:15px;padding:14px;border-radius:var(--radius-sm);border:none;cursor:pointer;font-family:var(--font);font-weight:600;letter-spacing:-.01em;transition:opacity .15s;}
+  .btn-show:hover{opacity:.88;}
+  .rating-row{display:flex;gap:8px;margin-top:20px;}
+  .rating-row .btn{flex:1;}
+  .btn.missed{background:#fde8e8;color:#c0392b;}
+  .btn.hard{background:#fef3e2;color:#92400e;}
+  .btn.got{background:var(--dx-bg);color:var(--dx);}
+  .btn.missed:hover{background:#fcd2d2;}
+  .btn.hard:hover{background:#fde8c8;}
+  .btn.got:hover{background:#d4edda;}
+
+  /* Done screen */
+  #done{display:none;text-align:center;padding:52px 0;}
+  #done h2{font-size:30px;font-weight:700;letter-spacing:-.03em;margin-bottom:10px;}
+  #done .sub{font-size:16px;color:var(--ink-2);margin-bottom:28px;}
+  .stats-row{display:flex;gap:10px;justify-content:center;margin-bottom:30px;}
+  .stat-box{background:var(--surface);border:.5px solid var(--hair-soft);border-radius:var(--radius);padding:16px 20px;min-width:90px;box-shadow:var(--shadow);}
+  .stat-n{font-size:30px;font-weight:800;letter-spacing:-.04em;line-height:1;}
+  .stat-l{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-3);margin-top:4px;}
+  .stat-box.g .stat-n{color:var(--dx);}
+  .stat-box.h .stat-n{color:#92400e;}
+  .stat-box.m .stat-n{color:#c0392b;}
+  .next-info{font-size:14px;color:var(--ink-3);margin-bottom:24px;}
+  .btn-restart{display:inline-block;padding:13px 30px;background:var(--accent);color:#fff;border-radius:var(--radius-sm);font-size:15px;font-weight:600;border:none;cursor:pointer;font-family:var(--font);letter-spacing:-.01em;}
+  .btn-restart:hover{opacity:.88;}
+
+  /* Empty screen */
+  #empty{display:none;text-align:center;padding:52px 0;}
+  #empty h2{font-size:26px;font-weight:700;letter-spacing:-.025em;margin-bottom:10px;}
+  #empty p{font-size:15px;color:var(--ink-2);line-height:1.6;}
+
+  @media(max-width:460px){
+    .sign-name{font-size:19px;}
+    .rating-row .btn{font-size:13.5px;padding:11px 8px;}
+    .stats-row{gap:8px;}
+    .stat-box{min-width:80px;padding:14px 14px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="bar">
+    <a class="back" href="osce_atlas.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      Atlas
+    </a>
+    <h1>Data</h1>
+    <div class="bar-end">
+      <button class="reset-btn" id="btn-reset" title="Reset all progress">Reset</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div id="quiz-area">
+    <div class="progress-row">
+      <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+      <div class="progress-label" id="progress-label">— / —</div>
+    </div>
+    <div class="filter-row" id="filter-chips"></div>
+    <div class="card-wrap">
+      <div class="card" id="card"></div>
+    </div>
+  </div>
+
+  <div id="done">
+    <h2>Session complete</h2>
+    <p class="sub" id="done-sub"></p>
+    <div class="stats-row">
+      <div class="stat-box g"><div class="stat-n" id="s-got">0</div><div class="stat-l">Got it</div></div>
+      <div class="stat-box h"><div class="stat-n" id="s-hard">0</div><div class="stat-l">Hard</div></div>
+      <div class="stat-box m"><div class="stat-n" id="s-missed">0</div><div class="stat-l">Missed</div></div>
+    </div>
+    <p class="next-info" id="done-next"></p>
+    <button class="btn-restart" id="btn-restart">Review again</button>
+  </div>
+
+  <div id="empty">
+    <h2>Nothing due today</h2>
+    <p>All cards reviewed — come back tomorrow.<br>Use a filter above to add more.</p>
+  </div>
+</main>
+
+<script>
+/* ===== CARD DATA ===== */
+const CARDS = [
+
+/* ECG */
+{id:"ecg_sinus_tachy",      cat:"ECG", name:"Sinus tachycardia",
+ cue:"Regular narrow complex, rate > 100 bpm, P before every QRS",
+ meaning:"Normal sinus rhythm at elevated rate",
+ causes:["Pain, anxiety, fever","Hypovolaemia, anaemia","PE, sepsis","Thyrotoxicosis, drugs (beta-agonists)"],
+ mx:"Treat underlying cause — not the tachycardia itself"},
+
+{id:"ecg_af",               cat:"ECG", name:"Atrial fibrillation",
+ cue:"Irregularly irregular rhythm, absent P waves, fibrillatory baseline",
+ meaning:"Chaotic atrial depolarisation, irregular ventricular response",
+ causes:["Hypertension (most common)","Ischaemic heart disease","Valvular disease (especially mitral stenosis)","Thyrotoxicosis, alcohol, infection"],
+ mx:"Rate control (beta-blocker/digoxin/CCB); anticoagulation (DOAC); rhythm control if indicated"},
+
+{id:"ecg_flutter",          cat:"ECG", name:"Atrial flutter",
+ cue:"Sawtooth baseline at ~300 bpm, regular ventricular rate (often 150 bpm — 2:1 block)",
+ meaning:"Macro re-entry circuit in right atrium",
+ causes:["Structural heart disease","Post-cardiac surgery","COPD, PE"],
+ mx:"Rate control; anticoagulation (same as AF); catheter ablation of cavo-tricuspid isthmus is curative"},
+
+{id:"ecg_svt",              cat:"ECG", name:"SVT (narrow complex tachycardia)",
+ cue:"Regular narrow complex, rate 150–250 bpm, P waves often hidden in T waves",
+ meaning:"Re-entry circuit involving AV node (AVNRT most common)",
+ causes:["AVNRT (most common)","AVRT (accessory pathway — WPW)","Atrial tachycardia"],
+ mx:"Vagal manoeuvres → IV adenosine (6 then 12 mg) → DC cardioversion if haemodynamically unstable"},
+
+{id:"ecg_vt",               cat:"ECG", name:"Ventricular tachycardia",
+ cue:"Broad complex regular tachycardia (QRS > 120 ms), rate 100–250 bpm, AV dissociation",
+ meaning:"Re-entry or automaticity in ventricular myocardium",
+ causes:["Ischaemic heart disease / post-MI scar","Cardiomyopathy","Electrolyte disturbance (K⁺, Mg²⁺)","Channelopathies (Long QT, Brugada)"],
+ mx:"If pulse: amiodarone IV; DC cardioversion if haemodynamically unstable. ICD for prevention"},
+
+{id:"ecg_vf",               cat:"ECG", name:"Ventricular fibrillation",
+ cue:"Chaotic irregular broad complex activity, no organised rhythm, no cardiac output",
+ meaning:"Disorganised ventricular depolarisation — cardiac arrest",
+ causes:["Acute MI","Severe electrolyte disturbance","Hypothermia","Primary arrhythmia"],
+ mx:"Immediate CPR, defibrillation (200J biphasic), adrenaline 1 mg IV, amiodarone 300 mg IV"},
+
+{id:"ecg_1st_degree",       cat:"ECG", name:"First-degree heart block",
+ cue:"PR interval > 200 ms (one large square), regular rhythm, every P followed by QRS",
+ meaning:"Delayed conduction through AV node",
+ causes:["Normal variant / athletes","Beta-blockers, digoxin","Inferior MI","Lyme disease"],
+ mx:"Usually benign — no treatment. Review offending drugs. Monitor if symptomatic"},
+
+{id:"ecg_mobitz1",          cat:"ECG", name:"Second-degree heart block (Mobitz I — Wenckebach)",
+ cue:"Progressively lengthening PR interval until a QRS is dropped, then cycle repeats",
+ meaning:"Intermittent failure of AV conduction — usually AV nodal",
+ causes:["Inferior MI (RCA)","Digoxin toxicity","Vagal tone (athletes)"],
+ mx:"Usually benign. Treat if symptomatic. Atropine for acute symptomatic bradycardia"},
+
+{id:"ecg_mobitz2",          cat:"ECG", name:"Second-degree heart block (Mobitz II)",
+ cue:"Constant PR interval with sudden non-conducted P waves (dropped QRS), often with bundle branch block",
+ meaning:"Intermittent failure below AV node — higher risk of complete block",
+ causes:["Anterior MI (LAD)","Structural conduction disease","Post-cardiac surgery"],
+ mx:"Requires pacing — risk of progression to complete heart block. Temporary pacing bridge to permanent"},
+
+{id:"ecg_chb",              cat:"ECG", name:"Complete heart block (3rd degree)",
+ cue:"P waves and QRS completely dissociated, regular slow ventricular escape rhythm (30–50 bpm)",
+ meaning:"No conduction from atria to ventricles — ventricular escape pacemaker",
+ causes:["Inferior MI","Anterior MI (massive)","Lyme disease, sarcoidosis","Idiopathic fibrosis of conduction system"],
+ mx:"Urgent pacing. Atropine temporising measure. Permanent pacemaker."},
+
+{id:"ecg_lbbb",             cat:"ECG", name:"Left bundle branch block",
+ cue:"Broad QRS > 120 ms, dominant S in V1, broad notched R ('W' in V1, 'M' in V6), no septal Q in lateral leads",
+ meaning:"Delayed left ventricular activation — often pathological",
+ causes:["Ischaemic heart disease","Hypertension","Cardiomyopathy","Normal in elderly"],
+ mx:"New LBBB with chest pain = treat as STEMI equivalent. Otherwise investigate underlying cause"},
+
+{id:"ecg_lvh",              cat:"ECG", name:"Left ventricular hypertrophy",
+ cue:"Sokolov-Lyon: S in V1 + R in V5 or V6 > 35 mm; deep S waves V1–2, tall R in V5–6; strain pattern (ST depression + T inversion lateral leads)",
+ meaning:"Increased left ventricular muscle mass — electrical voltage increase",
+ causes:["Hypertension (most common)","Aortic stenosis","Hypertrophic cardiomyopathy"],
+ mx:"Treat underlying cause — antihypertensives, valve surgery if AS"},
+
+{id:"ecg_inferior_stemi",   cat:"ECG", name:"Inferior STEMI",
+ cue:"ST elevation in II, III, aVF with reciprocal ST depression in I and aVL",
+ meaning:"Full thickness infarction of inferior myocardium",
+ causes:["RCA occlusion (80%)","Left circumflex (20%)"],
+ mx:"Primary PCI (door-to-balloon < 90 min). Aspirin + P2Y12 (ticagrelor/clopidogrel). Anticoagulation. Beta-blocker, ACE-i, statin."},
+
+{id:"ecg_anterior_stemi",   cat:"ECG", name:"Anterior STEMI",
+ cue:"ST elevation V1–V4 (or V1–V6); reciprocal changes in inferior leads if extensive",
+ meaning:"Full thickness anterior myocardial infarction",
+ causes:["LAD occlusion"],
+ mx:"Primary PCI urgently. Aspirin + P2Y12. Anticoagulation. High risk of LV dysfunction — early echo."},
+
+{id:"ecg_lateral_stemi",    cat:"ECG", name:"Lateral STEMI",
+ cue:"ST elevation in I, aVL, V5, V6; reciprocal changes in V1–V2",
+ meaning:"Lateral wall infarction",
+ causes:["Left circumflex or diagonal branch occlusion"],
+ mx:"Primary PCI. Aspirin + P2Y12. Anticoagulation."},
+
+{id:"ecg_nstemi",           cat:"ECG", name:"NSTEMI / unstable angina",
+ cue:"ST depression and/or T wave inversion (especially widespread); no ST elevation; may have normal ECG",
+ meaning:"Partial thickness ischaemia or non-occlusive thrombus",
+ causes:["Atheromatous plaque rupture","Demand ischaemia (type 2 MI): tachyarrhythmia, anaemia, hypotension"],
+ mx:"Aspirin + P2Y12, anticoagulation, beta-blocker. Risk stratify (GRACE score) — early angiography if high risk."},
+
+{id:"ecg_pericarditis",     cat:"ECG", name:"Pericarditis",
+ cue:"Saddle-shaped (concave up) ST elevation in most leads (not just territory), PR depression, no reciprocal changes",
+ meaning:"Inflammation of pericardium causes epicardial injury current",
+ causes:["Viral (Coxsackie B most common)","Post-MI (Dressler's syndrome)","Uraemia, autoimmune, TB"],
+ mx:"NSAIDs + colchicine (6 weeks). Avoid NSAIDs post-MI. Restrict strenuous activity."},
+
+{id:"ecg_wpw",              cat:"ECG", name:"Wolff-Parkinson-White",
+ cue:"Short PR interval (< 120 ms), delta wave (slurred QRS upstroke), broad QRS",
+ meaning:"Accessory pathway (Bundle of Kent) bypasses AV node — pre-excitation",
+ causes:["Congenital accessory pathway"],
+ mx:"Asymptomatic: discuss with cardiology. Symptomatic SVT: avoid AV nodal blocking drugs (can cause VF via accessory pathway). Catheter ablation is curative."},
+
+/* CXR */
+{id:"cxr_pulm_oedema",      cat:"CXR", name:"Pulmonary oedema",
+ cue:"Bat-wing perihilar opacification, Kerley B lines (horizontal lines at costophrenic angles), upper lobe venous diversion, bilateral pleural effusions, enlarged cardiac silhouette",
+ meaning:"Raised pulmonary venous pressure causing alveolar and interstitial oedema",
+ causes:["Left heart failure (most common)","ARDS","Fluid overload","Mitral stenosis"],
+ mx:"O₂, IV furosemide, GTN if not hypotensive, treat underlying cause. CPAP if not improving."},
+
+{id:"cxr_consolidation",    cat:"CXR", name:"Lobar consolidation",
+ cue:"Dense opacification with air bronchograms (dark branching airways visible within white opacity), confined to a lobe, +/- volume loss",
+ meaning:"Alveoli filled with fluid/inflammatory exudate — airspace disease",
+ causes:["Pneumonia (bacterial — Streptococcus pneumoniae most common)","Aspiration","Lung infarction (PE)"],
+ mx:"Antibiotics (CURB-65 guided). O₂, fluids. If no improvement: CT, bronchoscopy."},
+
+{id:"cxr_effusion",         cat:"CXR", name:"Pleural effusion",
+ cue:"Homogenous opacity at base with upper concave meniscus, blunted costophrenic angle (needs > 200 mL), mediastinum may shift away if massive",
+ meaning:"Excess fluid in pleural space",
+ causes:["Transudate: CCF, cirrhosis, nephrotic syndrome","Exudate: malignancy, pneumonia, PE, TB","Light's criteria to differentiate"],
+ mx:"Treat underlying cause. Diagnostic thoracocentesis if unclear. Therapeutic drainage if large/symptomatic."},
+
+{id:"cxr_pneumothorax",     cat:"CXR", name:"Pneumothorax",
+ cue:"Visible lung edge with absent lung markings lateral to it, no pleural fluid. Small = < 2 cm at hilum level",
+ meaning:"Air in pleural space — lung collapses",
+ causes:["Spontaneous primary (tall thin males)","Secondary (COPD, Marfan's, cystic fibrosis)","Traumatic, iatrogenic (post-procedural)"],
+ mx:"Primary small: observe, discharge with safety net. Primary large or secondary: aspiration then chest drain. Recurrent: VATS pleurodesis."},
+
+{id:"cxr_tension_ptx",      cat:"CXR", name:"Tension pneumothorax",
+ cue:"Pneumothorax PLUS mediastinal shift AWAY from affected side, tracheal deviation, haemodynamic instability",
+ meaning:"One-way valve effect — air accumulates, compresses mediastinum, obstructs venous return",
+ causes:["Spontaneous (especially in ventilated patients)","Traumatic","Post-procedural"],
+ mx:"IMMEDIATE needle decompression (2nd ICS, MCL) — do NOT wait for CXR if clinical diagnosis. Followed by chest drain."},
+
+{id:"cxr_lobar_collapse",   cat:"CXR", name:"Lobar collapse",
+ cue:"Increased opacity with volume loss (elevated hemidiaphragm, mediastinal shift TOWARDS, rib crowding). Each lobe collapses in characteristic direction.",
+ meaning:"Airway obstruction or external compression causes reabsorption of air",
+ causes:["Mucus plug (post-op, aspiration)","Endobronchial tumour","External compression"],
+ mx:"Treat cause: physiotherapy, suctioning. Bronchoscopy to remove plug or biopsy obstructing lesion."},
+
+{id:"cxr_rul_collapse",     cat:"CXR", name:"Right upper lobe collapse",
+ cue:"Opacity in right apex, elevated right hilum, trachea deviates right, 'S-sign of Golden' if due to central tumour",
+ meaning:"Right upper lobe airway obstruction",
+ causes:["Lung cancer (commonest cause of lobar collapse in adults)","Mucus plug"],
+ mx:"CT thorax. Bronchoscopy. MDT if malignancy suspected."},
+
+{id:"cxr_ild",              cat:"CXR", name:"Interstitial (reticular) shadowing",
+ cue:"Bilateral fine reticular or nodular pattern, often basal predominant, may show honeycombing in late disease",
+ meaning:"Thickening of interstitium — fibrosis or inflammatory infiltrate",
+ causes:["Idiopathic pulmonary fibrosis (UIP pattern — basal)","Sarcoidosis (upper zone)","Hypersensitivity pneumonitis","Connective tissue disease"],
+ mx:"CT HRCT for characterisation. Antifibrotics (pirfenidone/nintedanib) for IPF. Steroids for inflammatory causes."},
+
+{id:"cxr_spn",              cat:"CXR", name:"Solitary pulmonary nodule",
+ cue:"Discrete rounded opacity < 3 cm, smooth or irregular edge, may have calcification",
+ meaning:"Single focal lesion — spectrum from benign granuloma to primary lung cancer",
+ causes:["Benign: granuloma (TB, sarcoid), hamartoma","Malignant: primary lung cancer (if irregular, spiculated), solitary metastasis"],
+ mx:"Fleischner criteria guide follow-up CT interval based on size and risk factors. PET-CT and biopsy if high-risk features."},
+
+{id:"cxr_bhl",              cat:"CXR", name:"Bilateral hilar lymphadenopathy",
+ cue:"Bilateral symmetric enlargement of hila, 'lobulated' appearance, lungs may be clear (sarcoidosis) or with infiltrates",
+ meaning:"Enlarged hilar lymph nodes",
+ causes:["Sarcoidosis (most common bilateral symmetric BHL)","Lymphoma","TB (asymmetric, unilateral)","Malignant — bilateral metastatic"],
+ mx:"Serum ACE, calcium, ANCA. CT chest. Bronchoscopy + BAL + transbronchial biopsy. Treat underlying cause."},
+
+{id:"cxr_pneumoperitoneum", cat:"CXR", name:"Pneumoperitoneum",
+ cue:"Free air under the diaphragm (erect CXR) — crescent of gas between liver and right hemidiaphragm",
+ meaning:"Air in peritoneal cavity — usually from visceral perforation",
+ causes:["Perforated peptic ulcer (most common)","Perforated diverticular disease","Post-operative (normal up to 7 days)","Bowel perforation"],
+ mx:"Urgent surgical referral. IV fluids, antibiotics, analgesia, NG tube. Emergency laparotomy or laparoscopy."},
+
+{id:"cxr_wide_mediastinum", cat:"CXR", name:"Widened mediastinum",
+ cue:"Mediastinum > 8 cm wide at aortic knuckle level on PA CXR",
+ meaning:"Mediastinal mass or aortic pathology",
+ causes:["Aortic dissection (Type A — emergency)","Aortic aneurysm","Lymphoma / thymoma","Post-traumatic haematoma"],
+ mx:"CT aortogram urgently if dissection suspected. ECG, troponin. Cardiac surgery team if Type A dissection."},
+
+/* AXR */
+{id:"axr_sbo",              cat:"AXR", name:"Small bowel obstruction",
+ cue:"Central dilated loops (> 3 cm), multiple air-fluid levels, valvulae conniventes (complete lines across full width), no gas in colon",
+ meaning:"Mechanical obstruction of small bowel",
+ causes:["Adhesions (most common — post-surgical)","Hernia (femoral/inguinal)","Malignancy","Crohn's stricture"],
+ mx:"NBM, NG tube, IV fluids ('drip and suck'). Surgical review. CT abdomen to identify level and cause. Operative if strangulation suspected."},
+
+{id:"axr_lbo",              cat:"AXR", name:"Large bowel obstruction",
+ cue:"Peripheral dilated loops (> 6 cm), haustral folds (incomplete lines partway across), caecum may be massively dilated (> 9 cm = risk of perforation)",
+ meaning:"Mechanical obstruction of large bowel",
+ causes:["Colorectal carcinoma (most common)","Diverticular stricture","Sigmoid/caecal volvulus","Faecal impaction"],
+ mx:"NBM, IV fluids. CT abdomen (characterise cause). Decompression: sigmoidoscopy for volvulus; defunctioning stoma or resection for tumour."},
+
+{id:"axr_sigmoid_volvulus", cat:"AXR", name:"Sigmoid volvulus",
+ cue:"'Coffee bean' sign — massively dilated sigmoid loop folded on itself, apex pointing towards right upper quadrant",
+ meaning:"Sigmoid colon twists on its mesentery — closed loop obstruction",
+ causes:["Chronic constipation","High-fibre diet","Elderly, institutionalised patients"],
+ mx:"Flexible sigmoidoscopy + flatus tube (immediate decompression). Elective sigmoid resection to prevent recurrence. Emergency surgery if ischaemia/perforation."},
+
+{id:"axr_toxic_megacolon",  cat:"AXR", name:"Toxic megacolon",
+ cue:"Transverse colon > 6 cm with loss of haustral pattern, 'thumbprinting' (mucosal oedema), systemic toxicity",
+ meaning:"Non-obstructive colonic dilation with transmural inflammation",
+ causes:["Ulcerative colitis (most common)","Crohn's colitis","Clostridioides difficile infection","Ischaemic colitis"],
+ mx:"Medical emergency. NBM, IV fluids, IV steroids, antibiotics. Surgical colectomy if not improving within 24–72h or if perforating."},
+
+{id:"axr_pneumoperitoneum", cat:"AXR", name:"Pneumoperitoneum (AXR)",
+ cue:"Free air under diaphragm (erect) or Rigler's sign — both sides of bowel wall visible (supine)",
+ meaning:"Intraperitoneal free gas",
+ causes:["Perforated peptic ulcer","Perforated diverticular","Ischaemic bowel","Post-operative (normal < 7 days)"],
+ mx:"Emergency surgical referral. IV access, fluids, antibiotics, analgesia. Erect CXR more sensitive — use AXR as adjunct."},
+
+{id:"axr_renal_calculus",   cat:"AXR", name:"Renal calculus",
+ cue:"Opaque stone in the line of the ureter (90% of renal stones are radio-opaque), may cause hydronephrosis",
+ meaning:"Calcified stone in renal collecting system or ureter",
+ causes:["Calcium oxalate (most common — radio-opaque)","Uric acid (radio-lucent — CT only)","Struvite, cystine"],
+ mx:"Analgesia (diclofenac first-line if no renal impairment). IV fluids. CT KUB (gold standard). Spontaneous passage if < 6 mm. Urological intervention (ureteroscopy, ESWL) if > 6 mm or not passing."},
+
+/* ABG */
+{id:"abg_type1_rf",         cat:"ABG", name:"Type I respiratory failure",
+ cue:"PaO₂ < 8 kPa, PaCO₂ normal or low (↓), pH normal or ↑ (respiratory alkalosis from compensatory hyperventilation)",
+ meaning:"Failure of gas exchange — O₂ can't cross, CO₂ normal (still excreted)",
+ causes:["Pneumonia, pulmonary oedema","PE","ILD / ARDS","Pneumothorax","Severe asthma"],
+ mx:"High-flow O₂ (no restriction). Treat underlying cause. CPAP for pulmonary oedema."},
+
+{id:"abg_type2_rf",         cat:"ABG", name:"Type II respiratory failure",
+ cue:"PaO₂ < 8 kPa AND PaCO₂ > 6 kPa, pH ↓ (respiratory acidosis) ± raised HCO₃ (metabolic compensation if chronic)",
+ meaning:"Ventilatory failure — can't expel CO₂",
+ causes:["COPD exacerbation","Chest wall deformity / kyphoscoliosis","Neuromuscular disease (MND, GBS)","Opioid overdose","Obesity hypoventilation"],
+ mx:"Controlled O₂ (target 88–92% in COPD). NIV (BiPAP) if persisting hypercapnia despite max medical therapy. Treat precipitant."},
+
+{id:"abg_resp_acidosis",    cat:"ABG", name:"Respiratory acidosis",
+ cue:"pH ↓ (< 7.35), PaCO₂ ↑ (> 6 kPa), HCO₃ normal acutely or ↑ if chronic (renal compensation)",
+ meaning:"CO₂ retention — acidic because CO₂ + H₂O → H₂CO₃",
+ causes:["COPD, asthma","Opioid / sedative overdose","Neuromuscular failure","Chest wall disease"],
+ mx:"Treat underlying cause. Reverse opioids (naloxone). NIV or intubation if severe."},
+
+{id:"abg_resp_alkalosis",   cat:"ABG", name:"Respiratory alkalosis",
+ cue:"pH ↑ (> 7.45), PaCO₂ ↓ (< 4.7 kPa), HCO₃ normal acutely or ↓ if chronic (renal compensation)",
+ meaning:"Hyperventilation — excessive CO₂ excreted",
+ causes:["Anxiety / panic attack","PE (reflex hyperventilation)","Early sepsis","Altitude","Salicylate poisoning (early)","Liver failure"],
+ mx:"Treat underlying cause. Reassurance + controlled breathing for anxiety."},
+
+{id:"abg_hagma",            cat:"ABG", name:"High anion gap metabolic acidosis (HAGMA)",
+ cue:"pH ↓, HCO₃ ↓, AG = Na⁺ − (Cl⁻ + HCO₃⁻) > 12; unmeasured anions accumulating",
+ meaning:"Acid added to blood — buffered by bicarbonate, widens anion gap",
+ causes:["MUDPILES: Methanol, Uraemia, DKA, Propylene glycol, Isoniazid/Iron, Lactic acidosis, Ethylene glycol, Salicylates"],
+ mx:"Treat underlying cause: insulin/fluids for DKA; antibiotics/source control for lactic acidosis; dialysis for uraemia."},
+
+{id:"abg_nagma",            cat:"ABG", name:"Normal anion gap metabolic acidosis (NAGMA)",
+ cue:"pH ↓, HCO₃ ↓, AG normal (8–12); hyperchloraemia often present",
+ meaning:"HCO₃ lost or H⁺ gained — replaced by Cl⁻ to maintain electroneutrality",
+ causes:["Diarrhoea (HCO₃ loss)","Renal tubular acidosis","Acetazolamide","Excessive saline infusion (iatrogenic)","Addison's disease"],
+ mx:"Treat underlying cause. Oral or IV bicarbonate if severe (pH < 7.1) and symptoms."},
+
+{id:"abg_met_alkalosis",    cat:"ABG", name:"Metabolic alkalosis",
+ cue:"pH ↑ (> 7.45), HCO₃ ↑ (> 26), PaCO₂ slightly ↑ (respiratory compensation — shallow breathing)",
+ meaning:"Excess bicarbonate or loss of acid",
+ causes:["Vomiting (loss of HCl)","Diuretics (loop/thiazide — volume contraction + hypokalaemia)","Hypokalaemia (K⁺ shifts into cells, H⁺ moves out)","Antacid overuse"],
+ mx:"Treat underlying cause. IV NaCl for contraction alkalosis. Correct K⁺ and Cl⁻ deficits."},
+
+{id:"abg_lactic_acidosis",  cat:"ABG", name:"Lactic acidosis",
+ cue:"pH ↓, HCO₃ ↓, high AG; lactate > 2 mmol/L (significant) or > 4 mmol/L (severe)",
+ meaning:"Anaerobic respiration produces lactate — indicates poor tissue perfusion",
+ causes:["Type A: shock (septic, cardiogenic, haemorrhagic)","Type B: metformin, liver failure, malignancy, mitochondrial disease"],
+ mx:"Treat underlying cause urgently. Sepsis: IV fluids, antibiotics, source control, vasopressors. Monitor lactate as response marker. Stop metformin."},
+
+/* Bloods */
+{id:"bloods_hepatocellular", cat:"Bloods", name:"Hepatocellular pattern (LFTs)",
+ cue:"↑↑ ALT and AST (often > 10× ULN), mildly raised ALP, ALP:ALT ratio < 1.5",
+ meaning:"Hepatocyte damage — enzymes released from liver cells",
+ causes:["Viral hepatitis (A, B, C, E)","Alcohol (AST:ALT > 2:1)","Paracetamol overdose","Autoimmune hepatitis","Ischaemic hepatitis (shock liver)"],
+ mx:"Identify and treat cause. Supportive care. N-acetylcysteine for paracetamol OD. Antivirals for hepatitis B/C."},
+
+{id:"bloods_cholestatic",   cat:"Bloods", name:"Cholestatic pattern (LFTs)",
+ cue:"↑↑ ALP and GGT, mildly raised ALT/AST, ALP:ALT ratio > 3, bilirubin raised",
+ meaning:"Obstruction to bile flow — biliary epithelium releases ALP",
+ causes:["Extrahepatic obstruction: gallstones (CBD), pancreatic cancer, cholangiocarcinoma","Intrahepatic: PBC, PSC, drugs (co-amoxiclav, flucloxacillin)"],
+ mx:"USS abdomen first-line. ERCP for CBD stone. MRCP/CT for malignancy staging. UDCA for PBC."},
+
+{id:"bloods_hyperthyroid",  cat:"Bloods", name:"Hyperthyroid TFTs",
+ cue:"↓ TSH (suppressed, often undetectable), ↑ free T4 and/or ↑ free T3",
+ meaning:"Excess thyroid hormone — negative feedback suppresses TSH",
+ causes:["Graves' disease (TSH-receptor antibodies)","Toxic multinodular goitre","Toxic adenoma","Subacute thyroiditis (transient)","Amiodarone"],
+ mx:"Carbimazole (or PTU). Propranolol for symptomatic relief. Radioiodine or thyroidectomy for definitive treatment."},
+
+{id:"bloods_hypothyroid",   cat:"Bloods", name:"Hypothyroid TFTs",
+ cue:"↑ TSH (> 4 mIU/L), ↓ free T4 (subclinical: ↑ TSH with normal fT4)",
+ meaning:"Insufficient thyroid hormone — TSH elevated to stimulate gland",
+ causes:["Hashimoto's thyroiditis (anti-TPO antibodies)","Post-radioiodine or post-thyroidectomy","Iodine deficiency (globally)","Amiodarone, lithium"],
+ mx:"Levothyroxine replacement (target TSH 0.5–2.5 mIU/L). Monitor TFTs 6–12 weekly until stable."},
+
+{id:"bloods_ida",           cat:"Bloods", name:"Iron deficiency anaemia",
+ cue:"↓ Hb, ↓ MCV (microcytic), ↓ serum ferritin, ↑ TIBC, ↓ serum iron",
+ meaning:"Depletion of iron stores impairs haemoglobin synthesis",
+ causes:["Blood loss (GI — most common in adults; menorrhagia in women)","Poor intake / malabsorption (coeliac disease)","Pregnancy (↑ demand)"],
+ mx:"Find and treat source of blood loss (endoscopy). Oral ferrous sulfate 3 months. IV iron if not tolerated or malabsorption."},
+
+{id:"bloods_b12_folate",    cat:"Bloods", name:"B12 / folate deficiency anaemia",
+ cue:"↓ Hb, ↑ MCV (macrocytic), hypersegmented neutrophils on blood film, ↓ serum B12 or folate",
+ meaning:"Deficiency of B12/folate impairs DNA synthesis — large, immature red cells",
+ causes:["B12: pernicious anaemia (anti-intrinsic factor antibodies), vegan diet, gastrectomy, Crohn's","Folate: poor diet, alcohol, drugs (methotrexate, phenytoin), pregnancy (↑ demand)"],
+ mx:"B12 deficiency: IM hydroxocobalamin. Folate: oral folic acid 5 mg OD. Treat underlying cause."},
+
+{id:"bloods_troponin",      cat:"Bloods", name:"Elevated troponin",
+ cue:"↑ troponin I or T above 99th percentile of normal, rise and/or fall pattern over serial measurements",
+ meaning:"Cardiomyocyte necrosis — troponin released from damaged cells",
+ causes:["Type 1 MI (plaque rupture — ACS)","Type 2 MI (supply-demand mismatch: tachyarrhythmia, sepsis, PE, anaemia)","Non-ischaemic: myocarditis, PE, renal failure, cardiac contusion"],
+ mx:"Context is key — interpret with symptoms, ECG, and risk factors. ACS: DAPT, anticoagulation, angiography. Treat underlying cause for type 2."},
+
+{id:"bloods_ddimer",        cat:"Bloods", name:"Elevated D-dimer",
+ cue:"↑ D-dimer — fibrin degradation product; highly sensitive, NOT specific for PE/DVT",
+ meaning:"Evidence of fibrin clot formation and lysis — but many conditions elevate it",
+ causes:["PE, DVT","Disseminated intravascular coagulation (DIC)","Malignancy","Infection, surgery, pregnancy","Heart failure, liver disease"],
+ mx:"Use only as rule-out (low pre-test probability + negative D-dimer = PE/DVT excluded). If raised: proceed to CTPA or leg USS based on clinical probability."},
+
+{id:"bloods_hyponatraemia", cat:"Bloods", name:"Hyponatraemia",
+ cue:"Na⁺ < 135 mmol/L; classify by osmolality, urine Na⁺, and volume status",
+ meaning:"Excess water relative to sodium",
+ causes:["SIADH (hypovolaemic hypoosmolar — low urine Na⁺)","SIADH (euvolaemic hypoosmolar — high urine Na⁺)","CCF/cirrhosis/nephrotic (hypervolaemic)","Hypothyroidism, Addison's"],
+ mx:"Treat underlying cause. Fluid restriction for SIADH. Cautious saline (not > 10 mmol/L/24h correction — risk of osmotic demyelination). Tolvaptan for resistant SIADH."},
+
+{id:"bloods_hyperkalaemia", cat:"Bloods", name:"Hyperkalaemia",
+ cue:"K⁺ > 5.5 mmol/L — ECG changes: peaked T waves → QRS widening → sine wave → VF",
+ meaning:"Excess serum potassium — depolarises cardiac myocytes",
+ causes:["AKI/CKD","ACE-i, spironolactone, NSAIDs","Addison's disease","Metabolic acidosis","Rhabdomyolysis","Haemolysed sample (artefact)"],
+ mx:"ECG immediately. If ECG changes: IV calcium gluconate (membrane stabilisation). Then: insulin-dextrose, salbutamol nebuliser, calcium resonium. Dialysis if severe/refractory. Stop causative drugs."},
+
+{id:"bloods_crp_esr",       cat:"Bloods", name:"Raised CRP / ESR",
+ cue:"CRP: acute-phase protein (rises within hours, normalises within days). ESR: slower — elevated for weeks",
+ meaning:"Non-specific markers of inflammation, infection, or tissue damage",
+ causes:["Infection (bacterial >> viral)","Autoimmune disease (RA, SLE, vasculitis)","Malignancy","Inflammatory conditions (IBD, polymyalgia rheumatica)","Tissue necrosis (MI, PE)"],
+ mx:"Interpret in clinical context. Serial CRP guides antibiotic response and disease activity monitoring."},
+
+{id:"bloods_haematuria",    cat:"Bloods", name:"Urine dipstick — haematuria",
+ cue:"Blood ++ or +++ on dipstick, confirmed microscopic or visible haematuria on MSU",
+ meaning:"Red blood cells or haemoglobin in urine",
+ causes:["Visible (macroscopic): bladder cancer, renal calculi, UTI, renal cancer","Microscopic: IgA nephropathy, glomerulonephritis, thin basement membrane disease, renal calculi","False positive: myoglobinuria, haemolysis"],
+ mx:"Visible haematuria > 40 years: urgent urology referral (2-week wait). Microscopic with proteinuria: nephrology. MSU, cystoscopy, CT urogram. Recurrence check."},
+
+];
+
+/* ===== CATEGORIES ===== */
+const CATS = ['All','ECG','CXR','AXR','ABG','Bloods'];
+
+/* ===== SPACED REPETITION ===== */
+const STORAGE_KEY = 'data-srs';
+
+function localDate(d) {
+  return [d.getFullYear(), String(d.getMonth()+1).padStart(2,'0'), String(d.getDate()).padStart(2,'0')].join('-');
+}
+const today = localDate(new Date());
+
+function addDays(n) {
+  const d = new Date(); d.setDate(d.getDate() + Math.round(n)); return localDate(d);
+}
+function loadProgress() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch { return {}; }
+}
+function saveProgress(p) { localStorage.setItem(STORAGE_KEY, JSON.stringify(p)); }
+
+function isDue(rec) { return !rec || rec.due <= today; }
+
+function applyRating(progress, id, r) {
+  const rec = progress[id] || { interval: 1 };
+  if (r === 'got') {
+    rec.interval = Math.max(1, Math.round(rec.interval * 2.5));
+    rec.due = addDays(rec.interval);
+  } else if (r === 'hard') {
+    rec.interval = Math.max(1, Math.round(rec.interval * 1.2));
+    rec.due = addDays(1);
+  } else {
+    rec.interval = 1;
+    rec.due = today;
+  }
+  progress[id] = rec;
+}
+
+/* ===== STATE ===== */
+let activeCat = 'All';
+let queue = [], queuePos = 0;
+let sessionStats = { got: 0, hard: 0, missed: 0 };
+let sessionSeen = {};
+let progress = {};
+
+function buildQueue() {
+  progress = loadProgress();
+  const base = CARDS.filter(c =>
+    (activeCat === 'All' || c.cat === activeCat) && isDue(progress[c.id])
+  );
+  // Fisher-Yates shuffle
+  for (let i = base.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [base[i], base[j]] = [base[j], base[i]];
+  }
+  queue = base; queuePos = 0;
+  sessionStats = { got: 0, hard: 0, missed: 0 };
+  sessionSeen = {};
+}
+
+/* ===== RENDER ===== */
+function updateProgress() {
+  const total = queue.length, done = queuePos;
+  document.getElementById('progress-fill').style.width = (total ? (done / total) * 100 : 0) + '%';
+  document.getElementById('progress-label').textContent = done + ' / ' + total;
+}
+
+function showFront() {
+  const c = queue[queuePos];
+  document.getElementById('card').innerHTML = `
+    <div class="card-meta">
+      <span class="cat-badge">${c.cat}</span>
+    </div>
+    <div class="sign-name">${c.name}</div>
+    <div class="sign-cue">${c.cue}</div>
+    <button class="btn-show" id="btn-show">Show interpretation</button>
+  `;
+  document.getElementById('btn-show').addEventListener('click', doFlip);
+  updateProgress();
+}
+
+function doFlip() {
+  const cardEl = document.getElementById('card');
+  const c = queue[queuePos];
+  cardEl.classList.add('flipping');
+  setTimeout(() => {
+    const causesHTML = c.causes.map((ca, i) =>
+      `<li class="cause-item">${ca}</li>`
+    ).join('');
+    cardEl.innerHTML = `
+      <div class="card-meta">
+        <span class="cat-badge">${c.cat}</span>
+      </div>
+      <div class="sign-name">${c.name}</div>
+      <div class="sec-head first">What it means</div>
+      <p class="meaning-text">${c.meaning}</p>
+      <div class="sec-head">Causes</div>
+      <ul class="cause-list">${causesHTML}</ul>
+      <div class="sec-head">Management</div>
+      <p class="mx-text">${c.mx}</p>
+      <div class="rating-row">
+        <button class="btn missed" data-r="missed">Missed</button>
+        <button class="btn hard" data-r="hard">Hard</button>
+        <button class="btn got" data-r="got">Got it ✓</button>
+      </div>
+    `;
+    cardEl.classList.remove('flipping');
+    cardEl.querySelectorAll('.rating-row .btn').forEach(b =>
+      b.addEventListener('click', () => rate(b.dataset.r))
+    );
+  }, 190);
+}
+
+function rate(r) {
+  const c = queue[queuePos];
+  sessionStats[r]++;
+  applyRating(progress, c.id, r);
+  saveProgress(progress);
+
+  if (r === 'missed') {
+    const seen = sessionSeen[c.id] || 0;
+    if (seen < 1) queue.push(c);
+  }
+  sessionSeen[c.id] = (sessionSeen[c.id] || 0) + 1;
+
+  queuePos++;
+  if (queuePos >= queue.length) { showDone(); return; }
+
+  const cardEl = document.getElementById('card');
+  cardEl.classList.add('flipping');
+  setTimeout(() => { showFront(); cardEl.classList.remove('flipping'); }, 190);
+}
+
+function showDone() {
+  document.getElementById('quiz-area').style.display = 'none';
+  document.getElementById('done').style.display = 'block';
+  document.getElementById('s-got').textContent = sessionStats.got;
+  document.getElementById('s-hard').textContent = sessionStats.hard;
+  document.getElementById('s-missed').textContent = sessionStats.missed;
+
+  const total = sessionStats.got + sessionStats.hard + sessionStats.missed;
+  document.getElementById('done-sub').textContent =
+    total + ' card' + (total !== 1 ? 's' : '') + ' reviewed';
+
+  const prog = loadProgress();
+  const tom = addDays(1);
+  const dueT = CARDS.filter(c => {
+    if (activeCat !== 'All' && c.cat !== activeCat) return false;
+    const r = prog[c.id]; return r && r.due <= tom && r.due > today;
+  }).length;
+  document.getElementById('done-next').textContent = dueT
+    ? dueT + ' card' + (dueT !== 1 ? 's' : '') + ' due tomorrow'
+    : 'Nothing due tomorrow — well done.';
+}
+
+function showEmpty() {
+  document.getElementById('quiz-area').style.display = 'none';
+  document.getElementById('done').style.display = 'none';
+  document.getElementById('empty').style.display = 'block';
+}
+
+function resetToQuiz() {
+  document.getElementById('done').style.display = 'none';
+  document.getElementById('empty').style.display = 'none';
+  document.getElementById('quiz-area').style.display = 'block';
+}
+
+/* ===== FILTER CHIPS ===== */
+function renderFilters() {
+  const row = document.getElementById('filter-chips');
+  row.innerHTML = '';
+  CATS.forEach(cat => {
+    const btn = document.createElement('button');
+    btn.className = 'fchip' + (activeCat === cat ? ' on' : '');
+    btn.textContent = cat;
+    btn.addEventListener('click', () => {
+      if (activeCat === cat) return;
+      activeCat = cat;
+      row.querySelectorAll('.fchip').forEach(b => b.classList.remove('on'));
+      btn.classList.add('on');
+      buildQueue();
+      if (queue.length === 0) { showEmpty(); }
+      else { resetToQuiz(); showFront(); }
+    });
+    row.appendChild(btn);
+  });
+}
+
+/* ===== INIT ===== */
+document.getElementById('btn-restart').addEventListener('click', () => {
+  buildQueue();
+  if (queue.length === 0) { showEmpty(); }
+  else { resetToQuiz(); showFront(); }
+});
+
+document.getElementById('btn-reset').addEventListener('click', () => {
+  if (!confirm('Reset all data interpretation progress? This clears your spaced-repetition history.')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  buildQueue();
+  if (queue.length === 0) { showEmpty(); }
+  else { resetToQuiz(); showFront(); }
+});
+
+buildQueue();
+renderFilters();
+if (queue.length === 0) { showEmpty(); }
+else { showFront(); }
+</script>
+</body>
+</html>
