@@ -31,7 +31,8 @@
   body.quiz .switch::after{transform:translateX(18px);}
 
   /* tab bar */
-  .tabs{max-width:1040px;margin:0 auto;padding:0 22px;display:flex;gap:4px;}
+  .tabs{max-width:1040px;margin:0 auto;padding:0 22px;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+  .tabs::-webkit-scrollbar{display:none;}
   .tab{flex:none;font-size:14px;font-weight:550;color:var(--ink-2);padding:11px 18px;cursor:pointer;border:none;background:none;position:relative;letter-spacing:-.01em;}
   .tab.active{color:var(--ink);}
   .tab.active::after{content:"";position:absolute;left:14px;right:14px;bottom:0;height:2.5px;border-radius:2px;background:var(--accent);}

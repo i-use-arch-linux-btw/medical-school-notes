@@ -6,10 +6,12 @@ Oxford Medicine Year 4 OSCE revision resource. AI-generated, grounded in the act
 
 ```
 y4/
-  osce_atlas.html          — single self-contained app (signs bank, investigation map, differential atlas)
-  quiz.html                — standalone Anki-style spaced-repetition quiz (linked from the Signs tab)
+  osce_atlas.html    — Signs bank, Investigation map, Differential atlas (with management)
+  quiz.html          — Anki-style spaced-repetition quiz on signs
+  technique.html     — Step-by-step examination walk-through (MedEd booklet order)
+  data.html          — Data interpretation: systematic approach + flip-card quiz
   data/
-    database.example.json  — authoritative data source (edit here; mirror changes to both HTML files)
+    database.example.json  — authoritative data source (edit here; mirror to HTML files)
     database.json          — gitignored personal copy (optional local additions)
   sources/
     MedEd Booklet 2025.pdf              — Oxford Y4 examination technique + sign-interpretation tables
@@ -18,27 +20,31 @@ y4/
 
 ## What this is
 
-A single-file interactive HTML reference built for photographic memory + active recall:
+Five self-contained HTML files for Y4 OSCE revision:
 
-- **Signs Bank** — examiner-states-finding → differential → bedside-first investigations (quiz mode available)
-- **Investigation Map** — tests pooled by how many exams share them (Venn-style); each test tile expands to show deployment specifics + trigger logic
-- **Differential Atlas** — tile wall of all differentials, grouped by exam, colour-coded
+- **Signs Bank** (`osce_atlas.html`) — sign → differential → investigations, colour-coded by exam
+- **Investigation Map** (`osce_atlas.html`) — tests pooled by how many exams share them; expand for deployment details
+- **Differential Atlas** (`osce_atlas.html`) — all differentials by exam, with management (green "Mx ·" line when expanded)
+- **Quiz** (`quiz.html`) — spaced-repetition flip cards on signs; Missed/Hard/Got it rating
+- **Examination Technique** (`technique.html`) — click through exam steps from MedEd booklet; sub-types for Neuro/Vascular/Neck; "Present your findings" step with fill-in-blank template
+- **Data Interpretation** (`data.html`) — two tabs: Approach (systematic ECG/CXR/AXR/ABG/Bloods step-through) and Quiz (56 SRS flip cards)
 
 ## Key Y4 OSCE facts that shape content decisions
 
 - Patients are **healthy volunteers** — real positive signs rarely found on the body
-- Examiner supplies findings verbally ("you hear a pansystolic murmur...") or via data card
+- Examiner supplies findings verbally or via data card
 - Test is: (1) slick safe examination technique, (2) sign → reasoning → differential → investigation → simple management
 - Examinations in OSCE order: CVS → Resp → Abdo → Neuro limbs → Upper/lower limb neuro → Cranial → Lump/breast → Neck/thyroid → Vascular
 - **Signature colour per exam** carried across all tabs: CVS red, Resp blue, Abdo amber, Neuro purple, Lump teal, Breast pink, Neck green, Vascular indigo
+- **Management level**: principles only — drug class, intervention type, not doses. Y4 syllabus explicit: "simple management" = drug classes + mechanisms, not protocols
 
 ## Source authority
 
-When updating content, always ground it in the two PDFs in `y4/sources/`. Do not add differentials or investigations that aren't supported by the MedEd booklet or the clinical syllabus.
+Always ground content in the two PDFs in `y4/sources/`. Do not add differentials or investigations not supported by the MedEd booklet or clinical syllabus.
 
 ## Data source
 
-`y4/data/database.example.json` is the canonical data source. It has a linked schema:
+`y4/data/database.example.json` is the canonical data source:
 - `exams` — 8 exam records with colour + order
 - `investigations` — keyed by snake_case ID, with `how` and `think` fields
 - `differentials` — keyed by snake_case ID, with `category`, `management`, `notes`
@@ -46,31 +52,40 @@ When updating content, always ground it in the two PDFs in `y4/sources/`. Do not
 
 **When adding or correcting content:**
 1. Edit `y4/data/database.example.json` first
-2. Mirror the changes into the `SIGNS` / `POOLS` / `TEST_INFO` blocks in `osce_atlas.html`
-3. Mirror the same `SIGNS` data into `quiz.html` (the `const SIGNS` block near the top of the script)
+2. Mirror changes into `const SIGNS` / `const POOLS` / `const TEST_INFO` in `osce_atlas.html`
+3. Mirror `SIGNS` data into `quiz.html` (`const SIGNS` near top of script)
+4. Management text lives in `const MGMT` in `osce_atlas.html` — update both database.example.json and MGMT
 
-`database.json` (gitignored) is available as a personal slot — not committed to the repo.
+`database.json` (gitignored) is the personal slot — not committed.
 
 ## HTML architecture
 
-`y4/osce_atlas.html` is self-contained — one file, no build step, no dependencies. All data is inline JS objects. CSS uses Apple design language (SF Pro stack, `--bg:#f5f5f7`, generous whitespace, `backdrop-filter` header).
+All five files are self-contained — no build step, no dependencies, open directly in a browser. CSS uses Apple design language (SF Pro stack, `--bg:#f5f5f7`, `backdrop-filter` header).
 
-`y4/quiz.html` is similarly self-contained — same CSS tokens, same `SIGNS` data embedded inline, localStorage for spaced-repetition progress. No server required.
+| File | Key JS data | Notes |
+|---|---|---|
+| `osce_atlas.html` | `SIGNS`, `POOLS`, `TEST_INFO`, `MGMT` | Tab-bar links to quiz/technique/data |
+| `quiz.html` | `SIGNS` (verbatim copy from atlas) | localStorage SRS: `osce-srs` |
+| `technique.html` | `EXAMS` (with `steps[]` incl. `present` steps) | `COL` for exam colours |
+| `data.html` | `APPROACHES` (step-through), `CARDS` (quiz) | localStorage SRS: `data-srs` |
 
-When editing:
-- In `osce_atlas.html`: data lives in `const SIGNS`, `const POOLS`, `const TEST_INFO` at the top of the `<script>` block
-- In `quiz.html`: data lives in `const SIGNS` — the same array, verbatim copy
-- Rendering is JS-driven — edit data, not DOM string templates, unless adding a new visual feature
-- Colour system: `--c-cvs`, `--c-resp`, `--c-abdo`, `--c-neuro`, `--c-lump`, `--c-breast`, `--c-neck`, `--c-vasc` — use these, never hardcode hex for an exam
+**When editing technique.html:**
+- Each exam/subtype has a `steps[]` array. Last step is `{phase:"Present", present:[...]}` with fill-in-blank template strings
+- `renderStep()` branches on `step.present` vs `step.actions`
+- Sub-types: Neuro (upper/lower/CN), Vascular (arterial/venous), Neck (neck exam/thyroid status)
+
+**When editing data.html:**
+- `APPROACHES` = the "Approach" tab step-through data (5 types, each with `steps[]`)
+- `CARDS` = the "Quiz" tab flip-card data (56 cards across ECG/CXR/AXR/ABG/Bloods)
 
 ## Working rules
 
-- **No build step** — no npm, no bundler. Both files open directly in a browser.
-- **Data-first edits** — add/correct a sign or investigation by editing the JS data objects, not by touching the render logic; then mirror to both files
+- **No build step** — no npm, no bundler. All files open directly in a browser.
+- **Data-first edits** — edit JS data objects, not render logic, unless adding a new visual feature
 - **Bedside → bloods → imaging** — investigation order must always follow this sequence
-- **No waffle** — this is a memory aid, not a textbook. Entries are dense and scannable.
-- **Quiz mode (toggle) must still work** after any edit — it hides `.body` on `.card` elements; don't restructure that
-- **Mobile-friendly** — the existing responsive layout uses `max-width:1040px` with `padding:0 22px`; preserve this
+- **No waffle** — memory aid, not textbook. Dense and scannable.
+- **Mobile-friendly** — responsive layout, tab bars use `overflow-x:auto;scrollbar-width:none`
+- **Diagrams** — SVGs in `const GRAPHICS` in technique.html. Left side of diagram = patient's RIGHT (examiner's perspective)
 
 ## Deployment
 
