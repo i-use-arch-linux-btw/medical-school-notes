@@ -8,23 +8,24 @@ Live at: **[msn.arshpatankar.com](https://msn.arshpatankar.com)**
 
 ## What's in it
 
-A single interactive HTML file covering every examination in OSCE order:
+Five self-contained HTML pages covering every examination in OSCE order:
 
 **CVS → Resp → Abdo → Neuro limbs → Upper/lower limb → Cranial → Lump/breast → Neck/thyroid → Vascular**
 
-Three tabs:
+- **Signs Bank** (`osce_atlas.html`) — examiner states a finding, work out the differential and investigations. Colour-coded by exam.
+- **Investigation Map** (`osce_atlas.html`) — every test grouped by how many exams share it. Expands to show how to deploy it and when to think of it.
+- **Differential Atlas** (`osce_atlas.html`) — all differentials tiled by examination. Click a tile for the sign that points to it, plus management principles.
+- **Quiz** (`quiz.html`) — Anki-style spaced-repetition flip cards on signs. Missed / Hard / Got it rating stored in localStorage.
+- **Examination Technique** (`technique.html`) — click through each exam step in MedEd booklet order. Sub-types for Neuro, Vascular, and Neck. Final step has a fill-in-blank "present your findings" template.
+- **Data Interpretation** (`data.html`) — two tabs: systematic approach for ECG/CXR/AXR/ABG/Bloods, and a 56-card SRS quiz.
 
-- **Signs Bank** — examiner states a finding, you work out the differential and investigations. Has a quiz mode that hides answers until you tap.
-- **Investigation Map** — every test grouped by how many exams share it, so you can see what's universal vs what's specific. Each test expands to show how to use it and when to think of it.
-- **Differential Atlas** — all differentials tiled by examination, colour-coded. Click a tile for the sign that points to it.
-
-Key thing to know for Y4: patients are healthy volunteers. Examiners give you the finding verbally. The whole point of this is to build the reflex of "examiner says X → I know the differential and investigations."
+Key thing to know for Y4: patients are healthy volunteers. Examiners give you the finding verbally. The whole point of this is to build the reflex of "examiner says X → differential → investigations → simple management."
 
 ---
 
 ## Running it locally
 
-Just open `y4/osce_atlas.html` in a browser. No build step, no dependencies.
+Open any of the files in `y4/` directly in a browser. No build step, no dependencies.
 
 ---
 
@@ -36,4 +37,4 @@ Just open `y4/osce_atlas.html` in a browser. No build step, no dependencies.
 
 ## Contributing
 
-If I've missed something or got something wrong, open a PR. The data all lives in the JS at the top of `y4/osce_atlas.html` — `SECTIONS` for the signs bank, `POOLS` + `TEST_INFO` for the investigation map. Shouldn't be hard to find where to add things.
+If something's missing or wrong, open a PR. The canonical data source is `y4/data/database.example.json` — edit there first, then mirror into the relevant JS constants in the HTML files (see `CLAUDE.md` for the full data flow).
