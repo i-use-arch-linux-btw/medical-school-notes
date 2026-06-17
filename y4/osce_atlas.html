@@ -72,6 +72,20 @@
   .row{border-top:.5px solid var(--hair-soft);padding:14px 0;display:grid;grid-template-columns:118px 1fr;gap:16px;}
   .tag{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:4px 9px;border-radius:7px;height:fit-content;width:fit-content;}
   .tag.dx{color:var(--dx);background:var(--dx-bg);} .tag.ix{color:var(--ix);background:var(--ix-bg);}
+  .tag.ind{color:#0058b9;background:#dbeafe;} .tag.how{color:#065f46;background:#d1fae5;}
+  .tag.ci{color:#9f1239;background:#ffe4e6;} .tag.risk{color:#92400e;background:#fef3c7;}
+  .tag.tip{color:#581c87;background:#f3e8ff;} .tag.drug{color:#1e40af;background:#eff6ff;}
+  .comp-badge{font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:3px 9px;border-radius:7px;white-space:nowrap;flex:none;margin-left:auto;}
+  .comp-badge.indirect{color:#374151;background:#f3f4f6;} .comp-badge.direct{color:#92400e;background:#fef3c7;} .comp-badge.sim{color:#1e40af;background:#dbeafe;}
+  .proc-name{font-size:16px;font-weight:600;letter-spacing:-.015em;flex:1;}
+  .callout{background:var(--bg);border:.5px solid var(--hair);border-radius:var(--radius);padding:16px 20px;margin:18px 0 6px;}
+  .callout h4{font-size:13.5px;font-weight:650;color:var(--ink-2);margin-bottom:8px;}
+  .callout ul{list-style:none;display:flex;flex-direction:column;gap:5px;}
+  .callout li{font-size:13.5px;color:var(--ink-2);padding-left:16px;position:relative;}
+  .callout li::before{content:"";position:absolute;left:2px;top:8px;width:5px;height:5px;border-radius:50%;background:var(--ink-3);}
+  .pg-head{font-size:20px;font-weight:700;letter-spacing:-.02em;margin-top:38px;margin-bottom:4px;}
+  .pg-sub{font-size:13.5px;color:var(--ink-3);margin-bottom:12px;}
+  .row.dr{grid-template-columns:168px 1fr;}
   .row ul{list-style:none;display:flex;flex-direction:column;gap:7px;}
   .row li{font-size:15px;position:relative;padding-left:16px;}
   .row li::before{content:"";position:absolute;left:2px;top:9px;width:5px;height:5px;border-radius:50%;background:var(--ink-3);}
@@ -148,6 +162,8 @@
     <button class="tab active" data-view="signs">Signs</button>
     <button class="tab" data-view="map">Investigations</button>
     <button class="tab" data-view="atlas">Differentials</button>
+    <button class="tab" data-view="procs">Procedures</button>
+    <button class="tab" data-view="drugs">Drugs</button>
     <a class="tab quiz-link" href="quiz.html">Quiz →</a>
     <a class="tab quiz-link" href="technique.html">Technique →</a>
     <a class="tab quiz-link" href="data.html">Data →</a>
@@ -186,6 +202,1105 @@
     </div>
     <div id="atlas-main"></div>
   </div>
+
+  <!-- ============ VIEW 4 · PROCEDURES ============ -->
+  <div class="view" id="view-procs">
+    <div class="hero">
+      <div class="kicker">GMC Practical Skills · Year 4</div>
+      <h2>Procedures</h2>
+      <p>23 GMC practical skills (indication, steps, CI, complications) plus 15 special investigations (what a patient needs to know: prep, what it involves, common and serious rare complications).</p>
+    </div>
+
+    <div class="callout">
+      <h4>GMC generic requirements — applies to every procedure</h4>
+      <ul>
+        <li>Introduce yourself, verify patient identity, confirm the procedure is indicated</li>
+        <li>Explain the procedure and gain informed consent including possible complications</li>
+        <li>Hand hygiene + appropriate PPE; universal precautions throughout</li>
+        <li>Safe sharps disposal; dispose of clinical waste in appropriate receptacles</li>
+        <li>Label samples at the bedside immediately; document procedure, findings, and aftercare plan</li>
+        <li>Ensure appropriate monitoring and follow-up; maintain confidentiality</li>
+      </ul>
+    </div>
+
+    <nav class="chips" style="margin-top:20px;">
+      <a class="chip" href="#pg-assess">Assessment</a>
+      <a class="chip" href="#pg-sample">Sampling</a>
+      <a class="chip" href="#pg-iv">IV Access</a>
+      <a class="chip" href="#pg-admin">Administration</a>
+      <a class="chip" href="#pg-cath">Catheters &amp; Tubes</a>
+      <a class="chip" href="#pg-surg">Surgical</a>
+      <a class="chip" href="#pg-special">Special Investigations</a>
+    </nav>
+
+    <!-- GROUP 1 -->
+    <p class="pg-head" id="pg-assess">Assessment &amp; Monitoring</p>
+
+    <details class="card">
+      <summary><div class="proc-name">Baseline physiological observations</div><span class="comp-badge indirect">Indirect</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row"><span class="tag ind">Indication</span><ul><li>Any patient assessment, admission clerking, early warning scoring (NEWS)</li></ul></div>
+        <div class="row"><span class="tag how">Steps</span><ul>
+          <li><b>Temperature</b> — tympanic or oral; normal 36.1–37.2°C</li>
+          <li><b>Respiratory rate</b> — count over a full 60 seconds; normal 12–20/min</li>
+          <li><b>Pulse</b> — rate, rhythm, character; normal 60–100/min</li>
+          <li><b>BP</b> — correct cuff size, patient relaxed, arm at heart level</li>
+          <li><b>SpO₂</b> — pulse oximeter on finger; normal ≥95%</li>
+          <li><b>Urine output</b> — from catheter bag or fluid chart; target ≥0.5 mL/kg/h</li>
+          <li>Record on NEWS chart; escalate per trust protocol</li>
+        </ul></div>
+        <div class="row"><span class="tag tip">Key</span><ul><li>RR is the most sensitive early warning parameter — don't rush it. NEWS ≥5 = urgent review; ≥7 = emergency response</li></ul></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><div class="proc-name">Peak expiratory flow rate (PEFR)</div><span class="comp-badge indirect">Indirect</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row"><span class="tag ind">Indication</span><ul><li>Asthma monitoring, exacerbation severity assessment, treatment response</li></ul></div>
+        <div class="row"><span class="tag how">Steps</span><ul>
+          <li>Set pointer to zero; patient stands or sits upright; full breath in</li>
+          <li>Seal lips tightly around mouthpiece; blast air out as hard and fast as possible</li>
+          <li>Reset; repeat — take <b>best of 3</b></li>
+        </ul></div>
+        <div class="row"><span class="tag tip">Interpret</span><ul>
+          <li>Compare to predicted (age/height/sex chart or patient's personal best)</li>
+          <li><b>&lt;50% predicted</b> = moderate attack; <b>&lt;33% predicted</b> = severe / life-threatening</li>
+        </ul></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><div class="proc-name">Ophthalmoscopy (fundoscopy)</div><span class="comp-badge indirect">Indirect</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row"><span class="tag ind">Indication</span><ul><li>Headache/raised ICP, visual disturbance, DM/HTN retinopathy, optic disc assessment, papilloedema</li></ul></div>
+        <div class="row"><span class="tag how">Steps</span><ul>
+          <li>Dim room; dilate pupils if available (tropicamide 1%)</li>
+          <li>Dioptre dial to 0; use right eye for patient's right eye; approach 15° lateral from arm's length</li>
+          <li>Look for <b>red reflex</b> (absent = cataract or vitreous haemorrhage)</li>
+          <li>Converge toward pupil; adjust dioptre wheel to focus on optic disc</li>
+          <li><b>Disc</b>: margins, colour, cup:disc ratio (&lt;0.5 normal)</li>
+          <li>Follow four vessel quadrants; assess AV ratio, nipping, silver/copper wiring</li>
+          <li>Ask patient to look at the light to expose <b>macula</b></li>
+        </ul></div>
+        <div class="row"><span class="tag tip">Key findings</span><ul>
+          <li><b>Papilloedema</b>: blurred disc margins, disc hyperaemia — raised ICP</li>
+          <li><b>Optic atrophy</b>: pale disc — MS, ischaemia, previous optic neuritis</li>
+          <li><b>AV nipping / silver wiring</b>: hypertensive retinopathy</li>
+          <li><b>Dot/blot haemorrhages, hard exudates, new vessels</b>: diabetic retinopathy</li>
+        </ul></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><div class="proc-name">Otoscopy</div><span class="comp-badge indirect">Indirect</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row"><span class="tag ind">Indication</span><ul><li>Ear pain, discharge, hearing loss, vertigo, tinnitus</li></ul></div>
+        <div class="row"><span class="tag how">Steps</span><ul>
+          <li>Select speculum (4 mm adult, 2.5 mm child)</li>
+          <li>Pull pinna <b>up and back</b> in adults to straighten canal</li>
+          <li>Insert gently; advance while looking through scope</li>
+          <li>Identify canal then tympanic membrane: normal = pearly grey, <b>cone of light at 5 o'clock R / 7 o'clock L</b></li>
+        </ul></div>
+        <div class="row"><span class="tag tip">Key findings</span><ul>
+          <li><b>Red, bulging TM ± absent light reflex</b>: acute otitis media</li>
+          <li><b>Amber/dull TM, fluid level</b>: otitis media with effusion (glue ear)</li>
+          <li><b>Perforation</b>: hole visible, may see middle ear</li>
+          <li><b>Pearly white mass</b>: cholesteatoma — refer ENT urgently</li>
+        </ul></div>
+      </div>
+    </details>
+
+    <!-- GROUP 2 -->
+    <p class="pg-head" id="pg-sample">Sampling &amp; Diagnostic</p>
+
+    <details class="card">
+      <summary><div class="proc-name">Venepuncture</div><span class="comp-badge indirect">Indirect</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row"><span class="tag ind">Indication</span><ul><li>Blood sampling for laboratory analysis</li></ul></div>
+        <div class="row"><span class="tag how">Steps</span><ul>
+          <li>Tourniquet; palpate vein (antecubital fossa preferred)</li>
+          <li>Clean with 70% isopropyl alcohol; <b>allow to dry 30 s</b> before inserting needle</li>
+          <li>21–23G needle, bevel up, 15–30°; advance until blood enters barrel</li>
+          <li><b>Order of draw</b>: blood culture → blue (citrate) → gold SST → green (heparin) → purple (EDTA) → grey (fluoride)</li>
+          <li>Release tourniquet before withdrawing; apply pressure; <b>label immediately at bedside</b></li>
+        </ul></div>
+        <div class="row"><span class="tag risk">Complications</span><ul><li>Haematoma, haemolysis (do not shake tubes), vasovagal</li></ul></div>
+        <div class="row"><span class="tag tip">Key</span><ul><li>If using butterfly: prime the tubing with discard blue tube first, then start order of draw</li></ul></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><div class="proc-name">Peripheral blood cultures</div><span class="comp-badge direct">Direct</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row"><span class="tag ind">Indication</span><ul><li>Suspected bacteraemia: pyrexia (&gt;38°C or &lt;36°C), rigors, clinical sepsis</li></ul></div>
+        <div class="row"><span class="tag how">Steps</span><ul>
+          <li><b>Two sets from two separate sites</b> (both peripheral venepuncture)</li>
+          <li>Clean skin with <b>2% chlorhexidine in alcohol</b>; allow to dry 30 s — do not fan</li>
+          <li>Clean bottle tops with alcohol swab; inoculate <b>aerobic bottle first</b> then anaerobic; fill to line (8–10 mL each)</li>
+          <li>Label: name, DOB, hospital number, time, site; send to lab promptly; do not refrigerate</li>
+        </ul></div>
+        <div class="row"><span class="tag ci">Avoid</span><ul><li>Do not take from existing IV lines — high contamination risk; use dedicated peripheral venepuncture</li></ul></div>
+        <div class="row"><span class="tag risk">Complications</span><ul><li>Contamination (false positive — most common), haematoma, pain</li></ul></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><div class="proc-name">Arterial blood gas (ABG)</div><span class="comp-badge direct">Direct</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row"><span class="tag ind">Indication</span><ul><li>Respiratory failure assessment, acid-base disturbance, lactate in sepsis, monitoring ventilation</li></ul></div>
+        <div class="row"><span class="tag how">Steps</span><ul>
+          <li><b>Modified Allen's test</b>: compress radial + ulnar arteries; patient clenches fist until blanched; release <b>ulnar</b> only — hand should flush pink within 5–7 s (confirms adequate collateral). Proceed only if positive</li>
+          <li>Wrist dorsiflexed 30–60°; palpate radial pulse; clean with chlorhexidine</li>
+          <li>Pre-heparinised syringe; insert at <b>45°</b> bevel up; advance until pulsatile blood fills syringe</li>
+          <li>Remove needle; <b>firm pressure 5 minutes</b> (longer if anticoagulated)</li>
+          <li>Expel air bubbles; cap and label; send to analyser immediately</li>
+        </ul></div>
+        <div class="row"><span class="tag ci">Contraindications</span><ul>
+          <li>Failed Allen's test (inadequate collateral circulation)</li>
+          <li>AV fistula on that arm; local infection; coagulopathy (relative)</li>
+        </ul></div>
+        <div class="row"><span class="tag risk">Complications</span><ul><li>Haematoma (most common), arterial spasm, thrombosis (rare), nerve injury, infection</li></ul></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><div class="proc-name">Capillary blood glucose</div><span class="comp-badge indirect">Indirect</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row"><span class="tag ind">Indication</span><ul><li>Glucose monitoring in DM, suspected hypo/hyperglycaemia, DKA monitoring, peri-operative glucose management</li></ul></div>
+        <div class="row"><span class="tag how">Steps</span><ul>
+          <li>Warm hands; clean <b>lateral aspect of fingertip</b> with alcohol wipe; allow to dry</li>
+          <li>Pierce with lancet; wipe away first drop; apply second drop to test strip; read result</li>
+        </ul></div>
+        <div class="row"><span class="tag tip">Interpret</span><ul>
+          <li>Normal fasting: 4–5.6 mmol/L</li>
+          <li><b>&lt;4 mmol/L = hypoglycaemia</b>: treat if symptomatic — 15–20 g fast-acting carbohydrate (Lucozade, dextrose gel) or IV 10% glucose if unable to eat</li>
+        </ul></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><div class="proc-name">Urine multi-dipstick test</div><span class="comp-badge indirect">Indirect</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row"><span class="tag ind">Indication</span><ul><li>Suspected UTI, renal disease, DM monitoring, haematuria, jaundice workup</li></ul></div>
+        <div class="row"><span class="tag how">Steps</span><ul>
+          <li>Explain <b>MSU technique</b>: clean genitalia; start voiding; catch mid-portion in sterile pot</li>
+          <li>Dip strip for 1–2 s; lay flat; read at times specified on strip</li>
+        </ul></div>
+        <div class="row"><span class="tag tip">Interpret</span><ul>
+          <li><b>Nitrites + leucocytes</b>: bacterial UTI</li>
+          <li><b>Blood</b>: haematuria — UTI, stones, cancer; confirm with microscopy</li>
+          <li><b>Protein</b>: nephrotic syndrome, UTI, pre-eclampsia</li>
+          <li><b>Glucose</b>: DM (renal threshold ~10 mmol/L), renal glycosuria</li>
+          <li><b>Ketones</b>: DKA, starvation, alcoholic ketoacidosis</li>
+          <li><b>Bilirubin / urobilinogen</b>: liver disease patterns</li>
+        </ul></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><div class="proc-name">Swab (throat / nose / wound)</div><span class="comp-badge indirect">Indirect</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row"><span class="tag ind">Indication</span><ul><li>Suspected local infection: wound, throat (tonsillitis), nose (MRSA screen, respiratory pathogens), ear, genital</li></ul></div>
+        <div class="row"><span class="tag how">Steps by site</span><ul>
+          <li><b>Throat</b>: depress tongue; swab <b>tonsils and posterior pharynx</b> vigorously; avoid teeth, tongue, and uvula</li>
+          <li><b>Nose</b>: insert swab 1–2 cm; rotate against mucosa; repeat other nostril</li>
+          <li><b>Wound</b>: remove surface exudate with saline gauze first; swab the purulent area — not the wound edges</li>
+          <li>Correct transport medium (charcoal for most bacterial swabs); label fully; send within 4 h or refrigerate overnight</li>
+        </ul></div>
+        <div class="row"><span class="tag tip">Key</span><ul><li>Document recent antibiotics on request form — affects sensitivity</li></ul></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><div class="proc-name">3- or 12-lead ECG</div><span class="comp-badge indirect">Indirect</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row"><span class="tag ind">Indication</span><ul><li>Chest pain, palpitations, syncope, dyspnoea, pre-operative assessment, arrhythmia monitoring</li></ul></div>
+        <div class="row"><span class="tag how">Lead placement</span><ul>
+          <li><b>Limb leads</b>: RA red · LA yellow · LL green · RL black (ground). Mnemonic: <em>Ride Your Green Bike</em></li>
+          <li><b>V1</b>: 4th ICS, right sternal border; <b>V2</b>: 4th ICS, left sternal border</li>
+          <li><b>V3</b>: between V2 and V4; <b>V4</b>: 5th ICS, mid-clavicular line</li>
+          <li><b>V5</b>: anterior axillary line (same horizontal as V4); <b>V6</b>: mid-axillary line (same horizontal as V4)</li>
+          <li>Patient supine, limbs relaxed, no talking or movement</li>
+        </ul></div>
+        <div class="row"><span class="tag tip">Check</span><ul>
+          <li>Calibration: 25 mm/s speed, 10 mm/mV amplitude — confirm on printout</li>
+          <li>Poor electrode contact = wandering baseline; 3-lead = continuous monitoring (limb leads only)</li>
+        </ul></div>
+      </div>
+    </details>
+
+    <!-- GROUP 3 -->
+    <p class="pg-head" id="pg-iv">IV Access &amp; Infusions</p>
+
+    <details class="card">
+      <summary><div class="proc-name">Intravenous cannulation</div><span class="comp-badge direct">Direct</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row"><span class="tag ind">Indication</span><ul><li>IV drug or fluid administration, blood transfusion, contrast administration</li></ul></div>
+        <div class="row"><span class="tag how">Steps</span><ul>
+          <li>Tourniquet proximal; choose vein (antecubital fossa, dorsum of hand, forearm)</li>
+          <li>Clean with chlorhexidine; allow to dry 30 s</li>
+          <li>Stretch skin; insert at <b>15–30°</b> bevel up; look for flash of blood in chamber</li>
+          <li><b>Advance catheter only</b> (not needle) into vein; release tourniquet; remove stylet</li>
+          <li>Connect Luer cap or giving set; <b>flush with 10 mL saline</b> to confirm patency (no swelling/resistance)</li>
+          <li>Secure with transparent dressing; date and time the cannula</li>
+        </ul></div>
+        <div class="row"><span class="tag tip">Sizes</span><ul>
+          <li><b>14G (orange)</b>: major haemorrhage · <b>16G (grey)</b>: blood transfusion / theatre · <b>18G (green)</b>: routine adult · <b>20–22G (pink/blue)</b>: small veins / children</li>
+        </ul></div>
+        <div class="row"><span class="tag ci">Don't</span><ul><li>Avoid arm with AV fistula, lymphoedema, or ipsilateral to mastectomy</li></ul></div>
+        <div class="row"><span class="tag risk">Complications</span><ul><li>Haematoma, tissuing (extravasation), phlebitis, infection, arterial puncture</li></ul></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><div class="proc-name">Set up an IV infusion</div><span class="comp-badge direct">Direct</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row"><span class="tag ind">Indication</span><ul><li>IV fluid or drug administration</li></ul></div>
+        <div class="row"><span class="tag how">Steps</span><ul>
+          <li>Check prescription — <b>5 rights</b>: right patient, drug, dose, route, time; check allergies and expiry</li>
+          <li>Spike bag with giving set (aseptic); close roller clamp; squeeze drip chamber until half full</li>
+          <li>Open clamp to <b>prime giving set</b> (expel all air bubbles)</li>
+          <li>Connect to cannula; set rate via infusion pump or manual drip count</li>
+          <li>Manual drip rate: <b>(volume mL × drop factor) ÷ time in minutes</b>; standard giving set = 20 drops/mL</li>
+          <li>Monitor site for tissuing; check flow rate hourly if manual</li>
+        </ul></div>
+        <div class="row"><span class="tag tip">Key</span><ul><li>Two-person check for high-risk drugs (KCl, insulin infusions). Never add KCl to a hanging bag</li></ul></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><div class="proc-name">Prepare &amp; administer injectable drugs (IM / SC / IV)</div><span class="comp-badge direct">Direct</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row"><span class="tag how">IM injection</span><ul>
+          <li>Sites: <b>deltoid</b> (outer upper arm, 2–3 finger-breadths below acromion) or <b>vastus lateralis</b> (outer thigh)</li>
+          <li>21–23G needle; stretch skin (or Z-track for irritant drugs); insert at <b>90°</b>; aspirate; inject slowly; apply pressure; max 5 mL</li>
+        </ul></div>
+        <div class="row"><span class="tag how">SC injection</span><ul>
+          <li>Sites: lateral abdomen, outer thigh, outer upper arm</li>
+          <li>25–27G short needle; <b>pinch skin</b>; insert at 45° (or 90° with short needle); no aspiration needed; inject slowly</li>
+        </ul></div>
+        <div class="row"><span class="tag how">IV bolus</span><ul>
+          <li>Flush cannula with saline; administer drug at prescribed rate; flush after</li>
+          <li><b>Two-person check for high-risk drugs</b></li>
+        </ul></div>
+        <div class="row"><span class="tag risk">Complications</span><ul><li>Accidental IV injection (if IM/SC intended), haematoma, nerve injury, infection, lipodystrophy (repeated SC)</li></ul></div>
+      </div>
+    </details>
+
+    <!-- GROUP 4 -->
+    <p class="pg-head" id="pg-admin">Administration</p>
+
+    <details class="card">
+      <summary><div class="proc-name">Prescribe &amp; administer oxygen</div><span class="comp-badge indirect">Indirect</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row"><span class="tag ind">Indication</span><ul><li>SpO₂ &lt;94% (or &lt;88% in hypercapnic RF risk), acute respiratory distress, CO poisoning, cardiac arrest, post-anaesthesia</li></ul></div>
+        <div class="row"><span class="tag how">Delivery devices</span><ul>
+          <li><b>Nasal cannulae</b> (1–4 L/min → ~24–36% FiO₂): comfortable; allows eating and talking</li>
+          <li><b>Simple face mask</b> (5–10 L/min → ~35–55%): minimum 5 L to flush CO₂ from mask</li>
+          <li><b>Venturi mask</b> (24%, 28%, 35%, 40%, 60%): fixed FiO₂ — preferred in COPD / Type II RF</li>
+          <li><b>Non-rebreather mask</b> (15 L/min → &gt;90%): severe hypoxia, CO poisoning, anaphylaxis</li>
+        </ul></div>
+        <div class="row"><span class="tag tip">Targets</span><ul>
+          <li>Most patients: SpO₂ <b>94–98%</b></li>
+          <li>Type II RF risk (COPD, obesity hypoventilation, NMD): SpO₂ <b>88–92%</b></li>
+        </ul></div>
+        <div class="row"><span class="tag ci">Caution</span><ul><li>Uncontrolled high-flow O₂ in Type II RF may worsen hypercapnia — always prescribe with target SpO₂ range on drug chart</li></ul></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><div class="proc-name">Instruct patients in inhaler use</div><span class="comp-badge indirect">Indirect</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row"><span class="tag how">pMDI technique</span><ul>
+          <li>Remove cap; <b>shake well</b>; exhale fully away from device</li>
+          <li>Seal lips; begin <b>slow</b> inhalation; press canister once at the start of the breath</li>
+          <li>Continue slow deep breath over <b>5 s</b>; hold breath <b>10 s</b>; exhale slowly; wait 30–60 s before second puff</li>
+        </ul></div>
+        <div class="row"><span class="tag how">Spacer (use with pMDI)</span><ul>
+          <li>Actuate once into spacer; breathe in and out through mouthpiece <b>5 tidal breaths</b></li>
+          <li>Recommended for all children and adults with poor coordination</li>
+        </ul></div>
+        <div class="row"><span class="tag how">DPI (Turbohaler / Accuhaler)</span><ul>
+          <li>Load dose per device; exhale away from device; seal lips; breathe in <b>fast and hard</b>; hold 5–10 s</li>
+          <li><b>Do NOT shake DPIs</b> — inspiratory flow drives drug delivery (opposite of pMDI)</li>
+        </ul></div>
+        <div class="row"><span class="tag tip">Review</span><ul><li>Ask patient to demonstrate at every asthma/COPD review — poor technique is a leading cause of treatment failure</li></ul></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><div class="proc-name">Safe blood transfusion</div><span class="comp-badge sim">Simulation</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row"><span class="tag ind">Indication</span><ul>
+          <li>Hb &lt;7 g/dL (symptomatic or perioperative); &lt;8 g/dL in cardiac disease</li>
+          <li>Active haemorrhage with haemodynamic compromise</li>
+        </ul></div>
+        <div class="row"><span class="tag how">Steps</span><ul>
+          <li>Send group &amp; screen or crossmatch (correctly labelled tube + signed form)</li>
+          <li>Collect blood from blood bank; carry immediately to ward</li>
+          <li><b>Bedside check (two qualified staff)</b>: patient wristband vs unit label — verify full name, DOB, hospital number, blood group, unit number, expiry</li>
+          <li>Obtain consent; ensure ≥16G IV access; start infusion <b>slowly for first 15 minutes</b> — observe for reactions</li>
+          <li>One unit maximum over <b>4 hours</b>; record observations pre-transfusion, at 15 min, and post-unit</li>
+        </ul></div>
+        <div class="row"><span class="tag risk">Transfusion reactions</span><ul>
+          <li><b>Febrile non-haemolytic</b> (most common): fever, chills — slow transfusion, paracetamol; usually continue</li>
+          <li><b>Acute haemolytic</b> (ABO incompatibility — most dangerous): fever, rigors, back/loin pain, haemoglobinuria — <b>STOP immediately</b>, IV fluids, urgent haematology</li>
+          <li><b>Anaphylaxis</b>: urticaria, bronchospasm, hypotension — <b>STOP</b>, IM adrenaline</li>
+          <li><b>TACO</b> (fluid overload): acute pulmonary oedema — slow/stop, IV furosemide, sit upright</li>
+          <li><b>TRALI</b>: acute lung injury within 6 h of transfusion — stop; supportive O₂; ICU if severe</li>
+        </ul></div>
+      </div>
+    </details>
+
+    <!-- GROUP 5 -->
+    <p class="pg-head" id="pg-cath">Catheters &amp; Tubes</p>
+
+    <details class="card">
+      <summary><div class="proc-name">Male &amp; female urinary catheterisation</div><span class="comp-badge direct">Direct</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row"><span class="tag ind">Indication</span><ul><li>Acute urinary retention, accurate fluid balance (critical illness, post-op), neurogenic bladder, pre/intra-operative</li></ul></div>
+        <div class="row"><span class="tag how">Steps</span><ul>
+          <li><b>Strict sterile technique throughout</b>; chaperone for intimate procedure; catheter size 12–16 Fr</li>
+          <li><b>Male</b>: retract foreskin; clean glans; instil <b>lidocaine 2% gel into urethra</b>; wait 5 min; insert catheter to <b>full length (bifurcation)</b> before inflating balloon — never inflate until fully in bladder</li>
+          <li><b>Female</b>: separate labia; clean; lubricate catheter tip; insert ~4 cm; urine drains before inflating balloon</li>
+          <li>Inflate balloon with <b>10 mL sterile water</b>; withdraw until resistance; connect drainage bag; replace foreskin</li>
+          <li>Document: date, time, catheter size, balloon volume, indication</li>
+        </ul></div>
+        <div class="row"><span class="tag ci">Contraindications</span><ul>
+          <li>Suspected urethral trauma (pelvic fracture, blood at meatus) — do NOT attempt; alert urology for suprapubic catheter</li>
+        </ul></div>
+        <div class="row"><span class="tag risk">Complications</span><ul><li>CAUTI (most common long-term), urethral trauma/false passage, haematuria, balloon inflation in urethra</li></ul></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><div class="proc-name">Nasogastric tube placement</div><span class="comp-badge sim">Simulation</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row"><span class="tag ind">Indication</span><ul><li>Enteral feeding, drug administration, gastric decompression (post-op ileus, obstruction), gastric lavage</li></ul></div>
+        <div class="row"><span class="tag how">Steps</span><ul>
+          <li><b>NEX measurement</b>: Nose → Ear → Xiphisternum; note this length</li>
+          <li>Lubricate tube; patient sitting, head slightly flexed forward</li>
+          <li>Advance through nose; at posterior pharynx ask patient to sip water and swallow — advance during each swallow</li>
+          <li>Continue to NEX length; secure temporarily</li>
+          <li><b>Confirm placement before ANY use</b>: aspirate gastric fluid; test pH with CE-marked indicator paper</li>
+          <li>Safe if <b>pH ≤5.5</b>; if pH 5–6 or unable to aspirate → arrange <b>CXR</b> for radiological confirmation</li>
+          <li>Do NOT use until confirmed; document confirmation method and time</li>
+        </ul></div>
+        <div class="row"><span class="tag ci">Contraindications</span><ul><li><b>Base of skull fracture</b>: use oral route (risk of intracranial placement)</li></ul></div>
+        <div class="row"><span class="tag risk">Complications</span><ul><li>Pulmonary placement (SERIOUS — hence mandatory confirmation), epistaxis, oesophageal trauma, vomiting</li></ul></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><div class="proc-name">Local anaesthetics</div><span class="comp-badge direct">Direct</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row"><span class="tag how">Key agents &amp; doses</span><ul>
+          <li><b>Lidocaine</b>: max <b>3 mg/kg</b> plain; <b>7 mg/kg</b> with adrenaline. 1% solution = 10 mg/mL → 21 mL max for 70 kg (plain)</li>
+          <li><b>Bupivacaine</b>: max <b>2 mg/kg</b> (plain); <b>3 mg/kg</b> with adrenaline; longer acting (2–8 h)</li>
+          <li>Aspirate before injecting; inject subcutaneously or into tissue plane; wait 2–3 min before starting procedure</li>
+        </ul></div>
+        <div class="row"><span class="tag ci">Avoid adrenaline in end-arteries</span><ul><li>Digits (fingers, toes), penis, nose tip, ear pinna — risk of ischaemic necrosis</li></ul></div>
+        <div class="row"><span class="tag risk">LA systemic toxicity</span><ul>
+          <li>Progression: perioral tingling → metallic taste → tinnitus → dizziness → confusion → seizures → cardiac arrest (VF)</li>
+          <li><b>Treatment</b>: stop injection; ABC; <b>20% Intralipid IV</b> (lipid emulsion rescue); call for help</li>
+        </ul></div>
+      </div>
+    </details>
+
+    <!-- GROUP 6 -->
+    <p class="pg-head" id="pg-surg">Surgical Skills</p>
+
+    <details class="card">
+      <summary><div class="proc-name">Surgical scrubbing, gowning &amp; gloving</div><span class="comp-badge direct">Direct</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row"><span class="tag how">Steps</span><ul>
+          <li>Remove jewellery and watches; check nails are short, clean, and unvarnished</li>
+          <li><b>Traditional scrub</b> (3–5 min): nail brush for subungual debris; antiseptic soap (chlorhexidine or povidone-iodine); systematic: fingertips → interdigital spaces → hands → wrists → forearms to 2 cm above elbow</li>
+          <li>Alternatively: <b>alcohol surgical hand rub</b> per manufacturer protocol</li>
+          <li><b>Hands above elbows</b> throughout; dry with sterile towel (blotting, fingertips to elbow); don sterile gown (circulating nurse assists); closed-technique gloves</li>
+        </ul></div>
+        <div class="row"><span class="tag tip">Key</span><ul><li>Once scrubbed: hands remain in sterile field (above waist). If contaminated, re-scrub. Consider double-gloving — glove puncture is common</li></ul></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><div class="proc-name">Wound care &amp; basic wound closure</div><span class="comp-badge direct">Direct</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row"><span class="tag how">Wound assessment</span><ul>
+          <li>Colour: red = granulating / inflamed; yellow = sloughy; black = necrotic; pink = epithelialising</li>
+          <li>Size, depth, exudate amount and type, surrounding skin (erythema, maceration), odour</li>
+          <li>Irrigate with normal saline (high-pressure syringe for traumatic wounds)</li>
+        </ul></div>
+        <div class="row"><span class="tag how">Dressing choice</span><ul>
+          <li><b>Non-adherent</b> (Mepitel): clean/healing wound, low exudate</li>
+          <li><b>Alginate</b> (Sorbsan): sloughy/infected, high exudate</li>
+          <li><b>Foam</b> (Allevyn): cavity wounds, moderate/high exudate</li>
+          <li><b>Hydrocolloid</b>: low-moderate exudate; promotes autolytic debridement</li>
+        </ul></div>
+        <div class="row"><span class="tag how">Sutures</span><ul>
+          <li>Interrupted sutures: needle at 90° to skin; equal bites each side; <b>evert wound edges</b>; knot away from wound line</li>
+          <li>Removal timings: face 5–7 days · scalp 7–10 · trunk 7–10 · lower limb 10–14</li>
+        </ul></div>
+        <div class="row"><span class="tag risk">Complications</span><ul><li>Wound infection, dehiscence, haematoma, seroma, keloid scar</li></ul></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><div class="proc-name">Moving &amp; handling (including frail patients)</div><span class="comp-badge indirect">Indirect</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row"><span class="tag how">Principles</span><ul>
+          <li><b>TILE assessment</b>: Task · Individual capacity · Load (weight, attachments, compliance) · Environment (space, floor)</li>
+          <li>Use equipment: <b>hoist</b> (full lifts), <b>slide sheets</b> (bed repositioning), <b>transfer board/belt</b></li>
+          <li>Minimum 2 people for dependent patients; handler: back straight, knees bent, load close, avoid twisting</li>
+          <li><b>Frail patients</b>: assess falls risk; ensure call bell in reach; communicate clearly throughout; check for dislodged IV/catheter/drain after repositioning</li>
+        </ul></div>
+        <div class="row"><span class="tag risk">Risks</span><ul><li>Back injury (staff), falls (patient), pressure injury during repositioning, dislodged lines/catheters/drains</li></ul></div>
+      </div>
+    </details>
+
+    <!-- GROUP 7: Special Investigations -->
+    <p class="pg-head" id="pg-special">Special Investigations</p>
+    <p class="pg-sub">Not expected to perform or interpret these — know: indication, preparation, what it involves for the patient, common complications, and serious/rare complications.</p>
+
+    <details class="card">
+      <summary><div class="proc-name">CT / MRI of the Head</div><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row"><span class="tag ind">Indication</span><ul>
+          <li><b>CT</b>: acute stroke (exclude haemorrhage before thrombolysis), head injury (NICE criteria), SAH (LP if CT −ve), SOL, hydrocephalus — urgent first-line</li>
+          <li><b>MRI</b>: posterior fossa lesions, MS plaques, dementia, encephalitis; not for acute/unstable patients</li>
+        </ul></div>
+        <div class="row"><span class="tag how">Preparation</span><ul>
+          <li>CT plain: remove metal from head/neck; no other prep</li>
+          <li>CT with contrast: eGFR check (nephropathy risk if &lt;60); allergy screen; hold <b>metformin 48 h after</b> if eGFR &lt;60</li>
+          <li>MRI: full metal/implant screen — pacemaker, cochlear implant, ferromagnetic clips = absolute CI; claustrophobia screen (pre-medicate with midazolam if needed)</li>
+        </ul></div>
+        <div class="row"><span class="tag how">What it involves</span><ul>
+          <li>CT: lie still, 5–10 min, loud but not confined; contrast = warm/metallic flush on injection</li>
+          <li>MRI: 30–60 min; very loud banging (ear protection provided); confined bore; no movement; breath-hold instructions for some sequences</li>
+        </ul></div>
+        <div class="row"><span class="tag risk">Common complications</span><ul><li>Contrast: nausea, flushing, transient metallic taste, extravasation at cannula site. MRI: claustrophobia anxiety</li></ul></div>
+        <div class="row"><span class="tag ci">Serious / rare</span><ul>
+          <li>CT contrast: <b>anaphylaxis</b> (&lt;0.1%), contrast-induced nephropathy — pre-hydrate if high risk</li>
+          <li>MRI: implant displacement or heating; gadolinium — <b>nephrogenic systemic fibrosis</b> (NSF) if eGFR &lt;30</li>
+        </ul></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><div class="proc-name">CT Chest / Abdomen / Pelvis (incl. CTPA, CTKUB)</div><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row"><span class="tag ind">Indication</span><ul>
+          <li><b>CTPA</b>: suspected PE (Wells intermediate/high or PERC positive)</li>
+          <li><b>CT CAP</b>: cancer staging, source of sepsis, acute abdominal pain</li>
+          <li><b>CTKUB</b>: renal/ureteric calculi (no contrast needed)</li>
+        </ul></div>
+        <div class="row"><span class="tag how">Preparation</span><ul>
+          <li>IV contrast (CTPA/CAP): eGFR check, allergy screen, IV cannula; hold metformin 48 h if eGFR &lt;60</li>
+          <li>Oral contrast (bowel opacification): clear liquid + contrast agent 1–2 h before</li>
+          <li>CTKUB: no contrast, no prep required</li>
+        </ul></div>
+        <div class="row"><span class="tag how">What it involves</span><ul><li>Lie in scanner; 10–20 min; breath-hold instructions for chest; IV contrast = warm flush + metallic taste; no movement</li></ul></div>
+        <div class="row"><span class="tag risk">Common complications</span><ul><li>Nausea, flushing, warmth, extravasation at IV site</li></ul></div>
+        <div class="row"><span class="tag ci">Serious / rare</span><ul>
+          <li>Anaphylaxis (&lt;0.1%); contrast-induced nephropathy — pre-hydrate if high risk</li>
+          <li>Ionising radiation — discuss benefit/risk; avoid in pregnancy unless essential</li>
+        </ul></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><div class="proc-name">MRI Abdomen &amp; Pelvis (incl. MRCP)</div><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row"><span class="tag ind">Indication</span><ul>
+          <li><b>MRCP</b>: biliary/pancreatic pathology — choledocholithiasis, biliary stricture, PSC, pancreatic mass</li>
+          <li>Liver lesion characterisation, renal/adrenal/pelvic masses</li>
+        </ul></div>
+        <div class="row"><span class="tag how">Preparation</span><ul>
+          <li>Full metal/implant screen (pacemaker = absolute CI)</li>
+          <li>MRCP: <b>NBM 4–6 h</b> (empty gallbladder improves imaging)</li>
+          <li>Gadolinium contrast: check eGFR — CI if &lt;30 (NSF risk); claustrophobia screen</li>
+        </ul></div>
+        <div class="row"><span class="tag how">What it involves</span><ul><li>45–60 min in bore; very loud (ear protection); breath-hold instructions; possibly IV gadolinium (warm flush); no movement</li></ul></div>
+        <div class="row"><span class="tag risk">Common complications</span><ul><li>Claustrophobia; gadolinium: nausea, transient warmth/headache</li></ul></div>
+        <div class="row"><span class="tag ci">Serious / rare</span><ul><li>Implant displacement/heating; gadolinium NSF if eGFR &lt;30</li></ul></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><div class="proc-name">Bronchoscopy (incl. BAL)</div><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row"><span class="tag ind">Indication</span><ul><li>Haemoptysis, abnormal CXR/CT (endobronchial lesion), suspected lung cancer (biopsy), foreign body, BAL for infection (PCP, fungal, TB), sarcoidosis</li></ul></div>
+        <div class="row"><span class="tag how">Preparation</span><ul>
+          <li>NBM 4–6 h; IV access; supplemental O₂; throat/nasal LA spray ± IV sedation (midazolam); coagulation screen if biopsy planned (INR &lt;1.5, platelets &gt;50)</li>
+        </ul></div>
+        <div class="row"><span class="tag how">What it involves</span><ul><li>Awake with sedation; flexible scope via nose or mouth into bronchi; will cough; biopsies/BAL performed (not felt); 20–30 min; recovery 1–2 h; post-BAL fever is common</li></ul></div>
+        <div class="row"><span class="tag risk">Common complications</span><ul><li>Cough, transient hypoxia, sore throat, post-procedure fever (BAL), minor haemoptysis</li></ul></div>
+        <div class="row"><span class="tag ci">Serious / rare</span><ul><li>Significant haemorrhage (post-biopsy in vascular tumours), pneumothorax (~1–5% with transbronchial biopsy), respiratory failure, laryngospasm</li></ul></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><div class="proc-name">Pleural tap (thoracocentesis)</div><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row"><span class="tag ind">Indication</span><ul>
+          <li>Diagnostic: exudate vs transudate (Light's criteria), cytology, microbiology</li>
+          <li>Therapeutic: large symptomatic effusion (max 1.5 L per sitting)</li>
+        </ul></div>
+        <div class="row"><span class="tag how">Preparation</span><ul>
+          <li>Confirm effusion on <b>USS first</b> (mandatory; reduces pneumothorax risk); mark site</li>
+          <li>Coag screen: platelets &gt;50, INR &lt;1.5; LA at insertion site; needle goes <b>above the rib</b> (neurovascular bundle runs below)</li>
+        </ul></div>
+        <div class="row"><span class="tag how">What it involves</span><ul><li>Seated leaning forward; LA injected (stinging); needle/drain inserted; pressure sensation during fluid drainage; 15–30 min; drain stitched/dressed afterwards</li></ul></div>
+        <div class="row"><span class="tag risk">Common complications</span><ul><li>Pain at site, vasovagal episode (most common), minor bleeding</li></ul></div>
+        <div class="row"><span class="tag ci">Serious / rare</span><ul>
+          <li>Pneumothorax (~5% with USS guidance)</li>
+          <li>Haemorrhage; empyema if technique breaks asepsis</li>
+          <li><b>Re-expansion pulmonary oedema</b>: draining &gt;1.5 L at once — presents as cough, dyspnoea, hypoxia</li>
+        </ul></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><div class="proc-name">Chest drain</div><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row"><span class="tag ind">Indication</span><ul><li>Large/tension pneumothorax, haemothorax, empyema, chylothorax, large or recurrent pleural effusion</li></ul></div>
+        <div class="row"><span class="tag how">Key points</span><ul>
+          <li>USS guidance for fluid collections; strict sterile technique; LA at insertion site</li>
+          <li>Seldinger small-bore (12–14 Fr) = effusions; surgical large-bore = haemothorax/trauma</li>
+          <li><b>Triangle of safety</b>: lateral thorax between anterior/posterior axillary lines, above 5th ICS</li>
+        </ul></div>
+        <div class="row"><span class="tag how">What it involves</span><ul><li>LA injected; Seldinger technique (needle → guidewire → dilators → drain); drain stitched in; connected to underwater seal (bubbling = air leak); 2–7 days typically; patient will feel drain movement on breathing</li></ul></div>
+        <div class="row"><span class="tag risk">Common complications</span><ul><li>Pain (significant), drain blockage, displacement, site infection, subcutaneous emphysema</li></ul></div>
+        <div class="row"><span class="tag ci">Serious / rare</span><ul><li>Haemothorax (vessel injury), visceral perforation (lung, liver, spleen, heart), neurovascular bundle injury</li></ul></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><div class="proc-name">Coronary angiography (± PCI)</div><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row"><span class="tag ind">Indication</span><ul><li>Angina evaluation, pre-CABG assessment, post-ACS (NSTEMI/STEMI for primary or elective PCI)</li></ul></div>
+        <div class="row"><span class="tag how">Preparation</span><ul>
+          <li>NBM 4–6 h; IV access; eGFR check; hold metformin 48 h; review anticoagulants; consent including PCI possibility</li>
+        </ul></div>
+        <div class="row"><span class="tag how">What it involves</span><ul><li>Awake, light sedation; LA at radial (preferred) or femoral artery; catheter advanced to aortic root; contrast injected into coronary arteries under fluoroscopy; 30–60 min; PCI (stent/balloon) may be performed same sitting; post-procedure access site monitoring and bed rest</li></ul></div>
+        <div class="row"><span class="tag risk">Common complications</span><ul><li>Haematoma at access site, contrast reaction, transient arrhythmia, angina during injection</li></ul></div>
+        <div class="row"><span class="tag ci">Serious / rare</span><ul><li>Stroke, MI (coronary artery dissection), arterial perforation, death (~0.1%), contrast nephropathy</li></ul></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><div class="proc-name">Echocardiogram — TTE &amp; TOE</div><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row"><span class="tag ind">TTE indication</span><ul><li>Cardiac function/structure, valve disease, pericardial effusion, LV wall motion (post-MI), HF assessment — first-line non-invasive echo</li></ul></div>
+        <div class="row"><span class="tag ind">TOE indication</span><ul><li>Endocarditis (valve vegetations — superior views), LAA thrombus before cardioversion, prosthetic valve assessment, aortic dissection, intraoperative monitoring</li></ul></div>
+        <div class="row"><span class="tag how">Preparation</span><ul>
+          <li>TTE: no prep; gel on chest; painless; no complications; ~30 min</li>
+          <li>TOE: NBM 4–6 h; IV sedation (midazolam) + throat LA spray; CI = oesophageal varices, recent oesophageal surgery, stricture, active bleeding</li>
+        </ul></div>
+        <div class="row"><span class="tag how">What TOE involves</span><ul><li>Sedated; probe swallowed into oesophagus; patient will gag initially; posterior cardiac views; 20–30 min; recovery 1–2 h</li></ul></div>
+        <div class="row"><span class="tag risk">Common (TOE)</span><ul><li>Sore throat, pharyngeal discomfort, nausea/gagging during procedure</li></ul></div>
+        <div class="row"><span class="tag ci">Serious / rare (TOE)</span><ul><li>Oesophageal perforation (&lt;0.01%), aspiration, respiratory/cardiovascular depression from sedation</li></ul></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><div class="proc-name">Duplex scanning (vascular USS)</div><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row"><span class="tag ind">Indication</span><ul><li>DVT (first-line), carotid stenosis (TIA/stroke), peripheral arterial disease, renal artery stenosis, AAA surveillance, varicose vein mapping</li></ul></div>
+        <div class="row"><span class="tag how">What it involves</span><ul>
+          <li>Non-invasive; B-mode USS + Doppler flow assessment; gel applied to skin; probe pressure to assess vein compressibility (DVT = non-compressible)</li>
+          <li>15–30 min; painless; no radiation; no prep; no contraindications</li>
+        </ul></div>
+        <div class="row"><span class="tag risk">Complications</span><ul><li>None</li></ul></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><div class="proc-name">Endoscopy — OGD &amp; colonoscopy</div><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row"><span class="tag ind">OGD (gastroscopy)</span><ul><li>Haematemesis/melaena (urgent), dysphagia, dyspepsia not responding to PPI, Barrett's surveillance, H. pylori biopsy</li></ul></div>
+        <div class="row"><span class="tag ind">Colonoscopy</span><ul><li>PR bleeding, change in bowel habit, iron deficiency anaemia, colorectal cancer screening/surveillance, IBD assessment; sigmoidoscopy = left-sided/rectal pathology only</li></ul></div>
+        <div class="row"><span class="tag how">Preparation</span><ul>
+          <li>OGD: NBM 6 h food / 2 h fluids; throat LA spray ± IV midazolam</li>
+          <li>Colonoscopy: <b>full bowel preparation</b> day before (PEG or sodium picosulfate — causes profuse diarrhoea); clear fluids only on prep day; IV midazolam + fentanyl</li>
+        </ul></div>
+        <div class="row"><span class="tag how">What it involves</span><ul>
+          <li>OGD: scope via mouth → oesophagus → stomach → duodenum; ~15 min; biopsies not felt; bloating/belching common after</li>
+          <li>Colonoscopy: scope via rectum → entire colon; 30–60 min; cramping/bloating during; polypectomy performed if polyps found; recovery 1–2 h</li>
+        </ul></div>
+        <div class="row"><span class="tag risk">Common complications</span><ul>
+          <li>OGD: sore throat, bloating, transient dysphagia</li>
+          <li>Colonoscopy: bloating, cramping, incomplete procedure (5–10%), post-polypectomy syndrome (transient fever/pain)</li>
+        </ul></div>
+        <div class="row"><span class="tag ci">Serious / rare</span><ul>
+          <li>OGD: perforation (0.01%), haemorrhage post-biopsy, aspiration</li>
+          <li>Colonoscopy: perforation (0.1%, higher post-polypectomy), haemorrhage post-polypectomy (~1%)</li>
+        </ul></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><div class="proc-name">Barium swallow</div><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row"><span class="tag ind">Indication</span><ul><li>Dysphagia assessment — oesophageal stricture, pharyngeal pouch, achalasia; modified barium swallow (with speech therapy) for oropharyngeal dysphagia</li></ul></div>
+        <div class="row"><span class="tag how">Preparation &amp; what it involves</span><ul>
+          <li>NBM 4–6 h; drink chalky barium sulphate contrast (or water-soluble Gastrografin if perforation suspected — barium causes severe peritonitis if extravasates)</li>
+          <li>X-ray/fluoroscopy images taken during swallowing; different consistencies tested; quick, no sedation</li>
+        </ul></div>
+        <div class="row"><span class="tag risk">Common complications</span><ul><li>Constipation (barium absorbs water in colon), white stools for 1–2 days</li></ul></div>
+        <div class="row"><span class="tag ci">Serious / rare</span><ul><li>Aspiration of barium (aspiration pneumonitis — more serious than water-soluble contrast); barium impaction (very rare)</li></ul></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><div class="proc-name">ERCP</div><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row"><span class="tag ind">Indication</span><ul><li>Choledocholithiasis (CBD stones), biliary stricture (malignant or benign), PSC, post-surgical biliary leak, chronic pancreatitis with ductal stones/stricture</li></ul></div>
+        <div class="row"><span class="tag how">Preparation</span><ul>
+          <li>NBM 6 h; IV access; sedation ± GA; coag screen (INR &lt;1.5, platelets &gt;50); prophylactic IV antibiotics; full consent</li>
+        </ul></div>
+        <div class="row"><span class="tag how">What it involves</span><ul><li>Side-viewing duodenoscope → second part of duodenum; ampulla of Vater cannulated; contrast injected into biliary/pancreatic duct under fluoroscopy; sphincterotomy + stone removal or stent placement performed as needed; 30–60 min; recovery 2–4 h</li></ul></div>
+        <div class="row"><span class="tag risk">Common complications</span><ul><li><b>Post-ERCP pancreatitis</b> (3–5% — most common); cholangitis; abdominal pain</li></ul></div>
+        <div class="row"><span class="tag ci">Serious / rare</span><ul><li>Perforation (&lt;0.5%), haemorrhage post-sphincterotomy, cholangitis if drainage fails, death (&lt;0.1%)</li></ul></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><div class="proc-name">Abdominal ultrasound</div><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row"><span class="tag ind">Indication</span><ul><li>Gallstones/cholecystitis, liver disease, jaundice (biliary dilation vs hepatocellular), renal disease, abdominal mass, AAA, ascites (diagnosis and USS-guided tap), pelvic masses</li></ul></div>
+        <div class="row"><span class="tag how">Preparation &amp; what it involves</span><ul>
+          <li>Fasting 4–6 h for gallbladder (bile-distended gallbladder = better imaging); full bladder for pelvic/renal</li>
+          <li>Gel on skin; probe pressed over abdomen; 15–30 min; painless; no radiation; safe in pregnancy</li>
+        </ul></div>
+        <div class="row"><span class="tag risk">Complications</span><ul><li>None</li></ul></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><div class="proc-name">Nuclear medicine scans (incl. thyroid scan)</div><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row"><span class="tag ind">Scans by type</span><ul>
+          <li><b>Bone scan</b> (Tc-99m MDP): skeletal metastases, osteomyelitis, Paget's</li>
+          <li><b>V/Q scan</b>: PE (when CTPA contraindicated — allergy, renal failure, pregnancy)</li>
+          <li><b>PET-CT</b> (FDG): cancer staging, restaging, response assessment</li>
+          <li><b>MIBG scan</b>: phaeochromocytoma, neuroblastoma</li>
+          <li><b>Thyroid scan</b> (Tc-99m or I-123): nodule characterisation — hot = autonomous adenoma/Graves'; cold = higher malignancy risk; ectopic thyroid tissue</li>
+        </ul></div>
+        <div class="row"><span class="tag how">Preparation</span><ul>
+          <li>IV or oral radiotracer; waiting period (30 min to 24 h depending on tracer) before imaging</li>
+          <li>PET-CT: NBM 4–6 h; avoid strenuous exercise 24 h before; blood glucose &lt;11 mmol/L</li>
+          <li>Thyroid scan: stop antithyroid drugs (carbimazole/PTU) 5–7 days before; avoid iodine-containing contrast or supplements for 4–8 weeks before</li>
+          <li>After scan: advise limiting close contact with pregnant women/infants for 24 h (small radiation dose)</li>
+        </ul></div>
+        <div class="row"><span class="tag how">What it involves</span><ul><li>IV or oral tracer; rest period; lie in gamma camera or PET scanner (20–90 min); not confined like MRI; some scans require multiple visits (e.g. I-123 thyroid at 4 h and 24 h)</li></ul></div>
+        <div class="row"><span class="tag risk">Common complications</span><ul><li>Mild soreness at injection site; occasional nausea; mild claustrophobia (camera not confined)</li></ul></div>
+        <div class="row"><span class="tag ci">Serious / rare</span><ul><li>Very rare allergic reaction to tracer; ionising radiation (low dose, proportionate to benefit — discuss risk/benefit with patient); I-131 therapy (diagnostic dose only here) requires radiation isolation</li></ul></div>
+      </div>
+    </details>
+
+  </div><!-- /view-procs -->
+
+  <!-- ============ VIEW 5 · DRUGS ============ -->
+  <div class="view" id="view-drugs">
+    <div class="hero">
+      <div class="kicker">Clinical Pharmacology · Y4 Syllabus</div>
+      <h2>Drugs</h2>
+      <p>For each drug: know its indication, mechanism of action, and common side-effects. Doses are not required in Year 4.</p>
+    </div>
+
+    <nav class="chips" style="margin-top:10px;">
+      <a class="chip" href="#dr-emerg">Emergency</a>
+      <a class="chip" href="#dr-cvs">Cardiovascular</a>
+      <a class="chip" href="#dr-resp">Respiratory</a>
+      <a class="chip" href="#dr-gi">GI</a>
+      <a class="chip" href="#dr-dm">Diabetes</a>
+      <a class="chip" href="#dr-analgesia">Analgesics</a>
+      <a class="chip" href="#dr-abx">Antibiotics</a>
+    </nav>
+
+    <!-- SECTION 1: Emergency -->
+    <p class="pg-head" id="dr-emerg">Emergency Drugs</p>
+    <div class="callout" style="margin-top:6px;">
+      <h4>For each: indication, mechanism, common side-effects, route. Doses not required in Year 4.</h4>
+    </div>
+
+    <details class="card">
+      <summary><div class="proc-name">Cardiac arrest</div><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row dr"><span class="tag drug">Adrenaline (epinephrine)</span><ul>
+          <li><b>Mech</b>: α + β adrenoceptor agonist → ↑SVR (α), ↑HR/contractility (β1), ↑coronary perfusion pressure during CPR</li>
+          <li><b>Route</b>: IV/IO</li>
+          <li><b>SE</b>: tachyarrhythmias, HTN, ↑myocardial O₂ demand</li>
+        </ul></div>
+        <div class="row dr"><span class="tag drug">Amiodarone</span><ul>
+          <li><b>Mech</b>: class III antidysrhythmic (K⁺ channel block + Na⁺/Ca²⁺ channel effects) → ↓defibrillation threshold</li>
+          <li><b>Route</b>: IV/IO after 3rd shock in shockable arrest (VF/pVT)</li>
+          <li><b>SE</b>: hypotension on infusion</li>
+        </ul></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><div class="proc-name">Acute pulmonary oedema</div><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row dr"><span class="tag drug">Furosemide</span><ul>
+          <li><b>Mech</b>: inhibits Na⁺/K⁺/2Cl⁻ cotransporter in thick ascending limb of loop of Henle → ↓preload (early venodilation), then diuresis</li>
+          <li><b>Route</b>: IV</li>
+          <li><b>SE</b>: hypokalaemia, hyponatraemia, dehydration, ototoxicity (high dose)</li>
+        </ul></div>
+        <div class="row dr"><span class="tag drug">Nitrates (GTN)</span><ul>
+          <li><b>Mech</b>: NO donor → venodilation → ↓preload; arterial dilation → ↓afterload at higher doses</li>
+          <li><b>Route</b>: SL spray, IV infusion</li>
+          <li><b>SE</b>: headache, flushing, hypotension; CI if SBP &lt;90 mmHg or recent PDE5 inhibitor use</li>
+        </ul></div>
+        <div class="row dr"><span class="tag drug">Oxygen</span><ul>
+          <li><b>Mech</b>: correct hypoxaemia; use non-rebreather mask to target SpO₂ 94–98%</li>
+          <li><b>SE</b>: caution in Type II RF — titrate with Venturi mask if risk</li>
+        </ul></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><div class="proc-name">Acute severe asthma</div><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row dr"><span class="tag drug">Salbutamol (SABA)</span><ul>
+          <li><b>Mech</b>: β2-adrenoceptor agonist → bronchial smooth muscle relaxation</li>
+          <li><b>Route</b>: nebulised (back-to-back in severe); IV if life-threatening</li>
+          <li><b>SE</b>: tremor, tachycardia, hypokalaemia (high dose)</li>
+        </ul></div>
+        <div class="row dr"><span class="tag drug">Ipratropium (SAMA)</span><ul>
+          <li><b>Mech</b>: muscarinic (M3) antagonist → bronchodilation + ↓secretions</li>
+          <li><b>Route</b>: nebulised (add to salbutamol in severe/life-threatening)</li>
+          <li><b>SE</b>: dry mouth, urinary retention, acute angle-closure glaucoma if mist reaches eyes</li>
+        </ul></div>
+        <div class="row dr"><span class="tag drug">Prednisolone / hydrocortisone</span><ul>
+          <li><b>Mech</b>: glucocorticoid → ↓airway inflammation; ↓mucus secretion; potentiate β2 agonists</li>
+          <li><b>Route</b>: oral prednisolone (if able to swallow); IV hydrocortisone (if not)</li>
+          <li><b>SE</b>: short course SE minimal; see continuing-care section for systemic SE</li>
+        </ul></div>
+        <div class="row dr"><span class="tag drug">Magnesium sulfate</span><ul>
+          <li><b>Mech</b>: bronchial smooth muscle relaxation via Ca²⁺ channel blockade + NMDA antagonism</li>
+          <li><b>Route</b>: IV infusion (if not responding to 1st-line treatment)</li>
+          <li><b>SE</b>: flushing, hypotension, respiratory depression</li>
+        </ul></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><div class="proc-name">Anaphylaxis</div><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row dr"><span class="tag drug">Adrenaline 1:1000 IM</span><ul>
+          <li><b>Mech</b>: α agonist → vasoconstriction, ↑BP; β1 → ↑HR; β2 → bronchodilation + ↓mast cell degranulation</li>
+          <li><b>Route</b>: IM (anterolateral thigh) — <b>first-line, do not delay</b></li>
+          <li><b>SE</b>: palpitations, headache, anxiety; safe to give IM even in error</li>
+        </ul></div>
+        <div class="row dr"><span class="tag drug">Chlorphenamine</span><ul>
+          <li><b>Mech</b>: H1 antihistamine → block histamine at H1 receptors (skin and mucosa)</li>
+          <li><b>Route</b>: IV/IM (after adrenaline)</li>
+          <li><b>SE</b>: sedation, dry mouth, urinary retention</li>
+        </ul></div>
+        <div class="row dr"><span class="tag drug">Hydrocortisone</span><ul>
+          <li><b>Mech</b>: glucocorticoid → ↓inflammation; prevents biphasic reaction (onset 4–6 h — adjunct, not first-line)</li>
+          <li><b>Route</b>: IV/IM</li>
+          <li><b>SE</b>: minimal with single dose</li>
+        </ul></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><div class="proc-name">Hypoglycaemia</div><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row dr"><span class="tag drug">Oral glucose / dextrose gel</span><ul>
+          <li><b>Use</b>: if conscious and able to swallow; 15–20 g fast-acting carbohydrate (Lucozade, dextrose tablets)</li>
+        </ul></div>
+        <div class="row dr"><span class="tag drug">IV glucose (10% dextrose)</span><ul>
+          <li><b>Mech</b>: direct glucose provision; raises blood glucose rapidly</li>
+          <li><b>Route</b>: IV; used if unable to take orally or unconscious</li>
+          <li><b>SE</b>: extravasation (10% less irritant than 50%); hyperglycaemia if excessive</li>
+        </ul></div>
+        <div class="row dr"><span class="tag drug">Glucagon</span><ul>
+          <li><b>Mech</b>: binds glucagon receptor → ↑hepatic glycogenolysis and gluconeogenesis → ↑blood glucose</li>
+          <li><b>Route</b>: IM or SC; used when no IV access; ineffective in starvation or alcohol-related hypoglycaemia (depleted glycogen)</li>
+          <li><b>SE</b>: nausea, vomiting</li>
+        </ul></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><div class="proc-name">Seizures</div><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row dr"><span class="tag drug">Benzodiazepines</span><ul>
+          <li><b>Mech</b>: positive allosteric modulators of GABA-A receptor → ↑Cl⁻ conductance → ↓CNS excitability</li>
+          <li><b>Agents</b>: lorazepam (IV/IM preferred in hospital), diazepam (IV or rectal), midazolam (buccal — out-of-hospital or paediatrics)</li>
+          <li><b>SE</b>: respiratory depression (have flumazenil and resuscitation equipment available), sedation, hypotension</li>
+        </ul></div>
+        <div class="row dr"><span class="tag drug">Levetiracetam / phenytoin (2nd-line)</span><ul>
+          <li><b>Use</b>: if seizure continues after benzodiazepines (status epilepticus); IV loading dose</li>
+          <li><b>SE</b>: phenytoin — cardiac arrhythmias (must be given slowly under monitoring)</li>
+        </ul></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><div class="proc-name">Opioid intoxication</div><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row dr"><span class="tag drug">Naloxone</span><ul>
+          <li><b>Mech</b>: competitive μ-opioid receptor antagonist → rapidly reverses respiratory depression, sedation, and miosis</li>
+          <li><b>Route</b>: IV/IM/intranasal; onset seconds (IV) to minutes (IM); very <b>short half-life (30–90 min)</b> — may need repeat doses or continuous infusion if long-acting opioid involved</li>
+          <li><b>SE</b>: precipitates acute withdrawal (pain, agitation, vomiting, tachycardia) in dependent patients; titrate carefully — aim for adequate ventilation, not full reversal</li>
+        </ul></div>
+      </div>
+    </details>
+
+    <!-- SECTION 2: Continuing-care -->
+    <p class="pg-head" id="dr-cvs" style="margin-top:44px;">Continuing-Care Drugs</p>
+    <div class="callout" style="margin-top:6px;">
+      <h4>Know: mechanism of action, therapeutic indications, and common side-effects. One example drug per class is sufficient.</h4>
+    </div>
+
+    <details class="card">
+      <summary><div class="proc-name" style="color:var(--c-cvs);">Cardiovascular</div><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row dr"><span class="tag drug">Beta-blockers<br><span style="font-weight:400;font-size:9.5px;text-transform:none;letter-spacing:0">bisoprolol</span></span><ul>
+          <li><b>Mech</b>: β1-adrenoceptor blockade → ↓HR, ↓contractility, ↓BP; ↓renin release</li>
+          <li><b>Uses</b>: HF (stable), angina, post-MI, AF rate control, HTN</li>
+          <li><b>SE</b>: bradycardia, bronchospasm (CI in asthma), fatigue, cold peripheries, masks hypoglycaemia symptoms</li>
+        </ul></div>
+        <div class="row dr"><span class="tag drug">CCB dihydropyridine<br><span style="font-weight:400;font-size:9.5px;text-transform:none;letter-spacing:0">amlodipine</span></span><ul>
+          <li><b>Mech</b>: L-type Ca²⁺ channel block → peripheral arterial vasodilation</li>
+          <li><b>Uses</b>: HTN, angina</li>
+          <li><b>SE</b>: peripheral oedema, flushing, headache</li>
+        </ul></div>
+        <div class="row dr"><span class="tag drug">CCB non-DHP<br><span style="font-weight:400;font-size:9.5px;text-transform:none;letter-spacing:0">verapamil / diltiazem</span></span><ul>
+          <li><b>Mech</b>: ↓AV node conduction + negative inotropy (cardiac-selective)</li>
+          <li><b>Uses</b>: AF rate control, angina, SVT</li>
+          <li><b>SE</b>: bradycardia, constipation; <b>CI with β-blockers</b> (complete heart block risk)</li>
+        </ul></div>
+        <div class="row dr"><span class="tag drug">ACE inhibitors<br><span style="font-weight:400;font-size:9.5px;text-transform:none;letter-spacing:0">ramipril</span></span><ul>
+          <li><b>Mech</b>: block ACE → ↓angiotensin II + ↑bradykinin → vasodilation + ↓aldosterone</li>
+          <li><b>Uses</b>: HF, HTN, post-MI, CKD with proteinuria (renoprotective)</li>
+          <li><b>SE</b>: dry cough (bradykinin), ↑K⁺, AKI; angioedema (rare, serious); CI: pregnancy, bilateral renal artery stenosis</li>
+        </ul></div>
+        <div class="row dr"><span class="tag drug">ARBs<br><span style="font-weight:400;font-size:9.5px;text-transform:none;letter-spacing:0">losartan</span></span><ul>
+          <li><b>Mech</b>: block AT1 receptor → same end-effect as ACE-I but without bradykinin accumulation</li>
+          <li><b>Uses</b>: as ACE-I but preferred when ACE-I causes intolerable cough; CI: pregnancy</li>
+          <li><b>SE</b>: ↑K⁺, AKI (renovascular disease)</li>
+        </ul></div>
+        <div class="row dr"><span class="tag drug">Loop diuretics<br><span style="font-weight:400;font-size:9.5px;text-transform:none;letter-spacing:0">furosemide</span></span><ul>
+          <li><b>Mech</b>: inhibit NKCC2 cotransporter in thick ascending limb → ↓Na⁺/H₂O reabsorption</li>
+          <li><b>Uses</b>: HF oedema, pulmonary oedema, cirrhotic ascites</li>
+          <li><b>SE</b>: hypokalaemia, hyponatraemia, dehydration, ototoxicity (high IV dose)</li>
+        </ul></div>
+        <div class="row dr"><span class="tag drug">Thiazide diuretics<br><span style="font-weight:400;font-size:9.5px;text-transform:none;letter-spacing:0">bendroflumethiazide</span></span><ul>
+          <li><b>Mech</b>: inhibit Na⁺/Cl⁻ cotransporter in DCT</li>
+          <li><b>Uses</b>: HTN (1st-line), mild oedema; note: ↑Ca²⁺ reabsorption (useful in hypercalciuria/stones)</li>
+          <li><b>SE</b>: ↓K⁺, ↓Na⁺, ↑urate (gout), impaired glucose tolerance, ↑Ca²⁺</li>
+        </ul></div>
+        <div class="row dr"><span class="tag drug">Aldosterone antagonist<br><span style="font-weight:400;font-size:9.5px;text-transform:none;letter-spacing:0">spironolactone</span></span><ul>
+          <li><b>Mech</b>: competitive aldosterone receptor antagonist → K⁺-sparing diuresis</li>
+          <li><b>Uses</b>: HF (↓mortality), cirrhotic ascites, Conn's syndrome, resistant HTN</li>
+          <li><b>SE</b>: ↑K⁺ (CI with ACE-I/ARB caution), gynaecomastia, menstrual irregularity</li>
+        </ul></div>
+        <div class="row dr"><span class="tag drug">Nitrates<br><span style="font-weight:400;font-size:9.5px;text-transform:none;letter-spacing:0">GTN / ISMN</span></span><ul>
+          <li><b>Mech</b>: NO donor → venodilation → ↓preload; ↓afterload at higher doses; coronary vasodilation</li>
+          <li><b>Uses</b>: acute angina (GTN SL spray), angina prophylaxis (ISMN)</li>
+          <li><b>SE</b>: headache, flushing, postural hypotension; tolerance with long-acting forms (nitrate-free interval)</li>
+        </ul></div>
+        <div class="row dr"><span class="tag drug">Statins<br><span style="font-weight:400;font-size:9.5px;text-transform:none;letter-spacing:0">atorvastatin</span></span><ul>
+          <li><b>Mech</b>: inhibit HMG-CoA reductase → ↓hepatic cholesterol synthesis → ↑LDL receptors → ↓LDL</li>
+          <li><b>Uses</b>: 1° and 2° CVD prevention; statin also has anti-inflammatory plaque-stabilising effects</li>
+          <li><b>SE</b>: myopathy/rhabdomyolysis (check CK if muscle pain), ↑transaminases; CI: pregnancy, active liver disease</li>
+        </ul></div>
+        <div class="row dr"><span class="tag drug">Antiplatelet agents<br><span style="font-weight:400;font-size:9.5px;text-transform:none;letter-spacing:0">aspirin / clopidogrel</span></span><ul>
+          <li><b>Aspirin</b>: irreversibly inhibits COX-1/2 → ↓TXA₂ → ↓platelet aggregation</li>
+          <li><b>Clopidogrel</b>: P2Y12 ADP receptor antagonist → ↓platelet aggregation</li>
+          <li><b>Uses</b>: ACS (dual antiplatelet post-stent), TIA/ischaemic stroke prevention</li>
+          <li><b>SE</b>: GI haemorrhage (aspirin), bruising; clopidogrel — TTP (rare)</li>
+        </ul></div>
+        <div class="row dr"><span class="tag drug">Anticoagulants<br><span style="font-weight:400;font-size:9.5px;text-transform:none;letter-spacing:0">LMWH / warfarin / DOACs</span></span><ul>
+          <li><b>Heparin/LMWH</b>: potentiates antithrombin III → inhibits IIa + Xa; SC; reversal = protamine</li>
+          <li><b>Warfarin</b>: inhibits vitamin K-dependent factors (II, VII, IX, X); monitor INR; reversal = vitamin K / FFP / PCC</li>
+          <li><b>DOACs</b>: rivaroxaban/apixaban (direct Xa inhibitors); dabigatran (direct IIa); no routine monitoring; reversal = idarucizumab (dabigatran), andexanet alfa (Xa inhibitors)</li>
+          <li><b>Uses</b>: VTE treatment/prevention, AF stroke prevention, mechanical valves (warfarin)</li>
+          <li><b>SE</b>: all — haemorrhage; warfarin — multiple drug/food interactions (CYP2C9, vitamin K foods)</li>
+        </ul></div>
+        <div class="row dr"><span class="tag drug">Cardiac glycosides<br><span style="font-weight:400;font-size:9.5px;text-transform:none;letter-spacing:0">digoxin</span></span><ul>
+          <li><b>Mech</b>: inhibits Na⁺/K⁺-ATPase → ↑intracellular Ca²⁺ → +ve inotropy; ↑vagal tone → ↓AV node conduction</li>
+          <li><b>Uses</b>: AF rate control, HF with AF</li>
+          <li><b>SE</b>: narrow therapeutic index — toxicity: N/V, yellow-green visual disturbance, arrhythmias (worsened by ↓K⁺)</li>
+        </ul></div>
+        <div class="row dr"><span class="tag drug">Antidysrhythmics<br><span style="font-weight:400;font-size:9.5px;text-transform:none;letter-spacing:0">amiodarone / adenosine / atropine</span></span><ul>
+          <li><b>Amiodarone</b> (class III + multi-channel): AF/VT/VF; SE: thyroid dysfunction, pulmonary fibrosis, photosensitivity, liver toxicity, corneal deposits</li>
+          <li><b>Adenosine</b>: endogenous purine → profound AV block (seconds); terminates SVT; SE: chest tightness, flushing, transient asystole; half-life ~10 s</li>
+          <li><b>Atropine</b>: muscarinic antagonist → ↑HR; use: symptomatic bradycardia; SE: dry mouth, urinary retention, confusion (elderly)</li>
+        </ul></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><div class="proc-name" style="color:var(--c-resp);" id="dr-resp">Respiratory</div><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row dr"><span class="tag drug">SABA<br><span style="font-weight:400;font-size:9.5px;text-transform:none;letter-spacing:0">salbutamol</span></span><ul>
+          <li><b>Mech</b>: selective β2-adrenoceptor agonist → bronchial smooth muscle relaxation</li>
+          <li><b>Uses</b>: acute asthma/COPD relief inhaler</li>
+          <li><b>SE</b>: tremor, tachycardia, ↓K⁺ (high doses)</li>
+        </ul></div>
+        <div class="row dr"><span class="tag drug">LABA<br><span style="font-weight:400;font-size:9.5px;text-transform:none;letter-spacing:0">salmeterol / formoterol</span></span><ul>
+          <li><b>Mech</b>: long-acting β2 agonist (≥12 h); formoterol = fast onset → can be MART regimen reliever</li>
+          <li><b>Uses</b>: asthma add-on (always with ICS), COPD maintenance</li>
+          <li><b>SE</b>: as SABA; should not be used without ICS in asthma (↑mortality risk)</li>
+        </ul></div>
+        <div class="row dr"><span class="tag drug">SAMA / LAMA<br><span style="font-weight:400;font-size:9.5px;text-transform:none;letter-spacing:0">ipratropium / tiotropium</span></span><ul>
+          <li><b>Mech</b>: muscarinic (M3) antagonist → bronchodilation via ↓bronchoconstriction</li>
+          <li><b>Uses</b>: COPD (tiotropium = maintenance); acute severe asthma (ipratropium added to nebulised salbutamol)</li>
+          <li><b>SE</b>: dry mouth, urinary retention, constipation; acute angle-closure glaucoma if mist in eyes</li>
+        </ul></div>
+        <div class="row dr"><span class="tag drug">Inhaled corticosteroids<br><span style="font-weight:400;font-size:9.5px;text-transform:none;letter-spacing:0">beclomethasone / budesonide</span></span><ul>
+          <li><b>Mech</b>: local glucocorticoid → ↓airway inflammation, ↓eosinophil recruitment, ↓mucus secretion</li>
+          <li><b>Uses</b>: asthma (step 2 onwards); COPD (frequent exacerbators)</li>
+          <li><b>SE</b>: oral candidiasis (rinse mouth after), dysphonia; systemic SE at very high doses</li>
+        </ul></div>
+        <div class="row dr"><span class="tag drug">Systemic corticosteroids<br><span style="font-weight:400;font-size:9.5px;text-transform:none;letter-spacing:0">prednisolone / hydrocortisone</span></span><ul>
+          <li><b>Mech</b>: broad glucocorticoid and mineralocorticoid effects → ↓inflammation; immunosuppression</li>
+          <li><b>Uses</b>: acute exacerbations of asthma/COPD, other inflammatory conditions</li>
+          <li><b>SE</b> (long-term): ↑glucose, HTN, osteoporosis, immunosuppression, Cushing's syndrome, adrenal suppression, peptic ulcer, cataracts, avascular necrosis</li>
+        </ul></div>
+        <div class="row dr"><span class="tag drug">Methylxanthines<br><span style="font-weight:400;font-size:9.5px;text-transform:none;letter-spacing:0">theophylline / aminophylline</span></span><ul>
+          <li><b>Mech</b>: PDE inhibitor → ↑cAMP → bronchodilation + anti-inflammatory; also adenosine receptor antagonist</li>
+          <li><b>Uses</b>: severe asthma/COPD (add-on); IV aminophylline in life-threatening asthma</li>
+          <li><b>SE</b>: narrow therapeutic index — tachycardia, arrhythmias, seizures, N/V; multiple drug interactions</li>
+        </ul></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><div class="proc-name" style="color:var(--c-abdo);" id="dr-gi">Gastrointestinal</div><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row dr"><span class="tag drug">PPIs<br><span style="font-weight:400;font-size:9.5px;text-transform:none;letter-spacing:0">omeprazole / lansoprazole</span></span><ul>
+          <li><b>Mech</b>: irreversibly inhibit H⁺/K⁺-ATPase (proton pump) on parietal cells → ↓gastric acid</li>
+          <li><b>Uses</b>: GORD, peptic ulcer, H. pylori eradication (triple therapy), NSAID gastroprotection</li>
+          <li><b>SE</b>: ↓Mg²⁺ (long-term), ↑C. diff risk, ↓B12 absorption, ↑fracture risk</li>
+        </ul></div>
+        <div class="row dr"><span class="tag drug">H2 receptor antagonists<br><span style="font-weight:400;font-size:9.5px;text-transform:none;letter-spacing:0">famotidine</span></span><ul>
+          <li><b>Mech</b>: block H2 receptors on parietal cells → ↓acid secretion (less effective than PPIs)</li>
+          <li><b>Uses</b>: mild peptic ulcer, GORD, NSAID gastroprotection</li>
+          <li><b>SE</b>: headache; rarely hepatotoxicity</li>
+        </ul></div>
+        <div class="row dr"><span class="tag drug">Anti-emetics<br><span style="font-weight:400;font-size:9.5px;text-transform:none;letter-spacing:0">ondansetron / metoclopramide / cyclizine</span></span><ul>
+          <li><b>Ondansetron</b>: 5-HT3 antagonist → blocks chemoreceptor trigger zone; use: chemo/post-op N/V; SE: constipation, ↑QT</li>
+          <li><b>Metoclopramide</b>: D2 antagonist + 5-HT4 agonist → prokinetic + anti-emetic; use: N/V, gastroparesis; SE: extrapyramidal reactions (dystonia, tardive dyskinesia — avoid &gt;5 days)</li>
+          <li><b>Cyclizine</b>: H1 antihistamine + antimuscarinic; use: motion sickness, opioid-induced N/V; SE: sedation, dry mouth</li>
+        </ul></div>
+        <div class="row dr"><span class="tag drug">Laxatives<br><span style="font-weight:400;font-size:9.5px;text-transform:none;letter-spacing:0">senna / macrogol / lactulose</span></span><ul>
+          <li><b>Senna</b>: stimulant laxative → ↑peristalsis; use: constipation, bowel prep; SE: colic</li>
+          <li><b>Macrogols</b> (e.g. Movicol): osmotic → retain water in stool; soften and bulk; use: constipation, bowel prep</li>
+          <li><b>Lactulose</b>: osmotic + ↓colonic pH → ↓NH3 absorption; use: constipation, hepatic encephalopathy</li>
+        </ul></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><div class="proc-name" id="dr-dm">Diabetes mellitus</div><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row dr"><span class="tag drug">Metformin (biguanide)</span><ul>
+          <li><b>Mech</b>: activates AMPK → ↓hepatic gluconeogenesis; ↑peripheral insulin sensitivity</li>
+          <li><b>Uses</b>: T2DM first-line (weight-neutral/↓weight); also cardiovascular benefit</li>
+          <li><b>SE</b>: GI (N/V/D — take with food), lactic acidosis (rare); CI: eGFR &lt;30, AKI, contrast/surgery — <b>hold 48 h</b></li>
+        </ul></div>
+        <div class="row dr"><span class="tag drug">Sulfonylureas<br><span style="font-weight:400;font-size:9.5px;text-transform:none;letter-spacing:0">gliclazide</span></span><ul>
+          <li><b>Mech</b>: close KATP channels on β-cells → depolarisation → ↑insulin secretion (glucose-independent)</li>
+          <li><b>Uses</b>: T2DM add-on (if metformin insufficient or CI)</li>
+          <li><b>SE</b>: hypoglycaemia (main risk), weight gain</li>
+        </ul></div>
+        <div class="row dr"><span class="tag drug">Insulins</span><ul>
+          <li><b>Mech</b>: bind insulin receptor → ↑glucose uptake (GLUT4), ↑glycogen synthesis, ↓gluconeogenesis, ↑protein/fat synthesis</li>
+          <li><b>Types</b>: rapid-acting (aspart/lispro — onset &lt;15 min); short-acting (Actrapid — onset 30 min); intermediate (NPH); long-acting/basal (glargine/detemir — once daily flat profile)</li>
+          <li><b>SE</b>: hypoglycaemia (main risk), weight gain, lipodystrophy at injection sites</li>
+        </ul></div>
+        <div class="row dr"><span class="tag drug">SGLT-2 inhibitors<br><span style="font-weight:400;font-size:9.5px;text-transform:none;letter-spacing:0">dapagliflozin / empagliflozin</span></span><ul>
+          <li><b>Mech</b>: block renal SGLT-2 → ↑urinary glucose excretion → ↓blood glucose; also ↓weight, ↓BP</li>
+          <li><b>Uses</b>: T2DM add-on (also HF and CKD benefit irrespective of DM)</li>
+          <li><b>SE</b>: UTI, genital thrush (glucosuria), euglycaemic DKA; hold before surgery/prolonged fasting; CI: eGFR &lt;30</li>
+        </ul></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><div class="proc-name" id="dr-analgesia">Analgesics (WHO ladder)</div><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row dr"><span class="tag drug">Paracetamol (step 1)</span><ul>
+          <li><b>Mech</b>: central COX inhibition + endocannabinoid system modulation (mechanism not fully elucidated)</li>
+          <li><b>Uses</b>: mild-moderate pain, fever; first-line for most pain</li>
+          <li><b>SE</b>: safe at therapeutic doses; hepatotoxicity in overdose — antidote: N-acetylcysteine (NAC)</li>
+        </ul></div>
+        <div class="row dr"><span class="tag drug">NSAIDs (step 1–2)<br><span style="font-weight:400;font-size:9.5px;text-transform:none;letter-spacing:0">ibuprofen / naproxen / diclofenac</span></span><ul>
+          <li><b>Mech</b>: inhibit COX-1/2 → ↓prostaglandin synthesis → analgesia, antipyrexia, anti-inflammation</li>
+          <li><b>Uses</b>: musculoskeletal pain, renal colic, dysmenorrhoea, inflammatory arthritis</li>
+          <li><b>SE</b>: GI ulceration/haemorrhage (prescribe with PPI), AKI (↓prostaglandin-mediated renal perfusion), fluid retention, ↑BP, bronchospasm (aspirin-sensitive asthma), ↑CV risk</li>
+          <li><b>CI</b>: peptic ulcer, CKD (eGFR &lt;30), HF, anticoagulated patients</li>
+        </ul></div>
+        <div class="row dr"><span class="tag drug">Weak opioids (step 2)<br><span style="font-weight:400;font-size:9.5px;text-transform:none;letter-spacing:0">codeine / tramadol</span></span><ul>
+          <li><b>Codeine</b>: weak μ-opioid agonist; prodrug → morphine via CYP2D6 (ultra-rapid metabolisers at risk of toxicity); SE: constipation, nausea, sedation</li>
+          <li><b>Tramadol</b>: weak μ-opioid + SNRI (serotonin/noradrenaline reuptake inhibitor); SE: lowers seizure threshold, serotonin syndrome risk (with SSRIs/MAOIs), constipation, dizziness</li>
+        </ul></div>
+        <div class="row dr"><span class="tag drug">Strong opioids (step 3)<br><span style="font-weight:400;font-size:9.5px;text-transform:none;letter-spacing:0">morphine / oxycodone / fentanyl</span></span><ul>
+          <li><b>Mech</b>: μ-opioid receptor agonists → ↓pain transmission at spinal cord and supraspinal level</li>
+          <li><b>Uses</b>: severe pain, dyspnoea in palliative care, acute MI (morphine)</li>
+          <li><b>SE</b>: constipation (always co-prescribe laxative), N/V, respiratory depression, sedation, dependence; tolerance develops</li>
+          <li><b>Reversal</b>: naloxone (competitive opioid antagonist — see emergency section)</li>
+        </ul></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><div class="proc-name" id="dr-abx">Antibiotics</div><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg></summary>
+      <div class="body">
+        <div class="row dr"><span class="tag drug">Beta-lactams<br><span style="font-weight:400;font-size:9.5px;text-transform:none;letter-spacing:0">penicillins / cephalosporins / carbapenems</span></span><ul>
+          <li><b>Mech</b>: inhibit PBP (penicillin-binding proteins) → ↓cell wall synthesis → bactericidal</li>
+          <li>Amoxicillin: broad gram +ve/−ve · Co-amoxiclav: + β-lactamase inhibitor · Flucloxacillin: anti-staphylococcal (MSSA) · Ceftriaxone (3rd gen): broad spectrum · Meropenem: widest spectrum (reserve for MDR/ESBL)</li>
+          <li><b>SE</b>: allergy (true IgE anaphylaxis &lt;1% of reported reactions; ~2% cross-reactivity with cephalosporins), rash, C. diff (broad-spectrum)</li>
+        </ul></div>
+        <div class="row dr"><span class="tag drug">Aminoglycosides<br><span style="font-weight:400;font-size:9.5px;text-transform:none;letter-spacing:0">gentamicin</span></span><ul>
+          <li><b>Mech</b>: bind 30S ribosomal subunit → misreading of mRNA → bactericidal vs gram-negative organisms</li>
+          <li><b>Uses</b>: gram-negative sepsis (often combined with beta-lactam)</li>
+          <li><b>SE</b>: nephrotoxicity + ototoxicity (both concentration-dependent) — <b>monitor levels</b></li>
+        </ul></div>
+        <div class="row dr"><span class="tag drug">Quinolones<br><span style="font-weight:400;font-size:9.5px;text-transform:none;letter-spacing:0">ciprofloxacin</span></span><ul>
+          <li><b>Mech</b>: inhibit DNA gyrase (topoisomerase II) + topoisomerase IV → ↓DNA replication → bactericidal</li>
+          <li><b>Uses</b>: UTI, GI infections, atypical pneumonia, bone infections</li>
+          <li><b>SE</b>: QT prolongation, tendinopathy/Achilles tendon rupture (↑risk with corticosteroids — warn patients), ↑C. diff risk, photosensitivity; CI: pregnancy, children (developing cartilage)</li>
+        </ul></div>
+        <div class="row dr"><span class="tag drug">Nitroimidazoles<br><span style="font-weight:400;font-size:9.5px;text-transform:none;letter-spacing:0">metronidazole</span></span><ul>
+          <li><b>Mech</b>: reduced in anaerobic conditions → forms toxic radical → DNA strand breakage → bactericidal</li>
+          <li><b>Uses</b>: anaerobic infections, C. diff (oral), H. pylori (triple therapy), BV, Trichomonas, amoebiasis, Giardia</li>
+          <li><b>SE</b>: metallic taste, N/V, peripheral neuropathy (prolonged use), <b>disulfiram-like reaction with alcohol</b> (warn patients)</li>
+        </ul></div>
+        <div class="row dr"><span class="tag drug">Glycopeptides<br><span style="font-weight:400;font-size:9.5px;text-transform:none;letter-spacing:0">vancomycin</span></span><ul>
+          <li><b>Mech</b>: bind D-Ala-D-Ala terminus of peptidoglycan → ↓cell wall synthesis (different target from β-lactams — active against MRSA)</li>
+          <li><b>Uses</b>: MRSA (IV), severe C. diff (oral — not absorbed, acts in gut)</li>
+          <li><b>SE</b>: nephrotoxicity, ototoxicity; <b>red man syndrome</b> (flushing/rash/hypotension — infuse over ≥60 min, not anaphylaxis); monitor trough levels</li>
+        </ul></div>
+        <div class="row dr"><span class="tag drug">Macrolides<br><span style="font-weight:400;font-size:9.5px;text-transform:none;letter-spacing:0">clarithromycin / azithromycin</span></span><ul>
+          <li><b>Mech</b>: bind 50S ribosomal subunit → inhibit translocation → bacteriostatic</li>
+          <li><b>Uses</b>: atypical pneumonia (Mycoplasma, Legionella, Chlamydia), H. pylori (triple therapy), penicillin allergy for chest infections</li>
+          <li><b>SE</b>: GI (N/D), QT prolongation, hepatotoxicity; multiple drug interactions (CYP3A4 inhibitor)</li>
+        </ul></div>
+        <div class="row dr"><span class="tag drug">Tetracyclines<br><span style="font-weight:400;font-size:9.5px;text-transform:none;letter-spacing:0">doxycycline</span></span><ul>
+          <li><b>Mech</b>: bind 30S subunit → ↓aminoacyl-tRNA binding → bacteriostatic (broad spectrum incl. atypicals)</li>
+          <li><b>Uses</b>: atypical pneumonia, Chlamydia, Lyme disease, malaria prophylaxis, acne</li>
+          <li><b>SE</b>: GI, photosensitivity (warn: sunscreen), dental staining/enamel hypoplasia; CI: children &lt;8 years, pregnancy</li>
+        </ul></div>
+        <div class="row dr"><span class="tag drug">Nitrofurantoin</span><ul>
+          <li><b>Mech</b>: reduced by bacterial nitroreductases → toxic intermediates → multiple intracellular targets</li>
+          <li><b>Uses</b>: uncomplicated lower UTI only (concentrates in urine; inadequate tissue levels for pyelonephritis)</li>
+          <li><b>SE</b>: GI, pulmonary toxicity (long-term), peripheral neuropathy; CI: eGFR &lt;30 (poor urinary concentration), G6PD deficiency</li>
+        </ul></div>
+      </div>
+    </details>
+
+  </div><!-- /view-drugs -->
+
 </main>
 
 <footer>
