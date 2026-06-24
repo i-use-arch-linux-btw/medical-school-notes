@@ -1781,6 +1781,7 @@ const MGMT = {
  "Lung cancer":"MDT approach. NSCLC: resection if early stage; platinum chemotherapy ± radiotherapy; targeted therapy (EGFR, ALK) if driver mutation. SCLC: chemotherapy ± radiotherapy. Palliative care.",
  "Type 2 respiratory failure":"Treat underlying cause. Controlled O₂ (target 88–92%). NIV (BiPAP) if persisting hypercapnia despite max medical therapy. Invasive ventilation as last resort.",
  "Pancoast tumour":"Chemoradiotherapy followed by surgical resection if response. Radiotherapy alone if inoperable. Palliative: analgesia, treat Horner's, brachial plexus pain management.",
+ "Pulmonary tuberculosis":"RIPE × 2 months (Rifampicin, Isoniazid, Pyrazinamide, Ethambutol), then RI × 4 months. Monitor LFTs monthly (all hepatotoxic). Statutory notification to public health. Contact tracing and LTBI screening.",
  /* ABDO */
  "Chronic liver disease":"Treat underlying cause (alcohol abstinence, antivirals for hepatitis, venesection for haemochromatosis). Salt restriction + diuretics (spironolactone ± furosemide) for ascites. Propranolol for portal hypertension. Lactulose ± rifaximin for encephalopathy. Transplant if end-stage.",
  "Haematological — lymphoma":"Treat underlying condition (e.g. hydroxyurea for CML; chemotherapy for lymphoma; antimalarials for tropical causes). Splenectomy for severe hypersplenism.",
@@ -1887,6 +1888,7 @@ const SIGNS = [
   {label:"Auscultation",name:"Stony dull, absent BS & VR",cue:"“Stony dull, breath sounds & resonance absent.”",dx:["**Pleural effusion**"],ix:["**Bedside:** obs, SpO₂","**Bloods:** FBC, CRP, albumin; pleural fluid (Light's)","**Imaging:** CXR, pleural USS, CT"]},
   {label:"Auscultation",name:"Hyper-resonant, ↓BS, ↓VR",cue:"“Hyper-resonant, ↓ breath sounds & resonance, central trachea.”",dx:["**Pneumothorax** (simple)","Large bullae"],ix:["**Bedside:** obs, SpO₂, ABG","**Imaging:** erect CXR","(Trachea AWAY + shock → **tension** = decompress, don't image)"]},
   {label:"Auscultation",name:"Dull, ↓all, trachea TOWARDS",cue:"“Dull, ↓ breath sounds & resonance, trachea pulled towards.”",dx:["**Lobar/lung collapse**","Pneumonectomy"],ix:["**Bedside:** obs, SpO₂","**Imaging:** CXR, CT chest, bronchoscopy"]},
+  {label:"Upper zone",name:"Apical dullness + coarse crackles",cue:"“Dull percussion, coarse crackles ± amphoric breath sounds at the apex; systemic symptoms (fever, night sweats, weight loss, haemoptysis).”",dx:["**Pulmonary tuberculosis** (post-primary reactivation — upper lobes)","Aspergilloma (old TB cavity; haemoptysis, crescent sign on CT)"],ix:["**Bedside:** sputum × 3 AFB smear + culture, obs, SpO₂","**Bloods:** FBC, CRP, Quantiferon-TB gold, HIV, LFTs","**Imaging:** CXR (upper-lobe cavitation/infiltrate), CT chest","**Notify:** statutory public health notification + contact tracing"]},
  ]},
  {label:"Added sounds & periphery",signs:[
   {label:"Auscultation",name:"Fine end-inspiratory crackles",cue:"“Fine Velcro crackles, don't clear on cough.”",dx:["**Pulmonary fibrosis / ILD**","Pulmonary oedema (+ cardiac signs)"],ix:["**Bedside:** SpO₂, spirometry","**Bloods:** ABG, autoimmune screen","**Imaging:** CXR, HRCT; lung function"]},
