@@ -1,0 +1,2877 @@
+[
+  {
+    "id": "af-anticoag",
+    "name": "AF - anticoagulation (stroke prevention)",
+    "system": "Cardiology",
+    "presentation": [
+      "AF diagnosed \u2014 asymptomatic or symptomatic; stroke risk assessment required at diagnosis",
+      "Previous TIA or stroke \u2014 highest risk group, anticoagulation clearly indicated"
+    ],
+    "signs": [
+      "Neurological signs of prior embolic stroke \u2014 focal deficit, dysphasia",
+      "No signs specific to anticoagulation need \u2014 risk is determined by scoring, not examination"
+    ],
+    "investigations": {
+      "bedside": [
+        "ECG: confirm AF (absent P waves, irregular R-R) and not sinus rhythm with ectopics",
+        "BP: hypertension is a stroke risk factor (H in CHA2DS2-VASc) AND a bleeding risk factor (H in HAS-BLED)"
+      ],
+      "bloods": [
+        "U&E and eGFR: renal function required to select and dose DOAC (apixaban/rivaroxaban dose-reduced in CKD); contraindication in severe renal failure",
+        "LFTs: hepatic impairment affects DOAC metabolism; warfarin requires INR monitoring",
+        "FBC: anaemia or thrombocytopenia as bleeding risk factors before anticoagulation"
+      ],
+      "imaging": [
+        "Echo: valvular AF (mitral stenosis, mechanical valve) \u2014 mandates warfarin not DOAC; assess for LA thrombus"
+      ]
+    },
+    "mx": [
+      "CHA2DS2-VASc score \u2014 anticoagulate if score \u22652 in men or \u22653 in women (score \u22651/\u22652 consider); do not anticoagulate score 0/1 in men",
+      "DOAC first-line (apixaban, rivaroxaban, dabigatran, edoxaban) \u2014 superior to warfarin for non-valvular AF; no routine INR monitoring needed",
+      "Warfarin \u2014 use ONLY for valvular AF (mitral stenosis, mechanical heart valve) where DOACs are contraindicated"
+    ],
+    "traps": [
+      "Aspirin is NOT an acceptable alternative to anticoagulation for stroke prevention in AF \u2014 provides minimal benefit with similar bleeding risk; NICE explicitly recommends against antiplatelet monotherapy for AF stroke prevention",
+      "Paroxysmal AF carries the same stroke risk as persistent/permanent AF \u2014 CHA2DS2-VASc and anticoagulation decision applies equally"
+    ]
+  },
+  {
+    "id": "stemi",
+    "name": "Acute coronary syndrome (STEMI)",
+    "system": "Cardiology",
+    "presentation": [
+      "Central crushing chest pain radiating to jaw/left arm, onset at rest, >20 min duration",
+      "Diaphoresis, nausea, vomiting \u2014 autonomic features distinguishing from stable angina",
+      "Sudden dyspnoea if large territory infarct causes acute LV dysfunction",
+      "Silent presentation in diabetics and elderly \u2014 present with syncope, acute HF, or confusion only"
+    ],
+    "signs": [
+      "Tachycardia (compensatory) or bradycardia (inferior STEMI with vagal activation)",
+      "S3 gallop if significant LV impairment",
+      "New pansystolic murmur \u2014 papillary muscle rupture (MR) or VSD as mechanical complication",
+      "Hypotension with raised JVP in right ventricular infarction (inferior STEMI + RV involvement)"
+    ],
+    "investigations": {
+      "bedside": [
+        "ECG: ST elevation \u22651mm in \u22652 contiguous limb leads or \u22652mm in precordial leads \u2014 anterior STEMI in V1-V4, inferior in II/III/aVF, lateral in I/aVL/V5-V6",
+        "ECG: reciprocal ST depression in leads opposite to infarct territory (e.g. inferior STEMI \u2192 ST depression V1-V3)",
+        "ECG: new LBBB in context of chest pain \u2014 treat as STEMI equivalent",
+        "Obs: BP both arms to exclude aortic dissection before thrombolysis/PPCI"
+      ],
+      "bloods": [
+        "Troponin I/T: rises 3-6h post-onset, peaks 12-24h, remains elevated 7-14d \u2014 use serial troponins at 0h and 3h",
+        "FBC: baseline; raised WCC from sterile infarct inflammation",
+        "U&E: baseline renal function before contrast for angiography",
+        "Lipid profile: total cholesterol, LDL \u2014 fasting sample, guides statin therapy"
+      ],
+      "imaging": [
+        "CXR: pulmonary oedema (upper lobe diversion, interstitial shadowing) if large anterior STEMI with LV failure; normal CXR does not exclude STEMI",
+        "Echo (post-reperfusion): regional wall motion abnormality in affected territory, assess LVEF to guide prognosis and therapy"
+      ]
+    },
+    "mx": [
+      "Reperfusion \u2014 primary PCI within 120 min of first medical contact (preferred); thrombolysis if PCI unavailable within 120 min",
+      "Dual antiplatelet \u2014 aspirin + P2Y12 inhibitor (e.g. ticagrelor) to prevent stent thrombosis and re-infarction",
+      "Anticoagulation \u2014 unfractionated or low-molecular-weight heparin as adjunct to PCI"
+    ],
+    "traps": [
+      "Posterior STEMI: no ST elevation \u2014 look for ST depression V1-V3 with tall R waves (mirror image); confirm with posterior leads V7-V9",
+      "Right ventricular infarction complicating inferior STEMI: hypotension responds to IV fluids NOT diuretics \u2014 giving nitrates/diuretics can precipitate profound hypotension"
+    ]
+  },
+  {
+    "id": "hf-acute",
+    "name": "Acute heart failure / pulmonary oedema",
+    "system": "Cardiology",
+    "presentation": [
+      "Sudden onset severe dyspnoea at rest, often nocturnal \u2014 patient woken from sleep",
+      "Orthopnoea \u2014 cannot lie flat; prefers sitting upright or leaning forward",
+      "Pink frothy sputum \u2014 alveolar oedema with haemorrhagic tinge",
+      "Profound anxiety, sensation of drowning"
+    ],
+    "signs": [
+      "Severe respiratory distress: tachypnoea, use of accessory muscles, unable to complete sentences",
+      "Bibasal coarse crackles extending to mid-zones or upper zones \u2014 alveolar flooding",
+      "S3 gallop and tachycardia \u2014 hyperdynamic circulation or failing ventricle",
+      "Cold peripheries, mottled skin \u2014 low output state (cardiogenic shock if BP also low)",
+      "Raised JVP, bilateral pitting oedema \u2014 fluid overload"
+    ],
+    "investigations": {
+      "bedside": [
+        "ECG: identify precipitant \u2014 AF with rapid ventricular rate, acute STEMI/NSTEMI, new LBBB, tachyarrhythmia",
+        "SpO2: hypoxia confirms diagnosis; target SpO2 \u226594%",
+        "BM: exclude hypoglycaemia as precipitant/comorbidity"
+      ],
+      "bloods": [
+        "BNP/NT-proBNP: markedly elevated \u2014 confirms cardiac cause; useful when diagnosis uncertain vs respiratory cause of dyspnoea",
+        "Troponin: exclude ACS as precipitant of acute HF",
+        "U&E: baseline before diuresis; avoid over-diuresis causing AKI",
+        "ABG: type 1 respiratory failure (low PaO2, normal/low PaCO2); type 2 if exhausted"
+      ],
+      "imaging": [
+        "CXR (portable/supine): cardiomegaly, bilateral perihilar bat-wing shadowing, upper lobe blood diversion, Kerley B lines at costophrenic angles, pleural effusions (blunted costophrenic angles)"
+      ]
+    },
+    "mx": [
+      "IV loop diuretic (furosemide) \u2014 promotes rapid fluid removal; reduces preload and pulmonary venous congestion",
+      "Oxygen \u2014 high-flow if SpO2 <94%; NIV (CPAP) if type 1 respiratory failure persisting on oxygen \u2014 reduces need for intubation",
+      "Treat precipitant \u2014 cardiovert AF, reperfuse STEMI, treat hypertensive crisis with vasodilators (GTN infusion)"
+    ],
+    "traps": [
+      "Acute pulmonary oedema vs COPD exacerbation can both present with severe dyspnoea and crackles/wheeze \u2014 BNP and ECG are key differentiators; NIV is used in both but CPAP (no backup rate) preferred in pulmonary oedema, BiPAP in COPD",
+      "Avoid high-flow oxygen in patients with known COPD and CO2 retention \u2014 target SpO2 88-92% to avoid suppressing hypoxic drive"
+    ]
+  },
+  {
+    "id": "af-rate-rhythm",
+    "name": "Atrial fibrillation - rate/rhythm",
+    "system": "Cardiology",
+    "presentation": [
+      "Palpitations \u2014 irregular, fast, may be episodic if paroxysmal AF",
+      "Dyspnoea, reduced exercise tolerance from loss of atrial kick reducing cardiac output",
+      "Fatigue, presyncope \u2014 especially with rapid ventricular rate",
+      "Incidental finding on pulse check \u2014 lone AF may be asymptomatic"
+    ],
+    "signs": [
+      "Irregularly irregular pulse \u2014 hallmark; pulse deficit (apex faster than radial) with rapid AF",
+      "Tachycardia (ventricular rate typically 100-180 bpm if uncontrolled)",
+      "Signs of haemodynamic compromise: hypotension, pulmonary oedema \u2014 indicates urgent cardioversion"
+    ],
+    "investigations": {
+      "bedside": [
+        "ECG: absent P waves, irregularly irregular R-R intervals, fibrillatory baseline (best seen V1), narrow QRS unless aberrant conduction or pre-excitation (WPW)",
+        "ECG (WPW warning): broad irregular complexes at very rapid rate \u2014 delta waves, do NOT use AV-nodal blockers (digoxin, verapamil, adenosine) as they precipitate VF via accessory pathway"
+      ],
+      "bloods": [
+        "TFTs: thyrotoxicosis is a reversible cause \u2014 TSH suppressed, raised fT4/fT3",
+        "FBC: anaemia as precipitant; infection causing AF exacerbation",
+        "U&E: electrolytes (hypokalaemia, hypomagnesaemia increase ectopy)",
+        "LFTs and alcohol markers: alcohol excess is major AF trigger"
+      ],
+      "imaging": [
+        "Echo: LA size (dilated LA predicts recurrence after cardioversion), LV function, valvular disease (mitral stenosis \u2192 AF), exclude intracardiac thrombus before cardioversion"
+      ]
+    },
+    "mx": [
+      "Rate control (chronic AF or onset >48h) \u2014 beta-blocker or rate-limiting calcium channel blocker (diltiazem/verapamil) to target resting rate <110 bpm",
+      "Rhythm control (symptomatic or onset <48h with haemodynamic stability) \u2014 DC cardioversion or pharmacological cardioversion (flecainide if no structural heart disease, amiodarone if structural disease)",
+      "Haemodynamic instability \u2192 immediate synchronised DC cardioversion regardless of anticoagulation status"
+    ],
+    "traps": [
+      "AF with WPW: broad complex rapid irregular rhythm \u2014 AV-nodal blockers (digoxin, verapamil, beta-blockers) are contraindicated; accelerate conduction via accessory pathway \u2192 VF",
+      "Cardioversion after >48h AF without anticoagulation risks thromboembolism \u2014 must anticoagulate \u22653 weeks before or perform TOE to exclude LA thrombus first"
+    ]
+  },
+  {
+    "id": "bradycardia-pacing",
+    "name": "Bradycardia / when to pace",
+    "system": "Cardiology",
+    "presentation": [
+      "Syncope or pre-syncope \u2014 sudden loss of cardiac output during complete AV block or sinus arrest",
+      "Dizziness, lightheadedness on standing or exertion",
+      "Fatigue, reduced exercise tolerance \u2014 chronotropic incompetence",
+      "Palpitations from escape beats; patient may notice slow regular or irregular pulse"
+    ],
+    "signs": [
+      "Bradycardia <60 bpm on pulse \u2014 confirm on ECG as rate and regularity",
+      "Cannon A waves in JVP \u2014 complete heart block with dissociated atrial and ventricular contraction",
+      "Variable S1 intensity \u2014 complete heart block (PR interval varies)",
+      "Hypotension if haemodynamically compromising bradycardia"
+    ],
+    "investigations": {
+      "bedside": [
+        "ECG: sinus bradycardia (P before every QRS, rate <60), 1st degree AV block (PR >200ms), 2nd degree Mobitz I (Wenckebach \u2014 PR lengthens then P dropped), 2nd degree Mobitz II (fixed PR, sudden P dropped \u2014 unstable, may progress to complete block), complete (3rd degree) AV block (P and QRS dissociated, escape rhythm <40 bpm)",
+        "ECG: pause identification \u2014 sinus arrest, SA exit block"
+      ],
+      "bloods": [
+        "U&E: hyperkalaemia causes bradycardia, AV block, and widened QRS \u2014 K+ >6.5 with ECG changes is emergency",
+        "TFTs: hypothyroidism causes sinus bradycardia and conduction disease",
+        "Drug levels/history: beta-blockers, digoxin toxicity, rate-limiting CCBs as reversible causes"
+      ],
+      "imaging": [
+        "Echo: structural heart disease (aortic stenosis, cardiomyopathy) as substrate for conduction disease; assess LV function before pacemaker decision"
+      ]
+    },
+    "mx": [
+      "Atropine IV \u2014 first-line for symptomatic bradycardia (increases SA node rate and AV conduction); ineffective in complete heart block with ventricular escape (no vagal tone at this level)",
+      "Temporary transvenous pacing \u2014 for haemodynamically compromising bradycardia not responding to atropine; bridge to permanent pacemaker",
+      "Permanent pacemaker \u2014 indicated for complete heart block, symptomatic Mobitz II, sinus node disease with symptoms; dual-chamber (DDD) maintains AV synchrony"
+    ],
+    "traps": [
+      "Mobitz II is far more dangerous than Mobitz I (Wenckebach) \u2014 Wenckebach is often benign and vagally mediated; Mobitz II indicates infranodal disease and can progress unpredictably to complete heart block requiring permanent pacemaker",
+      "Atropine is ineffective and may worsen bradycardia in heart transplant patients (no vagal innervation) \u2014 use isoprenaline or pacing"
+    ]
+  },
+  {
+    "id": "hf-chronic",
+    "name": "Chronic heart failure (HFrEF)",
+    "system": "Cardiology",
+    "presentation": [
+      "Progressive exertional dyspnoea \u2014 NYHA classification (I: no symptoms at normal activity \u2192 IV: symptoms at rest)",
+      "Orthopnoea \u2014 number of pillows needed; paroxysmal nocturnal dyspnoea",
+      "Ankle swelling, worse by evening \u2014 dependent oedema from venous hypertension",
+      "Fatigue, reduced exercise tolerance \u2014 low cardiac output and skeletal muscle deconditioning"
+    ],
+    "signs": [
+      "Raised JVP \u2014 elevated venous pressure from fluid overload",
+      "Bibasal fine crackles \u2014 pulmonary oedema (may be absent in chronic compensated HF)",
+      "Pitting oedema bilateral to sacrum if bed-bound",
+      "S3 gallop (ventricular filling sound) \u2014 volume overloaded dilated ventricle",
+      "Displaced apex beat (lateral and inferiorly) \u2014 cardiomegaly from dilated LV"
+    ],
+    "investigations": {
+      "bedside": [
+        "ECG: LVH, LBBB (dyssynchrony \u2014 indicates CRT candidacy), AF (common precipitant/complication), Q waves (ischaemic aetiology)",
+        "Obs: SpO2 \u2014 oxygen saturations, resting tachycardia as compensatory mechanism"
+      ],
+      "bloods": [
+        "BNP or NT-proBNP: elevated proportional to degree of LV dysfunction \u2014 NT-proBNP >400 pg/mL supports diagnosis; excellent negative predictive value if normal",
+        "U&E: renal function (cardiorenal syndrome); hyponatraemia suggests severe failure and poor prognosis",
+        "TFTs: thyroid disease as reversible cause",
+        "FBC: anaemia worsens symptoms and is a treatment target"
+      ],
+      "imaging": [
+        "Echo: LVEF <40% defines HFrEF; dilated LV, regional wall motion abnormality (ischaemic) vs global (dilated cardiomyopathy); mitral regurgitation (functional)",
+        "CXR: cardiomegaly (cardiothoracic ratio >0.5), upper lobe blood diversion, Kerley B lines (interstitial oedema), bilateral perihilar haze \u2014 'bat wing' appearance in acute decompensation"
+      ]
+    },
+    "mx": [
+      "ACE inhibitor (or ARB if intolerant) \u2014 reduces afterload and neurohormonal activation; improves mortality in HFrEF",
+      "Beta-blocker (bisoprolol/carvedilol) \u2014 reduces sympathetic drive; improves mortality; start low, uptitrate when clinically stable",
+      "Mineralocorticoid receptor antagonist (spironolactone/eplerenone) \u2014 add if symptoms persist despite ACEi + BB; monitor K+ and renal function"
+    ],
+    "traps": [
+      "SGLT2 inhibitors (dapagliflozin, empagliflozin) now have evidence in HFrEF regardless of diabetes status \u2014 increasingly included as fourth pillar of HF therapy (Year 4 level awareness)",
+      "ACE inhibitor should not be started during acute decompensation \u2014 wait until euvolaemic and haemodynamically stable before introducing/uptitrating"
+    ]
+  },
+  {
+    "id": "htn",
+    "name": "Hypertension",
+    "system": "Cardiology",
+    "presentation": [
+      "Usually asymptomatic \u2014 diagnosed incidentally on routine BP measurement",
+      "Headache (occipital, morning) \u2014 more common in severe/malignant hypertension",
+      "Epistaxis \u2014 associated but not specific",
+      "Hypertensive emergency: severe headache, visual changes, confusion, chest pain, focal neurology"
+    ],
+    "signs": [
+      "BP \u2265140/90 mmHg on two separate readings (clinic BP) \u2014 confirm with ABPM or home monitoring",
+      "Fundoscopy: AV nipping, silver wiring (chronic hypertensive changes); flame haemorrhages, papilloedema (grade III/IV \u2014 hypertensive emergency)",
+      "Signs of end-organ damage: LVH on ECG/echo, displaced apex beat, renal bruits (renovascular cause)"
+    ],
+    "investigations": {
+      "bedside": [
+        "ECG: LVH (Sokolow-Lyon: S in V1 + R in V5/V6 >35mm) \u2014 indicates end-organ damage, raises cardiovascular risk classification",
+        "Urine dip: proteinuria (renal damage), haematuria (renal parenchymal disease or renal artery stenosis as secondary cause)"
+      ],
+      "bloods": [
+        "U&E: renal function (hypertensive nephropathy, renovascular cause \u2014 raised creatinine); hypokalaemia in primary hyperaldosteronism (Conn's syndrome)",
+        "Fasting glucose and HbA1c: diabetes as major cardiovascular risk modifier",
+        "Lipid profile: total cholesterol, LDL \u2014 cardiovascular risk calculation (QRISK)",
+        "TFTs: hyperthyroidism as secondary cause of hypertension"
+      ],
+      "imaging": [
+        "Echo: LV mass (hypertrophy), diastolic dysfunction \u2014 more sensitive than ECG for LVH; also guides treatment if HF coexists",
+        "Renal USS: asymmetric kidneys (renovascular hypertension or chronic pyelonephritis), adult polycystic kidney disease"
+      ]
+    },
+    "mx": [
+      "Lifestyle \u2014 DASH diet, salt restriction, weight loss, aerobic exercise, alcohol reduction; first-line for stage 1 HTN with low CV risk",
+      "Antihypertensive drugs \u2014 step approach: <55 years start ACE inhibitor (or ARB); \u226555 years or Black ethnicity start calcium channel blocker; add diuretic (thiazide-like) as step 2",
+      "Target BP <140/90 mmHg (clinic) in most; <130/80 mmHg if established CVD, diabetes, or CKD with proteinuria"
+    ],
+    "traps": [
+      "Hypertensive emergency (BP >180/120 + end-organ damage: papilloedema, encephalopathy, AKI) \u2014 do NOT lower BP rapidly; gradual reduction over 24-48h to avoid watershed ischaemia and stroke",
+      "White-coat hypertension is common \u2014 always confirm with ABPM (ambulatory blood pressure monitoring) or home readings before diagnosing and treating"
+    ]
+  },
+  {
+    "id": "nstemi",
+    "name": "NSTEMI / unstable angina",
+    "system": "Cardiology",
+    "presentation": [
+      "Chest pain at rest or on minimal exertion, lasting >10 min, not fully relieved by GTN",
+      "New-onset angina (within 4 weeks) or crescendo pattern \u2014 increasing frequency/severity/duration",
+      "Dyspnoea, fatigue as anginal equivalents, especially in women and diabetics",
+      "Epigastric pain with nausea \u2014 inferior territory ischaemia mimicking GI pathology"
+    ],
+    "signs": [
+      "Often no abnormal signs at rest \u2014 examination used to identify complications and rule out differentials",
+      "Transient S3 or new MR murmur during ischaemic episode",
+      "Signs of heart failure if large territory or haemodynamic compromise"
+    ],
+    "investigations": {
+      "bedside": [
+        "ECG: ST depression (horizontal or downsloping \u22650.5mm) or T-wave inversion in ischaemic territory \u2014 does NOT show ST elevation",
+        "ECG: may be entirely normal \u2014 a normal ECG does not exclude NSTEMI; repeat during pain"
+      ],
+      "bloods": [
+        "High-sensitivity troponin I/T: detectable within 1-2h; serial 0h and 1h or 0h and 3h protocol; elevation distinguishes NSTEMI from unstable angina (UA has no troponin rise)",
+        "FBC: anaemia as precipitant of demand ischaemia",
+        "U&E and eGFR: renal function before anticoagulation and contrast",
+        "BNP/NT-proBNP: elevated if ischaemia has caused LV dysfunction \u2014 prognostic value"
+      ],
+      "imaging": [
+        "CXR: exclude pulmonary oedema and alternative diagnoses (pneumothorax, aortic widening)",
+        "Echo: regional wall motion abnormality if significant ischaemia; baseline LVEF for risk stratification"
+      ]
+    },
+    "mx": [
+      "Dual antiplatelet \u2014 aspirin + P2Y12 inhibitor (ticagrelor/clopidogrel) immediately; reduces re-infarction risk",
+      "Anticoagulation \u2014 LMWH or fondaparinux for anti-thrombotic effect while awaiting risk stratification",
+      "Risk stratification with GRACE score \u2014 high-risk (score >140) \u2192 early invasive strategy (coronary angiography within 72h)"
+    ],
+    "traps": [
+      "Normal ECG at rest is common in NSTEMI \u2014 must repeat during pain; diagnosis rests on troponin kinetics not ECG",
+      "Unstable angina and NSTEMI are managed identically initially \u2014 the distinction is troponin rise (NSTEMI) vs no rise (UA)"
+    ]
+  },
+  {
+    "id": "copd-acute",
+    "name": "Acute COPD exacerbation",
+    "system": "Respiratory",
+    "presentation": [
+      "Acute worsening dyspnoea beyond normal day-to-day variation",
+      "Increased sputum volume and/or purulence \u2014 suggests infective trigger (commonest: Haemophilus influenzae, Streptococcus pneumoniae, Moraxella catarrhalis)",
+      "Cough worsening \u2014 may produce green/yellow sputum",
+      "Wheeze, confusion (CO2 retention) in severe exacerbation"
+    ],
+    "signs": [
+      "Tachypnoea, tachycardia \u2014 markers of severity",
+      "Use of accessory muscles, paradoxical breathing \u2014 impending respiratory failure",
+      "Central cyanosis \u2014 severe hypoxaemia",
+      "Asterixis (CO2 retention flap) \u2014 confirms hypercapnic respiratory failure",
+      "Right heart failure signs: raised JVP, peripheral oedema \u2014 cor pulmonale exacerbated"
+    ],
+    "investigations": {
+      "bedside": [
+        "SpO2: target 88-92% in COPD exacerbation to avoid suppressing hypoxic drive; NOT 94-98%",
+        "Peak flow: less useful than spirometry in COPD but may guide severity assessment"
+      ],
+      "bloods": [
+        "ABG: essential \u2014 PaO2 <8kPa (hypoxaemia), raised PaCO2 (hypercapnia), low pH (acidosis) in type 2 failure; pH <7.26 or worsening on controlled oxygen \u2192 NIV",
+        "FBC: raised WBC and CRP suggest bacterial infection \u2014 guides antibiotic decision",
+        "U&E: theophylline toxicity risk if used; hypokalaemia from bronchodilators",
+        "Blood cultures: if pyrexial \u2014 gram-negative bacteria particularly important in severe exacerbation"
+      ],
+      "imaging": [
+        "CXR: exclude pneumothorax (in emphysematous bullous disease), consolidation (infective exacerbation/pneumonia), pneumomediastinum; assess cardiac size for cor pulmonale"
+      ]
+    },
+    "mx": [
+      "Controlled oxygen (24-28% Venturi) \u2014 target SpO2 88-92%; avoid high-flow oxygen causing CO2 retention and respiratory acidosis",
+      "Short-acting bronchodilators \u2014 salbutamol + ipratropium nebulisers; driven by air (not high-flow O2) unless severe hypoxia",
+      "NIV (BiPAP) \u2014 for type 2 respiratory failure (pH <7.35, PaCO2 >6kPa) not responding to medical therapy; reduces intubation rate and mortality"
+    ],
+    "traps": [
+      "High-flow oxygen in COPD with CO2 retention worsens hypercapnia \u2014 mechanism: Haldane effect (O2 displaces CO2 from haemoglobin), loss of hypoxic drive, V/Q mismatch worsening; always use controlled oxygen",
+      "Not all COPD exacerbations need antibiotics \u2014 purulent sputum or consolidation on CXR is the indication; viral exacerbations (commonest trigger) do not benefit from antibiotics"
+    ]
+  },
+  {
+    "id": "asthma-acute",
+    "name": "Acute asthma exacerbation",
+    "system": "Respiratory",
+    "presentation": [
+      "Sudden worsening dyspnoea and wheeze not responding to repeated SABA doses",
+      "Unable to complete sentences (moderate-severe), unable to speak (life-threatening)",
+      "Cough worse at night; accessory muscle use",
+      "Precipitants: URTI, allergen exposure, stopping ICS, beta-blocker prescription"
+    ],
+    "signs": [
+      "Moderate: PEFR 50-75% of best/predicted, SpO2 \u226592%, able to talk",
+      "Severe: PEFR 33-50%, RR \u226525/min, HR \u2265110 bpm, unable to complete sentences",
+      "Life-threatening: PEFR <33%, SpO2 <92%, silent chest (no wheeze = no air entry), cyanosis, bradycardia, confusion, exhaustion",
+      "Silent chest is an ominous sign \u2014 severe obstruction with no airflow, not improvement"
+    ],
+    "investigations": {
+      "bedside": [
+        "Peak expiratory flow (PEF): % of personal best or predicted \u2014 defines severity; repeat after bronchodilator to assess response",
+        "SpO2: <92% indicates severe/life-threatening; target \u226594-98%",
+        "ECG: sinus tachycardia expected; exclude arrhythmia if very tachycardic"
+      ],
+      "bloods": [
+        "ABG: initially low PaCO2 (hyperventilation); normal or rising PaCO2 in life-threatening attack indicates fatigue and impending respiratory arrest \u2014 even 'normal' CO2 in acute asthma is alarming",
+        "U&E: hypokalaemia from repeated salbutamol nebulisers (beta-2 shifts K+ intracellularly) \u2014 monitor and replace"
+      ],
+      "imaging": [
+        "CXR: exclude pneumothorax (life-threatening complication of severe asthma), lobar collapse from mucus plugging, consolidation as precipitant"
+      ]
+    },
+    "mx": [
+      "High-dose SABA (salbutamol) nebulisers back-to-back \u2014 bronchodilation; driven by oxygen in severe/life-threatening",
+      "Systemic corticosteroids (oral prednisolone or IV hydrocortisone) \u2014 reduces airway inflammation; onset 4-6h; give early in all moderate/severe attacks",
+      "Ipratropium bromide nebulisers \u2014 add to salbutamol in moderate-severe attack; additive bronchodilation via anticholinergic mechanism"
+    ],
+    "traps": [
+      "Normal PaCO2 in acute asthma is a red flag \u2014 patient should be hypocapnic from hyperventilation; normalising CO2 means tiring and approaching respiratory failure; prepare for ICU",
+      "Do NOT prescribe beta-blockers to asthmatic patients \u2014 even 'cardioselective' beta-blockers can precipitate fatal bronchospasm"
+    ]
+  },
+  {
+    "id": "asthma-chronic",
+    "name": "Asthma - chronic",
+    "system": "Respiratory",
+    "presentation": [
+      "Episodic wheeze \u2014 variable, worse at night and early morning; characteristic diurnal pattern",
+      "Breathlessness and chest tightness \u2014 triggered by allergens, cold air, exercise, NSAIDs, beta-blockers",
+      "Dry cough \u2014 may be the only symptom in cough-variant asthma",
+      "Atopic history: eczema, allergic rhinitis, family history of atopy"
+    ],
+    "signs": [
+      "Expiratory wheeze on auscultation \u2014 polyphonic, bilateral",
+      "Hyperinflated chest in chronic poorly controlled asthma \u2014 barrel chest, increased AP diameter",
+      "May be normal between attacks \u2014 variable nature of obstruction is key diagnostic feature"
+    ],
+    "investigations": {
+      "bedside": [
+        "Peak flow: diurnal variation >20% (morning vs evening) on serial measurements over 2 weeks \u2014 confirms reversible obstruction",
+        "Peak flow: \u226515% improvement after bronchodilator (SABA) \u2014 demonstrates reversibility",
+        "Spirometry: obstructive pattern (FEV1/FVC <0.70), reversible with bronchodilator (\u226512% and \u2265200mL improvement in FEV1)"
+      ],
+      "bloods": [
+        "FBC: eosinophilia (>0.4 \u00d7 10\u2079/L) \u2014 Type 2 inflammatory pattern; guides biological therapy",
+        "Total IgE and specific allergen IgE (RAST): elevated in allergic/extrinsic asthma; identifies triggers",
+        "FeNO (fractional exhaled nitric oxide): >40 ppb indicates eosinophilic airway inflammation \u2014 supports asthma diagnosis and predicts steroid response"
+      ],
+      "imaging": [
+        "CXR: often normal; hyperinflation in severe/chronic disease; exclude alternative diagnoses (pneumothorax, lobar collapse, foreign body)"
+      ]
+    },
+    "mx": [
+      "Step 1: SABA (short-acting beta-2 agonist e.g. salbutamol) reliever PRN \u2014 for symptom relief; using >3x/week indicates need to step up",
+      "Step 2: Add inhaled corticosteroid (ICS) \u2014 reduces airway inflammation; prevents exacerbations; mainstay of maintenance therapy",
+      "Step 3: Add LABA (long-acting beta-2 agonist e.g. salmeterol) to ICS \u2014 combined ICS/LABA; never LABA alone in asthma (increased mortality without ICS)"
+    ],
+    "traps": [
+      "LABA must never be prescribed as monotherapy in asthma (without ICS) \u2014 associated with increased asthma deaths; always combined inhaler",
+      "NSAIDs and aspirin are contraindicated in aspirin-exacerbated respiratory disease (AERD/Samter's triad): asthma + nasal polyps + aspirin sensitivity"
+    ]
+  },
+  {
+    "id": "copd-stable",
+    "name": "COPD - stable",
+    "system": "Respiratory",
+    "presentation": [
+      "Chronic productive cough \u2014 persistent, daily, often worse in mornings (bronchitis component)",
+      "Progressive exertional dyspnoea \u2014 insidious onset over years; often dismissed as 'getting old'",
+      "Wheeze \u2014 expiratory; less variable than asthma",
+      "Smoking history \u226520 pack-years \u2014 essential exposure history; also occupational dust/fumes"
+    ],
+    "signs": [
+      "Barrel chest \u2014 increased AP diameter from air trapping; hyperinflation",
+      "Pursed lip breathing \u2014 auto-PEEP to prevent small airway collapse on expiration",
+      "Use of accessory muscles (sternomastoid, scalenes) at rest in severe COPD",
+      "Quiet breath sounds bilaterally \u2014 hyperinflation reduces transmission",
+      "Polyphonic wheeze and prolonged expiratory phase"
+    ],
+    "investigations": {
+      "bedside": [
+        "Spirometry (post-bronchodilator): FEV1/FVC <0.70 confirms airflow obstruction; FEV1 % predicted grades severity (GOLD 1 \u226580%, GOLD 2 50-79%, GOLD 3 30-49%, GOLD 4 <30%)",
+        "SpO2 at rest and on exertion \u2014 desaturation on exercise indicates need for LTOT assessment"
+      ],
+      "bloods": [
+        "FBC: secondary polycythaemia (raised Hb/haematocrit) from chronic hypoxaemia stimulating erythropoietin",
+        "Alpha-1 antitrypsin level: if onset <45 years, non-smoker, or family history \u2014 deficiency causes panacinar basal emphysema",
+        "ABG: type 2 respiratory failure (elevated PaCO2 + low PaO2) in severe disease \u2014 confirms CO2 retention before LTOT prescription"
+      ],
+      "imaging": [
+        "CXR: hyperinflation (>6 anterior ribs in midclavicular line, flat hemidiaphragms, increased retrosternal space), bullae, hyperlucent lung fields \u2014 emphysema pattern",
+        "HRCT chest: panacinar emphysema (lower lobes \u2014 alpha-1-AT deficiency) vs centrilobular (upper lobes \u2014 smoking); identifies bullae, excludes lung cancer"
+      ]
+    },
+    "mx": [
+      "Smoking cessation \u2014 single most effective intervention; slows FEV1 decline regardless of disease severity",
+      "SABA (salbutamol) +/- SAMA (ipratropium) PRN reliever \u2014 symptomatic bronchodilation",
+      "LAMA (long-acting muscarinic antagonist, e.g. tiotropium) \u2014 maintenance bronchodilator; reduces exacerbations and improves quality of life in GOLD 2+"
+    ],
+    "traps": [
+      "ICS alone is not recommended in COPD (unlike asthma) \u2014 only add ICS as third agent with dual bronchodilator (LABA+LAMA) in frequent exacerbators with eosinophils \u2265300; risk of pneumonia",
+      "Long-term oxygen therapy (LTOT) is only beneficial in COPD if PaO2 \u22647.3 kPa on two ABGs 3 weeks apart when stable \u2014 does not improve symptoms but extends survival"
+    ]
+  },
+  {
+    "id": "cap",
+    "name": "Community-acquired pneumonia",
+    "system": "Respiratory",
+    "presentation": [
+      "Productive cough \u2014 purulent sputum, occasionally rust-coloured (Streptococcus pneumoniae)",
+      "Fever, rigors, pleuritic chest pain (sharp, worse on inspiration and cough)",
+      "Dyspnoea \u2014 severity proportional to extent of consolidation",
+      "Confusion \u2014 especially in elderly; may be the only presenting symptom (atypical presentation)"
+    ],
+    "signs": [
+      "Dullness to percussion over affected lobe \u2014 consolidated airless lung",
+      "Increased tactile vocal fremitus and vocal resonance over consolidation (whispered pectoriloquy)",
+      "Bronchial breathing \u2014 tubular quality, equal inspiratory and expiratory phases, over consolidation",
+      "Coarse crackles in affected area",
+      "Tachycardia, tachypnoea, fever \u2014 systemic inflammatory response"
+    ],
+    "investigations": {
+      "bedside": [
+        "SpO2: hypoxaemia correlates with severity; SpO2 <92% indicates severe pneumonia requiring hospital admission",
+        "Urine dip: Legionella urinary antigen (collected early \u2014 positive in first week, remains positive up to 3 months; detects serogroup 1 only)"
+      ],
+      "bloods": [
+        "CRP: markedly elevated (typically >100 mg/L in bacterial CAP); used in CURB-65 scoring and monitoring treatment response",
+        "WBC: neutrophilia in bacterial pneumonia; lymphopenia in viral/atypical",
+        "U&E: urea >7 mmol/L is a CURB-65 severity marker; hyponatraemia in Legionella pneumonia",
+        "Blood cultures: taken before antibiotics in moderate-severe CAP; positive in ~10-20%"
+      ],
+      "imaging": [
+        "CXR: lobar or segmental consolidation \u2014 homogeneous opacification with air bronchograms (air in bronchi visible against opaque consolidated lung); may lag 24-48h behind clinical presentation",
+        "CXR: bilateral patchy consolidation \u2014 atypical organisms (Mycoplasma, Legionella, viral); parapneumonic effusion (blunted costophrenic angle) indicates complicated pneumonia"
+      ]
+    },
+    "mx": [
+      "Antibiotics guided by severity (CURB-65 score: 0-1 = mild \u2192 oral amoxicillin; 2 = moderate \u2192 oral amoxicillin + clarithromycin; \u22653 = severe \u2192 IV co-amoxiclav + clarithromycin)",
+      "Supplemental oxygen \u2014 target SpO2 94-98% (88-92% if coexistent COPD)",
+      "Physiotherapy and adequate hydration \u2014 promotes sputum clearance; fluid resuscitation if septic"
+    ],
+    "traps": [
+      "Atypical organisms (Mycoplasma, Chlamydophila, Legionella) do not respond to beta-lactam antibiotics alone \u2014 always add a macrolide (clarithromycin) for moderate-severe CAP or atypical features",
+      "Failure to improve after 48-72h on antibiotics \u2014 consider parapneumonic effusion/empyema (needs USS \u00b1 pleural aspiration), resistant organism, alternative diagnosis (PE, lung cancer with post-obstructive pneumonia)"
+    ]
+  },
+  {
+    "id": "pe",
+    "name": "Pulmonary embolism",
+    "system": "Respiratory",
+    "presentation": [
+      "Acute dyspnoea \u2014 sudden onset at rest, often without clear precipitant",
+      "Pleuritic chest pain \u2014 suggests peripheral PE with pulmonary infarction (pleural irritation)",
+      "Haemoptysis \u2014 usually small volume, suggests pulmonary infarction",
+      "Risk factors: recent surgery/immobility, long-haul flight, malignancy, OCP, pregnancy, prior VTE, thrombophilia"
+    ],
+    "signs": [
+      "Tachycardia and tachypnoea \u2014 most sensitive signs; tachycardia >100 bpm in majority",
+      "Hypoxia \u2014 SpO2 reduced; may maintain SpO2 at rest but desaturate on exertion",
+      "Signs of DVT: unilateral calf tenderness, swelling, erythema \u2014 present in ~30%",
+      "Massive PE: hypotension, syncope, raised JVP (right heart strain), loud P2 \u2014 haemodynamic compromise"
+    ],
+    "investigations": {
+      "bedside": [
+        "ECG: sinus tachycardia (commonest); S1Q3T3 pattern (S wave lead I, Q wave and T inversion lead III) \u2014 specific but insensitive; right heart strain: RBBB, right axis deviation, T-wave inversion V1-V4",
+        "SpO2: hypoxia at rest or desaturation on exertion"
+      ],
+      "bloods": [
+        "D-dimer: elevated (>500 ng/mL) \u2014 high sensitivity, low specificity; use only if pre-test probability LOW (Wells \u22644); negative D-dimer effectively excludes PE in low probability; NOT useful if high probability",
+        "ABG: type 1 respiratory failure (low PaO2, low PaCO2 from hyperventilation), raised A-a gradient",
+        "Troponin and BNP: elevated in massive/submassive PE from right heart strain \u2014 prognostic markers"
+      ],
+      "imaging": [
+        "CTPA (CT pulmonary angiogram): gold standard \u2014 filling defect within pulmonary artery; shows clot burden, right heart strain (RV:LV ratio >0.9); also identifies alternative diagnoses",
+        "CXR: often normal (most important role is to exclude alternative diagnoses); classic but rare signs: Hampton's hump (wedge-shaped peripheral opacity from infarction), Westermark sign (oligaemia distal to embolus)"
+      ]
+    },
+    "mx": [
+      "Anticoagulation \u2014 immediate LMWH or DOAC (apixaban or rivaroxaban \u2014 weight-based initial dose); prevents clot propagation and allows endogenous fibrinolysis",
+      "Duration of anticoagulation \u2014 provoked PE (transient risk factor): 3 months; unprovoked PE: \u22653-6 months, consider indefinite; active cancer: LMWH or DOAC for duration of cancer treatment",
+      "Massive PE with haemodynamic instability \u2014 systemic thrombolysis (alteplase) or surgical/catheter embolectomy; risks of thrombolysis (major bleeding) must be weighed against mortality risk"
+    ],
+    "traps": [
+      "D-dimer is only useful when pre-test probability is LOW \u2014 a positive D-dimer in a high-probability patient adds nothing and should not delay CTPA; and D-dimer is elevated in many conditions (sepsis, malignancy, pregnancy, post-surgery)",
+      "Massive PE with hypotension: do NOT give aggressive IV fluids \u2014 right heart is already dilated and volume loading worsens RV failure and shifts interventricular septum (D-sign on echo) impairing LV filling"
+    ]
+  },
+  {
+    "id": "cdiff",
+    "name": "C. difficile",
+    "system": "Gastroenterology",
+    "presentation": [
+      "Profuse watery diarrhoea (\u22653 loose stools/24h), often offensive-smelling",
+      "Lower abdominal cramping pain",
+      "Fever and systemic upset",
+      "Recent antibiotic exposure (classically clindamycin, cephalosporins, fluoroquinolones, co-amoxiclav)",
+      "Healthcare or care-home exposure within preceding 12 weeks"
+    ],
+    "signs": [
+      "Diffuse lower abdominal tenderness on palpation",
+      "Abdominal distension (raises concern for toxic megacolon)",
+      "Fever and tachycardia indicating systemic sepsis",
+      "Signs of dehydration: dry mucous membranes, reduced skin turgor, postural hypotension"
+    ],
+    "investigations": {
+      "bedside": [
+        "Stool sample: glutamate dehydrogenase (GDH) antigen screen \u2014 sensitive for C. difficile presence; if positive proceed to toxin",
+        "Stool toxin EIA (toxin A/B): confirms toxin-producing strain; high specificity, lower sensitivity \u2014 negative toxin with positive GDH = non-toxigenic or send for NAAT",
+        "Stool NAAT/PCR: most sensitive for toxin genes; use if GDH positive but toxin negative",
+        "Observations: HR, BP, temperature, respiratory rate \u2014 severity scoring (WCC >15, creatinine rise, fever >38.5\u00b0C = severe)"
+      ],
+      "bloods": [
+        "FBC: leucocytosis (WCC >15 \u00d7 10\u2079/L indicates severe disease)",
+        "U&Es: acute kidney injury from dehydration; rising creatinine is a severity marker",
+        "CRP: elevated, correlates with inflammation; very high (>150) suggests severe/complicated disease",
+        "Serum lactate: elevated in toxic megacolon or septic shock \u2014 triggers urgent surgical review"
+      ],
+      "imaging": [
+        "AXR: colonic dilatation >6 cm (transverse colon) indicates toxic megacolon; mucosal oedema ('thumbprinting')",
+        "CT abdomen/pelvis (if severe or deteriorating): pancolitis, pericolic fat stranding, colonic wall thickening, perforation",
+        "AXR or CT showing colonic diameter >9 cm (caecum) = surgical emergency"
+      ]
+    },
+    "mx": [
+      "Stop implicated antibiotic if clinically safe to do so \u2014 reduces ongoing C. difficile proliferation",
+      "Oral vancomycin (glycopeptide) \u2014 now first-line over metronidazole for all episodes; poorly absorbed so achieves high intraluminal concentration targeting C. difficile directly",
+      "Fidaxomicin (macrocyclic antibiotic) \u2014 preferred over vancomycin for first recurrence or high recurrence risk; narrower spectrum, lower recurrence rate",
+      "IV metronidazole (nitroimidazole) added if ileus or toxic megacolon prevents enteral drug delivery; oral metronidazole no longer first-line for initial episode",
+      "Faecal microbiota transplant (FMT) \u2014 for multiply recurrent C. difficile; restores colonisation resistance",
+      "Surgical colectomy (subtotal) reserved for toxic megacolon with perforation or failure to respond to maximal medical therapy"
+    ],
+    "traps": [
+      "Metronidazole is no longer first-line \u2014 vancomycin oral is now recommended first-line for initial and severe episodes per UK guidelines; using metronidazole first is a common exam error",
+      "A positive GDH antigen alone does not confirm toxigenic infection \u2014 toxin EIA or NAAT is required; GDH is a screening test only",
+      "Antidiarrhoeal agents (loperamide) are contraindicated \u2014 they reduce gut motility, increasing toxin retention and risk of toxic megacolon",
+      "Proton pump inhibitors are an independent risk factor for C. difficile acquisition; review and discontinue if not essential",
+      "Recurrence (within 8 weeks) is common (~20%) and is not treatment failure \u2014 it requires repeat testing and escalation to fidaxomicin or FMT, not simply re-treating with the same agent"
+    ]
+  },
+  {
+    "id": "crohn-induce",
+    "name": "Crohn's disease",
+    "system": "Gastroenterology",
+    "presentation": [
+      "Crampy right iliac fossa pain (terminal ileum most common site)",
+      "Diarrhoea \u2014 often without blood (unlike UC), may be steatorrhoeic if ileal disease",
+      "Weight loss and malnutrition (malabsorption + anorexia)",
+      "Perianal disease: fistulae, skin tags, abscesses",
+      "Extraintestinal: erythema nodosum, uveitis, primary sclerosing cholangitis (less common than UC), seronegative arthropathy"
+    ],
+    "signs": [
+      "Right iliac fossa mass or tenderness (inflamed/matted terminal ileum)",
+      "Perianal fistulae, skin tags, or anal fissures on inspection",
+      "Mouth: aphthous ulcers (cobblestoning of oral mucosa)",
+      "Cachexia and pallor \u2014 reflecting chronic malabsorption and anaemia"
+    ],
+    "investigations": {
+      "bedside": [
+        "Stool MC&S \u2014 exclude infective cause (Clostridioides difficile, Campylobacter) before diagnosing flare",
+        "Faecal calprotectin \u2014 elevated (>250 \u00b5g/g); useful to distinguish IBD from IBS and to monitor activity"
+      ],
+      "bloods": [
+        "FBC: normocytic or macrocytic anaemia (B12/folate malabsorption from ileal disease); thrombocytosis in active disease",
+        "CRP and ESR: elevated \u2014 markers of systemic inflammation and disease activity",
+        "LFTs + albumin: hypoalbuminaemia reflects malnutrition/protein-losing enteropathy",
+        "B12 and folate: low B12 specific to terminal ileal Crohn's; folate low if proximal small bowel involved or methotrexate used"
+      ],
+      "imaging": [
+        "Colonoscopy + biopsy: skip lesions (discontinuous inflammation) with deep rose-thorn ulcers, cobblestoning of mucosa, and rectal sparing; biopsy shows transmural inflammation and non-caseating granulomas",
+        "MRI enterography (MRE): gold standard for small bowel assessment \u2014 shows mural thickening, mucosal hyperenhancement, mesenteric fat stranding ('creeping fat'), and fistula tracts",
+        "CT abdomen/pelvis: used acutely \u2014 identifies complications including abscess, obstruction, and free perforation; skip lesions and bowel wall thickening visible"
+      ]
+    },
+    "mx": [
+      "Induce remission: corticosteroids (prednisolone or budesonide) \u2014 anti-inflammatory; budesonide preferred for ileocaecal disease due to lower systemic side-effect profile",
+      "Maintain remission: thiopurines (azathioprine/6-mercaptopurine) as steroid-sparing agents; methotrexate if thiopurine-intolerant",
+      "Biologics: anti-TNF agents (infliximab, adalimumab) for moderate-severe or fistulating disease not responding to immunomodulators; vedolizumab (anti-integrin) or ustekinumab (anti-IL-12/23) as alternatives"
+    ],
+    "traps": [
+      "Rectal sparing in Crohn's vs. rectal involvement always in UC \u2014 examiners test this; if rectum involved and continuous, think UC",
+      "Crohn's can cause bloody diarrhoea (colonic disease) \u2014 bloody stool does NOT rule out Crohn's or confirm UC",
+      "Terminal ileal disease causes B12 malabsorption (not folate); UC does not affect B12 \u2014 low B12 points to Crohn's",
+      "Granulomas on biopsy are present in only ~60% of Crohn's \u2014 their absence does not exclude the diagnosis; transmural inflammation and skip lesions are the key histological/endoscopic hallmarks"
+    ]
+  },
+  {
+    "id": "gord",
+    "name": "GORD",
+    "system": "Gastroenterology",
+    "presentation": [
+      "Retrosternal burning (heartburn) worse after meals, bending, lying flat",
+      "Acid regurgitation \u2014 sour/bitter taste reaching throat or mouth",
+      "Dysphagia (alarm feature if present \u2014 suggests stricture or Barrett's)",
+      "Nocturnal cough or wheeze \u2014 acid micro-aspiration",
+      "Globus sensation \u2014 feeling of lump in throat"
+    ],
+    "signs": [
+      "Often no signs on examination",
+      "Epigastric tenderness on deep palpation",
+      "Dental erosion of enamel (chronic acid exposure)",
+      "Hoarseness (laryngopharyngeal reflux)"
+    ],
+    "investigations": {
+      "bedside": [
+        "Urine dip \u2014 to exclude UTI/renal cause of atypical chest/back pain",
+        "ECG \u2014 exclude cardiac ischaemia in chest-pain presentations",
+        "Symptom diary / response to empirical PPI trial (diagnostic in typical uncomplicated cases)"
+      ],
+      "bloods": [
+        "FBC \u2014 haemoglobin normal (anaemia would suggest bleeding/Barrett's complication)",
+        "H. pylori serology or stool antigen \u2014 positive in co-existent H. pylori infection",
+        "LFTs and U&Es \u2014 normal, used to exclude hepatobiliary or metabolic causes"
+      ],
+      "imaging": [
+        "Upper GI endoscopy: erythema, erosions or ulceration at gastro-oesophageal junction; Los Angeles classification grades A\u2013D of oesophagitis; may show columnar-lined epithelium (salmon-pink tongues) indicating Barrett's oesophagus",
+        "24-hour ambulatory pH-impedance monitoring: acid exposure time >4% of study period; correlates symptom episodes with pH drops <4 \u2014 gold standard for diagnosis",
+        "Oesophageal manometry: normal or reduced lower oesophageal sphincter (LOS) resting pressure (<10 mmHg); used pre-operatively to exclude dysmotility before fundoplication"
+      ]
+    },
+    "mx": [
+      "Lifestyle: head-of-bed elevation, weight loss, avoid trigger foods (fat, caffeine, alcohol, chocolate), avoid eating within 3 hours of lying down",
+      "Proton pump inhibitors (PPIs, e.g. omeprazole) \u2014 irreversibly block H\u207a/K\u207a-ATPase, most effective acid suppression; first-line for oesophagitis",
+      "H2-receptor antagonists (H2RAs, e.g. ranitidine/famotidine) \u2014 competitive histamine blockade reducing acid secretion; second-line or add-on for nocturnal breakthrough",
+      "Laparoscopic Nissen fundoplication \u2014 surgical reinforcement of LOS for refractory disease or patients wishing to stop long-term medication"
+    ],
+    "traps": [
+      "Atypical chest pain mimicking ACS \u2014 always exclude cardiac cause before attributing to GORD; ECG and troponin first",
+      "Dysphagia is a red-flag symptom requiring urgent endoscopy regardless of GORD history \u2014 do not attribute to benign reflux without investigation",
+      "Chronic GORD can progress to Barrett's oesophagus (metaplastic columnar epithelium) \u2192 oesophageal adenocarcinoma; surveillance endoscopy indicated",
+      "PPIs can mask symptoms of underlying gastric or oesophageal malignancy \u2014 ensure endoscopy before starting long-term PPI in patients over 55 or with alarm features"
+    ]
+  },
+  {
+    "id": "hpylori",
+    "name": "H. pylori",
+    "system": "Gastroenterology",
+    "presentation": [
+      "Epigastric pain or burning, often relieved by eating (duodenal ulcer pattern) or worsened by eating (gastric ulcer pattern)",
+      "Nausea, with or without vomiting",
+      "Bloating and early satiety",
+      "Haematemesis or melaena if complicated by peptic ulcer bleeding",
+      "Often asymptomatic \u2014 incidental finding on investigation for dyspepsia"
+    ],
+    "signs": [
+      "Epigastric tenderness on deep palpation",
+      "Signs of anaemia (pallor, tachycardia) if chronic GI blood loss",
+      "Rarely: peritonitic abdomen if perforation (guarding, rigidity, rebound)"
+    ],
+    "investigations": {
+      "bedside": [
+        "Urea breath test (13C-UBT): positive \u2014 labelled CO2 detected in exhaled breath after ingestion of 13C-labelled urea, indicating urease-producing H. pylori",
+        "Stool antigen test (SAT): positive \u2014 H. pylori antigen detected in faeces; used for diagnosis and to confirm eradication",
+        "Faecal occult blood: positive if active ulcer bleeding"
+      ],
+      "bloods": [
+        "FBC: microcytic hypochromic anaemia (low Hb, low MCV, low MCH) if chronic blood loss from peptic ulceration",
+        "H. pylori serology (IgG): positive \u2014 detects prior exposure but cannot distinguish active from cleared infection; not recommended for eradication testing",
+        "U&E and clotting: typically normal unless severe haemorrhage or complication",
+        "LFTs: normal \u2014 abnormal suggests alternative diagnosis"
+      ],
+      "imaging": [
+        "OGD (endoscopy): visualises gastric or duodenal ulcer \u2014 clean-based or with stigmata of haemorrhage (visible vessel, adherent clot); antral erythema and nodularity typical of H. pylori gastritis; biopsy (CLO test / histology) confirms organism",
+        "Barium meal (historical): crater-like ulcer niche projecting from duodenal cap or lesser curve of stomach \u2014 now largely replaced by OGD",
+        "CXR (if perforation suspected): free air under diaphragm on erect film"
+      ]
+    },
+    "mx": [
+      "Triple therapy (7\u201314 days): PPI (proton pump inhibitor \u2014 suppresses acid to allow mucosal healing and improve antibiotic efficacy) + clarithromycin (macrolide \u2014 bactericidal) + amoxicillin (penicillin \u2014 bactericidal); metronidazole substituted if penicillin allergy",
+      "Bismuth-based quadruple therapy: reserved for clarithromycin-resistant or treatment-failure cases \u2014 PPI + bismuth + tetracycline + metronidazole",
+      "Confirm eradication: repeat urea breath test or stool antigen test at least 4 weeks after completing antibiotics and 2 weeks after stopping PPI to avoid false-negative"
+    ],
+    "traps": [
+      "Serology cannot confirm eradication \u2014 IgG remains positive for months after successful treatment; always use UBT or SAT for test-of-cure",
+      "PPIs must be stopped 2 weeks before UBT or SAT \u2014 they suppress urease activity and cause false-negative results",
+      "NSAIDs and H. pylori are independent risk factors for peptic ulcer disease \u2014 eradicating H. pylori does not remove NSAID risk; both must be addressed",
+      "Gastric ulcers require repeat endoscopy at 6\u20138 weeks to confirm healing and exclude malignancy \u2014 duodenal ulcers do not routinely need repeat OGD"
+    ]
+  },
+  {
+    "id": "hepatic-enceph",
+    "name": "Hepatic encephalopathy",
+    "system": "Gastroenterology",
+    "presentation": [
+      "Grade I: subtle personality change, reversed sleep-wake cycle, mild confusion",
+      "Grade II: disorientation, inappropriate behaviour, asterixis present",
+      "Grade III: gross disorientation, stupor, barely rousable but responds to stimuli",
+      "Grade IV: coma \u2014 unresponsive to verbal or painful stimuli",
+      "Precipitant often identifiable: GI bleed, infection, constipation, sedatives, electrolyte disturbance"
+    ],
+    "signs": [
+      "Asterixis (flapping tremor) \u2014 metabolic encephalopathy hallmark; absent in deep coma",
+      "Fetor hepaticus \u2014 sweet musty breath from mercaptans; indicates severe hepatocellular failure",
+      "Jaundice and stigmata of chronic liver disease (spider naevi, palmar erythema, leuconychia)",
+      "Reduced conscious level graded by GCS; may show frontal release signs in advanced disease"
+    ],
+    "investigations": {
+      "bedside": [
+        "Number connection test (Trail Making Test A) \u2014 sensitive bedside screen for covert/minimal HE",
+        "EEG \u2014 diffuse slowing and triphasic waves in overt HE; not routine but useful in atypical cases",
+        "Observations + blood glucose \u2014 hypoglycaemia mimics HE and must be excluded immediately"
+      ],
+      "bloods": [
+        "Serum ammonia \u2014 elevated in most cases, but level correlates poorly with grade; a normal ammonia does not exclude HE and a raised ammonia alone does not confirm it",
+        "LFTs + bilirubin \u2014 deranged, reflect underlying hepatic dysfunction",
+        "FBC, CRP, cultures \u2014 identify infective precipitant (SBP, UTI, pneumonia)",
+        "U&E + clotting (PT/INR) \u2014 electrolyte disturbance (hyponatraemia, hypokalaemia) precipitates HE; coagulopathy reflects synthetic failure"
+      ],
+      "imaging": [
+        "USS abdomen with Doppler \u2014 portal hypertension, splenomegaly, ascites, hepatic vasculature patency",
+        "CT brain (non-contrast) \u2014 exclude structural cause (subdural haematoma, stroke) before attributing altered consciousness to HE",
+        "CT/MRI brain in chronic HE \u2014 bilateral basal ganglia T1 hyperintensity from manganese deposition (incidental finding)"
+      ]
+    },
+    "mx": [
+      "Identify and treat precipitant first \u2014 GI bleed (PPI + terlipressin), infection (broad-spectrum antibiotics), constipation, electrolyte correction",
+      "Lactulose (non-absorbable disaccharide) \u2014 reduces colonic pH, traps ammonia as NH4+, promotes bowel transit; titrate to 2-3 soft stools/day",
+      "Rifaximin (minimally absorbed oral antibiotic) \u2014 reduces ammonia-producing gut flora; used as secondary prophylaxis in recurrent HE alongside lactulose"
+    ],
+    "traps": [
+      "Ammonia level caveat \u2014 serum ammonia is not a reliable severity marker; a raised level supports the diagnosis but does not grade HE, and treatment targets are clinical (West Haven grade), not biochemical",
+      "Protein restriction is outdated \u2014 older teaching advocated low-protein diet; current evidence shows adequate protein intake (1.2-1.5 g/kg/day) is essential and restriction worsens sarcopenia and outcomes",
+      "Always exclude structural brain pathology \u2014 subdural haematoma is common in cirrhotic patients (coagulopathy + falls); never diagnose HE without excluding an intracranial cause when there is diagnostic uncertainty",
+      "Sedatives as precipitant \u2014 benzodiazepines and opioids are dramatically potentiated in liver failure; look for a drug history in any decompensation and avoid these agents; flumazenil may transiently improve HE (endogenous benzodiazepine hypothesis)"
+    ]
+  },
+  {
+    "id": "pud-bleed",
+    "name": "Peptic ulcer bleed",
+    "system": "Gastroenterology",
+    "presentation": [
+      "Haematemesis (bright red or coffee-ground vomiting)",
+      "Melaena (black, tarry, offensive stools)",
+      "Epigastric pain preceding bleed (classically relieved by food in duodenal ulcer)",
+      "Syncope or presyncope from acute blood loss",
+      "Haematochezia if massive bleed (rapid transit)"
+    ],
+    "signs": [
+      "Tachycardia and hypotension (haemodynamic compromise \u2014 severity marker)",
+      "Pallor and cold peripheries (acute anaemia / poor perfusion)",
+      "Epigastric tenderness on palpation",
+      "Melaena on digital rectal examination"
+    ],
+    "investigations": {
+      "bedside": [
+        "Obs + postural BP drop (>20 mmHg systolic drop suggests significant volume loss)",
+        "Digital rectal examination \u2014 confirm melaena, exclude rectal source",
+        "Glasgow-Blatchford Score at bedside (pre-endoscopy risk stratification; score \u22651 = inpatient endoscopy)"
+      ],
+      "bloods": [
+        "FBC \u2014 low Hb (anaemia; may be normal early before haemodilution), raised WCC if perforation",
+        "U&E \u2014 raised urea disproportionate to creatinine (blood digested in gut \u2192 urea absorbed; urea:creatinine ratio >100:1)",
+        "Clotting (PT/APTT) \u2014 prolonged if coagulopathy or anticoagulant use",
+        "Group and save / crossmatch \u2014 prepare for transfusion"
+      ],
+      "imaging": [
+        "OGD (upper GI endoscopy) within 24 h (or <12 h if haemodynamically unstable after resuscitation) \u2014 diagnostic and therapeutic",
+        "Forrest classification on OGD: Ia spurting arterial bleed, Ib oozing, IIa visible vessel, IIb adherent clot, IIc flat pigmented spot, III clean-based ulcer (I\u2013IIb = high rebleed risk; endoscopic treatment indicated)",
+        "CT angiography if endoscopy non-diagnostic or patient too unstable for OGD \u2014 localise bleeding point for interventional radiology"
+      ]
+    },
+    "mx": [
+      "Resuscitation first: IV access \u00d72 wide-bore, crystalloid then blood transfusion (target Hb >70 g/L, >80 g/L if cardiovascular disease); correct coagulopathy with FFP/platelets",
+      "IV proton pump inhibitor (PPI) \u2014 high-dose PPI infusion post-endoscopy to raise intragastric pH, stabilise clot, reduce rebleed risk (class: proton pump inhibitor)",
+      "Endoscopic haemostasis at OGD \u2014 injection (adrenaline), thermal coagulation, or mechanical clip for Forrest Ia/Ib/IIa/IIb lesions",
+      "H. pylori test-and-treat (urea breath test or biopsy CLO test at endoscopy) \u2014 eradication reduces recurrence; use triple therapy (PPI + two antibiotics)"
+    ],
+    "traps": [
+      "Normal Hb on admission does not exclude significant bleed \u2014 haemodilution takes hours; serial FBC required",
+      "Raised urea with normal creatinine is a hallmark of upper GI bleed (blood as protein load) \u2014 do not attribute to renal impairment alone",
+      "NSAIDs and aspirin are the commonest precipitants \u2014 always ask about analgesic/antiplatelet use and stop/review on admission",
+      "Forrest III (clean-based ulcer) is low rebleed risk and does not require endoscopic treatment \u2014 overtreating risks perforation"
+    ]
+  },
+  {
+    "id": "sbp",
+    "name": "Spontaneous bacterial peritonitis",
+    "system": "Gastroenterology",
+    "presentation": [
+      "Fever and rigors in a patient with known ascites",
+      "Diffuse abdominal pain or tenderness",
+      "Acute confusion or encephalopathy (may be only feature in 10%)",
+      "Deteriorating renal function without clear cause",
+      "Worsening ascites despite diuretics"
+    ],
+    "signs": [
+      "Diffuse abdominal tenderness on palpation \u2014 guarding may be absent in tense ascites",
+      "Shifting dullness / fluid thrill confirming ascites",
+      "Fever (>38\u00b0C) \u2014 may be low-grade or absent in immunosuppressed",
+      "Signs of decompensated liver disease: jaundice, encephalopathy, spider naevi"
+    ],
+    "investigations": {
+      "bedside": [
+        "Diagnostic ascitic tap \u2014 PMN (neutrophil) count \u2265250 cells/mm\u00b3 confirms SBP regardless of culture result",
+        "Ascitic fluid culture \u2014 inoculate blood culture bottles at bedside to improve yield; most commonly E. coli, Klebsiella, Streptococcus pneumoniae",
+        "Ascitic fluid appearance \u2014 turbid/cloudy fluid raises suspicion; bloody tap should trigger haemorrhagic ascites differential"
+      ],
+      "bloods": [
+        "FBC \u2014 raised WCC (neutrophilia) supports infection; thrombocytopenia common in cirrhosis",
+        "CRP and blood cultures \u2014 CRP elevated; blood cultures positive in ~50% of SBP",
+        "U&E and creatinine \u2014 renal impairment predicts poor prognosis; monitors for hepatorenal syndrome",
+        "LFTs and clotting (INR) \u2014 baseline liver function; coagulopathy affects procedural risk"
+      ],
+      "imaging": [
+        "USS abdomen \u2014 confirms ascites, guides ascitic tap if loculated; excludes secondary peritonitis (free gas, abscess, perforation)",
+        "CT abdomen/pelvis \u2014 if secondary peritonitis suspected (i.e. ascitic PMN >250 but polymicrobial culture, very high protein or LDH) to identify surgical source"
+      ]
+    },
+    "mx": [
+      "Empirical broad-spectrum antibiotics \u2014 third-generation cephalosporin (e.g. cefotaxime class) first-line; covers gram-negative enteric organisms",
+      "IV human albumin \u2014 given at diagnosis and day 3 to reduce risk of hepatorenal syndrome (HRS); class: plasma volume expander/oncotic agent",
+      "Secondary prophylaxis with oral fluoroquinolone (e.g. norfloxacin class) or co-trimoxazole \u2014 lifelong after first episode to prevent recurrence"
+    ],
+    "traps": [
+      "Culture-negative SBP \u2014 PMN \u2265250 cells/mm\u00b3 IS sufficient to diagnose and treat SBP even if cultures return negative; do not withhold antibiotics",
+      "Secondary peritonitis masquerading as SBP \u2014 suspect if cultures are polymicrobial, ascitic protein >10 g/L, glucose <2.8 mmol/L, or LDH >upper limit of normal; requires surgical/CT workup not antibiotics alone",
+      "Primary prophylaxis indications \u2014 offer to patients with ascitic protein <15 g/L plus either Child-Pugh \u22659 or impaired renal function; commonly missed in exams",
+      "Hepatorenal syndrome risk \u2014 failing to give albumin alongside antibiotics is a classic omission; albumin reduces HRS and mortality, not just restoring fluid"
+    ]
+  },
+  {
+    "id": "uc-maintain",
+    "name": "UC - maintaining remission",
+    "system": "Gastroenterology",
+    "presentation": [
+      "Asymptomatic between relapses \u2014 formed stool, no blood, normal frequency",
+      "Relapse heralded by return of bloody diarrhoea, urgency, and nocturnal stooling",
+      "Fatigue and weight loss may signal subclinical inflammation or iron deficiency",
+      "Extra-intestinal manifestations (uveitis, erythema nodosum, primary sclerosing cholangitis) can flare independently of bowel disease"
+    ],
+    "signs": [
+      "Examination typically normal in established remission",
+      "Pallor suggesting anaemia of chronic disease or iron deficiency from prior bleeds",
+      "Aphthous mouth ulcers \u2014 associated extra-intestinal feature",
+      "Jaundice or hepatomegaly if coexisting primary sclerosing cholangitis (PSC)"
+    ],
+    "investigations": {
+      "bedside": [
+        "Stool calprotectin \u2014 elevated (>250 \u00b5g/g) indicates mucosal inflammation and impending relapse before symptoms develop",
+        "Stool culture \u2014 exclude infective trigger (Clostridioides difficile, Campylobacter) if apparent relapse",
+        "Abdominal examination and PR if active bleeding suspected"
+      ],
+      "bloods": [
+        "FBC \u2014 monitor for thiopurine-induced myelosuppression (leucopenia, thrombocytopenia); anaemia from chronic disease",
+        "LFTs \u2014 thiopurines can cause hepatotoxicity; check for PSC-related cholestasis",
+        "Thiopurine methyltransferase (TPMT) activity \u2014 must be checked before starting azathioprine or mercaptopurine; low/absent TPMT \u2192 risk of severe myelosuppression",
+        "Thioguanine nucleotide (TGN) metabolite levels \u2014 confirms adherence and therapeutic range if inadequate response",
+        "CRP and ESR \u2014 trend markers of systemic inflammation; raised in relapse"
+      ],
+      "imaging": [
+        "Colonoscopy with biopsies \u2014 surveillance for dysplasia and colorectal cancer; frequency determined by extent, duration, and PSC co-existence",
+        "Chromoendoscopy or dye-spray colonoscopy \u2014 preferred over random biopsies for dysplasia detection in long-standing disease",
+        "MRI abdomen/pelvis \u2014 assess for PSC or small-bowel Crohn if diagnosis in doubt; not routine for UC surveillance"
+      ]
+    },
+    "mx": [
+      "Aminosalicylates (5-ASA, e.g. mesalazine) \u2014 first-line maintenance for mild-to-moderate UC; reduces mucosal inflammation via topical anti-inflammatory action; oral \u00b1 rectal route depending on disease extent",
+      "Thiopurines (azathioprine or mercaptopurine) \u2014 for steroid-dependent or steroid-refractory UC; immunomodulator; must check TPMT before starting and monitor FBC/LFTs regularly",
+      "Biologics (anti-TNF e.g. infliximab, vedolizumab, ustekinumab) \u2014 for refractory or biologic-dependent disease; vedolizumab is gut-selective (anti-integrin) and preferred in UC; combination with thiopurine reduces immunogenicity of anti-TNF"
+    ],
+    "traps": [
+      "TPMT testing is mandatory before starting any thiopurine \u2014 low or absent TPMT activity causes accumulation of active metabolites \u2192 life-threatening myelosuppression; intermediate activity requires dose reduction",
+      "Colorectal cancer surveillance intervals: extensive colitis (beyond splenic flexure) \u2192 colonoscopy at 8 years from diagnosis, then every 1\u20135 years based on risk stratification (inflammation grade, PSC, family history); PSC + UC \u2192 annual colonoscopy from diagnosis",
+      "5-ASA alone is insufficient maintenance for patients who required steroids to achieve remission \u2014 failing to step up to thiopurine or biologic is a common exam omission",
+      "Methotrexate is NOT effective for maintaining remission in UC (unlike Crohn's disease) \u2014 a classic cross-condition trap in finals"
+    ]
+  },
+  {
+    "id": "uc-induce",
+    "name": "Ulcerative colitis",
+    "system": "Gastroenterology",
+    "presentation": [
+      "Bloody diarrhoea with mucus \u2014 hallmark; frequency reflects severity",
+      "Urgency and tenesmus \u2014 rectal inflammation drives constant sensation of need to defecate",
+      "Cramping lower abdominal pain \u2014 typically left-sided, relieved by defecation",
+      "Fatigue and weight loss \u2014 chronic inflammation and nutritional deficiency",
+      "Extraintestinal features \u2014 uveitis, erythema nodosum, primary sclerosing cholangitis"
+    ],
+    "signs": [
+      "Lower abdominal tenderness on palpation \u2014 particularly left iliac fossa in left-sided disease",
+      "Pyrexia and tachycardia \u2014 indicate severe/fulminant flare; trigger Truelove & Witts criteria",
+      "Perianal inspection: no fistulae or skin tags (distinguishes from Crohn's)",
+      "Pallor \u2014 iron-deficiency anaemia secondary to chronic blood loss"
+    ],
+    "investigations": {
+      "bedside": [
+        "Stool chart: record frequency and Bristol type; blood/mucus presence; send stool MC&S to exclude infective cause (Clostridioides difficile, Salmonella, Campylobacter)",
+        "Observations: HR >90, temp >37.8 \u00b0C, or >6 bloody stools/day = severe flare by Truelove & Witts criteria",
+        "AXR: colonic dilatation >6 cm in transverse colon indicates toxic megacolon; mucosal islands (pseudopolyps) on plain film in severe disease; loss of haustral pattern (lead-pipe colon) in long-standing disease"
+      ],
+      "bloods": [
+        "FBC: normocytic or microcytic anaemia; raised WCC in severe flare; thrombocytosis (reactive)",
+        "CRP and ESR: elevated proportional to disease activity; CRP >45 at 3 days predicts need for colectomy",
+        "U&E: hypokalaemia and hypoalbuminaemia in severe disease from diarrhoeal losses and inflammation",
+        "LFTs including GGT: screen for primary sclerosing cholangitis (raised ALP/GGT disproportionate to other LFTs)"
+      ],
+      "imaging": [
+        "AXR (first-line in acute severe UC): assess for toxic megacolon (transverse colon >6 cm); mucosal thickening; absence of faecal loading in affected colon",
+        "Colonoscopy + biopsy (gold standard, not in acute severe flare \u2014 perforation risk): continuous mucosal inflammation starting at rectum extending proximally; erythema, granularity, friability, contact bleeding, and superficial ulceration; crypt abscesses and goblet cell depletion on histology",
+        "CT abdomen/pelvis (if colonoscopy unsafe in severe flare): mural thickening of colon, pericolonic fat stranding, assess for perforation or abscess"
+      ]
+    },
+    "mx": [
+      "Mild-moderate flare: topical aminosalicylates (5-ASA, e.g. mesalazine suppository/enema) \u2014 reduce mucosal inflammation via prostaglandin inhibition; oral 5-ASA added for left-sided or extensive disease",
+      "Moderate-severe flare: oral corticosteroids (prednisolone) \u2014 broad immunosuppression to induce remission; taper once in remission; not used as maintenance",
+      "Acute severe UC (Truelove & Witts severe criteria): admit, IV corticosteroids (hydrocortisone) \u2014 if no response by 72 hours, consider IV ciclosporin (calcineurin inhibitor) or anti-TNF (infliximab) as rescue therapy, or refer for colectomy"
+    ],
+    "traps": [
+      "Sending stool cultures is mandatory before starting steroids \u2014 infective colitis (especially C. difficile) mimics a flare and steroids will worsen infection",
+      "Do not perform colonoscopy in acute severe UC \u2014 risk of perforation; use AXR and CT instead to assess extent and complications",
+      "UC does not cause skip lesions, fistulae, or perianal disease \u2014 these features point to Crohn's; examiners test this distinction",
+      "PSC association is with UC not Crohn's \u2014 a candidate who attributes raised ALP to Crohn's disease will lose marks; always check LFTs in UC and screen for PSC"
+    ]
+  },
+  {
+    "id": "addisonian-crisis",
+    "name": "Addisonian crisis",
+    "system": "Endocrinology",
+    "presentation": [
+      "Profound weakness and fatigue, often preceding collapse",
+      "Nausea, vomiting, and abdominal pain (may mimic acute abdomen)",
+      "Postural dizziness or frank syncope",
+      "Altered consciousness or confusion in severe cases",
+      "Precipitant identifiable: intercurrent illness, surgery, steroid withdrawal, trauma"
+    ],
+    "signs": [
+      "Postural or supine hypotension (circulatory shock in severe cases)",
+      "Hyperpigmentation of skin creases, buccal mucosa, and scars (primary Addison's only)",
+      "Signs of dehydration: reduced skin turgor, dry mucous membranes, tachycardia",
+      "Pyrexia if sepsis is the precipitant"
+    ],
+    "investigations": {
+      "bedside": [
+        "Obs: hypotension, tachycardia, temperature (identify septic precipitant)",
+        "BM: hypoglycaemia \u2014 a cardinal feature, may be profound",
+        "ECG: peaked T-waves or broad QRS if severe hyperkalaemia"
+      ],
+      "bloods": [
+        "U&E: hyponatraemia (\u2193Na) and hyperkalaemia (\u2191K) \u2014 the classic electrolyte pattern",
+        "Glucose: hypoglycaemia (\u2193glucose) \u2014 completes the triad",
+        "Serum cortisol: take before hydrocortisone if possible, but do not delay treatment",
+        "Short Synacthen test (SST): 250 mcg IM/IV tetracosactide \u2014 cortisol fails to rise adequately (peak <550 nmol/L); performed after stabilisation, not acutely"
+      ],
+      "imaging": [
+        "CT abdomen/adrenals: if bilateral adrenal haemorrhage or Waterhouse\u2013Friderichsen syndrome suspected",
+        "CXR: to identify precipitating illness (pneumonia, TB)"
+      ]
+    },
+    "mx": [
+      "IV hydrocortisone (glucocorticoid replacement) \u2014 treat on clinical suspicion before results; take cortisol sample first if it causes no delay",
+      "IV 0.9% saline with glucose: correct hypovolaemia and hypoglycaemia simultaneously",
+      "Identify and treat precipitant (e.g. antibiotics for sepsis); do not withhold steroids pending diagnosis"
+    ],
+    "traps": [
+      "Treat on suspicion \u2014 do not wait for cortisol results; delay is life-threatening",
+      "Synacthen test is done after stabilisation, never during the acute crisis",
+      "Fludrocortisone (mineralocorticoid) is not needed acutely \u2014 high-dose hydrocortisone has sufficient mineralocorticoid activity",
+      "Sick day rules on discharge: patients must double or triple oral steroid dose during illness and carry an emergency hydrocortisone injection"
+    ]
+  },
+  {
+    "id": "dka",
+    "name": "DKA",
+    "system": "Endocrinology",
+    "presentation": [
+      "Vomiting, nausea, abdominal pain",
+      "Polyuria and polydipsia (osmotic symptoms)",
+      "Kussmaul breathing (deep sighing respirations \u2014 respiratory compensation for metabolic acidosis)",
+      "Precipitant history: missed insulin, infection (UTI/LRTI), new T1DM presentation, alcohol"
+    ],
+    "signs": [
+      "Kussmaul respirations \u2014 deep, sighing, rapid breathing",
+      "Ketotic (pear-drop/acetone) breath",
+      "Dehydration \u2014 dry mucous membranes, reduced skin turgor, tachycardia, hypotension",
+      "Reduced GCS or confusion in severe cases"
+    ],
+    "investigations": {
+      "bedside": [
+        "BM (capillary glucose) \u2014 typically >11 mmol/L (may be lower in euglycaemic DKA)",
+        "Urine dip \u2014 glycosuria ++ and ketonuria ++",
+        "ABG \u2014 pH <7.3, bicarbonate <15 mmol/L confirms acidosis; pCO2 low (respiratory compensation)"
+      ],
+      "bloods": [
+        "Serum glucose >11 mmol/L (or known diabetes)",
+        "Serum/blood ketones >3 mmol/L (diagnostic threshold)",
+        "Venous pH <7.3 and bicarbonate <15 mmol/L (severe: pH <7.1, bicarb <5)",
+        "U&Es \u2014 potassium may be high initially (acidosis shifts K+ extracellularly) but total body K+ depleted; monitor closely"
+      ],
+      "imaging": [
+        "CXR \u2014 identify infective precipitant (consolidation/pneumonia)",
+        "ECG \u2014 assess hyperkalaemia changes (peaked T waves, wide QRS) or arrhythmia"
+      ]
+    },
+    "mx": [
+      "IV fluid resuscitation first \u2014 0.9% sodium chloride bolus to restore circulating volume before insulin",
+      "Fixed-rate IV insulin infusion (FRIII) \u2014 started after fluids; drives glucose and ketones down",
+      "Potassium replacement \u2014 add K+ to fluids once serum K+ <5.5 mmol/L; never give insulin without K+ available as insulin drives K+ into cells causing dangerous hypokalaemia"
+    ],
+    "traps": [
+      "Euglycaemic DKA \u2014 glucose may be normal (<11 mmol/L) especially in SGLT2 inhibitor use or pregnancy; do not rule out DKA on glucose alone",
+      "K+ paradox \u2014 initial hyperkalaemia masked by total body K+ depletion; once insulin starts, K+ drops rapidly and must be replaced",
+      "Start fluids before insulin \u2014 giving insulin first without volume resuscitation risks cardiovascular collapse",
+      "Cerebral oedema risk \u2014 commonest in children; avoid over-rapid fluid correction"
+    ]
+  },
+  {
+    "id": "hyperkalaemia",
+    "name": "Hyperkalaemia",
+    "system": "Endocrinology",
+    "presentation": [
+      "Often asymptomatic \u2014 discovered incidentally on bloods",
+      "Muscle weakness and fatigue (generalised, ascending)",
+      "Palpitations or cardiac arrest (severe \u2014 K+ >6.5 mmol/L)",
+      "Paraesthesia or flaccid paralysis (very severe)",
+      "Nausea, vomiting (non-specific)"
+    ],
+    "signs": [
+      "Generalised flaccid weakness or hypotonia",
+      "Absent or reduced deep tendon reflexes",
+      "Bradycardia or irregular pulse (cardiac toxicity)",
+      "Signs of underlying cause \u2014 Cushingoid features (exogenous steroids), uraemic fetor/pallor (renal failure), hyperpigmentation/postural hypotension (Addison's)"
+    ],
+    "investigations": {
+      "bedside": [
+        "ECG \u2014 mandatory first step; progression with rising K+: peaked (tall, narrow, symmetrical) T waves (K+ >5.5 mmol/L) \u2192 prolonged PR interval \u2192 flattened/absent P waves (K+ >6.5 mmol/L) \u2192 widened QRS / sinusoidal sine wave pattern (K+ >7.0 mmol/L) \u2192 VF / asystole (K+ >8.0 mmol/L)",
+        "Urine dip \u2014 proteinuria/haematuria suggests renal cause; dipstick for myoglobin if rhabdomyolysis",
+        "Blood glucose (bedside) \u2014 exclude DKA-associated hyperkalaemia (insulin deficiency)"
+      ],
+      "bloods": [
+        "Serum potassium \u2014 confirm level (repeat if haemolysed sample suspected); >5.5 mmol/L = hyperkalaemia, >6.5 mmol/L = severe",
+        "Urea and creatinine \u2014 AKI or CKD as commonest cause; eGFR to stage renal impairment",
+        "Venous blood gas \u2014 assess metabolic acidosis (acidosis drives K+ extracellularly); bicarbonate level",
+        "Aldosterone and renin (if no obvious cause) \u2014 Addison's disease (low aldosterone, low cortisol, high ACTH) or hypoaldosteronism",
+        "Cortisol / short Synacthen test \u2014 if Addison's suspected (postural hypotension, hyperpigmentation, hyponatraemia)",
+        "FBC \u2014 haemolysis (high K+ with high LDH, low haptoglobin) or rhabdomyolysis (high CK)"
+      ],
+      "imaging": [
+        "Renal USS \u2014 if AKI suspected; exclude obstructive uropathy (bilateral hydronephrosis); assess renal size/cortex for CKD",
+        "CT KUB (non-contrast) \u2014 if renal tract obstruction suspected and USS inconclusive"
+      ]
+    },
+    "mx": [
+      "Membrane stabilisation (immediate, cardiac protection): IV calcium gluconate 10% \u2014 stabilises cardiac membrane within minutes; does not lower K+; repeat ECG to confirm effect; use first if ECG changes present",
+      "Shift K+ into cells (rapid, 15-30 min): IV insulin (actrapid) + 50% dextrose \u2014 drives K+ intracellularly; nebulised salbutamol (beta-2 agonist) adjunct; sodium bicarbonate if severe acidosis",
+      "Remove K+ from body (definitive): furosemide (loop diuretic, if euvolaemic/volume-overloaded and adequate renal function); calcium resonium (cation-exchange resin, oral/rectal); renal replacement therapy (haemodialysis) for refractory or oliguric AKI/CKD",
+      "Stop precipitants: review and stop ACE inhibitors, ARBs, potassium-sparing diuretics (spironolactone, amiloride), NSAIDs, trimethoprim, heparin"
+    ],
+    "traps": [
+      "Calcium gluconate protects the heart but does NOT lower serum potassium \u2014 it is membrane stabilisation only; you must still shift and remove K+ separately",
+      "Pseudohyperkalaemia \u2014 haemolysed sample (tight tourniquet, delayed processing, small vein) gives falsely high K+; always repeat if no ECG changes and asymptomatic; true hyperkalaemia has corresponding ECG findings",
+      "ECG can be normal even with K+ 6.0-6.5 mmol/L \u2014 absence of ECG changes does not exclude dangerous hyperkalaemia; treat on the blood result",
+      "Addison's disease \u2014 classic cause of hyperkalaemia + hyponatraemia; hyperpigmentation and postural hypotension are the exam clues; do not give insulin/dextrose before cortisol replacement in adrenal crisis as this can precipitate cardiovascular collapse"
+    ]
+  },
+  {
+    "id": "hyperthyroid",
+    "name": "Hyperthyroidism / Graves",
+    "system": "Endocrinology",
+    "presentation": [
+      "Heat intolerance and sweating",
+      "Unintentional weight loss despite increased appetite",
+      "Palpitations (AF or sinus tachycardia)",
+      "Diarrhoea / increased bowel frequency",
+      "Anxiety, irritability, and tremor"
+    ],
+    "signs": [
+      "Exophthalmos and lid lag (Graves-specific \u2014 due to retro-orbital inflammation)",
+      "Pretibial myxoedema (Graves-specific \u2014 indurated, violaceous plaques on shins)",
+      "Diffuse smooth goitre with thyroid bruit (Graves) vs. irregular nodular goitre (toxic MNG)",
+      "Fine resting tremor and warm, moist peripheries"
+    ],
+    "investigations": {
+      "bedside": [
+        "Obs: resting tachycardia or irregularly irregular pulse (AF)",
+        "ECG: sinus tachycardia; AF in ~10-15% \u2014 check rate and rhythm"
+      ],
+      "bloods": [
+        "TFTs: TSH suppressed (<0.1 mU/L) + elevated free T4 and/or free T3 (T3 toxicosis if T4 normal)",
+        "TSH-receptor antibodies (TRAb / TSI): positive in Graves disease (>95% sensitivity)",
+        "FBC before starting carbimazole \u2014 baseline for agranulocytosis monitoring",
+        "LFTs: carbimazole can cause hepatotoxicity; also mildly deranged in thyrotoxicosis"
+      ],
+      "imaging": [
+        "USS thyroid: diffuse hypoechoic gland with increased vascularity (Graves) vs. discrete nodule(s) (toxic nodular)",
+        "Isotope scan (Tc-99m or I-123): diffuse homogeneous uptake = Graves; focal hot nodule(s) with suppressed surrounding tissue = toxic adenoma / toxic MNG \u2014 key distinction when diagnosis unclear or pre-radioiodine"
+      ]
+    },
+    "mx": [
+      "Symptom control: non-selective beta-blocker (propranolol) \u2014 controls tachycardia, tremor, and anxiety while awaiting biochemical response",
+      "Antithyroid drug: carbimazole (titration or block-and-replace) \u2014 first-line in UK; propylthiouracil (PTU) preferred in first trimester of pregnancy (carbimazole teratogenic) and thyroid storm",
+      "Definitive: radioiodine (I-131) \u2014 first-line definitive in non-pregnant adults; total thyroidectomy if large goitre, compressive symptoms, or patient declines radioiodine"
+    ],
+    "traps": [
+      "Carbimazole agranulocytosis: warn all patients to stop carbimazole and seek urgent FBC if they develop sore throat or fever \u2014 rare but life-threatening; occurs in first 3 months",
+      "Propylthiouracil (not carbimazole) in first trimester: carbimazole is teratogenic (aplasia cutis, choanal atresia) \u2014 switch to PTU in T1, then reassess; PTU has risk of hepatotoxicity",
+      "Thyroid storm: precipitated by surgery, infection, or iodine load in uncontrolled thyrotoxicosis \u2014 treat with high-dose PTU, Lugol's iodine (given 1 hour after PTU), IV beta-blocker, dexamethasone, and supportive care",
+      "Isotope scan distinction: do not treat with radioiodine without confirming diffuse (Graves) vs. nodular uptake \u2014 toxic MNG and solitary adenoma have different prognosis and RAI dosing"
+    ]
+  },
+  {
+    "id": "hypoglycaemia",
+    "name": "Hypoglycaemia",
+    "system": "Endocrinology",
+    "presentation": [
+      "Autonomic: sweating, tremor, palpitations, hunger, anxiety (adrenergic/cholinergic surge, BM typically <4 mmol/L)",
+      "Neuroglycopenic: confusion, drowsiness, slurred speech, focal weakness, seizure, coma (BM typically <3 mmol/L)",
+      "Headache and blurred vision (early neuroglycopenic)",
+      "Nocturnal hypoglycaemia: nightmares, morning headache, unrefreshed sleep",
+      "Recurrent episodes without autonomic warning = hypoglycaemia unawareness (autonomic neuropathy or prior episodes blunting response)"
+    ],
+    "signs": [
+      "Diaphoresis and pallor (sympathoadrenal activation)",
+      "Tachycardia and hypertension (catecholamine surge)",
+      "Confusion, agitation or reduced GCS (neuroglycopenia)",
+      "Focal neurological deficit or seizure (mimics stroke \u2014 always check BM)"
+    ],
+    "investigations": {
+      "bedside": [
+        "Capillary blood glucose (BM): confirms hypoglycaemia at <4 mmol/L; <3 mmol/L in non-diabetic requires formal venous sample",
+        "Obs: HR, BP (tachycardia, hypertension common); GCS to guide route of treatment"
+      ],
+      "bloods": [
+        "Venous glucose: send simultaneously with insulin/C-peptide at the time of hypoglycaemia (Whipple's triad requires documented low glucose)",
+        "Insulin level: elevated (>3 mIU/L) when glucose <3 mmol/L indicates endogenous or exogenous insulin excess",
+        "C-peptide: elevated = endogenous hyperinsulinism (insulinoma, sulphonylurea); suppressed = exogenous insulin injection",
+        "Sulphonylurea screen (plasma/urine): distinguishes sulphonylurea-induced hyperinsulinism from insulinoma when C-peptide is raised",
+        "Cortisol and IGF-II if non-islet tumour hypoglycaemia suspected; TFTs if hypothyroidism a contributor"
+      ],
+      "imaging": [
+        "CT pancreas (triple-phase): first-line to localise insulinoma (>90% sensitivity for lesions >1 cm)",
+        "MRI pancreas or endoscopic ultrasound (EUS): if CT negative \u2014 EUS most sensitive for small insulinomas",
+        "Selective arterial calcium stimulation with hepatic venous sampling: used pre-operatively when cross-sectional imaging is inconclusive"
+      ]
+    },
+    "mx": [
+      "Conscious and able to swallow: oral fast-acting carbohydrate (glucose tablets, Lucozade) \u2014 'rule of 15' approach; repeat BM in 15 min and recheck",
+      "Unconscious or unsafe swallow: IV glucose (dextrose bolus) first-line in hospital; IM glucagon (1 mg) if no IV access \u2014 acts by stimulating hepatic glycogenolysis",
+      "Insulinoma: surgical resection (enucleation or pancreatectomy); diazoxide (inhibits insulin secretion) as bridge or if inoperable"
+    ],
+    "traps": [
+      "Glucagon fails in starvation, alcohol excess, and liver disease \u2014 hepatic glycogen stores depleted, so IM glucagon will not work; IV dextrose is the only reliable option",
+      "Whipple's triad must be satisfied before labelling a patient as having pathological hypoglycaemia: (1) symptoms consistent with hypoglycaemia, (2) documented low plasma glucose, (3) symptoms relieved by glucose correction",
+      "Exogenous insulin injection produces high insulin but suppressed C-peptide \u2014 raised insulin + suppressed C-peptide = factitious hypoglycaemia (Munchausen) until proven otherwise",
+      "Focal neurology or seizure with no obvious cause \u2014 always check BM immediately; hypoglycaemia mimics TIA/stroke and is fully reversible if treated promptly"
+    ]
+  },
+  {
+    "id": "hypothyroid",
+    "name": "Hypothyroidism",
+    "system": "Endocrinology",
+    "presentation": [
+      "Fatigue and lethargy",
+      "Cold intolerance",
+      "Weight gain despite poor appetite",
+      "Constipation",
+      "Menorrhagia (primary hypothyroidism)"
+    ],
+    "signs": [
+      "Goitre (in Hashimoto's or iodine deficiency)",
+      "Slow-relaxing (hung-up) reflexes",
+      "Bradycardia",
+      "Dry, coarse skin and hair loss",
+      "Periorbital oedema / non-pitting oedema (myxoedema)"
+    ],
+    "investigations": {
+      "bedside": [
+        "Obs: bradycardia, hypothermia, raised BP (diastolic hypertension)",
+        "ECG: sinus bradycardia, low-voltage complexes, prolonged QT interval",
+        "Urine dipstick: exclude other causes of oedema"
+      ],
+      "bloods": [
+        "Primary hypothyroidism: TSH elevated, free T4 low",
+        "Secondary hypothyroidism (pituitary failure): TSH low or inappropriately normal, free T4 low",
+        "Subclinical hypothyroidism: TSH elevated, free T4 normal",
+        "TPO antibodies: positive in Hashimoto's thyroiditis",
+        "FBC: normocytic or macrocytic anaemia; lipids: hypercholesterolaemia; CK: elevated (myopathy)"
+      ],
+      "imaging": [
+        "Thyroid USS: assess goitre size, nodularity; Hashimoto's gives heterogeneous hypoechoic appearance",
+        "CXR: cardiomegaly (pericardial effusion in severe/myxoedema)"
+      ]
+    },
+    "mx": [
+      "Levothyroxine (T4 replacement) \u2014 start low, titrate to TSH in normal range",
+      "Start at low dose in elderly or ischaemic heart disease (risk of precipitating angina/MI); increase slowly",
+      "Monitor TFTs at 6\u20138 weeks after dose change; annual TFTs once stable",
+      "Pregnancy: increase levothyroxine dose by ~25\u201330% as soon as pregnancy confirmed; TSH target <2.5 mU/L"
+    ],
+    "traps": [
+      "Starting full-dose levothyroxine in elderly or cardiac patients can precipitate angina or MI \u2014 always start low and go slow",
+      "Secondary hypothyroidism (low TSH + low T4): exclude pituitary disease and replace cortisol BEFORE levothyroxine (risk of adrenal crisis if cortisol-deficient)",
+      "Myxoedema coma: rare but life-threatening \u2014 hypothermia, reduced GCS, hypoventilation; needs IV T3/T4, IV hydrocortisone, ITU",
+      "Amiodarone causes both hypo- and hyperthyroidism; TFTs must be interpreted with free T4 as TSH may be unreliable"
+    ]
+  },
+  {
+    "id": "t2dm",
+    "name": "Type 2 diabetes",
+    "system": "Endocrinology",
+    "presentation": [
+      "Polyuria and polydipsia (osmotic diuresis from glucosuria)",
+      "Fatigue and lethargy",
+      "Recurrent infections (UTIs, candidiasis, skin infections)",
+      "Blurred vision (osmotic lens changes)",
+      "Incidental hyperglycaemia on routine bloods"
+    ],
+    "signs": [
+      "Peripheral neuropathy \u2014 glove-and-stocking sensory loss, reduced vibration sense and ankle reflexes",
+      "Diabetic retinopathy \u2014 background (dot haemorrhages, hard exudates) or proliferative (neovascularisation) on fundoscopy",
+      "Foot signs \u2014 Charcot foot deformity, neuropathic/ischaemic ulceration, absent pedal pulses",
+      "Acanthosis nigricans \u2014 velvety hyperpigmentation at neck/axillae (insulin resistance marker)"
+    ],
+    "investigations": {
+      "bedside": [
+        "Capillary blood glucose (BM) \u2014 random \u226511.1 mmol/L with symptoms is diagnostic",
+        "Urine dipstick \u2014 glycosuria; also check for proteinuria (nephropathy screening)",
+        "Blood pressure \u2014 hypertension common co-morbidity; target <130/80 mmHg in T2DM"
+      ],
+      "bloods": [
+        "Fasting plasma glucose \u22657.0 mmol/L on two occasions (or once with symptoms) \u2014 diagnostic",
+        "HbA1c \u226548 mmol/mol (6.5%) on two occasions (or once with symptoms) \u2014 diagnostic; reflects 3-month average glucose",
+        "Random plasma glucose \u226511.1 mmol/L with classic osmotic symptoms \u2014 diagnostic without repeat",
+        "eGFR and urine albumin:creatinine ratio (ACR) \u2014 baseline renal function; ACR >3 mg/mmol = microalbuminuria"
+      ],
+      "imaging": [
+        "Fundoscopy / digital retinal photography \u2014 annual diabetic eye screening (detect retinopathy)",
+        "Renal ultrasound \u2014 if proteinuria or declining eGFR to exclude structural renal disease",
+        "Ankle-brachial pressure index (ABPI) \u2014 if peripheral arterial disease suspected (non-healing ulcer, absent pulses)"
+      ]
+    },
+    "mx": [
+      "Lifestyle modification first \u2014 dietary change (low glycaemic index, caloric deficit), weight loss, and increased physical activity; can achieve remission in obesity-related T2DM",
+      "Metformin (biguanide) \u2014 first-line oral agent; reduces hepatic gluconeogenesis; renal-dose-adjust, hold if eGFR <30",
+      "SGLT2 inhibitor (e.g. empagliflozin/dapagliflozin) \u2014 add if established cardiovascular disease, heart failure, or CKD; cardio- and nephroprotective independently of glucose lowering",
+      "GLP-1 receptor agonist (e.g. semaglutide) \u2014 add if obesity prominent or CVD risk high; promotes weight loss and glucose-dependent insulin secretion"
+    ],
+    "traps": [
+      "MODY (Maturity-Onset Diabetes of the Young) \u2014 monogenic diabetes in thin young patients with strong family history; misclassified as T2DM; does not respond to metformin, responds to sulphonylureas (MODY3)",
+      "HbA1c unreliable in haemolytic anaemia, haemoglobinopathies (e.g. sickle cell, HbS/C), iron deficiency, and recent blood transfusion \u2014 use fasting glucose instead for diagnosis",
+      "SGLT2 inhibitors are indicated for renal and cardiovascular protection regardless of HbA1c target \u2014 do not withhold simply because glucose is controlled",
+      "Diagnosing T2DM requires two abnormal results in an asymptomatic patient; a single test suffices only when classic osmotic symptoms are present"
+    ]
+  },
+  {
+    "id": "meningitis",
+    "name": "Bacterial meningitis",
+    "system": "Neurology",
+    "presentation": [
+      "Triad: severe headache, fever, neck stiffness",
+      "Non-blanching petechial/purpuric rash (meningococcal septicaemia)",
+      "Photophobia and phonophobia",
+      "Altered consciousness / confusion (reduced GCS)",
+      "Preceding URTI or close-contact exposure"
+    ],
+    "signs": [
+      "Kernig's sign \u2014 pain/resistance on knee extension with hip flexed at 90\u00b0",
+      "Brudzinski's sign \u2014 involuntary hip/knee flexion on passive neck flexion",
+      "Non-blanching petechiae or purpura (fails glass test)",
+      "Reduced GCS; may have focal neurology or papilloedema if raised ICP"
+    ],
+    "investigations": {
+      "bedside": [
+        "Observations: fever, tachycardia, hypotension (sepsis)",
+        "Glass test: press glass on rash \u2014 non-blanching = meningococcal emergency",
+        "GCS assessment: guide LP safety and severity"
+      ],
+      "bloods": [
+        "FBC: raised WBC (neutrophilia in bacterial)",
+        "CRP: markedly elevated",
+        "Blood cultures: before antibiotics if no delay; identify organism",
+        "Meningococcal/pneumococcal PCR: blood or CSF; positive even post-antibiotics",
+        "Coagulation, U&E, glucose (paired glucose needed for CSF interpretation)"
+      ],
+      "imaging": [
+        "CT head before LP if: focal neurology, papilloedema, seizures, GCS <13, immunocompromised \u2014 to exclude raised ICP / mass lesion",
+        "LP: CSF appearance \u2014 turbid/cloudy (bacterial); clear (viral); xanthochromic (SAH)",
+        "CSF findings in bacterial meningitis: raised protein (>1 g/L), very low glucose (<50% serum), neutrophilia (>1000 cells/mm\u00b3), positive Gram stain/culture"
+      ]
+    },
+    "mx": [
+      "IV ceftriaxone immediately \u2014 do not delay for CT or LP; add IV amoxicillin if age <3 months or >60 years (Listeria cover)",
+      "IV dexamethasone \u2014 give before or with first antibiotic dose to reduce neurological sequelae (especially in pneumococcal disease)",
+      "Public health notification \u2014 meningococcal disease is notifiable; close contacts receive prophylactic rifampicin or ciprofloxacin"
+    ],
+    "traps": [
+      "Never delay antibiotics for CT or LP \u2014 treat immediately if meningitis suspected; investigations follow treatment",
+      "Listeria cover: add amoxicillin at age extremes (<3 months, >60 years) and in immunocompromised patients \u2014 ceftriaxone alone is insufficient",
+      "LP is contraindicated if focal neurology, papilloedema, seizures or GCS <13 \u2014 CT head first to exclude raised ICP",
+      "Non-blanching rash is a red flag even if other features are mild \u2014 assume meningococcal septicaemia until proven otherwise"
+    ]
+  },
+  {
+    "id": "stroke-ischaemic",
+    "name": "Ischaemic stroke",
+    "system": "Neurology",
+    "presentation": [
+      "Sudden-onset focal neurological deficit \u2014 FAST: facial droop, arm weakness, speech disturbance",
+      "MCA: contralateral hemiplegia/hemisensory loss (arm > leg), aphasia (dominant), neglect (non-dominant), homonymous hemianopia",
+      "ACA: contralateral leg > arm weakness, frontal lobe features (abulia, grasp reflex)",
+      "PCA: homonymous hemianopia \u00b1 cortical blindness, alexia without agraphia",
+      "Posterior fossa (PICA/basilar): vertigo, ataxia, diplopia, dysphagia, crossed cranial nerve signs (ipsilateral face, contralateral body)"
+    ],
+    "signs": [
+      "Upper motor neurone pattern: contralateral spastic hemiparesis, hyperreflexia, upgoing plantar (Babinski)",
+      "Contralateral hemisensory loss (pain, temperature, proprioception depending on territory)",
+      "Contralateral homonymous hemianopia \u2014 assess by confrontation",
+      "Left-sided spatial neglect (non-dominant MCA): inattention to left hemispace on double simultaneous stimulation"
+    ],
+    "investigations": {
+      "bedside": [
+        "Obs: BP (hypertension common acutely \u2014 do not lower unless >185/110 and thrombolysing), O2 sats, temperature",
+        "BM: exclude hypoglycaemia (mimics stroke; treat if <4 mmol/L)",
+        "ECG: identify AF (cardioembolic source); 12-lead also screens for concurrent ACS",
+        "NIHSS score: quantify deficit severity; guides thrombolysis eligibility"
+      ],
+      "bloods": [
+        "FBC: baseline; thrombocytopenia is contraindication to thrombolysis",
+        "Coagulation (PT/APTT/INR): anticoagulant use is contraindication to thrombolysis",
+        "Glucose and HbA1c: exclude hypoglycaemia; identify diabetes as risk factor",
+        "Fasting lipids: LDL for secondary prevention (statin therapy)"
+      ],
+      "imaging": [
+        "Non-contrast CT head (immediate): excludes haemorrhage before thrombolysis \u2014 ischaemic stroke appears NORMAL in first 6\u201324h; early signs: loss of grey\u2013white differentiation, hyperdense MCA sign, sulcal effacement",
+        "MRI DWI (within 6h, or up to 24h with perfusion mismatch): shows restricted diffusion (bright DWI, dark ADC) within minutes of onset \u2014 far more sensitive than CT for acute ischaemia",
+        "CT angiography (CTA): identifies large vessel occlusion (LVO) amenable to mechanical thrombectomy"
+      ]
+    },
+    "mx": [
+      "Thrombolysis (alteplase IV): within 4.5h of onset if no contraindications (haemorrhage, BP >185/110 uncontrolled, anticoagulation, recent surgery, INR >1.7, glucose <2.7 or >22); BP must be controlled to \u2264185/110 before administering",
+      "Mechanical thrombectomy: for LVO (M1/M2, basilar) within 6h (up to 24h with perfusion imaging selection) \u2014 superior to thrombolysis alone for proximal occlusions",
+      "Antiplatelet therapy: aspirin 300mg PO/PR within 24h of onset (delay 24h if thrombolysed); dual antiplatelet (aspirin + clopidogrel) for 21 days in minor stroke/TIA (POINT/CHANCE criteria)",
+      "AF: anticoagulation (DOAC preferred over warfarin) started at 4\u201314 days post-stroke depending on infarct size; not acutely due to haemorrhagic transformation risk"
+    ],
+    "traps": [
+      "CT normal in first 6\u201324h \u2014 a normal CT does NOT exclude ischaemic stroke; it excludes haemorrhage; request MRI DWI if clinical suspicion high",
+      "Do NOT lower BP acutely unless >185/110 and planning thrombolysis, or hypertensive emergency \u2014 permissive hypertension maintains penumbral perfusion",
+      "Posterior circulation strokes mimic labyrinthitis/BPPV \u2014 vertigo + ataxia + any cranial nerve sign = posterior fossa stroke until proven otherwise (HINTS exam); CT posterior fossa has poor sensitivity",
+      "Hypoglycaemia mimics stroke exactly \u2014 always check BM first; correct before imaging",
+      "Anticoagulation timing in AF: starting too early risks haemorrhagic transformation; standard is 4\u201314 day rule based on infarct size (small = 4 days, large = 14 days)"
+    ]
+  },
+  {
+    "id": "migraine",
+    "name": "Migraine",
+    "system": "Neurology",
+    "presentation": [
+      "Unilateral throbbing/pulsating headache lasting 4\u201372 hours",
+      "Nausea/vomiting; aggravated by routine physical activity",
+      "Photophobia and phonophobia (often both)",
+      "Aura in ~30%: visual (fortification spectra, scotoma), sensory (unilateral paraesthesia), or speech disturbance \u2014 precedes headache by 20\u201360 min",
+      "Prodrome hours before: yawning, fatigue, food cravings; postdrome fatigue after"
+    ],
+    "signs": [
+      "Neurological examination typically normal between and during attacks",
+      "Fundoscopy normal \u2014 performed to exclude papilloedema (raised ICP)",
+      "Blood pressure measured to exclude hypertensive headache (>180/120 mmHg)",
+      "Neck stiffness absent \u2014 presence mandates exclusion of meningitis/SAH"
+    ],
+    "investigations": {
+      "bedside": [
+        "Clinical diagnosis \u2014 no investigation required if classic history and normal exam",
+        "Blood pressure and pulse (exclude hypertensive emergency, exclude vasospasm)",
+        "Urine dipstick if first severe headache in young woman (exclude pre-eclampsia)"
+      ],
+      "bloods": [
+        "FBC, CRP, ESR if age >50 or new headache pattern \u2014 exclude giant cell arteritis (ESR >50 mm/hr supports GCA)",
+        "Glucose if aura present \u2014 exclude hypoglycaemia mimicking neurological aura",
+        "Coagulation/group-and-save only if CT-negative thunderclap headache proceeding to LP"
+      ],
+      "imaging": [
+        "CT head (non-contrast) only if red flags present: thunderclap onset, first/worst headache, progressive over weeks, focal neurology, papilloedema, immunocompromised, age >50 \u2014 normal CT does not exclude SAH (sensitivity ~98% at <6 h, falls thereafter)",
+        "MRI brain with gadolinium if CT negative but suspicion remains, or for haemiplegic/basilar migraine variants to exclude structural cause",
+        "LP (not imaging) for xanthochromia if thunderclap headache with normal CT \u2014 SAH excluded only by CSF analysis >12 h after onset"
+      ]
+    },
+    "mx": [
+      "Acute attack: oral triptan (5-HT1 agonist, e.g. sumatriptan) + NSAID (e.g. ibuprofen) or paracetamol; add antiemetic (e.g. metoclopramide) if vomiting; take early in attack",
+      "Prophylaxis (\u22654 attacks/month or significant disability): first-line propranolol (beta-blocker) or topiramate (anticonvulsant); second-line amitriptyline (TCA) or candesartan; CGRP monoclonal antibodies (e.g. erenumab) for refractory cases",
+      "Non-pharmacological: identify and avoid triggers (sleep, diet, stress, hormonal), menstrual migraine \u2014 consider NSAID peri-menstrually or continuous OCP"
+    ],
+    "traps": [
+      "Thunderclap headache (maximal intensity at onset, 'worst ever') = SAH until proven otherwise \u2014 do not diagnose migraine without CT then LP",
+      "Topiramate is teratogenic \u2014 must not be used in women of childbearing potential without effective contraception; valproate similarly contraindicated",
+      "Triptans are contraindicated in ischaemic heart disease, uncontrolled hypertension, and previous stroke/TIA \u2014 always check cardiovascular history before prescribing",
+      "Medication overuse headache: analgesics or triptans on \u226510\u201315 days/month paradoxically worsen headache frequency \u2014 the treatment is gradual withdrawal, not dose escalation"
+    ]
+  },
+  {
+    "id": "parkinsons",
+    "name": "Parkinson's disease",
+    "system": "Neurology",
+    "presentation": [
+      "Resting tremor \u2014 typically unilateral onset, 4\u20136 Hz, pill-rolling",
+      "Bradykinesia \u2014 slowness of movement, reduced amplitude on repetitive tasks",
+      "Rigidity \u2014 lead-pipe or cogwheel (tremor superimposed on rigidity)",
+      "Postural instability \u2014 falls, impaired righting reflexes (later feature)",
+      "Non-motor symptoms \u2014 anosmia, REM sleep behaviour disorder, constipation, depression, cognitive impairment"
+    ],
+    "signs": [
+      "Pill-rolling resting tremor \u2014 suppressed by voluntary movement, re-emerges at rest",
+      "Cogwheel rigidity \u2014 felt at wrist on passive flexion/extension; lead-pipe if no tremor component",
+      "Festinant gait \u2014 shuffling, small steps, stooped posture, reduced arm swing, difficulty initiating",
+      "Hypomimia \u2014 reduced facial expression; also micrographia, hypophonia"
+    ],
+    "investigations": {
+      "bedside": [
+        "Clinical diagnosis \u2014 UK Brain Bank criteria: bradykinesia + at least one of rigidity, resting tremor, postural instability",
+        "Postural BP (lying and standing) \u2014 autonomic dysfunction; >20 mmHg systolic drop",
+        "Montreal Cognitive Assessment (MoCA) \u2014 baseline cognitive screen"
+      ],
+      "bloods": [
+        "Serum ceruloplasmin + copper + 24 h urine copper \u2014 exclude Wilson's disease in onset <50 years",
+        "TFTs \u2014 hypothyroidism can cause slowness and tremor mimicking Parkinsonism",
+        "FBC, renal and liver function \u2014 baseline before starting medications"
+      ],
+      "imaging": [
+        "DaTscan (123I-ioflupane SPECT) \u2014 images dopamine transporter density in striatum; reduced uptake confirms dopaminergic deficit, distinguishing Parkinson's from essential tremor (normal DaT) or drug-induced Parkinsonism (normal DaT); does not distinguish PD from atypical Parkinsonism (MSA, PSP)",
+        "MRI brain \u2014 not diagnostic for PD; used to exclude structural causes (hydrocephalus, vascular Parkinsonism, space-occupying lesion) or atypical features"
+      ]
+    },
+    "mx": [
+      "Levodopa (+ dopa-decarboxylase inhibitor, e.g. co-careldopa/co-beneldopa) \u2014 most effective motor therapy; first-line in older patients or those with significant disability",
+      "Dopamine agonists (e.g. ropinirole, pramipexole, rotigotine patch) \u2014 consider first-line in younger patients to delay levodopa motor complications; monitor for impulse control disorders",
+      "MAO-B inhibitors (e.g. rasagiline, selegiline) \u2014 mild symptoms or adjunct; neuroprotective claim unproven"
+    ],
+    "traps": [
+      "Never stop levodopa abruptly \u2014 risk of neuroleptic malignant syndrome-like akinetic crisis",
+      "Avoid dopamine-blocking antiemetics \u2014 metoclopramide and prochlorperazine worsen Parkinsonism; use domperidone (peripherally acting) instead",
+      "Dopamine agonist impulse control disorders \u2014 gambling, hypersexuality, binge eating; must counsel patient and carer before starting",
+      "Drug-induced Parkinsonism mimics PD \u2014 caused by antipsychotics, metoclopramide, prochlorperazine; DaTscan is normal, distinguishing it from true PD"
+    ]
+  },
+  {
+    "id": "status-epilepticus",
+    "name": "Status epilepticus",
+    "system": "Neurology",
+    "presentation": [
+      "Seizure lasting >5 minutes without spontaneous cessation",
+      "Recurrent seizures without recovery of consciousness between episodes",
+      "Known epilepsy with subtherapeutic AED levels or missed doses",
+      "Acute precipitant: hypoglycaemia, hyponatraemia, CNS infection, head injury, stroke, alcohol withdrawal",
+      "No return to baseline between episodes (distinguishes from cluster seizures)"
+    ],
+    "signs": [
+      "Active tonic-clonic activity or subtle motor signs (non-convulsive status)",
+      "Post-ictal confusion, reduced GCS, unresponsive between convulsions",
+      "Todd's paresis \u2014 transient focal weakness after cessation indicating focal cortical origin",
+      "Lateral tongue biting, urinary incontinence, cyanosis during ictal phase"
+    ],
+    "investigations": {
+      "bedside": [
+        "BM \u2014 exclude hypoglycaemia as reversible cause (treat if <4 mmol/L)",
+        "Obs including temperature \u2014 pyrexia suggests CNS infection or systemic cause",
+        "12-lead ECG \u2014 exclude cardiac arrhythmia mimicking or precipitating event"
+      ],
+      "bloods": [
+        "Glucose and U&Es \u2014 hypo/hyperglycaemia, hyponatraemia, hypomagnesaemia as direct causes",
+        "FBC and CRP \u2014 infection screen; leucocytosis may be post-ictal or infective",
+        "AED drug levels (e.g. phenytoin, valproate) \u2014 subtherapeutic level common precipitant",
+        "Toxicology screen \u2014 alcohol, recreational drugs, tricyclics; ABG for metabolic acidosis and oxygenation"
+      ],
+      "imaging": [
+        "CT head \u2014 once stabilised; exclude structural cause (tumour, haemorrhage, abscess)",
+        "MRI brain with contrast \u2014 preferred if CT negative and no clear cause identified",
+        "EEG \u2014 essential if non-convulsive status epilepticus suspected (no motor activity but altered consciousness)"
+      ]
+    },
+    "mx": [
+      "Airway, breathing, circulation \u2014 high-flow O2, IV access, position (recovery if possible), call for help",
+      "First-line benzodiazepine: IV lorazepam (preferred if IV access) or buccal midazolam / PR diazepam (if no IV); may repeat once after 5-10 minutes if seizure continues",
+      "Second-line (if seizure continues after 2 benzodiazepine doses): IV levetiracetam, sodium valproate, or phenytoin infusion \u2014 senior/anaesthetic involvement",
+      "Refractory status (>45 min or failed 2nd-line): rapid sequence induction and general anaesthesia in ITU"
+    ],
+    "traps": [
+      "Giving more than two benzodiazepine doses without escalating to second-line risks respiratory depression and delay \u2014 must escalate after max 2 doses",
+      "Missing hypoglycaemia as a correctable cause \u2014 always check BM immediately and treat before or alongside AEDs",
+      "Non-convulsive status epilepticus \u2014 patient appears confused or unresponsive without obvious motor activity; requires EEG to diagnose and is frequently missed",
+      "Phenytoin is contraindicated in absence and myoclonic status \u2014 know which AED to choose based on seizure type"
+    ]
+  },
+  {
+    "id": "tia",
+    "name": "TIA",
+    "system": "Neurology",
+    "presentation": [
+      "Transient focal neurological deficit fully resolved within 24h (usually <1h)",
+      "Amaurosis fugax \u2014 sudden painless monocular visual loss ('curtain descending'), carotid territory",
+      "Contralateral hemiparesis or hemisensory loss, dysphasia, homonymous hemianopia",
+      "Vertebrobasilar: diplopia, dysphagia, ataxia, bilateral limb weakness or vertigo with focal signs",
+      "By definition: no residual deficit at time of assessment"
+    ],
+    "signs": [
+      "Neurological examination often entirely normal at presentation (deficit resolved)",
+      "Carotid bruit on auscultation \u2014 suggests ipsilateral carotid stenosis",
+      "Irregular pulse \u2014 AF as cardioembolic cause",
+      "Hypertensive retinopathy or Hollenhorst plaques on fundoscopy"
+    ],
+    "investigations": {
+      "bedside": [
+        "ECG \u2014 AF (irregularly irregular, no P waves) as cardioembolic source",
+        "BM \u2014 exclude hypoglycaemia mimicking focal deficit",
+        "BP both arms \u2014 hypertension as risk factor; significant difference suggests subclavian steal"
+      ],
+      "bloods": [
+        "FBC \u2014 polycythaemia (raised Hb/haematocrit) increases thrombotic risk; thrombocytosis",
+        "Lipid profile \u2014 LDL elevation guides statin therapy",
+        "HbA1c and fasting glucose \u2014 diabetes as vascular risk factor",
+        "Clotting screen and thrombophilia screen \u2014 if young or no obvious cause",
+        "ESR/CRP \u2014 giant cell arteritis if >50y with temporal symptoms"
+      ],
+      "imaging": [
+        "MRI brain with DWI \u2014 may show restricted diffusion (small infarct) even if symptoms resolved; sequences to exclude haemorrhage and mimics",
+        "Carotid Doppler USS \u2014 stenosis >50% in symptomatic carotid territory indicates endarterectomy",
+        "CT brain \u2014 if MRI unavailable or contraindicated; excludes haemorrhage but less sensitive for ischaemia",
+        "Echocardiogram \u2014 if cardioembolic source suspected (AF, valvular disease, patent foramen ovale)"
+      ]
+    },
+    "mx": [
+      "Aspirin 300mg immediately (loading dose) then dual antiplatelet (aspirin + clopidogrel) for 21 days, then clopidogrel monotherapy",
+      "Urgent specialist (TIA clinic or stroke unit) review within 24h of symptom onset \u2014 same-day if high-risk (ABCD2 \u22654, crescendo TIA, AF, known carotid stenosis)",
+      "Anticoagulate if AF identified \u2014 DOAC (e.g. apixaban) preferred over warfarin; do not delay for 2-week observation window",
+      "Statin therapy (high-intensity, e.g. atorvastatin) and antihypertensive if indicated",
+      "Carotid endarterectomy within 2 weeks if symptomatic carotid stenosis 50\u201399% (NASCET criteria)"
+    ],
+    "traps": [
+      "TIA + AF: start anticoagulation promptly \u2014 do NOT apply the 2-week antiplatelet-first rule used after established ischaemic stroke; the haemorrhagic transformation risk window does not apply to TIA",
+      "ABCD2 score is de-emphasised in current NICE guidance \u2014 do not use it to triage who gets urgent assessment; all TIAs warrant same-day or next-day specialist review",
+      "Amaurosis fugax = carotid territory TIA (ophthalmic artery branch of ICA) \u2014 triggers carotid Doppler and same-day review, not 'ophthalmology referral only'",
+      "Hypoglycaemia is the must-not-miss mimic \u2014 always check BM before labelling focal deficit as TIA/stroke",
+      "Crescendo TIA (\u22652 TIAs in 1 week) = stroke emergency \u2014 admit immediately, do not discharge from ED"
+    ]
+  },
+  {
+    "id": "aki",
+    "name": "Acute kidney injury",
+    "system": "Renal",
+    "presentation": [
+      "Oliguria (<0.5 mL/kg/hr) or anuria",
+      "Fluid overload: breathlessness, peripheral oedema, orthopnoea",
+      "Uraemic symptoms: nausea, vomiting, confusion, pruritus, hiccups",
+      "Precipitant history: dehydration, sepsis, nephrotoxic drugs, urinary symptoms suggesting obstruction"
+    ],
+    "signs": [
+      "Fluid status: dry (pre-renal) \u2014 reduced skin turgor, sunken eyes, low BP, tachycardia; or overloaded \u2014 raised JVP, peripheral oedema, pulmonary crackles",
+      "Uraemic signs: pericardial friction rub, encephalopathy, asterixis (metabolic flap)",
+      "Obstruction signs: palpable bladder (urinary retention), renal angle tenderness",
+      "Sepsis signs: fever, hypotension, tachycardia as precipitating cause"
+    ],
+    "investigations": {
+      "bedside": [
+        "Urine dipstick: haematuria/proteinuria suggests intrinsic renal cause (glomerulonephritis, vasculitis); nitrites/leucocytes suggest UTI/sepsis",
+        "Strict fluid balance and urine output monitoring (catheterise if oliguric)",
+        "ECG: peaked T waves, wide QRS, sine wave pattern \u2014 hyperkalaemia requires urgent management"
+      ],
+      "bloods": [
+        "Creatinine: KDIGO staging \u2014 Stage 1: \u00d71.5\u20131.9 baseline or rise \u226526 \u00b5mol/L in 48 h; Stage 2: \u00d72\u20132.9 baseline; Stage 3: \u00d73 baseline or \u2265354 \u00b5mol/L or RRT required",
+        "Urea: elevated (urea:creatinine ratio >100:1 favours pre-renal); urea raised disproportionately in dehydration/GI bleed",
+        "Potassium: hyperkalaemia (>6.5 mmol/L or ECG changes) is a dialysis indication",
+        "Bicarbonate/ABG: metabolic acidosis (low HCO3, low pH) \u2014 severity guides need for RRT",
+        "FBC, CRP, blood cultures if sepsis; urine MC&S; immunology (ANCA, anti-GBM, complement) if intrinsic renal disease suspected"
+      ],
+      "imaging": [
+        "Renal USS: hydronephrosis = post-renal obstruction \u2192 urgent urology; bilateral small kidneys (<9 cm) = underlying CKD not AKI",
+        "CXR: pulmonary oedema (fluid overload), cardiomegaly; assess for infective precipitant"
+      ]
+    },
+    "mx": [
+      "Identify and treat cause: pre-renal (IV fluids \u2014 crystalloid bolus, then reassess), intrinsic renal (stop nephrotoxics, treat underlying cause e.g. immunosuppression for vasculitis), post-renal (catheterise for retention; urology for obstruction)",
+      "Stop nephrotoxics \u2014 DAMN: Diuretics (in hypovolaemia), ACEi/ARBs, Metformin, NSAIDs; review all drug doses for eGFR",
+      "Manage complications: treat hyperkalaemia (calcium gluconate, insulin-dextrose, salbutamol); correct acidosis; restrict fluid if overloaded; renal replacement therapy (RRT) indications \u2014 AEIOU: Acidosis, Electrolyte disturbance, Intoxication, Overload, Uraemia"
+    ],
+    "traps": [
+      "DAMN drugs: must stop Diuretics (if pre-renal), ACEi/ARBs, Metformin (lactic acidosis risk), NSAIDs \u2014 a common AKT question asks which to withhold",
+      "Dialysis indications \u2014 AEIOU: refractory Acidosis (pH <7.1), Electrolyte disturbance (K+ >6.5 unresponsive to treatment), Intoxication (lithium, salicylates), fluid Overload refractory to diuretics, Uraemia (encephalopathy, pericarditis, bleeding)",
+      "Small kidneys on USS (<9 cm bilaterally) = CKD not AKI \u2014 chronicity changes management entirely; do not aggressively fluid-load CKD",
+      "Urea:creatinine ratio >100:1 suggests pre-renal AKI (dehydration, cardiac failure, hepatorenal) but is also elevated in GI bleed and high protein intake \u2014 not diagnostic alone"
+    ]
+  },
+  {
+    "id": "ckd",
+    "name": "CKD",
+    "system": "Renal",
+    "presentation": [
+      "Often asymptomatic in early stages (G1-G3a) \u2014 detected incidentally on bloods or urine dip",
+      "Fatigue, dyspnoea, pallor (anaemia of CKD)",
+      "Nocturia, frothy urine (proteinuria), peripheral oedema",
+      "Uraemic symptoms (G4-G5): anorexia, nausea, pruritus, confusion, pericarditis"
+    ],
+    "signs": [
+      "Pallor (normochromic normocytic anaemia of CKD)",
+      "Hypertension (cause and consequence of CKD)",
+      "Peripheral oedema (nephrotic-range proteinuria or fluid overload in late CKD)",
+      "AV fistula scar/thrill at wrist or antecubital fossa (established on haemodialysis)",
+      "Uraemic frost \u2014 white crystalline deposits on skin (rare, end-stage)"
+    ],
+    "investigations": {
+      "bedside": [
+        "Urine dip: proteinuria (marker of glomerular damage), haematuria (glomerulonephritis, ADPKD)",
+        "Urine ACR (albumin:creatinine ratio): A1 <3, A2 3-30, A3 >30 mg/mmol \u2014 staging and risk stratification",
+        "BP measurement: target <130/80 in CKD with proteinuria"
+      ],
+      "bloods": [
+        "eGFR (CKD-EPI): G1 \u226590, G2 60-89, G3a 45-59, G3b 30-44, G4 15-29, G5 <15 ml/min/1.73m\u00b2 \u2014 diagnosis requires <60 for >3 months OR structural/functional kidney damage",
+        "FBC: normochromic normocytic anaemia (reduced erythropoietin production)",
+        "U&E: raised urea and creatinine; hyperkalaemia (especially G4-G5 or on ACEi/ARB)",
+        "Bone profile: raised phosphate, low calcium, raised PTH, low vitamin D (renal osteodystrophy/secondary hyperparathyroidism)",
+        "Bicarbonate: metabolic acidosis (reduced H+ excretion in advanced CKD)"
+      ],
+      "imaging": [
+        "Renal USS: small (<9 cm), echogenic kidneys with cortical thinning bilaterally \u2014 distinguishes CKD from AKI (normal/large kidneys in AKI)",
+        "USS also excludes obstructive uropathy (hydronephrosis \u2014 reversible cause of CKD)",
+        "ADPKD exception: large kidneys bilaterally with multiple cysts on USS"
+      ]
+    },
+    "mx": [
+      "Renoprotection: ACEi (e.g. ramipril) or ARB (e.g. losartan) \u2014 first-line if proteinuria present; reduce intraglomerular pressure and proteinuria; SGLT2 inhibitor (e.g. dapagliflozin) added for diabetic CKD or CKD with proteinuria",
+      "BP control: target <130/80 mmHg (tighter if proteinuria); ACEi/ARB preferred agent",
+      "Treat complications: EPO analogue (erythropoiesis-stimulating agent) for anaemia of CKD once iron replete; phosphate binders + active vitamin D (alfacalcidol) for renal bone disease; sodium bicarbonate for metabolic acidosis",
+      "Statin for all CKD patients (high cardiovascular risk regardless of lipid levels)",
+      "RRT planning (haemodialysis, peritoneal dialysis, transplant) when approaching G5 or uraemic symptoms"
+    ],
+    "traps": [
+      "ACEi/ARB: acceptable to continue if creatinine rises \u226425% or eGFR falls \u226425% from baseline \u2014 this is expected haemodynamic effect, not toxicity; stop if K\u207a exceeds 6.0 mmol/L",
+      "Small echogenic kidneys = CKD (chronic scarring/fibrosis); normal or large kidneys in AKI \u2014 USS is key to differentiate when chronicity is uncertain",
+      "CKD requires eGFR <60 for >3 months OR evidence of kidney damage (proteinuria, haematuria, structural abnormality) \u2014 a single low eGFR reading alone is not CKD",
+      "Anaemia of CKD is normochromic normocytic with low reticulocyte count \u2014 do not assume iron deficiency without checking ferritin/transferrin saturation; treat iron deficiency first before EPO",
+      "ADPKD causes large not small kidneys \u2014 do not be caught out by bilateral flank masses in a young patient with family history and haematuria",
+      "Metformin and NSAIDs should be withheld/avoided in G4-G5 CKD \u2014 metformin (lactic acidosis risk), NSAIDs (further reduce GFR via afferent arteriolar constriction)"
+    ]
+  },
+  {
+    "id": "uti",
+    "name": "UTI",
+    "system": "Renal",
+    "presentation": [
+      "Dysuria, frequency, urgency (lower UTI / cystitis)",
+      "Haematuria \u2014 macroscopic or dipstick",
+      "Suprapubic pain or discomfort",
+      "Pyelonephritis: loin pain, fever, rigors, nausea/vomiting (systemic sepsis possible)",
+      "Asymptomatic bacteriuria \u2014 significant only in pregnancy"
+    ],
+    "signs": [
+      "Suprapubic tenderness (cystitis)",
+      "Renal angle / costovertebral angle tenderness (pyelonephritis)",
+      "Fever, tachycardia, hypotension if urosepsis",
+      "No signs in uncomplicated lower UTI"
+    ],
+    "investigations": {
+      "bedside": [
+        "Urine dipstick: nitrites + leucocyte esterase positive (nitrites alone highly specific for bacteriuria)",
+        "Urine MC&S (midstream sample) \u2014 send before antibiotics if pyelonephritis, men, pregnant, recurrent or treatment failure",
+        "Pregnancy test in all women of childbearing age",
+        "Observations / NEWS if systemically unwell (sepsis 6 if urosepsis)"
+      ],
+      "bloods": [
+        "FBC: raised WBC (neutrophilia) in pyelonephritis/urosepsis",
+        "CRP: elevated in upper UTI",
+        "U&E and creatinine: renal function if pyelonephritis or obstruction suspected",
+        "Blood cultures x2 if febrile / urosepsis before antibiotics"
+      ],
+      "imaging": [
+        "Renal USS: first-line if obstruction suspected, recurrent UTI, men, or inadequate treatment response",
+        "CT KUB (non-contrast): if calculi or anatomical abnormality suspected",
+        "CT urogram / MAG3 renogram: recurrent upper UTI or structural anomaly work-up"
+      ]
+    },
+    "mx": [
+      "Lower UTI (non-pregnant): nitrofurantoin 3\u20137 days (first-line) or trimethoprim 7 days (if low resistance risk)",
+      "Pyelonephritis (oral, well): ciprofloxacin 7 days or co-amoxiclav 14 days; guided by MC&S",
+      "Pyelonephritis (IV, unwell/urosepsis): IV co-amoxiclav or gentamicin; step down to oral once apyrexial 24h",
+      "Pregnancy: treat all bacteriuria (including asymptomatic); cefalexin or nitrofurantoin (avoid nitrofurantoin at term \u226536 weeks); avoid trimethoprim in 1st trimester (folate antagonist)",
+      "Catheter-associated UTI: treat only if symptomatic; change catheter before starting antibiotics"
+    ],
+    "traps": [
+      "Always treat bacteriuria in pregnancy \u2014 asymptomatic bacteriuria in pregnancy causes pyelonephritis and preterm labour if untreated",
+      "Avoid trimethoprim in 1st trimester (folate antagonist \u2192 neural tube defect risk) and avoid nitrofurantoin at term (\u226536 weeks \u2014 neonatal haemolysis risk)",
+      "Catheter UTI: do NOT treat asymptomatic bacteriuria in catheterised patients \u2014 treat only if symptomatic (fever, rigors, loin pain, delirium)",
+      "Nitrites negative does not exclude UTI \u2014 Enterococcus and Staphylococcus saprophyticus do not produce nitrites; rely on leucocyte esterase + clinical context",
+      "Men with UTI need investigation (USS \u00b1 urology referral) \u2014 anatomical abnormality or prostatitis must be excluded"
+    ]
+  },
+  {
+    "id": "ida",
+    "name": "Iron deficiency anaemia",
+    "system": "Haematology",
+    "presentation": [
+      "Fatigue and lethargy",
+      "Dyspnoea on exertion",
+      "Pica (craving for ice, dirt, or clay)",
+      "Restless legs syndrome",
+      "Angular cheilitis and sore mouth"
+    ],
+    "signs": [
+      "Pallor (conjunctival, palmar)",
+      "Koilonychia (spoon-shaped nails)",
+      "Angular cheilitis",
+      "Atrophic glossitis (smooth, sore tongue)"
+    ],
+    "investigations": {
+      "bedside": [
+        "Observations (HR\u2191 if severe \u2014 compensatory tachycardia)",
+        "Urine dip (haematuria as bleeding source)",
+        "Stool faecal occult blood (if GI blood loss suspected)"
+      ],
+      "bloods": [
+        "FBC: Hb\u2193, MCV\u2193 (microcytic), MCH\u2193 (hypochromic)",
+        "Blood film: microcytic hypochromic red cells, pencil cells, anisocytosis, poikilocytosis",
+        "Serum ferritin\u2193 (most sensitive single test for iron deficiency)",
+        "Serum iron\u2193, TIBC\u2191, transferrin saturation\u2193"
+      ],
+      "imaging": [
+        "OGD \u00b1 colonoscopy to identify GI bleeding source (mandatory if unexplained IDA in adults)",
+        "Coeliac serology (anti-tTG IgA) \u2014 malabsorption cause",
+        "CT abdomen/pelvis if 2WW colorectal cancer referral indicated"
+      ]
+    },
+    "mx": [
+      "Oral ferrous sulfate (iron replacement \u2014 continue for 3 months after Hb normalises to replenish stores)",
+      "Investigate and treat the underlying cause (do not simply replace iron without finding the source)",
+      "2-week-wait urgent referral if unexplained IDA in patient \u226560 years (colorectal cancer until proven otherwise)"
+    ],
+    "traps": [
+      "Always find the cause \u2014 treating IDA without identifying the source misses GI malignancy",
+      "Continue iron 3 months after Hb normalises \u2014 stopping at Hb correction leaves stores depleted and anaemia recurs",
+      "Ferritin is an acute phase reactant \u2014 can be falsely normal or elevated in infection/inflammation despite iron deficiency; check CRP alongside",
+      "Thalassaemia trait also gives microcytic hypochromic picture \u2014 distinguish by iron studies (ferritin normal/raised) and blood film (target cells, basophilic stippling)"
+    ]
+  },
+  {
+    "id": "neutropenic-sepsis",
+    "name": "Neutropenic sepsis",
+    "system": "Haematology",
+    "presentation": [
+      "Fever \u226538\u00b0C (or hypothermia <36\u00b0C) in patient on chemotherapy",
+      "Rigors, sweating, feeling unwell \u2014 often no localising source",
+      "Fatigue, confusion or altered consciousness in severe cases",
+      "Recent chemotherapy (typically 7\u201314 days prior \u2014 nadir period)",
+      "May present with diarrhoea, mucositis, or mouth pain (portal of entry)"
+    ],
+    "signs": [
+      "Signs often blunted \u2014 no pus, minimal erythema due to absent neutrophils",
+      "Fever (or rarely hypothermia); tachycardia \u00b1 hypotension (septic shock)",
+      "Inspect mouth (mucositis, oral candida), central line/port sites (erythema, tenderness)",
+      "Perianal area may be source \u2014 inspect carefully; no rectal examination"
+    ],
+    "investigations": {
+      "bedside": [
+        "Observations: temp >38\u00b0C or <36\u00b0C, HR >90, RR >20, BP (MAP <65 = septic shock)",
+        "UKONS risk score (\u22653 = high risk; admission + IV antibiotics)",
+        "Urine dipstick \u00b1 MSU if urinary symptoms"
+      ],
+      "bloods": [
+        "FBC: neutrophils <0.5 \u00d710\u2079/L (severe) or <1.0 \u00d710\u2079/L with falling trend \u2014 defines neutropenia",
+        "Blood cultures: two sets \u2014 peripheral vein AND central line/port (before antibiotics but do not delay Abx)",
+        "CRP, U&E, LFTs, lactate (lactate \u22652 = sepsis; \u22654 = septic shock), coagulation screen",
+        "Procalcitonin if available; G-CSF level not routinely measured"
+      ],
+      "imaging": [
+        "CXR: exclude pneumonia (infiltrates may be subtle without neutrophils)",
+        "CT chest/abdomen/pelvis: if no source identified and patient deteriorating \u2014 neutropenic enterocolitis (typhlitis)",
+        "USS or CT of suspected collection/line site if clinically indicated"
+      ]
+    },
+    "mx": [
+      "Piperacillin-tazobactam (Tazocin) IV \u2014 broad-spectrum anti-pseudomonal beta-lactam; first-line per UKONS/NICE NG151",
+      "Start IV antibiotics within 1 hour of presentation \u2014 do not wait for culture results or neutrophil count confirmation",
+      "Add vancomycin (glycopeptide) if MRSA risk, line infection suspected, or haemodynamically unstable; G-CSF (filgrastim) if prolonged neutropenia or high-risk features"
+    ],
+    "traps": [
+      "DO NOT wait for neutrophil count result or culture results before giving antibiotics \u2014 1-hour rule is absolute",
+      "Signs are blunted: absence of erythema, fluctuance or pus does NOT exclude serious infection \u2014 threshold to treat must be low",
+      "Afebrile patients can still have neutropenic sepsis \u2014 hypothermia or just feeling unwell post-chemo counts; don't anchor on fever",
+      "Always take cultures from BOTH peripheral vein AND central line before antibiotics \u2014 tells you if line is the source \u2014 but never delay Abx to do this"
+    ]
+  },
+  {
+    "id": "vte",
+    "name": "VTE (DVT/PE)",
+    "system": "Haematology",
+    "presentation": [
+      "DVT: unilateral calf swelling, pain, warmth, erythema, pitting oedema",
+      "PE: sudden dyspnoea, pleuritic chest pain, haemoptysis, collapse/syncope",
+      "PE: tachycardia, low O2 sats, sense of impending doom"
+    ],
+    "signs": [
+      "DVT: unilateral calf swelling >3 cm vs contralateral, pitting oedema, warmth, erythema; Homan's sign unreliable (insensitive and non-specific)",
+      "PE: tachycardia (most common), tachypnoea, hypoxia, pleural rub, raised JVP (RV strain)",
+      "Massive PE: hypotension, shocked, RV heave, loud P2"
+    ],
+    "investigations": {
+      "bedside": [
+        "Obs + O2 sats: tachycardia, hypoxia (SpO2 <94%)",
+        "ECG: sinus tachycardia most common; S1Q3T3 (deep S in I, Q wave + T inversion in III) suggests RV strain; new RBBB",
+        "Wells score pre-test probability (DVT and PE versions) \u2014 guides D-dimer vs direct imaging"
+      ],
+      "bloods": [
+        "D-dimer: ELISA \u2014 high sensitivity, low specificity; use only if Wells low/intermediate probability to exclude VTE; raised in infection, malignancy, pregnancy (not useful to confirm)",
+        "ABG: Type 1 respiratory failure (low PaO2, low/normal PaCO2) due to V/Q mismatch; respiratory alkalosis from hyperventilation",
+        "FBC, U&E, LFTs, clotting: baseline before anticoagulation; consider thrombophilia screen if unprovoked (defer until off anticoagulation)"
+      ],
+      "imaging": [
+        "CTPA (CT pulmonary angiogram): first-line for suspected PE \u2014 filling defects in pulmonary arteries; saddle embolus in massive PE",
+        "V/Q scan: alternative if CTPA contraindicated (contrast allergy, renal impairment, pregnancy \u2014 reduces radiation to breasts)",
+        "USS lower limb (Doppler): first-line for DVT \u2014 non-compressible vein on compression; CXR may show Westermark sign (oligaemia), Hampton's hump (peripheral wedge opacity), or may be normal"
+      ]
+    },
+    "mx": [
+      "DOAC first-line (apixaban or rivaroxaban) \u2014 no bridging required; provoked VTE: 3 months; unprovoked or high-risk: 6 months+",
+      "LMWH (e.g. enoxaparin) in pregnancy (DOACs cross placenta \u2014 contraindicated), active cancer, or antiphospholipid syndrome (use warfarin, target INR 2-3 or 3-4 if arterial)",
+      "Massive PE with haemodynamic instability: systemic thrombolysis (alteplase) or surgical embolectomy; catheter-directed thrombolysis if available"
+    ],
+    "traps": [
+      "DOACs contraindicated in pregnancy \u2014 use LMWH throughout; switch to LMWH or heparin around delivery",
+      "Antiphospholipid syndrome: DOACs inferior to warfarin \u2014 use warfarin (INR 2-3); triple-positive APS warrants lifelong anticoagulation",
+      "Provoked (transient risk factor e.g. surgery, immobility) = 3 months; unprovoked = minimum 6 months, consider indefinite with shared decision-making",
+      "D-dimer is only useful to exclude VTE in low/intermediate Wells probability \u2014 never use to confirm diagnosis; always raised in pregnancy, malignancy, post-op"
+    ]
+  },
+  {
+    "id": "warfarin-reversal",
+    "name": "Warfarin reversal / supratherapeutic INR",
+    "system": "Haematology",
+    "presentation": [
+      "Incidental supratherapeutic INR on routine monitoring (no bleeding)",
+      "Easy bruising or prolonged bleeding from minor cuts",
+      "Frank haematuria, haemoptysis, or rectal bleeding",
+      "Intracranial bleed: sudden headache, focal neurology, reduced GCS",
+      "Drug interaction or intercurrent illness causing INR to rise unexpectedly"
+    ],
+    "signs": [
+      "Visible bruising, petechiae, or haematoma at venepuncture/pressure sites",
+      "Bleeding from gums, epistaxis, or operative wounds",
+      "Focal neurological deficit or reduced consciousness (intracranial bleed)",
+      "Haemodynamic instability (tachycardia, hypotension) suggesting major haemorrhage"
+    ],
+    "investigations": {
+      "bedside": [
+        "Observations: HR, BP, O2 sats \u2014 haemodynamic stability determines urgency",
+        "Urine dipstick: haematuria",
+        "Point-of-care INR (finger-prick) if available for rapid result"
+      ],
+      "bloods": [
+        "INR: guides management \u2014 >5 with no bleed, >8, or major bleed each have distinct thresholds",
+        "FBC: haemoglobin to quantify blood loss; platelets to exclude concurrent thrombocytopaenia",
+        "U&E and LFTs: renal/hepatic causes of warfarin sensitivity",
+        "Group and save / crossmatch if major haemorrhage suspected"
+      ],
+      "imaging": [
+        "CT head (non-contrast) urgently if any head injury, headache, or neurological signs \u2014 exclude intracranial haemorrhage",
+        "CT chest/abdomen/pelvis if internal haemorrhage suspected and haemodynamically stable",
+        "Ultrasound: retroperitoneal or soft-tissue haematoma if clinically indicated"
+      ]
+    },
+    "mx": [
+      "Major bleed (any INR): stop warfarin immediately; IV vitamin K 5\u201310 mg; Prothrombin Complex Concentrate (PCC, e.g. Beriplex) for rapid factor replacement; involve haematology and consider urgent reversal of anticoagulation",
+      "INR >8, no bleeding (or minor bleeding): stop warfarin; oral vitamin K 1\u20135 mg; recheck INR in 24 hours; restart warfarin at lower dose once INR in range",
+      "INR 5\u20138, no bleeding: withhold 1\u20132 doses of warfarin; recheck INR; consider low-dose oral vitamin K if other bleeding risk factors present"
+    ],
+    "traps": [
+      "PCC (Beriplex) preferred over FFP for major bleeding: faster reversal, lower volume, more complete factor replacement \u2014 FFP is no longer first-line",
+      "Common drug interactions raising INR: antibiotics (metronidazole, ciprofloxacin, fluconazole), amiodarone, NSAIDs, cranberry juice \u2014 always take a drug/diet history",
+      "Do not give high-dose IV vitamin K if restarting anticoagulation is planned \u2014 will cause warfarin resistance for days; use low oral dose instead",
+      "Intracranial haemorrhage on warfarin requires immediate reversal regardless of how supratherapeutic the INR is \u2014 do not wait for CT result before giving PCC"
+    ]
+  },
+  {
+    "id": "cellulitis",
+    "name": "Cellulitis",
+    "system": "Infectious Disease",
+    "presentation": [
+      "Spreading erythema with well-demarcated or ill-defined border",
+      "Local warmth, swelling, and tenderness",
+      "Pain \u2014 often disproportionate pain should raise suspicion of necrotising fasciitis",
+      "Systemic features if severe: fever, rigors, tachycardia, hypotension",
+      "Portal of entry identifiable in ~50%: skin break, tinea pedis, insect bite, leg ulcer"
+    ],
+    "signs": [
+      "Eron class I: no systemic features, no comorbidities; II: systemic features OR significant comorbidity; III: systemic illness (e.g. confusion, tachycardia) OR limb-threatening; IV: sepsis/life-threatening",
+      "Mark erythema border with skin marker pen and time/date to track progression",
+      "Lymphangitis: red streaking tracking proximally along lymphatic channels",
+      "Portal of entry: interdigital tinea, wound, ulcer, puncture \u2014 look actively"
+    ],
+    "investigations": {
+      "bedside": [
+        "Obs: temperature, HR, BP, RR, SpO2 \u2014 assess for sepsis (Eron III-IV)",
+        "Mark erythema border with pen + timestamp to monitor spread or resolution",
+        "Urine dip/MRSA swab of portal of entry if recurrent or hospital-acquired"
+      ],
+      "bloods": [
+        "FBC: raised WBC (neutrophilia) indicates bacterial infection",
+        "CRP/ESR: elevated \u2014 useful to trend response to treatment",
+        "Blood cultures: if systemic features (fever, rigors, Eron III-IV) before starting antibiotics",
+        "U&Es and LFTs: baseline before IV antibiotics; renal function guides dosing"
+      ],
+      "imaging": [
+        "USS soft tissue: exclude underlying abscess (needs incision and drainage) or fluid collection",
+        "MRI soft tissue: if necrotising fasciitis suspected \u2014 tracking along fascial planes; do not delay surgery for imaging if clinical suspicion high",
+        "Plain X-ray: if gas-forming infection or foreign body suspected"
+      ]
+    },
+    "mx": [
+      "Eron I-II (no systemic features): oral flucloxacillin (covers Staph aureus and Streptococcus) \u2014 first-line; clarithromycin or co-amoxiclav if penicillin allergic or polymicrobial",
+      "Eron III-IV (systemic illness): IV flucloxacillin; add benzylpenicillin if extensive streptococcal spread; escalate to piperacillin-tazobactam if MRSA risk or severe",
+      "Elevate affected limb; mark border and reassess at 24-48 h; treat underlying predisposing factors (e.g. tinea pedis with topical antifungal)"
+    ],
+    "traps": [
+      "Necrotising fasciitis red flags: wooden-hard induration, pain out of proportion to appearance, skin necrosis/blistering, crepitus (gas) = surgical emergency \u2014 immediate surgical debridement, do not await imaging if clinically suspected",
+      "Bilateral lower limb 'cellulitis' is almost never bilateral cellulitis \u2014 find the true cause: venous insufficiency/lipodermatosclerosis, lymphoedema, contact dermatitis",
+      "DVT must be excluded in unilateral leg swelling with erythema \u2014 USS Doppler if clinical doubt; cellulitis and DVT can co-exist",
+      "Abscess within cellulitis: fluctuance or failure to respond to antibiotics \u2192 USS and incision + drainage required; antibiotics alone will not clear a pus collection"
+    ]
+  },
+  {
+    "id": "sepsis",
+    "name": "Sepsis",
+    "system": "Infectious Disease",
+    "presentation": [
+      "Fever >38\u00b0C or hypothermia <36\u00b0C, often with rigors",
+      "Confusion or altered consciousness (new)",
+      "Tachycardia and tachypnoea",
+      "Hypotension (SBP <90 or drop >40 from baseline)",
+      "Source symptoms: dysuria/loin pain (urine), productive cough/pleurisy (chest), abdominal pain/peritonism (abdo), skin erythema/warmth (cellulitis)"
+    ],
+    "signs": [
+      "SIRS criteria: HR >90, RR >20, temp <36 or >38\u00b0C, WBC <4 or >12",
+      "End-organ dysfunction: mottled/clammy skin, capillary refill >2s, oliguria (<0.5 mL/kg/hr), GCS drop",
+      "Hypotension refractory to fluids suggests septic shock",
+      "Source of infection: chest crepitations, suprapubic/renal angle tenderness, wound/line site erythema"
+    ],
+    "investigations": {
+      "bedside": [
+        "Observations + NEWS2 score (trigger for sepsis pathway if \u22655)",
+        "Point-of-care lactate (target <2 mmol/L; \u22652 = severe sepsis, \u22654 = very high risk)",
+        "Urine output monitoring (catheterise if shocked) + BM"
+      ],
+      "bloods": [
+        "Blood cultures \u00d72 sets (before antibiotics \u2014 but do not delay antibiotics >1 hr)",
+        "Lactate: \u22652 mmol/L = sepsis with organ dysfunction; \u22654 = septic shock regardless of BP",
+        "FBC (WBC raised or low; neutrophilia common), CRP/procalcitonin (infection marker)",
+        "U&E/creatinine (AKI), LFTs, clotting (DIC screen), glucose, ABG (metabolic acidosis)"
+      ],
+      "imaging": [
+        "CXR (pneumonia, effusion, pulmonary oedema)",
+        "USS abdomen/pelvis (abscess, biliary obstruction, collections)",
+        "CT chest/abdomen/pelvis if source remains unclear after initial assessment"
+      ]
+    },
+    "mx": [
+      "Sepsis Six \u2014 within 1 hour: GIVE O2 (target SpO2 >94%), IV fluids (500 mL crystalloid bolus), IV broad-spectrum antibiotics (per local policy, e.g. piperacillin-tazobactam)",
+      "Sepsis Six \u2014 TAKE: blood cultures (\u00d72 before antibiotics), serum lactate, urine output (catheterise if shocked)",
+      "Septic shock: vasopressors (noradrenaline) if MAP <65 despite adequate fluid resuscitation; escalate to ITU; source control (drain abscess, remove infected line)"
+    ],
+    "traps": [
+      "Take cultures BEFORE antibiotics \u2014 but never delay antibiotics beyond 1 hour waiting for cultures; the cultures come first only if it takes <15 minutes",
+      "Lactate \u22652 mmol/L = severe sepsis even with normal BP; lactate \u22654 = very high mortality risk regardless of haemodynamic status",
+      "Septic shock definition: sepsis + vasopressor required to maintain MAP \u226565 + lactate \u22652 despite adequate fluids \u2014 not simply 'low BP'",
+      "Hypothermia (<36\u00b0C) is a SIRS criterion and can indicate sepsis in frail/elderly \u2014 do not be reassured by absence of fever"
+    ]
+  },
+  {
+    "id": "gca",
+    "name": "Giant cell arteritis",
+    "system": "Rheumatology",
+    "presentation": [
+      "New-onset headache in patient >50 years (typically temporal)",
+      "Scalp tenderness (e.g. pain on combing hair)",
+      "Jaw claudication (pain on chewing \u2014 highly specific)",
+      "Visual disturbance: amaurosis fugax, diplopia, or sudden painless monocular visual loss",
+      "PMR features: bilateral shoulder/hip girdle stiffness and aching"
+    ],
+    "signs": [
+      "Tender, thickened, nodular or pulseless temporal artery on palpation",
+      "Reduced visual acuity or visual field defect (afferent pupillary defect if optic nerve involved)",
+      "Fundoscopy: pale swollen optic disc with blurred margins (anterior ischaemic optic neuropathy)",
+      "Fundoscopy: central retinal artery occlusion appearance (pale retina, cherry-red spot)"
+    ],
+    "investigations": {
+      "bedside": [
+        "Visual acuity (Snellen chart) \u2014 document before starting steroids",
+        "Fundoscopy: anterior ischaemic optic neuropathy (pale swollen disc) or central retinal artery occlusion"
+      ],
+      "bloods": [
+        "ESR: markedly elevated, often >50 mm/hr (may be >100)",
+        "CRP: elevated (sensitive marker, may be raised when ESR is normal)",
+        "FBC: normocytic normochromic anaemia of chronic disease; thrombocytosis",
+        "Plasma viscosity (PV): elevated; LFTs (ALP raised in ~30%)"
+      ],
+      "imaging": [
+        "Temporal artery biopsy: giant cell granulomatous inflammation with intimal hyperplasia \u2014 skip lesions mean a long segment (>1 cm) must be sampled",
+        "USS temporal artery: hypoechoic halo sign (mural oedema) \u2014 non-invasive first-line in many centres",
+        "MRI/CT angiography: if large-vessel GCA suspected (aortitis, subclavian involvement)"
+      ]
+    },
+    "mx": [
+      "High-dose corticosteroids (prednisolone) IMMEDIATELY on clinical suspicion \u2014 do not wait for biopsy result; delay risks irreversible blindness",
+      "If visual loss already present: IV methylprednisolone (high-dose pulsed corticosteroids) before switching to oral",
+      "Bone protection: bisphosphonate + calcium/vitamin D supplementation from outset given prolonged steroid course"
+    ],
+    "traps": [
+      "Do NOT delay steroids to await biopsy \u2014 permanent bilateral blindness can occur within hours; treat on clinical suspicion",
+      "Biopsy remains positive for up to 2 weeks after starting steroids due to skip lesions \u2014 still worth doing",
+      "Normal ESR does not exclude GCA \u2014 CRP and clinical features can be positive with normal ESR (~5% of cases)",
+      "Jaw claudication (not jaw pain at rest) is highly specific for GCA and should prompt urgent treatment"
+    ]
+  },
+  {
+    "id": "gout-acute",
+    "name": "Gout - acute",
+    "system": "Rheumatology",
+    "presentation": [
+      "Acute monoarthritis \u2014 typically 1st metatarsophalangeal (MTP) joint (podagra)",
+      "Rapid onset: maximal pain within 12\u201324 hours, often wakes patient at night",
+      "Severe pain, swelling, erythema, warmth \u2014 joint may be exquisitely tender to light touch",
+      "Precipitants: alcohol (especially beer), dehydration, diuretics (thiazide/loop), dietary purine load, illness/surgery",
+      "Background risk factors: male sex, obesity, chronic kidney disease, cyclosporin use"
+    ],
+    "signs": [
+      "Erythema, warmth, and swelling over affected joint \u2014 may mimic cellulitis",
+      "Exquisite tenderness on palpation or passive movement of joint",
+      "Tophi: firm subcutaneous deposits at ear helix, olecranon, Achilles tendon \u2014 sign of chronic tophaceous gout",
+      "Fever may be present \u2014 can cause diagnostic confusion with septic arthritis"
+    ],
+    "investigations": {
+      "bedside": [
+        "Observations: temperature (fever common), HR, BP",
+        "Joint aspiration (gold standard): needle-shaped negatively birefringent crystals under polarised light microscopy; also send for MC&S to exclude septic arthritis"
+      ],
+      "bloods": [
+        "Serum urate: often normal or LOW during acute attack \u2014 do not use to rule out gout acutely; baseline useful once resolved",
+        "WBC and CRP: raised \u2014 confirms inflammatory/infective process",
+        "Renal function (U&E): CKD is a risk factor; affects choice of NSAIDs and allopurinol dosing",
+        "LFTs and glucose: baseline before starting NSAIDs or colchicine"
+      ],
+      "imaging": [
+        "X-ray (plain): may be normal in acute attack; chronic gout shows punched-out juxta-articular erosions with overhanging edge ('rat-bite' erosions), preserved joint space",
+        "Ultrasound: double contour sign \u2014 urate crystal deposition on articular cartilage surface; also detects tophi and joint effusion",
+        "Joint aspiration (diagnostic): monosodium urate crystals \u2014 needle-shaped, negatively birefringent (yellow parallel, blue perpendicular to compensator axis)"
+      ]
+    },
+    "mx": [
+      "Acute attack: NSAIDs (e.g. naproxen) first-line if no contraindication; colchicine is an alternative (SE: diarrhoea, nausea); short-course oral corticosteroid if both NSAIDs and colchicine contraindicated (e.g. severe CKD)",
+      "Rest and elevate affected joint; ice packs for symptomatic relief",
+      "Do NOT start urate-lowering therapy (allopurinol/febuxostat) during an acute attack \u2014 precipitates prolonged or recurrent attacks; begin 4\u20136 weeks after resolution with prophylactic colchicine cover"
+    ],
+    "traps": [
+      "Serum urate can be NORMAL or LOW during the acute attack \u2014 a normal result does not exclude gout; recheck 4\u20136 weeks later",
+      "Never start allopurinol during an acute attack \u2014 it mobilises urate and worsens or prolongs the flare; always wait until fully resolved",
+      "Colchicine causes dose-dependent GI toxicity (diarrhoea, vomiting) \u2014 a common exam side-effect question; reduce dose in renal impairment",
+      "Septic arthritis must be excluded \u2014 both cause acute hot swollen joint with fever; joint aspiration MC&S is mandatory if diagnosis unclear (septic arthritis is a surgical emergency)"
+    ]
+  },
+  {
+    "id": "gout-prevent",
+    "name": "Gout - chronic/prevention",
+    "system": "Rheumatology",
+    "presentation": [
+      "Recurrent acute attacks (\u22652/year) \u2014 trigger for urate-lowering therapy",
+      "Tophi: firm, chalky deposits at ear helix, olecranon bursa, Achilles tendon",
+      "Chronic tophaceous arthritis \u2014 joint deformity, chronic pain between attacks",
+      "Uric acid renal stones (radiolucent on plain X-ray)",
+      "Renal impairment from urate nephropathy"
+    ],
+    "signs": [
+      "Tophi \u2014 ear helix, olecranon, Achilles tendon, finger pulps",
+      "Asymmetric joint deformity (1st MTP, midfoot, ankle, knee)",
+      "Skin ulceration/discharge of chalky material over tophus",
+      "Signs of chronic renal disease (hypertension, pallor) if urate nephropathy"
+    ],
+    "investigations": {
+      "bedside": [
+        "Urine dipstick \u2014 haematuria/proteinuria if renal involvement; uric acid stones cause haematuria",
+        "Joint aspiration during attack \u2014 needle-shaped, negatively birefringent monosodium urate crystals under polarised light"
+      ],
+      "bloods": [
+        "Serum urate \u2014 target <360 \u03bcmol/L on urate-lowering therapy (or <300 \u03bcmol/L if tophi present); note: can be normal during acute attack",
+        "U&E and eGFR \u2014 renal impairment is both a cause (reduced urate excretion) and consequence of hyperuricaemia; dose-adjust allopurinol",
+        "FBC \u2014 exclude haematological cause of high cell turnover (e.g. myeloproliferative disorder)",
+        "Fasting glucose and lipids \u2014 gout associated with metabolic syndrome"
+      ],
+      "imaging": [
+        "X-ray affected joint \u2014 chronic changes: well-defined punched-out erosions with overhanging cortical edge (rat-bite erosion), preserved joint space until late, soft-tissue tophi",
+        "Ultrasound \u2014 double-contour sign (urate crystals on articular cartilage), hyperechoic tophaceous deposits",
+        "DECT (dual-energy CT) \u2014 identifies urate deposits if diagnosis uncertain; not routine"
+      ]
+    },
+    "mx": [
+      "Start urate-lowering therapy 2\u20134 weeks after acute attack settles (not during attack \u2014 risks prolonging it); first-line: allopurinol (xanthine oxidase inhibitor)",
+      "Always co-prescribe prophylactic cover when initiating allopurinol \u2014 colchicine (preferred) or NSAID for minimum 3\u20136 months to prevent initiation flare",
+      "Titrate allopurinol dose to serum urate <360 \u03bcmol/L; lifestyle: low-purine diet, reduce alcohol (especially beer), avoid diuretics where possible, ensure adequate hydration"
+    ],
+    "traps": [
+      "Never start allopurinol during an acute attack \u2014 it precipitates a flare; wait 2\u20134 weeks and always co-prescribe colchicine/NSAID cover for first 3\u20136 months",
+      "Allopurinol + azathioprine = dangerous interaction \u2014 allopurinol inhibits xanthine oxidase (the enzyme that metabolises azathioprine/6-MP), causing azathioprine toxicity (severe myelosuppression); combination is contraindicated or requires 75% dose reduction of azathioprine",
+      "Serum urate can be normal or low during an acute attack \u2014 do not use a normal result to exclude gout acutely; repeat 4\u20136 weeks after attack",
+      "HLA-B*5801 screening before allopurinol in Han Chinese, Thai, Korean patients \u2014 associated with severe cutaneous reactions (Stevens-Johnson syndrome)"
+    ]
+  },
+  {
+    "id": "ra",
+    "name": "Rheumatoid arthritis",
+    "system": "Rheumatology",
+    "presentation": [
+      "Symmetrical small joint polyarthritis (MCPs, PIPs \u2014 spares DIPs)",
+      "Morning stiffness >1 hour, improves with activity",
+      "Systemic features: fatigue, weight loss, low-grade fever",
+      "Extra-articular: rheumatoid nodules, sicca symptoms, pleuritis, episcleritis",
+      "Insidious onset over weeks\u2013months in a woman aged 30\u201350"
+    ],
+    "signs": [
+      "MCP/PIP swelling, tenderness, warmth; DIP spared",
+      "Ulnar deviation of fingers at MCPs",
+      "Boutonniere deformity (PIP flexion, DIP hyperextension) or swan-neck deformity (PIP hyperextension, DIP flexion)",
+      "Wasting of dorsal interossei; rheumatoid nodules over pressure points (olecranon)"
+    ],
+    "investigations": {
+      "bedside": [
+        "Joint count (28-joint DAS28): swollen + tender joint tally",
+        "Obs: fever suggests septic arthritis or flare",
+        "Urine dip: exclude renal involvement (vasculitis)"
+      ],
+      "bloods": [
+        "Rheumatoid factor (RF): positive in ~70% \u2014 not specific (also SLE, Sjogren's, infection)",
+        "Anti-CCP antibodies: >95% specific for RA, positive before symptoms; titre predicts erosive disease",
+        "CRP + ESR: raised \u2014 track disease activity and treatment response",
+        "FBC: normocytic anaemia of chronic disease; thrombocytosis in active disease",
+        "LFTs + U&E + FBC: baseline before starting methotrexate (and monitored regularly)"
+      ],
+      "imaging": [
+        "X-ray hands + feet (PA): periarticular osteoporosis \u2192 joint space narrowing \u2192 marginal erosions (bare areas at joint margins) \u2192 subluxation/deformity (late)",
+        "Ultrasound joints: synovitis confirmed by power Doppler; detects erosions earlier than plain X-ray",
+        "MRI hands: most sensitive for early bone erosions and synovitis; used when X-ray normal but clinical suspicion high"
+      ]
+    },
+    "mx": [
+      "DMARD monotherapy first-line: methotrexate (weekly oral/SC) + folic acid 5mg once weekly (different day) to reduce toxicity",
+      "Bridging: short-course prednisolone or IM methylprednisolone to suppress active inflammation while DMARD takes effect (6\u201312 weeks onset)",
+      "Escalation: combination csDMARDs (add hydroxychloroquine \u00b1 sulfasalazine) or switch to biologic (anti-TNF e.g. etanercept/adalimumab) if DAS28 remains >3.2 after 6 months adequate DMARD"
+    ],
+    "traps": [
+      "Methotrexate is WEEKLY not daily \u2014 daily dosing causes fatal bone marrow suppression and mucositis; always prescribe as 'once weekly'",
+      "Folic acid must be co-prescribed (different day to methotrexate) \u2014 omitting it causes avoidable toxicity",
+      "Trimethoprim (and co-trimoxazole) is contraindicated with methotrexate \u2014 both are folate antagonists; combination risks life-threatening pancytopenia",
+      "Effective contraception required for both sexes on methotrexate \u2014 teratogenic; stop \u22653 months before planned conception"
+    ]
+  },
+  {
+    "id": "bv-trich",
+    "name": "Bacterial vaginosis / Trichomonas",
+    "system": "Obstetrics & Gynaecology",
+    "presentation": [
+      "BV: thin grey-white vaginal discharge with fishy (amine) odour, worse after sex/menstruation",
+      "BV: no itch, no soreness \u2014 absence of inflammation is characteristic",
+      "Trich: frothy yellow-green discharge with offensive odour",
+      "Trich: vulval pruritus, dysuria, dyspareunia"
+    ],
+    "signs": [
+      "BV: homogeneous grey-white discharge coating vaginal walls, pH >4.5, no erythema or inflammation",
+      "Trich: strawberry cervix (colpitis macularis) \u2014 punctate haemorrhages on cervix",
+      "Trich: frothy offensive discharge, vulval and vaginal erythema",
+      "Trich: may be asymptomatic in up to 50% of women"
+    ],
+    "investigations": {
+      "bedside": [
+        "Vaginal pH: >4.5 in both BV and Trich (normal <4.5)",
+        "Whiff test (KOH/amine test): fishy odour positive in BV; may be positive in Trich",
+        "Amsel's criteria for BV (3 of 4): homogeneous grey discharge, pH >4.5, positive whiff test, clue cells on wet prep"
+      ],
+      "bloods": [
+        "STI screen if Trich confirmed (Trich is an STI \u2014 partner notification and treatment required)",
+        "Consider HIV, hepatitis B/C, syphilis, gonorrhoea, chlamydia screen alongside Trich"
+      ],
+      "imaging": [
+        "Wet prep microscopy (saline): clue cells (epithelial cells studded with Gardnerella) \u2014 diagnostic of BV",
+        "Wet prep microscopy (saline): motile flagellated trichomonads \u2014 diagnostic of Trich",
+        "NAAT (nucleic acid amplification test): gold standard for Trichomonas vaginalis detection"
+      ]
+    },
+    "mx": [
+      "Both BV and Trich: oral metronidazole (nitroimidazole) \u2014 first-line for both",
+      "Trich: treat sexual partner(s) and advise abstinence until both complete treatment (Trich is an STI)",
+      "BV: partner treatment not routinely recommended (BV is not classified as an STI)"
+    ],
+    "traps": [
+      "BV is NOT an STI \u2014 no routine partner treatment; Trich IS an STI \u2014 always treat partner",
+      "Metronidazole + alcohol = disulfiram-like reaction (flushing, vomiting) \u2014 counsel patients to avoid alcohol during and 48 hours after course",
+      "BV in pregnancy increases risk of preterm labour, late miscarriage, and postpartum endometritis \u2014 screen and treat",
+      "Trich can be asymptomatic \u2014 do not exclude based on absence of symptoms alone"
+    ]
+  },
+  {
+    "id": "eclampsia",
+    "name": "Eclampsia",
+    "system": "Obstetrics & Gynaecology",
+    "presentation": [
+      "Tonic-clonic seizure in pregnancy (>20 weeks) or up to 4 weeks postpartum",
+      "Often preceded by pre-eclampsia features: headache, visual disturbance, epigastric/RUQ pain",
+      "Sudden-onset altered consciousness or coma post-ictally",
+      "Hypertension and proteinuria preceding seizure"
+    ],
+    "signs": [
+      "Tonic-clonic seizure (may be witnessed)",
+      "Hypertension (BP \u2265140/90, often severe)",
+      "Proteinuria on urine dip (\u22652+)",
+      "Peripheral or facial oedema",
+      "Reduced GCS / post-ictal confusion"
+    ],
+    "investigations": {
+      "bedside": [
+        "BP (serial monitoring \u2014 establish severity)",
+        "Urine dip (proteinuria \u22652+) then MSU/PCR",
+        "CTG (fetal heart rate monitoring for fetal distress)"
+      ],
+      "bloods": [
+        "FBC \u2014 thrombocytopenia in HELLP",
+        "LFTs \u2014 raised transaminases in HELLP; RUQ pain marker",
+        "LDH + blood film \u2014 haemolysis screen (HELLP)",
+        "Clotting (PT/APTT/fibrinogen) \u2014 DIC risk",
+        "U&E + creatinine \u2014 renal impairment",
+        "Urate \u2014 elevated in pre-eclampsia/eclampsia"
+      ],
+      "imaging": [
+        "CT head (non-contrast) \u2014 exclude intracranial haemorrhage or other cause if atypical",
+        "MRI brain \u2014 posterior reversible encephalopathy syndrome (PRES) pattern if available",
+        "USS fetal wellbeing + liquor volume + umbilical artery Dopplers"
+      ]
+    },
+    "mx": [
+      "Seizure control: IV/IM magnesium sulphate (MgSO4) \u2014 loading dose then maintenance infusion; continue 24 hours after last seizure or delivery",
+      "Blood pressure control: IV labetalol or hydralazine for acute severe hypertension (target <150/100); oral nifedipine once stable",
+      "Deliver once mother stabilised \u2014 definitive treatment; mode depends on gestation and clinical status"
+    ],
+    "traps": [
+      "MgSO4 is anticonvulsant not antihypertensive \u2014 a separate agent is needed for BP control",
+      "Mg toxicity signs: loss of patellar reflexes (first sign), respiratory depression, cardiac arrest \u2014 monitor reflexes hourly",
+      "Mg toxicity antidote: IV calcium gluconate 10 ml of 10% solution",
+      "Eclampsia can occur up to 4 weeks postpartum \u2014 seizure in a recently-delivered patient is eclampsia until proven otherwise",
+      "Continue MgSO4 for 24 hours after the last seizure or after delivery, whichever is later"
+    ]
+  },
+  {
+    "id": "ectopic",
+    "name": "Ectopic pregnancy",
+    "system": "Obstetrics & Gynaecology",
+    "presentation": [
+      "Amenorrhoea (typically 6\u20138 weeks)",
+      "Unilateral lower abdominal/pelvic pain",
+      "Vaginal bleeding (usually light, dark)",
+      "Shoulder tip pain (diaphragmatic irritation from haemoperitoneum \u2014 ruptured)",
+      "Collapse/syncope (ruptured)"
+    ],
+    "signs": [
+      "Adnexal tenderness (unilateral)",
+      "Cervical excitation (pathognomonic of pelvic pathology)",
+      "Peritonism \u2014 guarding, rigidity (ruptured)",
+      "Haemodynamic instability \u2014 tachycardia, hypotension (ruptured)"
+    ],
+    "investigations": {
+      "bedside": [
+        "Urine \u03b2hCG: positive (confirms pregnancy)",
+        "Observations: tachycardia + hypotension = ruptured until proven otherwise"
+      ],
+      "bloods": [
+        "Serum quantitative \u03b2hCG: discriminatory zone 1500\u20132000 IU/L (no IUP on TVUSS above this = ectopic until proven otherwise)",
+        "Serial \u03b2hCG (48 h): normal IUP rises \u226563%; plateau/rise <63% or fall suggests ectopic/failed pregnancy",
+        "FBC: haemoglobin (haemorrhage)",
+        "Group & crossmatch: prepare for possible surgery"
+      ],
+      "imaging": [
+        "TVUSS (first-line): empty uterus + adnexal mass \u00b1 fetal heartbeat; free fluid in pouch of Douglas indicates haemoperitoneum",
+        "No intrauterine pregnancy seen when \u03b2hCG >1500 IU/L = ectopic until proven otherwise"
+      ]
+    },
+    "mx": [
+      "Expectant: small, asymptomatic, \u03b2hCG falling (<1000 IU/L and declining) \u2014 close outpatient surveillance",
+      "Medical: methotrexate (folate antagonist) \u2014 criteria: haemodynamically stable, mass <35 mm, no fetal heartbeat, \u03b2hCG <1500 IU/L, no contraindications (renal/hepatic disease, immunodeficiency)",
+      "Surgical: salpingectomy (preferred) or salpingotomy \u2014 indicated if ruptured, haemodynamically unstable, medical criteria not met, or methotrexate fails; laparoscopic approach unless too unstable"
+    ],
+    "traps": [
+      "Ruptured ectopic = surgical emergency \u2014 do not delay for further investigations if haemodynamically unstable",
+      "Heterotopic pregnancy (simultaneous IUP + ectopic) \u2014 rare spontaneously but increased risk after IVF; finding an IUP on USS does not exclude ectopic",
+      "Avoid pregnancy for 3 months after methotrexate (teratogenic \u2014 folate antagonist)",
+      "\u03b2hCG below discriminatory zone does not exclude ectopic \u2014 repeat serial levels and USS; a very early IUP may not yet be visible"
+    ]
+  },
+  {
+    "id": "gdm",
+    "name": "Gestational diabetes",
+    "system": "Obstetrics & Gynaecology",
+    "presentation": [
+      "Often asymptomatic \u2014 screen-detected on OGTT",
+      "Polyuria and polydipsia if markedly hyperglycaemic",
+      "Risk factors: BMI >30, previous GDM, macrosomic baby (>4.5 kg) in prior pregnancy, first-degree relative with T2DM, South Asian / Black / Middle Eastern ethnicity"
+    ],
+    "signs": [
+      "Uterus large-for-dates on symphysis-fundal height measurement",
+      "Macrosomia on abdominal palpation (large fetal parts, ballotable head above pelvic brim at term)",
+      "Polyhydramnios \u2014 uterus tense, fluid thrill, fetal parts difficult to feel",
+      "USS: abdominal circumference >95th centile, increased liquor volume"
+    ],
+    "investigations": {
+      "bedside": [
+        "Capillary blood glucose (BM) monitoring \u2014 fasting and 1 h post-meal targets (fasting <5.3, 1 h <7.8 mmol/L)",
+        "Urine dipstick for glycosuria \u2014 poor screening tool (low sensitivity/specificity in pregnancy); persistent 2+ warrants OGTT"
+      ],
+      "bloods": [
+        "75 g OGTT (diagnostic): fasting glucose \u22655.6 mmol/L OR 2-hour glucose \u22657.8 mmol/L = GDM (NICE NG3)",
+        "HbA1c \u2014 NOT used to diagnose or monitor GDM (red cell turnover increased in pregnancy; falsely low)",
+        "Booking HbA1c or fasting glucose if high risk \u2014 used to detect pre-existing T2DM undiagnosed before pregnancy (HbA1c \u226548 mmol/mol = T2DM)"
+      ],
+      "imaging": [
+        "USS growth scan (28, 32, 36 weeks): abdominal circumference, estimated fetal weight, liquor volume (AFI/deepest pool)",
+        "Polyhydramnios: deepest vertical pool >8 cm or AFI >24 cm \u2014 associated with poor glycaemic control",
+        "Umbilical artery Doppler if growth restriction suspected (placental insufficiency co-exists occasionally)"
+      ]
+    },
+    "mx": [
+      "Step 1 \u2014 diet and exercise: low glycaemic index diet, 30 min moderate activity daily; review at 1\u20132 weeks",
+      "Step 2 \u2014 metformin: if glucose targets not met on lifestyle alone (fasting <5.3, 1 h post-meal <7.8 mmol/L)",
+      "Step 3 \u2014 insulin: add (or use instead of metformin if contraindicated/not tolerated) if targets still not met; also start insulin immediately if fasting glucose \u22657.0 mmol/L at diagnosis",
+      "Postnatal: stop all hypoglycaemic agents at delivery; retest with fasting glucose or HbA1c at 6\u201313 weeks postnatally"
+    ],
+    "traps": [
+      "HbA1c is unreliable in pregnancy \u2014 increased red cell turnover causes falsely low result; OGTT is the diagnostic test",
+      "OGTT thresholds in GDM (NICE): fasting \u22655.6 OR 2 h \u22657.8 \u2014 lower than standard T2DM thresholds; do not confuse",
+      "Fasting glucose \u22657.0 mmol/L at OGTT = start insulin immediately (do not trial diet/metformin first)",
+      "GDM resolves after delivery but confers ~50% lifetime risk of T2DM \u2014 postnatal retest and annual fasting glucose thereafter is mandatory",
+      "GDM is a risk factor for shoulder dystocia, stillbirth, neonatal hypoglycaemia, and pre-eclampsia \u2014 not purely a maternal metabolic issue"
+    ]
+  },
+  {
+    "id": "pph",
+    "name": "Postpartum haemorrhage",
+    "system": "Obstetrics & Gynaecology",
+    "presentation": [
+      "Primary PPH: blood loss >500 ml after vaginal delivery or >1000 ml after caesarean section within 24 hours",
+      "4 T's aetiology: Tone (uterine atony \u2014 70-80% of PPH), Trauma (lacerations, uterine rupture), Tissue (retained placenta/membranes), Thrombin (coagulopathy)",
+      "Haemodynamic instability: tachycardia, hypotension, pallor, cold clammy peripheries",
+      "Uterine atony: fundus palpably soft and boggy post-delivery, fails to contract",
+      "Secondary PPH: excessive bleeding 24 hours to 12 weeks postpartum \u2014 consider retained products or endometritis"
+    ],
+    "signs": [
+      "Boggy, poorly contracted uterus on abdominal palpation (atony)",
+      "Haemodynamic compromise: shock index (HR/SBP) >1 suggests significant haemorrhage",
+      "Visible genital tract trauma on inspection (perineal/vaginal/cervical lacerations)",
+      "Failure of placenta to deliver or incomplete placenta on inspection (retained tissue)"
+    ],
+    "investigations": {
+      "bedside": [
+        "Observations: shock index (HR/SBP) \u2014 >1 significant, >1.7 severe; continuous pulse oximetry and BP monitoring",
+        "Catheterise: urine output target >30 ml/hr as marker of renal perfusion and volume status",
+        "Clinical estimate of blood loss: weigh swabs, measure collected blood; note underestimation is common"
+      ],
+      "bloods": [
+        "FBC: haemoglobin trend (initial Hb may be falsely normal in acute haemorrhage) and platelet count",
+        "Clotting screen + fibrinogen: DIC develops in severe PPH \u2014 fibrinogen <2 g/L is critical threshold indicating consumption",
+        "Group and crossmatch: urgent sample for blood bank; activate major haemorrhage protocol if needed",
+        "Venous blood gas: lactate and base excess for real-time assessment of tissue perfusion and shock severity"
+      ],
+      "imaging": [
+        "USS uterus and pelvis: identify retained products of conception (echogenic material within uterine cavity)",
+        "Interventional radiology: uterine artery embolisation if bleeding refractory to medical management and patient haemodynamically stable enough"
+      ]
+    },
+    "mx": [
+      "Call for help + major haemorrhage protocol: 2 large-bore IV cannulae, IV fluid resuscitation, transfuse packed red cells:FFP:platelets in 1:1:1 ratio; tranexamic acid (antifibrinolytic) within 3 hours",
+      "Stepwise uterotonics for atony \u2014 uterine massage (bimanual compression) \u2192 oxytocin IV infusion (first-line uterotonic) \u2192 ergometrine IM/IV (ergot alkaloid, vasoconstriction + uterine contraction) \u2192 carboprost IM (prostaglandin F2\u03b1 analogue) \u2192 misoprostol (prostaglandin E1, sublingual/rectal)",
+      "4 T's-targeted management: Tone \u2192 uterotonics/massage; Trauma \u2192 surgical repair of lacerations; Tissue \u2192 manual removal of placenta/ERPC; Thrombin \u2192 correct coagulopathy with FFP/cryoprecipitate/platelets",
+      "Escalation: intrauterine balloon tamponade \u2192 B-Lynch suture (compression suture) \u2192 uterine/internal iliac artery ligation \u2192 hysterectomy (definitive last resort)"
+    ],
+    "traps": [
+      "Carboprost (prostaglandin F2\u03b1) is CONTRAINDICATED in asthma \u2014 causes severe bronchospasm; use misoprostol instead",
+      "Ergometrine is CONTRAINDICATED in hypertension and pre-eclampsia/eclampsia \u2014 causes vasoconstriction and can precipitate hypertensive crisis or stroke",
+      "Do not rely on initial haemoglobin to exclude significant haemorrhage \u2014 Hb may be falsely normal in acute haemorrhage before haemodilution occurs; use shock index and clinical picture",
+      "Fibrinogen is a sensitive early marker of DIC in PPH \u2014 a falling fibrinogen (<2 g/L) mandates cryoprecipitate; standard clotting (PT/APTT) may be normal until late"
+    ]
+  },
+  {
+    "id": "pre-eclampsia",
+    "name": "Pre-eclampsia",
+    "system": "Obstetrics & Gynaecology",
+    "presentation": [
+      "Hypertension \u2265140/90 mmHg after 20 weeks gestation",
+      "Proteinuria (\u2265300 mg/24 h or PCR \u226530 mg/mmol)",
+      "Frontal headache (warning of impending eclampsia)",
+      "Visual disturbance: blurring, flashing lights, scotomata",
+      "Epigastric or RUQ pain (hepatic capsule stretch / HELLP)"
+    ],
+    "signs": [
+      "Elevated BP on repeated measurement (\u2265140/90 or severe \u2265160/110)",
+      "Pitting oedema \u2014 hands, face, pre-tibial (non-specific but common)",
+      "Hyperreflexia and clonus (\u22653 beats = severe \u2014 risk of seizure)",
+      "RUQ tenderness on palpation (hepatic involvement / HELLP)"
+    ],
+    "investigations": {
+      "bedside": [
+        "Urine dipstick: proteinuria 2+ or more \u2014 quantify with PCR",
+        "Urine protein:creatinine ratio (PCR) \u226530 mg/mmol confirms significant proteinuria",
+        "BP measurement: two readings \u2265140/90 mmHg \u22654 h apart"
+      ],
+      "bloods": [
+        "FBC: thrombocytopenia (platelets <100 \u00d710\u2079/L in HELLP)",
+        "LFTs: elevated AST/ALT (\u22652\u00d7 upper limit); \u2191bilirubin indicates haemolysis",
+        "LDH: \u2191LDH (>600 U/L) \u2014 marker of haemolysis (H in HELLP)",
+        "U&E and creatinine: rising creatinine reflects renal impairment",
+        "Clotting / coagulation screen: DIC risk if HELLP severe"
+      ],
+      "imaging": [
+        "USS fetus + umbilical artery Dopplers: fetal growth restriction, oligohydramnios, absent/reversed end-diastolic flow",
+        "CT head: indicated after eclamptic seizure to exclude haemorrhage or other cause"
+      ]
+    },
+    "mx": [
+      "Antihypertensive: labetalol first-line (oral or IV); nifedipine MR alternative; target BP <150/100 mmHg",
+      "Seizure prevention: IV magnesium sulphate (MgSO4) if severe pre-eclampsia or eclampsia \u2014 loading dose then infusion",
+      "Delivery: definitive treatment \u2014 timing depends on gestation and severity; corticosteroids if <34 weeks for fetal lung maturity",
+      "Prophylaxis: low-dose aspirin from 12 weeks in women with \u22651 high-risk or \u22652 moderate-risk factors"
+    ],
+    "traps": [
+      "Mg toxicity sequence: loss of patellar reflexes \u2192 respiratory depression \u2192 cardiac arrest \u2014 monitor reflexes hourly; antidote is IV calcium gluconate",
+      "Delivery is the only cure \u2014 all other measures are temporising; do not delay delivery to chase a normal BP",
+      "HELLP can occur without severe hypertension or significant proteinuria \u2014 diagnose on bloods, not BP alone",
+      "Methyldopa: safe antenatally but avoid postnatally (risk of postnatal depression); switch to labetalol or nifedipine after delivery"
+    ]
+  },
+  {
+    "id": "depression",
+    "name": "Depression",
+    "system": "Psychiatry",
+    "presentation": [
+      "Persistent low mood (\u22652 weeks)",
+      "Anhedonia \u2014 loss of interest/pleasure in previously enjoyed activities",
+      "Anergia \u2014 fatigue or loss of energy",
+      "Biological symptoms: early morning wakening, diurnal mood variation (worse AM), psychomotor retardation/agitation, reduced appetite/weight loss, loss of libido",
+      "Suicidal ideation or thoughts of self-harm"
+    ],
+    "signs": [
+      "Psychomotor retardation or agitation on MSE",
+      "Flat or blunted affect; tearful",
+      "Poor eye contact, downcast gaze",
+      "Poverty of thought; slow, monosyllabic responses"
+    ],
+    "investigations": {
+      "bedside": [
+        "PHQ-9: score 0\u20134 minimal, 5\u20139 mild, 10\u201314 moderate, 15\u201319 moderately severe, 20\u201327 severe",
+        "Mental state examination (MSE) \u2014 assess cognition, thought content, risk",
+        "Suicide risk assessment \u2014 ideation, intent, plan, means, protective factors"
+      ],
+      "bloods": [
+        "TFTs \u2014 exclude hypothyroidism as reversible organic cause",
+        "FBC \u2014 exclude anaemia",
+        "Serum calcium \u2014 hypercalcaemia can cause low mood",
+        "Fasting glucose \u2014 exclude diabetes-related mood disturbance"
+      ],
+      "imaging": [
+        "CT/MRI head only if late-onset (>60 yrs), atypical features, or cognitive impairment to exclude organic cause (e.g. space-occupying lesion, vascular dementia)"
+      ]
+    },
+    "mx": [
+      "Mild depression: active monitoring, guided self-help, or low-intensity CBT \u2014 antidepressants not first line",
+      "Moderate\u2013severe depression: SSRI (sertraline first choice) + psychological therapy (CBT); review within 1\u20132 weeks of starting medication",
+      "Treatment-resistant or severe/psychotic depression: consider augmentation (add antipsychotic or lithium), or referral to secondary care psychiatry"
+    ],
+    "traps": [
+      "Review within 1 week if patient is <25 yrs or high suicide risk at initiation \u2014 SSRIs can transiently increase suicidality in early treatment",
+      "Never stop SSRIs abruptly \u2014 taper to avoid discontinuation syndrome (dizziness, electric-shock sensations, flu-like symptoms)",
+      "SSRI + NSAID (or aspirin) = significantly increased GI bleed risk \u2014 consider PPI cover",
+      "PHQ-9 \u226510 does not automatically mandate an SSRI \u2014 severity, patient preference, and safety must guide the decision"
+    ]
+  },
+  {
+    "id": "gad",
+    "name": "Generalised anxiety disorder",
+    "system": "Psychiatry",
+    "presentation": [
+      "Persistent, excessive worry across multiple domains (work, health, finances) lasting >6 months",
+      "Difficult to control worry; patient recognises it as disproportionate",
+      "Somatic symptoms: palpitations, sweating, tremor, GI upset (nausea/diarrhoea)",
+      "Restlessness, fatigue, poor concentration, irritability, muscle tension, sleep disturbance"
+    ],
+    "signs": [
+      "MSE: anxious or agitated affect, worry-focused thought content, preserved insight",
+      "Tachycardia and diaphoresis on autonomic examination",
+      "Hyperventilation (respiratory rate elevated, may cause tingling/tetany)",
+      "Tremor of outstretched hands; no thyroid goitre or exophthalmos (distinguishes from hyperthyroidism)"
+    ],
+    "investigations": {
+      "bedside": [
+        "GAD-7 questionnaire: score \u226510 suggests moderate-severe GAD",
+        "Mental state examination (MSE): assess affect, thought content, cognition, insight",
+        "Urine dip and BP to exclude phaeochromocytoma if episodic hypertension"
+      ],
+      "bloods": [
+        "TFTs (TSH + free T4): hyperthyroidism is the key organic mimic \u2014 exclude before diagnosis",
+        "Fasting glucose: hypoglycaemia causes adrenergic symptoms mimicking anxiety",
+        "FBC + CRP: exclude anaemia (causes tachycardia/fatigue) and systemic illness",
+        "Caffeine and substance history (not a blood test but mandatory organic screen)"
+      ],
+      "imaging": [
+        "ECG: exclude arrhythmia (SVT, AF) in patients with prominent palpitations",
+        "24-hour Holter monitor if paroxysmal palpitations persist with normal resting ECG",
+        "Imaging has limited role in GAD; CT/MRI only if focal neurological signs present"
+      ]
+    },
+    "mx": [
+      "Stepped care (NICE): Step 1 \u2014 psychoeducation and active monitoring; Step 2 \u2014 low-intensity CBT or guided self-help; Step 3 \u2014 high-intensity CBT or SSRI (sertraline first-line) or SNRI (venlafaxine)",
+      "Pregabalin: second-line pharmacological option (licensed for GAD); monitor for dependence",
+      "Avoid benzodiazepines long-term \u2014 short-term crisis use only (\u22642\u20134 weeks); risk of tolerance and dependence"
+    ],
+    "traps": [
+      "Always exclude hyperthyroidism (TSH) before diagnosing GAD \u2014 presentations overlap completely",
+      "Phaeochromocytoma causes episodic hypertension, sweating and palpitations \u2014 rare but dangerous to miss",
+      "Benzodiazepines are not first-line and must not be prescribed long-term; SSRI/CBT is the evidence-based approach",
+      "Pregabalin is second-line not first-line; also carries dependence potential and is a controlled drug (Schedule 3)"
+    ]
+  },
+  {
+    "id": "serotonin-syndrome",
+    "name": "Serotonin syndrome",
+    "system": "Psychiatry",
+    "presentation": [
+      "Triad: altered mental status (agitation, confusion, restlessness) + autonomic instability + neuromuscular abnormalities",
+      "Onset within hours (usually <24 h) of starting, increasing dose, or adding a serotonergic drug",
+      "Autonomic features: tachycardia, hypertension, hyperthermia, diaphoresis, mydriasis",
+      "Neuromuscular features: clonus, hyperreflexia, tremor, myoclonus",
+      "Severity spectrum: mild (tremor + tachycardia) \u2192 life-threatening (hyperthermia >41\u00b0C, rhabdomyolysis, seizures)"
+    ],
+    "signs": [
+      "Clonus \u2014 especially inducible ankle clonus and spontaneous clonus (pathognomonic feature in Hunter criteria)",
+      "Hyperreflexia \u2014 lower limbs > upper limbs",
+      "Diaphoresis and flushed skin",
+      "Tachycardia and hypertension on obs; hyperthermia (can be extreme)"
+    ],
+    "investigations": {
+      "bedside": [
+        "Observations: temperature (fever), HR (tachycardia), BP (hypertension), SpO2",
+        "Medication review: identify all serotonergic agents (SSRIs, SNRIs, TCAs, MAOIs, tramadol, linezolid, triptans, lithium, fentanyl, St John's Wort)",
+        "Hunter Criteria assessment: serotonergic drug + [spontaneous clonus / inducible clonus + agitation or diaphoresis / ocular clonus + agitation or diaphoresis / tremor + hyperreflexia / hypertonia + temp >38\u00b0C + ocular or inducible clonus]"
+      ],
+      "bloods": [
+        "CK \u2014 elevated in moderate-severe disease; markedly raised if rhabdomyolysis",
+        "U&E \u2014 AKI secondary to rhabdomyolysis; electrolyte derangement",
+        "FBC and glucose \u2014 baseline; exclude infection or hypoglycaemia as contributory cause",
+        "Clotting screen \u2014 if severe, exclude DIC"
+      ],
+      "imaging": [
+        "CT head \u2014 only to exclude intracranial cause (haemorrhage, encephalitis) if diagnosis uncertain or reduced GCS"
+      ]
+    },
+    "mx": [
+      "Stop all serotonergic drugs immediately",
+      "Supportive care: IV fluids, active cooling for hyperthermia, benzodiazepines (lorazepam/diazepam) for agitation and neuromuscular excitability",
+      "Cyproheptadine (serotonin antagonist) as antidote in moderate-severe cases; ITU for life-threatening hyperthermia or rhabdomyolysis"
+    ],
+    "traps": [
+      "Distinguishing from NMS: serotonin syndrome = rapid onset (hours), clonus/hyperreflexia, serotonergic drug cause; NMS = slow onset (days-weeks), lead-pipe rigidity, dopamine-blocking drug cause (antipsychotics)",
+      "Tramadol + SSRI is a classic precipitant \u2014 tramadol inhibits serotonin reuptake and is a common co-prescription",
+      "Linezolid (antibiotic) is an MAOI and is serotonergic \u2014 combined with SSRIs causes serotonin syndrome",
+      "Hunter criteria (not Sternbach) are the validated diagnostic tool \u2014 clonus is the key discriminating sign"
+    ]
+  },
+  {
+    "id": "acne",
+    "name": "Acne vulgaris",
+    "system": "Dermatology",
+    "presentation": [
+      "Comedones (open/closed), inflammatory papules, pustules, nodules or cysts on face, chest, and back",
+      "Onset typically puberty (12\u201318 yrs); can persist into adulthood, especially in women",
+      "Scarring (atrophic ice-pick/boxcar or hypertrophic keloid) with severe or inadequately treated disease",
+      "Significant psychological burden: low self-esteem, depression, social withdrawal \u2014 assess QoL (DLQI)"
+    ],
+    "signs": [
+      "Open comedones (blackheads) and closed comedones (whiteheads) \u2014 non-inflammatory lesions",
+      "Inflammatory papules (red, <5 mm) and pustules (pus-filled) overlying comedones",
+      "Nodules (\u22655 mm, deep, tender) and cysts (fluctuant, risk of scarring) in severe disease",
+      "Post-inflammatory hyperpigmentation and atrophic or hypertrophic scarring; distribution: face (especially T-zone), upper chest, upper back"
+    ],
+    "investigations": {
+      "bedside": [
+        "Clinical diagnosis \u2014 no routine investigations needed for typical presentation",
+        "Skin swabs (Gram stain + culture) only if atypical or treatment-resistant: exclude Gram-negative folliculitis (Klebsiella/Enterobacter) or Pityrosporum folliculitis"
+      ],
+      "bloods": [
+        "Pregnancy test (serum \u03b2-hCG) \u2014 mandatory before and monthly during isotretinoin (Pregnancy Prevention Programme)",
+        "LFTs (ALT/AST) \u2014 baseline and 1 month after starting isotretinoin; hepatotoxicity risk",
+        "Fasting lipid profile (total cholesterol, triglycerides) \u2014 baseline and monitoring during isotretinoin; hypertriglyceridaemia risk",
+        "FBC \u2014 baseline before isotretinoin; testosterone, DHEAS, LH:FSH, 17-OHP if hormonal acne suspected in women (PCOS, CAH)"
+      ],
+      "imaging": [
+        "Pelvic USS \u2014 if PCOS suspected (hormonal acne in women with irregular cycles, hirsutism)",
+        "No imaging required for routine acne diagnosis"
+      ]
+    },
+    "mx": [
+      "Mild (comedonal/few papulopustular): topical benzoyl peroxide (BPO) + topical retinoid (adapalene) \u00b1 topical antibiotic (clindamycin) \u2014 always pair antibiotic with BPO to limit resistance",
+      "Moderate (widespread papulopustular/mild nodular): add oral antibiotic (lymecycline or doxycycline) for maximum 3 months \u2014 never combine oral + topical antibiotic; always co-prescribe BPO; consider combined oral contraceptive (co-cyprindiol) in women",
+      "Severe/scarring/treatment-resistant: oral isotretinoin (vitamin A retinoid) \u2014 specialist-only prescribing, 16\u201324 week course; highly teratogenic \u2014 all female patients must be enrolled in Pregnancy Prevention Programme (2 forms of contraception, monthly pregnancy tests)"
+    ],
+    "traps": [
+      "Isotretinoin is highly teratogenic (Category X) \u2014 all women of childbearing potential must complete the Pregnancy Prevention Programme (2 contraceptive methods, monthly pregnancy tests, dispensed in 30-day supplies only); never prescribe if pregnancy test positive",
+      "Never prescribe oral antibiotic plus topical antibiotic together \u2014 promotes antibiotic resistance; always pair any antibiotic (oral or topical) with benzoyl peroxide which has anti-resistance activity",
+      "Oral antibiotics should not be used for more than 3 months \u2014 resistance risk; reassess at 3 months and step up to isotretinoin if inadequate response rather than continuing antibiotics",
+      "Isotretinoin side effects frequently tested: teratogenicity, dry lips/skin/eyes (most common \u2014 prescribe emollients), raised triglycerides, deranged LFTs, possible mood changes/depression (monitor), contraindicated in pregnancy and breastfeeding"
+    ]
+  },
+  {
+    "id": "eczema",
+    "name": "Eczema",
+    "system": "Dermatology",
+    "presentation": [
+      "Intense itch (cardinal symptom) \u2014 worse at night, disrupts sleep",
+      "Flexural distribution: antecubital/popliteal fossae, wrists, neck (adults); face/scalp/extensor surfaces (infants)",
+      "Triggers: soaps, detergents, heat, sweat, stress, certain fabrics",
+      "Personal or family history of atopy (asthma, hay fever, eczema)",
+      "Dry skin (xerosis) with episodic flares"
+    ],
+    "signs": [
+      "Erythematous, lichenified plaques in flexural sites; excoriation marks",
+      "Dennie-Morgan folds (infraorbital skin folds) and allergic shiners",
+      "Infected eczema: weeping, crusted, honey-coloured exudate; may have satellite lesions (S. aureus)",
+      "In chronic disease: post-inflammatory hypo- or hyperpigmentation; skin thickening"
+    ],
+    "investigations": {
+      "bedside": [
+        "EASI or SCORAD severity score to guide treatment step",
+        "Skin swabs (MC&S) if secondary infection suspected \u2014 S. aureus commonest",
+        "Patch testing if allergic contact dermatitis suspected (distinct from atopic eczema)"
+      ],
+      "bloods": [
+        "Total IgE \u2014 elevated in atopic eczema",
+        "FBC \u2014 eosinophilia supports atopic disease",
+        "Specific IgE (RAST) \u2014 identify relevant aeroallergens or food allergens if history suggests"
+      ],
+      "imaging": [
+        "Skin biopsy only if diagnosis uncertain or malignancy (e.g. mycosis fungoides) needs exclusion"
+      ]
+    },
+    "mx": [
+      "Emollients: apply liberally and continuously (soap substitute + moisturiser) \u2014 cornerstone of all-step management",
+      "Topical corticosteroids: potency matched to severity and site (mild \u2014 hydrocortisone 1% for face; moderate \u2014 clobetasone; potent \u2014 betamethasone for lichenified plaques); use for flares only",
+      "Step up: topical calcineurin inhibitors (tacrolimus/pimecrolimus) for sensitive sites or steroid-sparing; dupilumab (IL-4/IL-13 inhibitor) for moderate-severe refractory eczema; short-course oral prednisolone bridging if severe acute flare"
+    ],
+    "traps": [
+      "Eczema herpeticum: punched-out monomorphic vesicles/erosions on background eczema + systemic upset = dermatological emergency \u2014 admit, IV aciclovir, ophthalmology review if periorbital",
+      "Finger-tip unit (FTU) dosing: 1 FTU covers one hand area; failure to use adequate amounts of topical steroid is a common cause of inadequate control",
+      "Do not use potent steroids on the face or flexures long-term \u2014 atrophy, telangiectasia, striae risk",
+      "Steroid phobia in parents/patients leads to under-treatment; address directly and explain that short-course topical use at correct potency is safe"
+    ]
+  },
+  {
+    "id": "anaphylaxis",
+    "name": "Anaphylaxis",
+    "system": "Emergency",
+    "presentation": [
+      "Rapid onset (seconds\u2013minutes) after trigger exposure (food, drug, insect sting)",
+      "Urticaria and/or angioedema \u2014 erythematous wheals, swelling of lips/tongue/throat",
+      "Airway compromise \u2014 stridor (upper), wheeze (lower), sensation of throat tightening",
+      "Circulatory collapse \u2014 hypotension, syncope, dizziness",
+      "GI symptoms \u2014 nausea, vomiting, abdominal cramps (esp. food allergy)"
+    ],
+    "signs": [
+      "Urticaria \u2014 raised erythematous wheals, widespread",
+      "Angioedema \u2014 non-pitting swelling of face, lips, tongue, uvula",
+      "Stridor \u2014 inspiratory noise indicating upper airway obstruction",
+      "Wheeze \u2014 expiratory, indicating bronchospasm",
+      "Hypotension + tachycardia \u2014 distributive shock",
+      "Flushing and generalised erythema"
+    ],
+    "investigations": {
+      "bedside": [
+        "Obs: continuous BP, HR, O2 sats, RR \u2014 clinical diagnosis; do not delay treatment for tests",
+        "Peak flow if able \u2014 bronchospasm severity",
+        "ECG \u2014 exclude arrhythmia if cardiovascular compromise"
+      ],
+      "bloods": [
+        "Mast cell tryptase (MCT): 3 samples \u2014 at presentation (0 h), 1\u20132 h post-reaction, and convalescent (>24 h or follow-up); rise confirms mast cell degranulation",
+        "FBC \u2014 eosinophilia may support allergic diathesis (not acute diagnostic)",
+        "U&E/glucose \u2014 baseline; hypoglycaemia as alternative cause of collapse"
+      ],
+      "imaging": [
+        "CXR \u2014 if aspiration suspected, significant bronchospasm, or failure to respond to treatment",
+        "Limited acute role \u2014 clinical diagnosis drives immediate management"
+      ]
+    },
+    "mx": [
+      "IM adrenaline 1:1000 (1 mg/mL) into anterolateral thigh \u2014 FIRST and most important step; repeat every 5 min if no improvement",
+      "High-flow O2 + large-bore IV access + IV crystalloid bolus for hypotension; lie flat with legs raised (avoid sitting up in shock)",
+      "Chlorphenamine (antihistamine) + hydrocortisone (steroid) as ADJUNCTS only \u2014 given after adrenaline, do not substitute for it; observe minimum 6\u201312 h for biphasic reaction"
+    ],
+    "traps": [
+      "Adrenaline route: IM anterolateral thigh (NOT IV except in cardiac arrest or by specialists with monitoring \u2014 IV causes fatal arrhythmias if given inappropriately)",
+      "Antihistamines and steroids are NOT acute life-saving treatments \u2014 adrenaline is; giving these instead of adrenaline delays definitive treatment",
+      "Sitting up a shocked patient can precipitate cardiac arrest \u2014 lie flat with legs elevated unless respiratory compromise forces upright posture",
+      "Biphasic (late) reaction occurs in up to 20% \u2014 observe for minimum 6\u201312 h; warn patient symptoms can recur up to 72 h later",
+      "Always prescribe self-injectable adrenaline (EpiPen) on discharge and refer to allergy clinic"
+    ]
+  },
+  {
+    "id": "opioid-od",
+    "name": "Opioid overdose",
+    "system": "Emergency",
+    "presentation": [
+      "Reduced consciousness or unresponsive",
+      "Slow or shallow respiratory rate (RR <12)",
+      "Pinpoint pupils (miosis)",
+      "Context: known opioid prescription, illicit drug use, or visible needle track marks",
+      "Found unresponsive or collapsed"
+    ],
+    "signs": [
+      "Classic triad: coma + miosis + respiratory depression",
+      "Cyanosis (central, from hypoventilation)",
+      "Bradycardia and hypotension",
+      "Hypothermia (prolonged collapse)",
+      "Needle track marks on arms, groin, or feet"
+    ],
+    "investigations": {
+      "bedside": [
+        "Obs: RR <12, O2 sats (hypoxia), GCS (reduced)",
+        "BM \u2014 exclude hypoglycaemia as reversible cause of reduced consciousness",
+        "Urine drug screen \u2014 confirms opioid exposure"
+      ],
+      "bloods": [
+        "ABG: type 2 respiratory failure (\u2191CO2, \u2193O2, \u2193pH \u2014 respiratory acidosis)",
+        "FBC/U&E/CK \u2014 if prolonged collapse, CK elevated in rhabdomyolysis",
+        "Paracetamol and salicylate levels \u2014 routine in all overdose presentations"
+      ],
+      "imaging": [
+        "CXR: aspiration pneumonia if prolonged unconsciousness",
+        "CXR: non-cardiogenic pulmonary oedema (heroin-associated)"
+      ]
+    },
+    "mx": [
+      "IV or IM naloxone \u2014 opioid receptor antagonist; titrate dose to restore adequate respiratory rate (RR \u226512), not full consciousness",
+      "Repeated doses or IV infusion may be required \u2014 naloxone half-life (60\u201390 min) is shorter than most opioids",
+      "Supportive: airway positioning, high-flow O2, recovery position once responsive; admit for monitoring"
+    ],
+    "traps": [
+      "Naloxone half-life (60\u201390 min) is shorter than most opioids \u2192 patient can re-sedate after initial response; must observe for at least 4 hours or use infusion",
+      "Do not over-reverse \u2014 precipitates acute opioid withdrawal (agitation, vomiting, hypertension) and removes analgesia in pain patients",
+      "Always check BM first \u2014 hypoglycaemia mimics opioid toxidrome and is immediately reversible",
+      "Methadone and buprenorphine have very long half-lives \u2014 prolonged naloxone infusion almost always needed"
+    ]
+  },
+  {
+    "id": "paracetamol-od",
+    "name": "Paracetamol overdose",
+    "system": "Emergency",
+    "presentation": [
+      "Often asymptomatic in first 24h \u2014 deceptively well initially",
+      "Nausea and vomiting 0\u201324h post-ingestion",
+      "Right upper quadrant pain 24\u201372h (hepatocellular necrosis onset)",
+      "Jaundice, coagulopathy, encephalopathy if severe hepatotoxicity (72\u201396h)"
+    ],
+    "signs": [
+      "RUQ tenderness (hepatic inflammation 24\u201372h)",
+      "Jaundice (hepatocellular failure >72h)",
+      "Signs of hepatic encephalopathy: confusion, asterixis, reduced GCS",
+      "Bruising or bleeding (coagulopathy \u2014 rising INR)"
+    ],
+    "investigations": {
+      "bedside": [
+        "Paracetamol level at 4h post-ingestion (or earliest opportunity >4h) \u2014 plot on treatment nomogram",
+        "BM (hypoglycaemia sign of hepatic failure)",
+        "ECG if co-ingestants suspected"
+      ],
+      "bloods": [
+        "LFTs \u2014 ALT/AST peak at 72\u201396h, not day 1; early normal LFTs do not exclude developing hepatotoxicity",
+        "INR \u2014 key prognostic marker; rising INR indicates hepatic synthetic failure",
+        "U&E + creatinine \u2014 hepatorenal syndrome risk in severe cases",
+        "Venous blood gas \u2014 pH <7.3 after resuscitation = King's College criterion"
+      ],
+      "imaging": [
+        "USS liver + portal vasculature if hepatotoxicity confirmed \u2014 assess liver architecture and vascularity",
+        "Limited acute diagnostic role for imaging in early overdose"
+      ]
+    },
+    "mx": [
+      "Activated charcoal if presentation <1h post-ingestion and dose >150mg/kg (or >75mg/kg in high-risk)",
+      "IV N-acetylcysteine (NAC) \u2014 replenishes glutathione; start if paracetamol level plots above treatment line on nomogram, or if staggered/unknown timing (treat empirically)",
+      "King's College criteria for urgent liver transplant referral: pH <7.3 after resuscitation OR all three of INR >6.5 + creatinine >300 \u00b5mol/L + grade III\u2013IV encephalopathy"
+    ],
+    "traps": [
+      "Staggered or unknown timing of ingestion \u2014 do NOT use nomogram; treat with NAC regardless of level",
+      "Patient appears well at 24h \u2014 early normalcy is classic trap; hepatotoxicity peaks 72\u201396h, not day 1",
+      "ALT/AST normal on presentation does not exclude serious overdose \u2014 repeat LFTs at 24h minimum",
+      "King's criteria: pH criterion alone is sufficient for referral; the triad (INR >6.5 + Cr >300 + grade III\u2013IV encephalopathy) is the alternative \u2014 not all three needed if pH criterion met"
+    ]
+  }
+]
