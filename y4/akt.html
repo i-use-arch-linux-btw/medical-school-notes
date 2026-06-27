@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AKT Management Reference</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:#f5f5f7;
+  --surface:#fff;
+  --ink:#1d1d1f;
+  --ink-2:#6e6e73;
+  --ink-3:#86868b;
+  --hair:#d2d2d7;
+  --hair-soft:#e8e8ed;
+  --shadow:0 1px 2px rgba(0,0,0,.04),0 8px 30px rgba(0,0,0,.06);
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Helvetica Neue",sans-serif;
+  --akt:#5856d6;
+}
+
+html{scroll-behavior:smooth}
+
+body{
+  font-family:var(--font);
+  background:var(--bg);
+  color:var(--ink);
+  font-size:15px;
+  line-height:1.5;
+  letter-spacing:-.01em;
+  padding-bottom:80px;
+}
+
+/* ── Header ── */
+.header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(245,245,247,.82);
+  backdrop-filter:saturate(180%) blur(20px);
+  -webkit-backdrop-filter:saturate(180%) blur(20px);
+  border-bottom:1px solid var(--hair-soft);
+  padding:0 20px;
+}
+.header-inner{
+  max-width:860px;
+  margin:0 auto;
+  height:52px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.home-link{
+  font-size:13px;
+  color:var(--akt);
+  text-decoration:none;
+  display:flex;
+  align-items:center;
+  gap:4px;
+  white-space:nowrap;
+  flex-shrink:0;
+}
+.home-link:hover{opacity:.75}
+.home-link svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.header-title{
+  font-size:16px;
+  font-weight:600;
+  letter-spacing:-.02em;
+  color:var(--ink);
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.header-dot{
+  width:8px;height:8px;
+  border-radius:50%;
+  background:var(--akt);
+  flex-shrink:0;
+}
+
+/* ── Main wrap ── */
+.wrap{
+  max-width:860px;
+  margin:0 auto;
+  padding:24px 20px 0;
+}
+
+/* ── Search ── */
+.search-row{
+  position:relative;
+  margin-bottom:16px;
+}
+.search-row svg{
+  position:absolute;
+  left:13px;
+  top:50%;
+  transform:translateY(-50%);
+  width:16px;height:16px;
+  fill:none;stroke:var(--ink-3);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;
+  pointer-events:none;
+}
+#search{
+  width:100%;
+  padding:10px 14px 10px 38px;
+  background:var(--surface);
+  border:1px solid var(--hair);
+  border-radius:12px;
+  font-family:var(--font);
+  font-size:15px;
+  color:var(--ink);
+  outline:none;
+  box-shadow:var(--shadow);
+  transition:border-color .15s;
+}
+#search::placeholder{color:var(--ink-3)}
+#search:focus{border-color:var(--akt)}
+
+/* ── Chips ── */
+.chips{
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+  scrollbar-width:none;
+  padding-bottom:2px;
+  margin-bottom:24px;
+}
+.chips::-webkit-scrollbar{display:none}
+.chip{
+  flex-shrink:0;
+  padding:6px 14px;
+  background:var(--surface);
+  border:1px solid var(--hair);
+  border-radius:20px;
+  font-family:var(--font);
+  font-size:13px;
+  font-weight:500;
+  color:var(--ink-2);
+  cursor:pointer;
+  transition:background .15s,color .15s,border-color .15s;
+  white-space:nowrap;
+}
+.chip:hover{border-color:var(--ink-3);color:var(--ink)}
+.chip.active{
+  background:var(--sys-c,var(--akt));
+  color:#fff;
+  border-color:var(--sys-c,var(--akt));
+}
+
+/* ── Flat results count ── */
+.result-count{
+  font-size:13px;
+  color:var(--ink-3);
+  margin-bottom:16px;
+  letter-spacing:0;
+}
+
+/* ── System section ── */
+.sys-section{
+  margin-bottom:32px;
+}
+.sys-header{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:14px;
+}
+.sys-stripe{
+  width:4px;
+  height:24px;
+  border-radius:3px;
+  flex-shrink:0;
+}
+.sys-name{
+  font-size:18px;
+  font-weight:700;
+  letter-spacing:-.03em;
+  color:var(--ink);
+}
+.sys-count{
+  font-size:13px;
+  color:var(--ink-3);
+  font-weight:400;
+}
+
+/* ── Condition card ── */
+details.card{
+  background:var(--surface);
+  border-radius:18px;
+  border-left:3.5px solid var(--sys-c,var(--akt));
+  box-shadow:var(--shadow);
+  margin-bottom:8px;
+  overflow:hidden;
+}
+details.card summary{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:14px 18px;
+  cursor:pointer;
+  list-style:none;
+  user-select:none;
+}
+details.card summary::-webkit-details-marker{display:none}
+details.card summary:hover{background:rgba(0,0,0,.02)}
+
+.card-sys-tag{
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--sys-c,var(--akt));
+  white-space:nowrap;
+  flex-shrink:0;
+  display:none; /* shown in flat/search mode */
+}
+.flat-mode .card-sys-tag{display:block}
+
+.card-name{
+  font-size:15px;
+  font-weight:600;
+  letter-spacing:-.01em;
+  color:var(--ink);
+  flex:1;
+}
+.chevron{
+  width:18px;height:18px;
+  fill:none;stroke:var(--ink-3);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;
+  flex-shrink:0;
+  transition:transform .2s;
+}
+details.card[open] .chevron{transform:rotate(180deg)}
+
+/* ── Card body ── */
+.card-body{
+  padding:4px 20px 20px 20px;
+}
+
+/* ── Ladder ── */
+.ladder{
+  position:relative;
+  margin-bottom:16px;
+}
+.rung{
+  display:flex;
+  gap:14px;
+  position:relative;
+  padding-bottom:16px;
+}
+.rung:last-child{padding-bottom:0}
+.rung:not(:last-child)::before{
+  content:'';
+  position:absolute;
+  left:13px;
+  top:30px;
+  bottom:8px;
+  width:2px;
+  background:var(--sys-c,var(--akt));
+  opacity:.25;
+}
+.rung:not(:last-child)::after{
+  content:'';
+  position:absolute;
+  left:9px;
+  bottom:2px;
+  width:0;height:0;
+  border-left:5px solid transparent;
+  border-right:5px solid transparent;
+  border-top:6px solid var(--sys-c,var(--akt));
+  opacity:.35;
+}
+.rung-num{
+  flex-shrink:0;
+  width:28px;height:28px;
+  border-radius:50%;
+  background:var(--sys-c,var(--akt));
+  color:#fff;
+  font-size:12px;
+  font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+  z-index:1;
+  margin-top:1px;
+}
+.rung-content{flex:1;min-width:0}
+.rung-step{
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+  color:var(--ink-3);
+  margin-bottom:2px;
+}
+.rung-tx{
+  font-size:14px;
+  color:var(--ink);
+  line-height:1.45;
+}
+.dose{
+  display:inline-block;
+  margin-top:5px;
+  padding:2px 8px;
+  background:#eff6ff;
+  color:#1e40af;
+  font-family:"SF Mono","Fira Code","Courier New",monospace;
+  font-size:12px;
+  border-radius:6px;
+  font-weight:500;
+}
+.rung-why{
+  font-size:12.5px;
+  color:var(--ink-3);
+  font-style:italic;
+  margin-top:4px;
+  line-height:1.4;
+}
+
+/* ── Ladder label ── */
+.ladder-label{
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+  color:var(--sys-c,var(--akt));
+  opacity:.7;
+  margin-bottom:12px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.ladder-label::after{
+  content:'';flex:1;height:.5px;background:var(--hair);
+}
+
+/* ── Traps ── */
+.traps{
+  background:#fff8eb;
+  border:.5px solid #f5c842;
+  border-radius:12px;
+  padding:12px 16px;
+  margin-top:4px;
+}
+.traps-header{
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+  color:#92400e;
+  margin-bottom:8px;
+}
+.traps ul{
+  padding-left:16px;
+  margin:0;
+}
+.traps ul li{
+  font-size:13px;
+  color:#92400e;
+  line-height:1.5;
+  margin-bottom:4px;
+}
+.traps ul li:last-child{margin-bottom:0}
+
+/* ── Mark highlight ── */
+mark{
+  background:#fef08a;
+  border-radius:3px;
+  padding:0 2px;
+  color:inherit;
+}
+
+/* ── Footer ── */
+.footer{
+  max-width:860px;
+  margin:40px auto 0;
+  padding:0 20px;
+  border-top:1px solid var(--hair-soft);
+  padding-top:24px;
+}
+.footer p{
+  font-size:12px;
+  color:var(--ink-3);
+  line-height:1.6;
+  margin-bottom:6px;
+}
+.footer p:last-child{margin-bottom:0}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="index.html" class="home-link">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      Home
+    </a>
+    <div class="header-title">
+      <div class="header-dot"></div>
+      AKT Management
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="search-row">
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input id="search" type="search" placeholder="Search conditions, treatments, drugs…" autocomplete="off" spellcheck="false">
+  </div>
+
+  <div class="chips" id="chips"></div>
+
+  <div id="result-count" class="result-count" style="display:none"></div>
+  <div id="main"></div>
+</div>
+
+<footer class="footer">
+  <p>Finals-level UK guidance reconstructed for revision. Verify doses against current BNF/NICE CKS before clinical use.</p>
+</footer>
+
+<script>
+const DATA = {
+  "meta": {
+    "title": "Oxford Year 4 AKT — NICE Management Reference",
+    "conditions": 63,
+    "systems": 13,
+    "disclaimer": "Finals-level UK guidance reconstructed for revision. Verify doses against current BNF/NICE CKS before clinical use."
+  },
+  "systems": {
+    "Cardiology": [
+      {
+        "id": "stemi",
+        "name": "Acute coronary syndrome (STEMI)",
+        "system": "Cardiology",
+        "ladder": [
+          {"step": "Immediate","tx": "MONA + dual antiplatelet: aspirin + 2nd agent (prasugrel/ticagrelor); morphine, O2 only if sats<94%, GTN","dose": "Aspirin 300mg loading","why": "Antiplatelet to limit thrombus; O2 only if hypoxic (hyperoxia harmful)"},
+          {"step": "Reperfusion","tx": "Primary PCI if presentation <12h AND PCI available within 120 min of when fibrinolysis could be given","dose": null,"why": "Mechanical reperfusion superior; time-critical"},
+          {"step": "If PCI not available in time","tx": "Fibrinolysis (alteplase/tenecteplase) + then transfer for angiography","dose": null,"why": "Chemical clot-busting when PCI delayed"},
+          {"step": "Secondary prevention","tx": "Aspirin lifelong + 2nd antiplatelet 12mo + ACEi + beta-blocker + high-dose statin (atorvastatin 80mg)","dose": "Atorvastatin 80mg OD","why": "The '4 pillars' post-MI"}
+        ],
+        "traps": ["O2 ONLY if sats <94% — routine oxygen worsens outcomes.","PCI window is 'within 120 min of when fibrinolysis COULD have been given' — not just 12h from pain.","Ticagrelor/prasugrel preferred over clopidogrel unless high bleeding risk."],
+        "pearls": []
+      },
+      {
+        "id": "nstemi",
+        "name": "NSTEMI / unstable angina",
+        "system": "Cardiology",
+        "ladder": [
+          {"step": "Immediate","tx": "Aspirin 300mg + fondaparinux (if not for immediate angiography) + antithrombin; GTN; analgesia","dose": "Aspirin 300mg; fondaparinux 2.5mg SC OD","why": "Fondaparinux = Xa inhibitor, doesn't cause HIT"},
+          {"step": "Risk stratify","tx": "GRACE score → decides timing of angiography","dose": null,"why": "High GRACE → early invasive (<72h or <24h if very high)"},
+          {"step": "2nd antiplatelet","tx": "Ticagrelor (or prasugrel if proceeding to PCI)","dose": null,"why": null},
+          {"step": "Secondary prevention","tx": "Same 4 pillars as STEMI","dose": null,"why": null}
+        ],
+        "traps": ["Fondaparinux if angiography NOT immediate; use unfractionated heparin if going straight to cath lab.","GRACE score drives invasive timing — not symptoms alone."],
+        "pearls": []
+      },
+      {
+        "id": "af-rate-rhythm",
+        "name": "Atrial fibrillation - rate/rhythm",
+        "system": "Cardiology",
+        "ladder": [
+          {"step": "Rate control (1st line, most pts)","tx": "Beta-blocker OR rate-limiting CCB (diltiazem/verapamil)","dose": null,"why": "Digoxin only if sedentary/HF"},
+          {"step": "Rhythm control (if)","tx": "Reversible cause, new-onset <48h, HF caused by AF, or symptoms persist","dose": null,"why": "Cardiovert (electrical or amiodarone/flecainide)"},
+          {"step": "If onset >48h or uncertain","tx": "Anticoagulate 3 weeks BEFORE cardioversion (or TOE to exclude thrombus)","dose": null,"why": "Prevents embolisation of established clot"}
+        ],
+        "traps": ["Do NOT cardiovert AF >48h without 3wks anticoagulation or TOE — risk of stroke.","Verapamil/diltiazem contraindicated in HFrEF.","Flecainide contraindicated in structural/ischaemic heart disease."],
+        "pearls": []
+      },
+      {
+        "id": "af-anticoag",
+        "name": "AF - anticoagulation (stroke prevention)",
+        "system": "Cardiology",
+        "ladder": [
+          {"step": "Assess stroke risk","tx": "CHA2DS2-VASc score","dose": null,"why": "≥2 (men) or ≥3 — wait, ≥1 men / ≥2 women → consider/offer"},
+          {"step": "Assess bleeding risk","tx": "ORBIT (now preferred over HAS-BLED by NICE)","dose": null,"why": "Inform, don't withhold"},
+          {"step": "Anticoagulate","tx": "DOAC first-line (apixaban/rivaroxaban/edoxaban/dabigatran); warfarin if DOAC unsuitable","dose": null,"why": "DOACs no monitoring, fewer interactions"}
+        ],
+        "traps": ["DOAC is FIRST-LINE — not warfarin (unless mechanical valve or significant mitral stenosis → warfarin).","A low/slow ventricular rate in AF is NOT an indication for a pacemaker if asymptomatic.","Post-stroke + AF: aspirin 300mg for 2 weeks THEN start anticoagulation (delay if large infarct)."],
+        "pearls": []
+      },
+      {
+        "id": "hf-chronic",
+        "name": "Chronic heart failure (HFrEF)",
+        "system": "Cardiology",
+        "ladder": [
+          {"step": "1st line","tx": "ACEi + beta-blocker (start one at a time)","dose": "e.g. ramipril, bisoprolol","why": "Both prognostic — reduce mortality"},
+          {"step": "2nd line","tx": "Add MRA (spironolactone/eplerenone)","dose": null,"why": "Add if still symptomatic; watch K+"},
+          {"step": "3rd line / specialist","tx": "SGLT2 inhibitor (dapagliflozin); sacubitril-valsartan (ARNI) replacing ACEi; ivabradine; CRT; digoxin","dose": null,"why": "ARNI replaces ACEi (36h washout)"},
+          {"step": "Symptom relief","tx": "Loop diuretic (furosemide) — symptomatic only, NOT prognostic","dose": null,"why": "Relieves congestion, doesn't extend life"}
+        ],
+        "traps": ["Loop diuretics treat symptoms, do NOT improve mortality — don't call them disease-modifying.","Beta-blockers: start low, go slow; do NOT start in acute decompensation.","Annual flu + one-off pneumococcal vaccine."],
+        "pearls": []
+      },
+      {
+        "id": "hf-acute",
+        "name": "Acute heart failure / pulmonary oedema",
+        "system": "Cardiology",
+        "ladder": [
+          {"step": "Immediate","tx": "Sit up; high-flow O2 if hypoxic; IV loop diuretic (furosemide)","dose": "Furosemide 40mg IV","why": "Venodilation + diuresis offloads lungs"},
+          {"step": "If respiratory failure","tx": "CPAP/NIV","dose": null,"why": "Splints alveoli open, reduces preload"},
+          {"step": "If hypotensive/cardiogenic shock","tx": "Inotropes, ICU","dose": null,"why": "Do NOT give nitrates/diuretics aggressively if shocked"}
+        ],
+        "traps": ["Avoid nitrates if hypotensive (SBP<90).","Opiates/nitrates no longer routinely recommended — diuretic + O2 + NIV is the backbone."],
+        "pearls": []
+      },
+      {
+        "id": "bradycardia-pacing",
+        "name": "Bradycardia / when to pace",
+        "system": "Cardiology",
+        "ladder": [
+          {"step": "Unstable (adverse features)","tx": "Atropine 500mcg IV, repeat to max 3mg","dose": "Atropine 500mcg IV","why": "1st reflex — but fails in infranodal block"},
+          {"step": "If atropine fails","tx": "Transcutaneous pacing OR isoprenaline/adrenaline infusion as bridge","dose": null,"why": null},
+          {"step": "Definitive","tx": "Transvenous pacing → permanent pacemaker","dose": null,"why": "Drives ventricle directly, bypasses block"}
+        ],
+        "traps": ["Atropine usually FAILS in complete heart block (block below AV node) → go to pacing.","PACE regardless of symptoms in: complete (3rd-degree) block, Mobitz II.","Mobitz I (Wenckebach): pace only if symptomatic.","Age is NOT a reason to withhold pacing in unstable bradycardia."],
+        "pearls": []
+      },
+      {
+        "id": "htn",
+        "name": "Hypertension",
+        "system": "Cardiology",
+        "ladder": [
+          {"step": "Step 1 (<55 or T2DM any age)","tx": "ACEi or ARB","dose": null,"why": "RAS-driven HTN in younger"},
+          {"step": "Step 1 (>55 or Black African/Caribbean)","tx": "CCB (amlodipine)","dose": null,"why": "Lower-renin HTN"},
+          {"step": "Step 2","tx": "ACEi/ARB + CCB (or + thiazide-like diuretic)","dose": null,"why": null},
+          {"step": "Step 3","tx": "ACEi/ARB + CCB + thiazide-like diuretic (indapamide)","dose": null,"why": null},
+          {"step": "Step 4 (resistant)","tx": "If K+ ≤4.5: add spironolactone. If K+ >4.5: add alpha/beta-blocker","dose": null,"why": "K+ guides 4th agent"}
+        ],
+        "traps": ["ACEi + ARB together = never.","Black African/Caribbean: use ARB over ACEi if needed (less angioedema); CCB first-line.","T2DM at ANY age → ACEi/ARB first (renal protection), even if >55.","Step 4: potassium level decides spironolactone vs beta-blocker."],
+        "pearls": []
+      }
+    ],
+    "Respiratory": [
+      {
+        "id": "asthma-chronic",
+        "name": "Asthma - chronic (adults, 2024 BTS/NICE/SIGN)",
+        "system": "Respiratory",
+        "ladder": [
+          {"step": "1st","tx": "Low-dose ICS/formoterol PRN (AIR therapy)","dose": null,"why": "MART approach now preferred — combined reliever+preventer"},
+          {"step": "2nd","tx": "Low-dose MART (ICS/formoterol as regular + reliever)","dose": null,"why": null},
+          {"step": "3rd","tx": "Moderate-dose MART","dose": null,"why": null},
+          {"step": "4th","tx": "Check FeNO/eosinophils; add LTRA or LAMA; refer","dose": null,"why": null}
+        ],
+        "traps": ["2024 guidance moved AWAY from SABA monotherapy — never SABA alone.","MART = same ICS/formoterol inhaler for both maintenance and relief."],
+        "pearls": []
+      },
+      {
+        "id": "asthma-acute",
+        "name": "Acute asthma exacerbation",
+        "system": "Respiratory",
+        "ladder": [
+          {"step": "Immediate","tx": "O2 (94-98%) + salbutamol nebs (back-to-back if life-threatening) + ipratropium + steroids","dose": "Prednisolone 40-50mg PO or hydrocortisone IV","why": "OSHITME mnemonic"},
+          {"step": "Escalate","tx": "IV magnesium sulfate; senior/ICU; consider IV salbutamol/aminophylline","dose": "Mg 1.2-2g IV over 20min","why": null}
+        ],
+        "traps": ["Normal/rising CO2 in acute asthma = LIFE-THREATENING (tiring) — not reassuring.","Silent chest, cyanosis, exhaustion, bradycardia = near-fatal.","Steroids in ALL acute attacks regardless of severity."],
+        "pearls": []
+      },
+      {
+        "id": "copd-stable",
+        "name": "COPD - stable",
+        "system": "Respiratory",
+        "ladder": [
+          {"step": "1st","tx": "SABA or SAMA PRN","dose": null,"why": null},
+          {"step": "2nd - no asthmatic features","tx": "LABA + LAMA","dose": null,"why": "Switch SAMA→nothing (LAMA covers it)"},
+          {"step": "2nd - asthmatic/steroid-responsive features","tx": "LABA + ICS","dose": null,"why": "Eosinophilia, prior asthma, diurnal variation"},
+          {"step": "3rd","tx": "LABA + LAMA + ICS (triple therapy)","dose": null,"why": null},
+          {"step": "Adjuncts","tx": "Pulmonary rehab, smoking cessation, vaccines, azithromycin prophylaxis (selected)","dose": null,"why": "Smoking cessation = only thing that alters decline"}
+        ],
+        "traps": ["Smoking cessation is the ONLY intervention that slows FEV1 decline + improves survival (+ LTOT in hypoxia).","LTOT: offer if pO2 <7.3 (or <8 with complications). NEVER if still smoking (fire risk + no benefit).","Do NOT give ICS first unless asthmatic features."],
+        "pearls": []
+      },
+      {
+        "id": "copd-acute",
+        "name": "Acute COPD exacerbation",
+        "system": "Respiratory",
+        "ladder": [
+          {"step": "Immediate","tx": "Controlled O2 (target 88-92% via Venturi 24-28%) + salbutamol/ipratropium nebs + prednisolone","dose": "Prednisolone 30mg OD 5d","why": "Controlled O2 to avoid CO2 narcosis"},
+          {"step": "If infective","tx": "Antibiotics (amoxicillin/doxycycline/clarithromycin)","dose": null,"why": "Purulent sputum / consolidation"},
+          {"step": "If not improving","tx": "IV theophylline; NIV (BiPAP) if respiratory acidosis pH<7.35","dose": null,"why": "NIV for type 2 respiratory failure"}
+        ],
+        "traps": ["Target sats 88-92% in known/at-risk CO2 retainers — uncontrolled O2 → CO2 narcosis.","Persistent respiratory acidosis (pH<7.35) despite treatment → NIV.","Do a VBG/ABG before assuming retainer status."],
+        "pearls": []
+      },
+      {
+        "id": "cap",
+        "name": "Community-acquired pneumonia",
+        "system": "Respiratory",
+        "ladder": [
+          {"step": "Severity","tx": "CURB-65 score","dose": null,"why": "Confusion, Urea>7, RR≥30, BP<90/60, ≥65"},
+          {"step": "Low (0-1)","tx": "Amoxicillin PO, home","dose": "Amoxicillin 500mg TDS 5d","why": null},
+          {"step": "Moderate (2)","tx": "Amoxicillin + clarithromycin (or doxycycline)","dose": null,"why": null},
+          {"step": "Severe (≥3)","tx": "Co-amoxiclav + clarithromycin IV, admit/ICU","dose": null,"why": null}
+        ],
+        "traps": ["CURB-65 ≥3 → consider ICU.","Atypical cover (macrolide) added from CURB 2 upward.","Repeat CXR at 6 weeks to ensure resolution / exclude malignancy."],
+        "pearls": []
+      },
+      {
+        "id": "pe",
+        "name": "Pulmonary embolism",
+        "system": "Respiratory",
+        "ladder": [
+          {"step": "Suspected, stable","tx": "Wells score → if likely, CTPA; if PE unlikely, D-dimer","dose": null,"why": "Wells gates the pathway"},
+          {"step": "Anticoagulate","tx": "DOAC (apixaban/rivaroxaban) first-line — start before imaging if delay","dose": null,"why": "DOAC now first-line over LMWH"},
+          {"step": "Massive PE (haemodynamic instability)","tx": "Thrombolysis (alteplase)","dose": null,"why": "Break clot urgently"},
+          {"step": "If anticoagulation contraindicated","tx": "IVC filter","dose": null,"why": null}
+        ],
+        "traps": ["Massive PE + arrest/shock → thrombolyse (alteplase), don't just anticoagulate.","Renal impairment/antiphospholipid → LMWH/warfarin rather than DOAC.","Provoked PE: 3 months. Unprovoked: usually 6 months+ / consider lifelong."],
+        "pearls": []
+      }
+    ],
+    "Gastroenterology": [
+      {
+        "id": "gord",
+        "name": "GORD",
+        "system": "Gastroenterology",
+        "ladder": [
+          {"step": "Lifestyle","tx": "Weight loss, avoid triggers, smaller meals, raise head of bed","dose": null,"why": null},
+          {"step": "1st","tx": "Full-dose PPI 4-8 weeks (omeprazole/lansoprazole)","dose": "Omeprazole 20-40mg OD","why": null},
+          {"step": "If fails","tx": "Double-dose PPI; add H2RA; test for H. pylori","dose": null,"why": null},
+          {"step": "Refractory/red flags","tx": "Endoscopy; consider fundoplication","dose": null,"why": "ALARMS symptoms → urgent OGD"}
+        ],
+        "traps": ["ALARMS (Anaemia, Loss of weight, Anorexia, Recent onset/progressive, Melaena/haematemesis, Swallowing difficulty) → 2-week-wait OGD.","Stop PPI 2 weeks before H. pylori testing (false negatives)."],
+        "pearls": []
+      },
+      {
+        "id": "hpylori",
+        "name": "H. pylori eradication",
+        "system": "Gastroenterology",
+        "ladder": [
+          {"step": "1st line","tx": "7-day triple therapy: PPI + amoxicillin + (clarithromycin OR metronidazole)","dose": "PPI BD + amoxicillin 1g BD + clarithromycin 500mg BD","why": null},
+          {"step": "Penicillin allergy","tx": "PPI + clarithromycin + metronidazole","dose": null,"why": null},
+          {"step": "Retest","tx": "Urea breath test ≥4 weeks after treatment","dose": null,"why": null}
+        ],
+        "traps": ["Don't use clarithromycin if used in past year (resistance)."],
+        "pearls": []
+      },
+      {
+        "id": "pud-bleed",
+        "name": "Peptic ulcer bleed",
+        "system": "Gastroenterology",
+        "ladder": [
+          {"step": "Resuscitate","tx": "ABC, IV access, fluids/blood; Glasgow-Blatchford score","dose": null,"why": "Blatchford 0 → consider discharge"},
+          {"step": "Endoscopy","tx": "Within 24h; adrenaline injection + 2nd modality (clip/thermal)","dose": null,"why": null},
+          {"step": "After","tx": "High-dose IV PPI; test/treat H. pylori; stop NSAIDs","dose": null,"why": null}
+        ],
+        "traps": ["Rockall = post-endoscopy mortality risk; Blatchford = pre-endoscopy / need for intervention.","Do NOT give PPI before endoscopy routinely (NICE) — give after if stigmata found."],
+        "pearls": []
+      },
+      {
+        "id": "uc-induce",
+        "name": "Ulcerative colitis - inducing remission",
+        "system": "Gastroenterology",
+        "ladder": [
+          {"step": "Mild-moderate proctitis","tx": "Topical (rectal) aminosalicylate (mesalazine)","dose": null,"why": "5-ASA = mucosal anti-inflammatory"},
+          {"step": "Add","tx": "Oral aminosalicylate ± topical/oral steroid if no response","dose": null,"why": null},
+          {"step": "Severe (admit)","tx": "IV hydrocortisone; if no response in 72h → IV ciclosporin or infliximab; surgery","dose": null,"why": "Assess with Truelove-Witts"}
+        ],
+        "traps": ["Acute severe UC = medical emergency; daily bloods, AXR (toxic megacolon).","5-ASA works in UC (mucosal), poorly in Crohn's (transmural)."],
+        "pearls": []
+      },
+      {
+        "id": "uc-maintain",
+        "name": "UC - maintaining remission",
+        "system": "Gastroenterology",
+        "ladder": [
+          {"step": "1st","tx": "Oral/topical aminosalicylate (mesalazine)","dose": null,"why": null},
+          {"step": "If flares","tx": "Oral azathioprine / mercaptopurine","dose": null,"why": "Check TPMT before thiopurines"}
+        ],
+        "traps": ["Check TPMT activity before azathioprine — deficiency → myelosuppression."],
+        "pearls": []
+      },
+      {
+        "id": "crohn-induce",
+        "name": "Crohn's - inducing remission",
+        "system": "Gastroenterology",
+        "ladder": [
+          {"step": "1st","tx": "Glucocorticoid (prednisolone/budesonide)","dose": null,"why": "Steroid induces; 5-ASA poor here"},
+          {"step": "Add (≥2 flares/yr)","tx": "Azathioprine/mercaptopurine (check TPMT) or methotrexate","dose": null,"why": null},
+          {"step": "Refractory","tx": "Biologics (infliximab/adalimumab)","dose": null,"why": null}
+        ],
+        "traps": ["Smoking WORSENS Crohn's (opposite to UC where smoking is 'protective') — stress cessation.","Aminosalicylates NOT first-line in Crohn's."],
+        "pearls": []
+      },
+      {
+        "id": "cdiff",
+        "name": "C. difficile",
+        "system": "Gastroenterology",
+        "ladder": [
+          {"step": "1st episode","tx": "Oral vancomycin 10 days","dose": "Vancomycin 125mg QDS PO","why": "2021 update: vanc over metronidazole"},
+          {"step": "2nd/recurrent","tx": "Oral fidaxomicin","dose": null,"why": null},
+          {"step": "Life-threatening","tx": "Oral vancomycin + IV metronidazole; surgery","dose": null,"why": null}
+        ],
+        "traps": ["Vancomycin is now FIRST-LINE (not metronidazole).","Stop the causative antibiotic + PPI if possible."],
+        "pearls": []
+      },
+      {
+        "id": "hepatic-enceph",
+        "name": "Hepatic encephalopathy",
+        "system": "Gastroenterology",
+        "ladder": [
+          {"step": "Treat precipitant","tx": "Constipation, GI bleed, infection (SBP), hypokalaemia, sedatives","dose": null,"why": "Find the 'why now'"},
+          {"step": "1st","tx": "Lactulose","dose": null,"why": "↑ ammonia excretion + traps NH3 as NH4+"},
+          {"step": "Secondary prophylaxis","tx": "Add rifaximin","dose": null,"why": "Kills ammonia-producing gut bacteria"}
+        ],
+        "traps": ["Ammonia level does NOT correlate with severity — clinical diagnosis."],
+        "pearls": []
+      },
+      {
+        "id": "sbp",
+        "name": "Spontaneous bacterial peritonitis",
+        "system": "Gastroenterology",
+        "ladder": [
+          {"step": "Diagnose","tx": "Ascitic tap: neutrophils >250/mm3","dose": null,"why": null},
+          {"step": "Treat","tx": "IV cefotaxime (or piptaz)","dose": null,"why": null},
+          {"step": "Prophylaxis","tx": "Oral ciprofloxacin if prior SBP or ascitic protein <15","dose": null,"why": null}
+        ],
+        "traps": ["Ascitic neutrophils >250 = SBP even if culture negative — treat."],
+        "pearls": []
+      }
+    ],
+    "Endocrinology": [
+      {
+        "id": "t2dm",
+        "name": "Type 2 diabetes",
+        "system": "Endocrinology",
+        "ladder": [
+          {"step": "1st","tx": "Metformin (titrate); add SGLT2i if CVD/HF/CKD risk","dose": "Metformin 500mg OD up","why": "Metformin: ↓hepatic gluconeogenesis"},
+          {"step": "2nd (if HbA1c rises)","tx": "Add: DPP4i / SU / pioglitazone / SGLT2i","dose": null,"why": null},
+          {"step": "3rd","tx": "Triple therapy or insulin; GLP-1 if BMI≥35","dose": null,"why": null}
+        ],
+        "traps": ["SGLT2i first-line ADD-ON (with metformin) if established CVD, HF, or high CV risk.","Metformin: stop if eGFR<30; hold around contrast/AKI (lactic acidosis).","Don't combine pioglitazone with HF (fluid retention)."],
+        "pearls": []
+      },
+      {
+        "id": "dka",
+        "name": "DKA",
+        "system": "Endocrinology",
+        "ladder": [
+          {"step": "1st - Fluids","tx": "0.9% saline (1L stat, then replace deficit)","dose": null,"why": "Fluid FIRST, before insulin"},
+          {"step": "Insulin","tx": "Fixed-rate IV insulin 0.1 units/kg/hr","dose": "0.1 U/kg/hr","why": "Switches off ketogenesis"},
+          {"step": "Potassium","tx": "Add KCl to fluids once K+ known (<5.5)","dose": null,"why": "Insulin drives K+ into cells → hypokalaemia"},
+          {"step": "Continue","tx": "Long-acting insulin continued; dextrose when glucose <14","dose": null,"why": null}
+        ],
+        "traps": ["Start fluids BEFORE insulin.","Watch potassium — it falls fast once insulin starts; replace it.","Don't stop insulin infusion until ketones<0.6 AND eating (bridge with s/c)."],
+        "pearls": []
+      },
+      {
+        "id": "hypoglycaemia",
+        "name": "Hypoglycaemia",
+        "system": "Endocrinology",
+        "ladder": [
+          {"step": "Conscious","tx": "Fast-acting carbohydrate (glucose tablets/juice) → then long-acting carb","dose": null,"why": null},
+          {"step": "Unconscious/can't swallow","tx": "IM glucagon OR IV 10-20% glucose","dose": null,"why": "Glucagon less effective in alcoholics/liver disease"}
+        ],
+        "traps": ["Glucagon doesn't work if depleted glycogen (alcohol, starvation, liver failure) → use IV glucose."],
+        "pearls": []
+      },
+      {
+        "id": "hyperkalaemia",
+        "name": "Hyperkalaemia",
+        "system": "Endocrinology",
+        "ladder": [
+          {"step": "Cardiac protection (if ECG changes or K+≥6.5)","tx": "IV calcium gluconate","dose": "10ml 10% calcium gluconate","why": "Stabilises myocardium — doesn't lower K+"},
+          {"step": "Shift K+ into cells","tx": "Insulin + dextrose (Actrapid 10u + 50ml 50% glucose); salbutamol nebs","dose": null,"why": null},
+          {"step": "Remove K+","tx": "Treat cause; loop diuretic; dialysis if refractory; consider patiromer","dose": null,"why": null}
+        ],
+        "traps": ["Calcium gluconate PROTECTS the heart but does NOT lower potassium.","ECG: tall tented T waves → wide QRS → sine wave → arrest."],
+        "pearls": []
+      },
+      {
+        "id": "hypothyroid",
+        "name": "Hypothyroidism",
+        "system": "Endocrinology",
+        "ladder": [
+          {"step": "1st","tx": "Levothyroxine, titrate to TSH","dose": "Start 50-100mcg (25mcg if elderly/cardiac)","why": null},
+          {"step": "Monitor","tx": "Recheck TSH 8-12 weeks after dose change","dose": null,"why": null}
+        ],
+        "traps": ["Start low (25mcg) in elderly/IHD — sudden ↑ metabolic demand can precipitate angina.","Pregnancy: increase dose by ~25-50%."],
+        "pearls": []
+      },
+      {
+        "id": "hyperthyroid",
+        "name": "Hyperthyroidism / Graves",
+        "system": "Endocrinology",
+        "ladder": [
+          {"step": "Symptom control","tx": "Propranolol (beta-blocker)","dose": null,"why": "Controls tremor/palpitations fast"},
+          {"step": "1st","tx": "Carbimazole (titration or block-and-replace)","dose": null,"why": null},
+          {"step": "Alternatives","tx": "Radioiodine; thyroidectomy","dose": null,"why": null}
+        ],
+        "traps": ["Carbimazole → agranulocytosis: warn re sore throat/fever, stop + FBC.","Propylthiouracil in 1st trimester pregnancy (carbimazole teratogenic), then switch.","Radioiodine contraindicated in pregnancy + active thyroid eye disease."],
+        "pearls": []
+      },
+      {
+        "id": "addisonian-crisis",
+        "name": "Addisonian crisis",
+        "system": "Endocrinology",
+        "ladder": [
+          {"step": "Immediate","tx": "IV hydrocortisone 100mg + IV fluids (saline)","dose": "Hydrocortisone 100mg IV","why": "Don't wait for confirmation"},
+          {"step": "Ongoing","tx": "Continue hydrocortisone; treat precipitant; fludrocortisone later","dose": null,"why": null}
+        ],
+        "traps": ["Treat FIRST, investigate later (Short Synacthen test once stable)."],
+        "pearls": []
+      }
+    ],
+    "Neurology": [
+      {
+        "id": "stroke-ischaemic",
+        "name": "Ischaemic stroke",
+        "system": "Neurology",
+        "ladder": [
+          {"step": "Confirm","tx": "Immediate non-contrast CT to exclude haemorrhage","dose": null,"why": null},
+          {"step": "Thrombolysis","tx": "Alteplase if <4.5h AND haemorrhage excluded","dose": null,"why": "Tenecteplase increasingly used"},
+          {"step": "Thrombectomy","tx": "If large-vessel occlusion (up to 6h, or up to 24h with imaging)","dose": null,"why": null},
+          {"step": "Antiplatelet","tx": "Aspirin 300mg for 2 weeks (after 24h if thrombolysed), then clopidogrel 75mg lifelong","dose": null,"why": null}
+        ],
+        "traps": ["Aspirin 300mg x2 weeks → then clopidogrel 75mg lifelong (long-term agent).","If AF: aspirin 2 weeks then anticoagulate (delay if large infarct).","BP NOT lowered acutely unless >185/110 (and only if thrombolysing) or hypertensive emergency."],
+        "pearls": []
+      },
+      {
+        "id": "tia",
+        "name": "TIA",
+        "system": "Neurology",
+        "ladder": [
+          {"step": "Immediate","tx": "Aspirin 300mg immediately (unless contraindicated)","dose": null,"why": null},
+          {"step": "Specialist review","tx": "Within 24h (within 7d if >7d ago)","dose": null,"why": "ABCD2 de-emphasised"},
+          {"step": "Long-term","tx": "Clopidogrel 75mg + statin + manage RF; if AF → anticoagulate (immediately, no 2-wk wait)","dose": null,"why": null}
+        ],
+        "traps": ["TIA + AF: anticoagulate IMMEDIATELY once haemorrhage excluded (unlike stroke's 2-week wait)."],
+        "pearls": []
+      },
+      {
+        "id": "status-epilepticus",
+        "name": "Status epilepticus",
+        "system": "Neurology",
+        "ladder": [
+          {"step": "0-5 min","tx": "ABC, O2, glucose; IV lorazepam 4mg (or buccal midazolam/PR diazepam)","dose": "Lorazepam 4mg IV","why": null},
+          {"step": "Repeat at 10 min","tx": "2nd dose benzodiazepine","dose": null,"why": null},
+          {"step": "If continues","tx": "IV levetiracetam / phenytoin / sodium valproate","dose": null,"why": null},
+          {"step": "Refractory","tx": "Induction (propofol/thiopental) + intubation, ICU","dose": null,"why": null}
+        ],
+        "traps": ["Max 2 doses of benzodiazepine before moving to 2nd-line — don't keep redosing."],
+        "pearls": []
+      },
+      {
+        "id": "meningitis",
+        "name": "Bacterial meningitis",
+        "system": "Neurology",
+        "ladder": [
+          {"step": "Community/pre-hospital","tx": "IM/IV benzylpenicillin if non-blanching rash + can't reach hospital fast","dose": null,"why": "Don't delay for the rash"},
+          {"step": "Hospital","tx": "IV ceftriaxone (+ amoxicillin if <3mo or >50 for Listeria)","dose": null,"why": null},
+          {"step": "Adjunct","tx": "IV dexamethasone (reduces neuro sequelae, esp pneumococcal)","dose": null,"why": null},
+          {"step": "Public health","tx": "Notify; ciprofloxacin prophylaxis for close contacts","dose": null,"why": null}
+        ],
+        "traps": ["Add amoxicillin for Listeria cover at extremes of age (<3mo, >50, immunocompromised).","LP contraindicated if signs of raised ICP / focal signs → CT first, but don't delay antibiotics.","Non-blanching rash + fever = meningococcal sepsis until proven otherwise."],
+        "pearls": []
+      },
+      {
+        "id": "parkinsons",
+        "name": "Parkinson's disease",
+        "system": "Neurology",
+        "ladder": [
+          {"step": "Motor symptoms affecting QoL","tx": "Levodopa (co-careldopa/co-beneldopa)","dose": null,"why": "Most effective for motor Sx"},
+          {"step": "If QoL not yet affected","tx": "Dopamine agonist / MAO-B inhibitor / levodopa","dose": null,"why": null},
+          {"step": "Adjuncts","tx": "COMT inhibitors, dopamine agonists for end-of-dose effects","dose": null,"why": null}
+        ],
+        "traps": ["NEVER stop Parkinson's meds abruptly (acute akinesia / neuroleptic malignant-like syndrome).","Dopamine agonists → impulse control disorders (gambling, hypersexuality) — warn.","Don't give antiemetic metoclopramide/prochlorperazine (worsen PD); use domperidone."],
+        "pearls": []
+      },
+      {
+        "id": "migraine",
+        "name": "Migraine",
+        "system": "Neurology",
+        "ladder": [
+          {"step": "Acute","tx": "Triptan + NSAID or paracetamol","dose": null,"why": null},
+          {"step": "Prophylaxis","tx": "Propranolol OR topiramate OR amitriptyline","dose": null,"why": null}
+        ],
+        "traps": ["Topiramate teratogenic + ↓ contraceptive efficacy; avoid in women of childbearing age.","Propranolol preferred prophylaxis in women who may become pregnant.","Triptans contraindicated in IHD / uncontrolled HTN."],
+        "pearls": []
+      }
+    ],
+    "Renal": [
+      {
+        "id": "aki",
+        "name": "Acute kidney injury",
+        "system": "Renal",
+        "ladder": [
+          {"step": "Assess","tx": "Identify pre-renal/renal/post-renal; review meds; fluid status","dose": null,"why": null},
+          {"step": "Manage","tx": "Treat cause; IV fluids if pre-renal/hypovolaemic; catheterise if obstruction","dose": null,"why": null},
+          {"step": "Stop nephrotoxics","tx": "ACEi/ARB, NSAIDs, gentamicin, contrast (DAMN drugs)","dose": null,"why": null},
+          {"step": "Urgent dialysis (AEIOU)","tx": "Acidosis, Electrolytes (K+), Intoxication, Overload, Uraemia (pericarditis/enceph)","dose": null,"why": null}
+        ],
+        "traps": ["Hold (not necessarily stop forever) ACEi/ARB, NSAIDs, metformin in AKI.","Dialysis indications mnemonic AEIOU — refractory hyperkalaemia/acidosis/overload."],
+        "pearls": []
+      },
+      {
+        "id": "ckd",
+        "name": "CKD",
+        "system": "Renal",
+        "ladder": [
+          {"step": "Slow progression","tx": "ACEi/ARB (esp if proteinuria/diabetic); BP control; SGLT2i","dose": null,"why": "RAS blockade renoprotective"},
+          {"step": "Complications","tx": "Anaemia → EPO + iron; bone disease → phosphate binders/vit D; acidosis → bicarbonate","dose": null,"why": null},
+          {"step": "End-stage","tx": "Dialysis / transplant","dose": null,"why": null}
+        ],
+        "traps": ["ACEi can cause a small Cr/K+ rise — acceptable up to 25% Cr / K+ 6.0; bigger → investigate renal artery stenosis.","Statin (atorvastatin 20mg) for all CKD."],
+        "pearls": []
+      },
+      {
+        "id": "uti",
+        "name": "UTI",
+        "system": "Renal",
+        "ladder": [
+          {"step": "Non-pregnant woman","tx": "Nitrofurantoin or trimethoprim 3 days","dose": null,"why": null},
+          {"step": "Pregnant","tx": "Nitrofurantoin (avoid near term) / amoxicillin / cefalexin — ALWAYS treat","dose": null,"why": "Even asymptomatic bacteriuria"},
+          {"step": "Men/catheter/complicated","tx": "7 days; investigate","dose": null,"why": null},
+          {"step": "Pyelonephritis","tx": "Cefalexin / co-amoxiclav / ciprofloxacin 7-10 days; admit if septic","dose": null,"why": null}
+        ],
+        "traps": ["Pregnancy: always treat (incl. asymptomatic bacteriuria) — preterm/pyelonephritis risk.","Avoid trimethoprim 1st trimester (folate antagonist); avoid nitrofurantoin at term (neonatal haemolysis)."],
+        "pearls": []
+      }
+    ],
+    "Haematology": [
+      {
+        "id": "ida",
+        "name": "Iron deficiency anaemia",
+        "system": "Haematology",
+        "ladder": [
+          {"step": "Treat","tx": "Oral ferrous sulfate/fumarate","dose": "Ferrous sulfate 200mg OD-TDS","why": null},
+          {"step": "Investigate cause","tx": "Especially GI malignancy in older adults","dose": null,"why": "Don't just replace — find the bleed"}
+        ],
+        "traps": ["Unexplained IDA in older adult → 2-week-wait for GI malignancy.","Continue iron 3 months after Hb normalises to replenish stores."],
+        "pearls": []
+      },
+      {
+        "id": "neutropenic-sepsis",
+        "name": "Neutropenic sepsis",
+        "system": "Haematology",
+        "ladder": [
+          {"step": "Recognise","tx": "Neutrophils <0.5 + temp >38 (or unwell) post-chemo","dose": null,"why": "Signs blunted — low threshold"},
+          {"step": "Treat","tx": "Empirical IV piperacillin-tazobactam within 1 HOUR, after cultures","dose": "Piptaz (Tazocin) IV","why": "Don't wait for counts"}
+        ],
+        "traps": ["Treat within 1 hour — DON'T wait for neutrophil count or cultures.","Piptaz: Pip kills (broad + Pseudomonas), Taz shields from beta-lactamase."],
+        "pearls": []
+      },
+      {
+        "id": "vte",
+        "name": "VTE (DVT/PE) - treatment",
+        "system": "Haematology",
+        "ladder": [
+          {"step": "1st","tx": "DOAC (apixaban/rivaroxaban) first-line","dose": null,"why": null},
+          {"step": "Special cases","tx": "LMWH/warfarin if antiphospholipid; LMWH in pregnancy/cancer (or DOAC)","dose": null,"why": null},
+          {"step": "Duration","tx": "Provoked 3mo; unprovoked 6mo+; cancer 3-6mo+","dose": null,"why": null}
+        ],
+        "traps": ["DOACs contraindicated in pregnancy → use LMWH.","Antiphospholipid syndrome → warfarin, not DOAC."],
+        "pearls": []
+      },
+      {
+        "id": "warfarin-reversal",
+        "name": "Warfarin reversal",
+        "system": "Haematology",
+        "ladder": [
+          {"step": "Major bleed","tx": "Stop warfarin + IV vitamin K + PCC (prothrombin complex concentrate)","dose": null,"why": "PCC faster than FFP"},
+          {"step": "INR>8 no bleed","tx": "Stop warfarin + oral vitamin K","dose": null,"why": null},
+          {"step": "INR 5-8 minor bleed","tx": "Stop warfarin + IV vitamin K","dose": null,"why": null}
+        ],
+        "traps": ["PCC (Beriplex) preferred over FFP for major bleeding — faster, more complete."],
+        "pearls": []
+      }
+    ],
+    "Infectious Disease": [
+      {
+        "id": "sepsis",
+        "name": "Sepsis (Sepsis Six)",
+        "system": "Infectious Disease",
+        "ladder": [
+          {"step": "Give 3 (within 1h)","tx": "O2, IV fluids, IV broad-spectrum antibiotics","dose": null,"why": null},
+          {"step": "Take 3 (within 1h)","tx": "Blood cultures, lactate, urine output (catheterise)","dose": null,"why": null}
+        ],
+        "traps": ["Take cultures BEFORE antibiotics — but never delay antibiotics waiting for them.","Lactate >2 = tissue hypoperfusion; >4 = severe."],
+        "pearls": []
+      },
+      {
+        "id": "cellulitis",
+        "name": "Cellulitis",
+        "system": "Infectious Disease",
+        "ladder": [
+          {"step": "1st","tx": "Flucloxacillin (PO or IV by severity)","dose": null,"why": "Covers Staph + Strep"},
+          {"step": "Penicillin allergy","tx": "Clarithromycin / doxycycline","dose": null,"why": null},
+          {"step": "Severe/Eron III-IV","tx": "IV antibiotics, admit","dose": null,"why": null}
+        ],
+        "traps": ["Mark the erythema border to track progression."],
+        "pearls": []
+      }
+    ],
+    "Rheumatology": [
+      {
+        "id": "gout-acute",
+        "name": "Gout - acute",
+        "system": "Rheumatology",
+        "ladder": [
+          {"step": "1st","tx": "NSAID OR colchicine","dose": null,"why": "Colchicine if NSAID contraindicated (renal/GI/cardiac)"},
+          {"step": "Alternative","tx": "Oral steroid if both contraindicated","dose": null,"why": null}
+        ],
+        "traps": ["Do NOT start allopurinol DURING acute attack (can prolong it) — but continue if already on it.","Colchicine SE: diarrhoea (dose-limiting)."],
+        "pearls": []
+      },
+      {
+        "id": "gout-prevent",
+        "name": "Gout - prevention",
+        "system": "Rheumatology",
+        "ladder": [
+          {"step": "Urate-lowering","tx": "Allopurinol (start 2-4 weeks after attack settles), titrate to urate <360","dose": null,"why": "Xanthine oxidase inhibitor"},
+          {"step": "Cover","tx": "Co-prescribe NSAID/colchicine cover when starting (prevents flare)","dose": null,"why": null},
+          {"step": "2nd line","tx": "Febuxostat","dose": null,"why": null}
+        ],
+        "traps": ["Always give colchicine/NSAID cover when initiating allopurinol.","Allopurinol + azathioprine = dangerous interaction (↑ azathioprine toxicity)."],
+        "pearls": []
+      },
+      {
+        "id": "ra",
+        "name": "Rheumatoid arthritis",
+        "system": "Rheumatology",
+        "ladder": [
+          {"step": "1st","tx": "DMARD monotherapy (methotrexate) + short-term steroid bridge","dose": null,"why": "Methotrexate weekly + folic acid"},
+          {"step": "Escalate","tx": "Add 2nd DMARD; then biologics (anti-TNF) if inadequate response","dose": null,"why": null},
+          {"step": "Flares","tx": "Intra-articular/IM steroid","dose": null,"why": null}
+        ],
+        "traps": ["Methotrexate is WEEKLY (never daily — fatal toxicity) + folic acid on a different day.","Methotrexate teratogenic — contraception; stop 3-6mo before conception (both sexes).","Avoid methotrexate + trimethoprim (both antifolate → marrow suppression)."],
+        "pearls": []
+      },
+      {
+        "id": "gca",
+        "name": "Giant cell arteritis",
+        "system": "Rheumatology",
+        "ladder": [
+          {"step": "Immediate","tx": "High-dose prednisolone IMMEDIATELY (don't wait for biopsy)","dose": "40-60mg OD (60mg+ if visual Sx)","why": "Prevent blindness"},
+          {"step": "Confirm","tx": "Temporal artery biopsy within 1-2 weeks; bone protection","dose": null,"why": null}
+        ],
+        "traps": ["Start steroids on clinical suspicion — irreversible blindness if delayed.","Biopsy can be positive even after starting steroids (skip lesions cause false negatives)."],
+        "pearls": []
+      }
+    ],
+    "Obstetrics & Gynaecology": [
+      {
+        "id": "pre-eclampsia",
+        "name": "Pre-eclampsia",
+        "system": "Obstetrics & Gynaecology",
+        "ladder": [
+          {"step": "BP control","tx": "Labetalol 1st line (nifedipine/methyldopa alt)","dose": null,"why": null},
+          {"step": "Seizure prevention/treatment","tx": "Magnesium sulfate (severe PET / eclampsia)","dose": "MgSO4 4g loading + infusion","why": "Membrane stabilisation"},
+          {"step": "Definitive","tx": "Delivery of placenta","dose": null,"why": "The only cure"},
+          {"step": "Prophylaxis (high-risk)","tx": "Aspirin 75-150mg from 12 weeks","dose": null,"why": null}
+        ],
+        "traps": ["Magnesium toxicity → resp depression, loss of reflexes → give calcium gluconate.","Delivery is the only cure; everything else temporises.","Methyldopa avoided postnatally (depression) — switch."],
+        "pearls": []
+      },
+      {
+        "id": "eclampsia",
+        "name": "Eclampsia",
+        "system": "Obstetrics & Gynaecology",
+        "ladder": [
+          {"step": "Seizure","tx": "Magnesium sulfate 4g IV loading then infusion","dose": null,"why": null},
+          {"step": "Control BP","tx": "IV labetalol/hydralazine","dose": null,"why": null},
+          {"step": "Deliver","tx": "Once stabilised","dose": null,"why": null}
+        ],
+        "traps": ["Continue magnesium 24h after last seizure/delivery."],
+        "pearls": []
+      },
+      {
+        "id": "pph",
+        "name": "Postpartum haemorrhage",
+        "system": "Obstetrics & Gynaecology",
+        "ladder": [
+          {"step": "Mechanical","tx": "Bimanual uterine massage; catheterise","dose": null,"why": null},
+          {"step": "Medical","tx": "Oxytocin → ergometrine → carboprost → tranexamic acid","dose": null,"why": "Uterotonics; carboprost avoid in asthma"},
+          {"step": "Surgical","tx": "Balloon tamponade → B-Lynch suture → hysterectomy","dose": null,"why": null}
+        ],
+        "traps": ["Carboprost contraindicated in asthma (bronchospasm).","Ergometrine contraindicated in hypertension/pre-eclampsia.","4 T's of cause: Tone (commonest), Trauma, Tissue, Thrombin."],
+        "pearls": []
+      },
+      {
+        "id": "gdm",
+        "name": "Gestational diabetes",
+        "system": "Obstetrics & Gynaecology",
+        "ladder": [
+          {"step": "1st","tx": "Diet + exercise (trial 1-2 weeks) if fasting glucose <7","dose": null,"why": null},
+          {"step": "If targets not met / fasting ≥7","tx": "Metformin → add/replace with insulin","dose": null,"why": null},
+          {"step": "Fasting ≥7 at diagnosis","tx": "Insulin straight away (± metformin)","dose": null,"why": null}
+        ],
+        "traps": ["Stop oral hypoglycaemics (except metformin) in pregnancy; glibenclamide only if declines insulin/metformin intolerant."],
+        "pearls": []
+      },
+      {
+        "id": "ectopic",
+        "name": "Ectopic pregnancy",
+        "system": "Obstetrics & Gynaecology",
+        "ladder": [
+          {"step": "Expectant","tx": "If small, unruptured, falling bHCG, asymptomatic","dose": null,"why": null},
+          {"step": "Medical","tx": "Methotrexate if criteria met (bHCG<1500, <35mm, no heartbeat, well)","dose": null,"why": null},
+          {"step": "Surgical","tx": "Salpingectomy (or salpingotomy if contralateral tube damaged)","dose": null,"why": null}
+        ],
+        "traps": ["Ruptured / haemodynamically unstable → straight to surgery.","After methotrexate: avoid pregnancy 3 months (teratogenic)."],
+        "pearls": []
+      },
+      {
+        "id": "bv-trich",
+        "name": "Bacterial vaginosis / Trichomonas",
+        "system": "Obstetrics & Gynaecology",
+        "ladder": [
+          {"step": "Both","tx": "Oral metronidazole","dose": "400-500mg BD 5-7d or 2g stat","why": null}
+        ],
+        "traps": ["Trichomonas = STI → treat partner; BV is not an STI.","Metronidazole + alcohol = disulfiram reaction (avoid alcohol)."],
+        "pearls": []
+      }
+    ],
+    "Psychiatry": [
+      {
+        "id": "depression",
+        "name": "Depression",
+        "system": "Psychiatry",
+        "ladder": [
+          {"step": "Mild","tx": "Guided self-help/CBT; consider antidepressant if persists","dose": null,"why": null},
+          {"step": "Moderate-severe","tx": "SSRI (sertraline) 1st line + psychological therapy","dose": null,"why": null},
+          {"step": "If no response","tx": "Switch SSRI → alternative SSRI/SNRI/mirtazapine","dose": null,"why": null}
+        ],
+        "traps": ["SSRIs: review in 1-2 weeks (1 week if <25 / suicide risk — initial ↑ suicidality).","Don't stop abruptly — discontinuation syndrome; taper.","SSRI + NSAID → GI bleed risk, co-prescribe PPI.","Citalopram → QT prolongation."],
+        "pearls": []
+      },
+      {
+        "id": "gad",
+        "name": "Generalised anxiety disorder",
+        "system": "Psychiatry",
+        "ladder": [
+          {"step": "Step","tx": "Education → low-intensity (self-help) → high-intensity (CBT) or drug","dose": null,"why": null},
+          {"step": "Drug","tx": "SSRI (sertraline) 1st line; SNRI/pregabalin if fails","dose": null,"why": null}
+        ],
+        "traps": ["Avoid benzodiazepines except short-term crisis (dependence)."],
+        "pearls": []
+      },
+      {
+        "id": "serotonin-syndrome",
+        "name": "Serotonin syndrome",
+        "system": "Psychiatry",
+        "ladder": [
+          {"step": "Stop","tx": "Stop serotonergic drug; supportive (fluids, cooling)","dose": null,"why": "Triad: autonomic, neuromuscular (clonus), altered mental state"},
+          {"step": "Severe","tx": "Benzodiazepines; cyproheptadine (antidote)","dose": null,"why": null}
+        ],
+        "traps": ["Hyperreflexia/clonus + agitation + autonomic instability after starting/combining serotonergics.","Distinguish from NMS (rigidity, slower onset, dopamine-blocker cause)."],
+        "pearls": []
+      }
+    ],
+    "Dermatology": [
+      {
+        "id": "eczema",
+        "name": "Eczema",
+        "system": "Dermatology",
+        "ladder": [
+          {"step": "Maintenance","tx": "Emollients (liberal, frequent)","dose": null,"why": "Restore barrier"},
+          {"step": "Flare","tx": "Topical steroid (potency by severity); finger-tip units","dose": null,"why": null},
+          {"step": "Severe","tx": "Topical calcineurin inhibitor; phototherapy; systemic immunosuppression","dose": null,"why": null}
+        ],
+        "traps": ["Treat eczema-herpeticum (painful punched-out lesions, unwell) urgently with aciclovir."],
+        "pearls": []
+      },
+      {
+        "id": "acne",
+        "name": "Acne vulgaris",
+        "system": "Dermatology",
+        "ladder": [
+          {"step": "Mild","tx": "Topical: benzoyl peroxide + topical retinoid/antibiotic","dose": null,"why": null},
+          {"step": "Moderate","tx": "Add oral antibiotic (lymecycline/doxycycline) ≤3mo + topical","dose": null,"why": null},
+          {"step": "Severe/scarring","tx": "Oral isotretinoin (specialist)","dose": null,"why": null}
+        ],
+        "traps": ["Isotretinoin = highly teratogenic → Pregnancy Prevention Programme.","Don't use oral + topical antibiotic together (resistance); always pair antibiotic with BPO/retinoid."],
+        "pearls": []
+      }
+    ],
+    "Emergency": [
+      {
+        "id": "anaphylaxis",
+        "name": "Anaphylaxis",
+        "system": "Emergency",
+        "ladder": [
+          {"step": "Immediate","tx": "IM adrenaline 1:1000 (0.5mg adult), repeat after 5 min if needed","dose": "0.5mg IM (500mcg)","why": "Anterolateral thigh"},
+          {"step": "Adjuncts","tx": "High-flow O2, IV fluids, lie flat + raise legs","dose": null,"why": null},
+          {"step": "Refractory","tx": "Senior help, IV adrenaline infusion (specialist)","dose": null,"why": null},
+          {"step": "After","tx": "Observe (biphasic reaction); 2x adrenaline autoinjectors; allergy referral","dose": null,"why": null}
+        ],
+        "traps": ["Adrenaline is IM (not IV) in standard anaphylaxis — IV only by specialists.","Antihistamines/steroids are NO LONGER routine acute treatment (adrenaline + fluids is key).","Lie flat (raises preload) — sitting up in shock can cause arrest.","Mast cell tryptase: 3 samples confirm diagnosis retrospectively."],
+        "pearls": []
+      },
+      {
+        "id": "paracetamol-od",
+        "name": "Paracetamol overdose",
+        "system": "Emergency",
+        "ladder": [
+          {"step": "<1h, >150mg/kg","tx": "Activated charcoal","dose": null,"why": null},
+          {"step": "Treatment","tx": "N-acetylcysteine — plot level on nomogram at 4h; treat if above line, or if staggered/unknown timing","dose": null,"why": "NAC replenishes glutathione"}
+        ],
+        "traps": ["Treat staggered overdoses / uncertain timing with NAC regardless of level.","King's College criteria → liver transplant referral (pH<7.3, or triad of high INR + Cr + encephalopathy)."],
+        "pearls": []
+      },
+      {
+        "id": "opioid-od",
+        "name": "Opioid overdose",
+        "system": "Emergency",
+        "ladder": [
+          {"step": "Treat","tx": "Naloxone IV/IM, titrated; repeat (short half-life)","dose": null,"why": null}
+        ],
+        "traps": ["Naloxone half-life shorter than most opioids → may need infusion / repeated doses; watch for re-sedation."],
+        "pearls": []
+      }
+    ]
+  }
+};
+
+const SYS = {
+  'Cardiology':               '#e5484d',
+  'Respiratory':              '#0091ff',
+  'Gastroenterology':         '#f5a623',
+  'Endocrinology':            '#f97316',
+  'Neurology':                '#8b5cf6',
+  'Renal':                    '#06b6d4',
+  'Haematology':              '#be185d',
+  'Infectious Disease':       '#10b981',
+  'Rheumatology':             '#6366f1',
+  'Obstetrics & Gynaecology': '#ec4899',
+  'Psychiatry':               '#7c3aed',
+  'Dermatology':              '#14b8a6',
+  'Emergency':                '#ef4444',
+};
+
+// State
+let activeSystem = 'All';
+let searchTerm   = '';
+
+// Build flat conditions array
+const ALL_CONDITIONS = Object.values(DATA.systems).flat();
+
+// Util: HTML escape
+function esc(s){
+  return String(s)
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;');
+}
+
+// Highlight search term in a string
+function highlight(str, term){
+  if(!term) return esc(str);
+  const escaped = esc(str);
+  if(!term) return escaped;
+  const re = new RegExp('(' + term.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')', 'gi');
+  return escaped.replace(re,'<mark>$1</mark>');
+}
+
+// Check if condition matches search
+function condMatches(cond, term){
+  if(!term) return true;
+  const t = term.toLowerCase();
+  if(cond.name.toLowerCase().includes(t)) return true;
+  if(cond.system.toLowerCase().includes(t)) return true;
+  for(const r of cond.ladder){
+    if(r.tx && r.tx.toLowerCase().includes(t)) return true;
+    if(r.step && r.step.toLowerCase().includes(t)) return true;
+    if(r.dose && r.dose.toLowerCase().includes(t)) return true;
+    if(r.why && r.why.toLowerCase().includes(t)) return true;
+  }
+  for(const trap of cond.traps){
+    if(trap.toLowerCase().includes(t)) return true;
+  }
+  return false;
+}
+
+// Render a single condition card
+function renderCard(cond, flatMode, term){
+  const color = SYS[cond.system] || '#5856d6';
+  const flatClass = flatMode ? ' flat-mode' : '';
+  const cssVar = `--sys-c:${color}`;
+
+  // Ladder rungs
+  let rungs = '';
+  cond.ladder.forEach((r, i) => {
+    const stepH = highlight(r.step, term);
+    const txH   = highlight(r.tx, term);
+    const doseH = r.dose ? highlight(r.dose, term) : null;
+    const whyH  = r.why  ? highlight(r.why,  term) : null;
+
+    rungs += `<div class="rung">
+      <div class="rung-num">${i+1}</div>
+      <div class="rung-content">
+        <div class="rung-step">${stepH}</div>
+        <div class="rung-tx">${txH}</div>
+        ${doseH ? `<span class="dose">${doseH}</span>` : ''}
+        ${whyH  ? `<div class="rung-why">${whyH}</div>` : ''}
+      </div>
+    </div>`;
+  });
+
+  // Traps
+  let trapsHtml = '';
+  if(cond.traps && cond.traps.length > 0){
+    const items = cond.traps.map(t => `<li>${highlight(t, term)}</li>`).join('');
+    trapsHtml = `<div class="traps">
+      <div class="traps-header">&#9888; Traps</div>
+      <ul>${items}</ul>
+    </div>`;
+  }
+
+  return `<details class="card${flatClass}" style="${cssVar}">
+    <summary>
+      <span class="card-sys-tag">${esc(cond.system)}</span>
+      <span class="card-name">${highlight(cond.name, term)}</span>
+      <svg class="chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+    </summary>
+    <div class="card-body">
+      <div class="ladder-label">Treatment ladder</div>
+      <div class="ladder">${rungs}</div>
+      ${trapsHtml}
+    </div>
+  </details>`;
+}
+
+// Render main content
+function render(){
+  const main  = document.getElementById('main');
+  const countEl = document.getElementById('result-count');
+  const term  = searchTerm.trim();
+  const isFiltered = activeSystem !== 'All' || term !== '';
+
+  // Determine which conditions to show
+  let conditions = ALL_CONDITIONS.filter(c => {
+    const sysOk  = activeSystem === 'All' || c.system === activeSystem;
+    const termOk = condMatches(c, term);
+    return sysOk && termOk;
+  });
+
+  if(isFiltered){
+    // Flat list
+    countEl.style.display = '';
+    countEl.textContent = `${conditions.length} condition${conditions.length !== 1 ? 's' : ''}`;
+
+    main.innerHTML = conditions.map(c => renderCard(c, true, term)).join('');
+  } else {
+    // Grouped by system
+    countEl.style.display = 'none';
+    let html = '';
+    for(const [sysName, conds] of Object.entries(DATA.systems)){
+      const color = SYS[sysName] || '#5856d6';
+      const cards = conds.map(c => renderCard(c, false, '')).join('');
+      html += `<section class="sys-section">
+        <div class="sys-header">
+          <div class="sys-stripe" style="background:${color}"></div>
+          <h2 class="sys-name">${esc(sysName)}</h2>
+          <span class="sys-count">${conds.length}</span>
+        </div>
+        ${cards}
+      </section>`;
+    }
+    main.innerHTML = html;
+  }
+}
+
+// Build chips
+function buildChips(){
+  const container = document.getElementById('chips');
+  const systems = ['All', ...Object.keys(DATA.systems)];
+  container.innerHTML = systems.map(s => {
+    const color = SYS[s] || '#5856d6';
+    const cssVar = s === 'All' ? `--sys-c:${getComputedStyle(document.documentElement).getPropertyValue('--akt') || '#5856d6'}` : `--sys-c:${color}`;
+    return `<button class="chip${s === activeSystem ? ' active' : ''}" style="${cssVar}" data-sys="${s}">${s}</button>`;
+  }).join('');
+}
+
+// Events
+document.getElementById('chips').addEventListener('click', e => {
+  const chip = e.target.closest('.chip');
+  if(!chip) return;
+  activeSystem = chip.dataset.sys;
+  // Update chip active states
+  document.querySelectorAll('.chip').forEach(c => {
+    c.classList.toggle('active', c.dataset.sys === activeSystem);
+  });
+  render();
+});
+
+document.getElementById('search').addEventListener('input', e => {
+  searchTerm = e.target.value;
+  render();
+});
+
+// Init
+buildChips();
+render();
+</script>
+</body>
+</html>

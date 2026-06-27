@@ -1,4 +1,4 @@
 {
   "outputDirectory": "y4",
-  "rewrites": [{ "source": "/", "destination": "/osce_atlas.html" }]
+  "rewrites": [{ "source": "/", "destination": "/index.html" }]
 }
