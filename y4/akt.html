@@ -5,140 +5,105 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AKT · Oxford Y4</title>
 <style>
-:root{
-  --bg:#f5f5f7;--surface:#fff;--ink:#1d1d1f;--ink-2:#6e6e73;--ink-3:#86868b;
-  --hair:#d2d2d7;--hair-soft:#e8e8ed;
-  --akt:#5856d6;
-  --shadow:0 1px 2px rgba(0,0,0,.04),0 8px 30px rgba(0,0,0,.06);
-  --font:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Helvetica Neue",sans-serif;
-}
-*{box-sizing:border-box;margin:0;padding:0;-webkit-font-smoothing:antialiased;}
-body{font-family:var(--font);background:var(--bg);color:var(--ink);letter-spacing:-.01em;}
+  :root{
+    --bg:#f5f5f7; --surface:#fff; --ink:#1d1d1f; --ink-2:#6e6e73; --ink-3:#86868b;
+    --hair:#d2d2d7; --hair-soft:#e8e8ed; --accent:#0071e3;
+    --radius:18px; --radius-sm:12px; --shadow:0 1px 2px rgba(0,0,0,.04),0 8px 30px rgba(0,0,0,.06);
+    --font:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Helvetica Neue",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-font-smoothing:antialiased;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.5;letter-spacing:-.01em;padding-bottom:80px;}
 
-/* ── STICKY HEADER ── */
-.bar{
-  position:sticky;top:0;z-index:100;
-  background:rgba(245,245,247,.85);
-  backdrop-filter:saturate(180%) blur(20px);
-  -webkit-backdrop-filter:saturate(180%) blur(20px);
-  border-bottom:.5px solid var(--hair-soft);
-  padding:10px 16px 0;
-  display:flex;flex-direction:column;gap:8px;
-}
-.bar-top{display:flex;align-items:center;gap:10px;}
-.home{font-size:13px;font-weight:500;color:var(--akt);text-decoration:none;white-space:nowrap;}
-.home:hover{opacity:.75;}
-.site{font-size:13px;font-weight:600;color:var(--ink);flex:1;}
+  header{position:sticky;top:0;z-index:50;background:rgba(245,245,247,.82);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:.5px solid var(--hair);}
+  .bar{max-width:780px;margin:0 auto;padding:12px 22px;display:flex;align-items:center;gap:12px;}
+  .back{font-size:14px;font-weight:500;color:var(--accent);text-decoration:none;display:flex;align-items:center;gap:3px;flex:none;}
+  .back svg{width:16px;height:16px;flex:none;}
+  .bar h1{font-size:17px;font-weight:600;flex:1;}
 
-.search-wrap{position:relative;}
-.search-wrap svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--ink-3);pointer-events:none;}
-#search{
-  width:100%;padding:7px 12px 7px 32px;
-  border:.5px solid var(--hair);border-radius:10px;
-  background:var(--surface);font-size:14px;font-family:var(--font);
-  color:var(--ink);outline:none;
-}
-#search:focus{border-color:var(--akt);box-shadow:0 0 0 3px rgba(88,86,214,.12);}
+  /* search bar */
+  .search-row{max-width:780px;margin:0 auto;padding:8px 22px 0;}
+  .search-wrap{position:relative;}
+  .search-wrap svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--ink-3);pointer-events:none;}
+  #search{
+    width:100%;padding:8px 13px 8px 34px;
+    border:.5px solid var(--hair);border-radius:var(--radius-sm);
+    background:var(--surface);font-size:14px;font-family:var(--font);
+    color:var(--ink);outline:none;
+  }
+  #search:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(0,113,227,.12);}
 
-.chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:10px;}
-.chips::-webkit-scrollbar{display:none;}
-.chip{
-  font-size:12px;font-weight:600;white-space:nowrap;
-  padding:4px 11px;border-radius:980px;border:1.5px solid transparent;
-  cursor:pointer;transition:all .15s;background:var(--surface);
-}
-.chip:hover{opacity:.8;}
-.chip.active{color:#fff;border-color:transparent;}
+  /* chips */
+  .chips-row{max-width:780px;margin:0 auto;padding:8px 22px 10px;}
+  .chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;-webkit-overflow-scrolling:touch;}
+  .chips::-webkit-scrollbar{display:none;}
+  .chip{flex:none;font-size:13px;font-weight:500;color:var(--ink-2);background:var(--surface);border:.5px solid var(--hair);padding:6px 14px;border-radius:980px;cursor:pointer;white-space:nowrap;transition:all .15s;user-select:none;}
+  .chip:hover{color:var(--ink);border-color:var(--ink-3);}
+  .chip.active{color:#fff;background:var(--accent);border-color:transparent;}
 
-/* ── MAIN ── */
-main{max-width:780px;margin:0 auto;padding:20px 16px 80px;}
+  main{max-width:780px;margin:0 auto;padding:16px 22px 0;}
+  .count{font-size:12.5px;color:var(--ink-3);margin-bottom:12px;font-weight:500;}
 
-.count{font-size:12px;color:var(--ink-3);margin-bottom:12px;font-weight:500;}
+  /* cards */
+  .card{background:var(--surface);border:.5px solid var(--hair-soft);border-radius:var(--radius);margin-bottom:10px;overflow:hidden;box-shadow:var(--shadow);border-left:3px solid var(--card-c,var(--hair));}
+  .card>summary{list-style:none;cursor:pointer;padding:16px 20px;display:flex;align-items:flex-start;gap:14px;}
+  .card>summary::-webkit-details-marker{display:none;}
+  .card>summary:hover{background:rgba(0,0,0,.012);}
+  .sum-left{flex:1;min-width:0;}
+  .sum-sys{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--card-c,var(--ink-3));margin-bottom:3px;}
+  .sum-name{font-size:16px;font-weight:600;letter-spacing:-.015em;line-height:1.2;}
+  .sum-preview{font-size:13px;color:var(--ink-2);margin-top:4px;line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .chev{width:22px;height:22px;flex:none;color:var(--ink-3);transition:transform .28s cubic-bezier(.4,0,.2,1);}
+  .card[open] .chev{transform:rotate(90deg);}
 
-/* ── CARD ── */
-details{
-  background:var(--surface);border:.5px solid var(--hair-soft);
-  border-radius:16px;box-shadow:var(--shadow);
-  margin-bottom:10px;overflow:hidden;
-}
-details[open]{border-color:var(--card-c,var(--hair));}
+  /* card body */
+  .body{padding:0 20px 4px;}
+  .row{border-top:.5px solid var(--hair-soft);padding:14px 0;}
+  .row-label{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);margin-bottom:7px;}
+  .row ul{list-style:none;display:flex;flex-direction:column;gap:6px;}
+  .row li{font-size:14px;line-height:1.5;padding-left:16px;position:relative;color:var(--ink);}
+  .row li::before{content:"";position:absolute;left:2px;top:8px;width:5px;height:5px;border-radius:50%;background:var(--card-c,var(--ink-3));}
 
-summary{
-  list-style:none;cursor:pointer;
-  padding:14px 16px;
-  display:flex;align-items:flex-start;gap:10px;
-}
-summary::-webkit-details-marker{display:none;}
-summary:hover{background:rgba(0,0,0,.015);}
+  /* investigations grid */
+  .inv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;}
+  .inv-col{}
+  .inv-col-label{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin-bottom:5px;}
+  .inv-col ul{list-style:none;display:flex;flex-direction:column;gap:5px;}
+  .inv-col li{font-size:13.5px;line-height:1.45;padding-left:15px;position:relative;color:var(--ink);}
+  .inv-col li::before{content:"";position:absolute;left:2px;top:7px;width:4px;height:4px;border-radius:50%;background:var(--card-c,var(--ink-3));}
 
-.sum-left{flex:1;min-width:0;}
-.sum-name{font-size:15px;font-weight:600;letter-spacing:-.02em;line-height:1.2;}
-.sum-preview{font-size:12.5px;color:var(--ink-2);margin-top:3px;line-height:1.4;
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.sum-right{display:flex;flex-direction:column;align-items:flex-end;gap:5px;flex:none;}
-.sys-badge{
-  font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
-  padding:2px 8px;border-radius:980px;
-  color:var(--card-c);background:color-mix(in srgb,var(--card-c) 10%,#fff);
-}
-.chevron{width:18px;height:18px;color:var(--ink-3);flex-none;transition:transform .2s;}
-details[open] .chevron{transform:rotate(90deg);}
+  /* traps */
+  .traps-box{background:#fff8e6;border:.5px solid #f5c842;border-radius:var(--radius-sm);padding:12px 15px;margin:14px 0 6px;}
+  .traps-label{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#92400e;margin-bottom:6px;}
+  .traps-box ul{list-style:none;display:flex;flex-direction:column;gap:5px;}
+  .traps-box li{font-size:13.5px;line-height:1.45;padding-left:15px;position:relative;color:#78350f;}
+  .traps-box li::before{content:"";position:absolute;left:2px;top:7px;width:4px;height:4px;border-radius:50%;background:#b45309;}
 
-/* ── BODY ── */
-.card-body{padding:0 16px 16px;}
-.card-body hr{border:none;border-top:.5px solid var(--hair-soft);margin:12px 0;}
-
-.section-label{
-  font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
-  color:var(--card-c);margin-bottom:6px;margin-top:12px;
-}
-.section-label:first-child{margin-top:0;}
-
-ul.bullets{list-style:none;padding:0;}
-ul.bullets li{
-  font-size:13.5px;color:var(--ink);line-height:1.5;padding:2px 0 2px 14px;position:relative;
-}
-ul.bullets li::before{
-  content:'·';position:absolute;left:0;color:var(--card-c);font-weight:700;
-}
-
-/* investigations 3-col grid */
-.inv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;}
-.inv-section{}
-.inv-label{
-  font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
-  color:var(--ink-3);margin-bottom:4px;
-}
-.inv-section ul.bullets li{font-size:13px;}
-
-/* traps */
-.traps-box{
-  background:color-mix(in srgb,#f5a623 8%,#fff);
-  border:.5px solid color-mix(in srgb,#f5a623 30%,#fff);
-  border-radius:10px;padding:10px 12px;
-}
-.traps-box .section-label{color:#b45309;margin-top:0;}
-.traps-box ul.bullets li::before{color:#b45309;}
-.traps-box ul.bullets li{color:#78350f;}
-
-footer{text-align:center;font-size:11.5px;color:var(--ink-3);padding:16px 24px 40px;}
+  footer{text-align:center;font-size:11.5px;color:var(--ink-3);padding:16px 22px 40px;max-width:780px;margin:0 auto;}
 </style>
 <script defer src="/_vercel/insights/script.js"></script>
 <script defer src="/_vercel/speed-insights/script.js"></script>
 </head>
 <body>
 
-<div class="bar">
-  <div class="bar-top">
-    <a class="home" href="index.html">← Home</a>
-    <span class="site">AKT Reference</span>
+<header>
+  <div class="bar">
+    <a class="back" href="index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      Home
+    </a>
+    <h1>AKT Reference</h1>
   </div>
-  <div class="search-wrap">
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-    <input id="search" type="search" placeholder="Search conditions, symptoms, signs…" autocomplete="off">
+  <div class="search-row">
+    <div class="search-wrap">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input id="search" type="search" placeholder="Search conditions, symptoms, signs…" autocomplete="off">
+    </div>
   </div>
-  <div class="chips" id="chips"></div>
-</div>
+  <div class="chips-row">
+    <div class="chips" id="chips"></div>
+  </div>
+</header>
 
 <main>
   <p class="count" id="count"></p>
@@ -164,11 +129,10 @@ function buildChips(){
   const el = document.getElementById('chips');
   const systems = ['All', ...Object.keys(SYS)];
   el.innerHTML = systems.map(s => {
-    const c = s === 'All' ? '#5856d6' : SYS[s];
-    return `<button class="chip${s===activeSystem?' active':''}" 
-      data-sys="${s}" 
-      style="color:${s===activeSystem?'#fff':c};border-color:${c};${s===activeSystem?'background:'+c+';':''}"
-      onclick="filterSystem('${s}')">${s}</button>`;
+    const active = s === activeSystem;
+    return `<button class="chip${active?' active':''}" onclick="filterSystem('${s.replace(/'/g,"\\'")}')">
+      ${s === 'All' ? 'All' : s}
+    </button>`;
   }).join('');
 }
 
@@ -178,42 +142,45 @@ function filterSystem(sys){
   render();
 }
 
-function ul(items){
-  if(!items||!items.length) return '';
-  return '<ul class="bullets">'+items.map(i=>`<li>${escHtml(i)}</li>`).join('')+'</ul>';
-}
-
-function escHtml(s){
+function esc(s){
   return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 }
 
+function liList(items){
+  if(!items||!items.length) return '';
+  return '<ul>'+items.map(i=>`<li>${esc(i)}</li>`).join('')+'</ul>';
+}
+
 function cardHtml(c){
-  const col = SYS[c.system]||'#5856d6';
+  const col = SYS[c.system]||'#86868b';
   const inv = c.investigations||{};
-  const hasInv = (inv.bedside?.length||0)+(inv.bloods?.length||0)+(inv.imaging?.length||0) > 0;
-
   const invCols = [];
-  if(inv.bedside?.length) invCols.push(`<div class="inv-section"><div class="inv-label">Bedside</div>${ul(inv.bedside)}</div>`);
-  if(inv.bloods?.length) invCols.push(`<div class="inv-section"><div class="inv-label">Bloods</div>${ul(inv.bloods)}</div>`);
-  if(inv.imaging?.length) invCols.push(`<div class="inv-section"><div class="inv-label">Imaging</div>${ul(inv.imaging)}</div>`);
+  if(inv.bedside?.length) invCols.push(`<div class="inv-col"><div class="inv-col-label">Bedside</div><ul>${inv.bedside.map(i=>`<li>${esc(i)}</li>`).join('')}</ul></div>`);
+  if(inv.bloods?.length)  invCols.push(`<div class="inv-col"><div class="inv-col-label">Bloods</div><ul>${inv.bloods.map(i=>`<li>${esc(i)}</li>`).join('')}</ul></div>`);
+  if(inv.imaging?.length) invCols.push(`<div class="inv-col"><div class="inv-col-label">Imaging</div><ul>${inv.imaging.map(i=>`<li>${esc(i)}</li>`).join('')}</ul></div>`);
 
-  return `<details style="--card-c:${col}">
+  const rows = [];
+  if(c.presentation?.length) rows.push(`<div class="row"><div class="row-label">How they present</div>${liList(c.presentation)}</div>`);
+  if(c.signs?.length)        rows.push(`<div class="row"><div class="row-label">Examination findings</div>${liList(c.signs)}</div>`);
+  if(invCols.length)         rows.push(`<div class="row"><div class="row-label">Investigations</div><div class="inv-grid">${invCols.join('')}</div></div>`);
+  if(c.mx?.length)           rows.push(`<div class="row"><div class="row-label">First-line management</div>${liList(c.mx)}</div>`);
+
+  const trapsHtml = c.traps?.length
+    ? `<div class="traps-box"><div class="traps-label">⚠ Exam traps</div><ul>${c.traps.map(i=>`<li>${esc(i)}</li>`).join('')}</ul></div>`
+    : '';
+
+  return `<details class="card" style="--card-c:${col}">
   <summary>
     <div class="sum-left">
-      <div class="sum-name">${escHtml(c.name)}</div>
-      ${c.presentation?.length ? `<div class="sum-preview">${escHtml(c.presentation[0])}</div>` : ''}
+      <div class="sum-sys">${esc(c.system)}</div>
+      <div class="sum-name">${esc(c.name)}</div>
+      ${c.presentation?.length ? `<div class="sum-preview">${esc(c.presentation[0])}</div>` : ''}
     </div>
-    <div class="sum-right">
-      <span class="sys-badge">${escHtml(c.system)}</span>
-      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9,18 15,12 9,6"/></svg>
-    </div>
+    <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9,18 15,12 9,6"/></svg>
   </summary>
-  <div class="card-body">
-    ${c.presentation?.length ? `<div class="section-label">How they present</div>${ul(c.presentation)}` : ''}
-    ${c.signs?.length ? `<div class="section-label">Examination findings</div>${ul(c.signs)}` : ''}
-    ${hasInv ? `<div class="section-label">Investigations</div><div class="inv-grid">${invCols.join('')}</div>` : ''}
-    ${c.mx?.length ? `<div class="section-label">First-line management</div>${ul(c.mx)}` : ''}
-    ${c.traps?.length ? `<hr><div class="traps-box"><div class="section-label">⚠ Exam traps</div>${ul(c.traps)}</div>` : ''}
+  <div class="body">
+    ${rows.join('')}
+    ${trapsHtml}
   </div>
 </details>`;
 }
@@ -237,7 +204,6 @@ function render(){
 }
 
 document.getElementById('search').addEventListener('input', render);
-
 buildChips();
 render();
 </script>
