@@ -1365,8 +1365,7 @@ function buildChips(){
   const systems = ['All', ...Object.keys(DATA.systems)];
   container.innerHTML = systems.map(s => {
     const color = SYS[s] || '#5856d6';
-    const cssVar = s === 'All' ? `--sys-c:${getComputedStyle(document.documentElement).getPropertyValue('--akt') || '#5856d6'}` : `--sys-c:${color}`;
-    return `<button class="chip${s === activeSystem ? ' active' : ''}" style="${cssVar}" data-sys="${s}">${s}</button>`;
+    return `<button class="chip${s === activeSystem ? ' active' : ''}" style="--sys-c:${color}" data-sys="${s}">${s}</button>`;
   }).join('');
 }
 
