@@ -1,0 +1,47 @@
+{
+  "id": "colorectal-cancer",
+  "name": "Colorectal cancer",
+  "system": "Gastroenterology",
+  "presentation": [
+    "Change in bowel habit (looser/more frequent) >4 weeks, especially in older patients",
+    "Rectal bleeding — fresh blood mixed with stool or on paper (right-sided may cause occult bleeding only)",
+    "Iron deficiency anaemia — occult blood loss from right-sided tumours",
+    "Mass on PR examination or palpable abdominal mass",
+    "Positive FIT (faecal immunochemical test) on bowel cancer screening — often asymptomatic at detection"
+  ],
+  "signs": [
+    "Abdominal mass — palpable tumour, particularly right-sided",
+    "PR: mass, blood on glove",
+    "Signs of obstruction: distension, tympany, high-pitched bowel sounds",
+    "Hepatomegaly or jaundice if liver metastases"
+  ],
+  "investigations": {
+    "bedside": [
+      "FIT (faecal immunochemical test): screening test; threshold ≥10 μg Hb/g triggers colonoscopy referral",
+      "PR examination: mandatory in all suspected colorectal cancer"
+    ],
+    "bloods": [
+      "CEA (carcinoembryonic antigen): staging and surveillance marker — not diagnostic (low sensitivity); elevated CEA at diagnosis = worse prognosis",
+      "FBC: iron deficiency anaemia (microcytic, ↓ferritin) — classic presentation of right-sided colon cancer",
+      "LFTs: elevated ALP/bilirubin if liver metastases"
+    ],
+    "imaging": [
+      "CT chest/abdomen/pelvis: staging for all newly diagnosed CRC — lymph nodes, liver, lung metastases",
+      "Colonoscopy: gold standard for diagnosis and biopsy; entire colon must be evaluated",
+      "MRI pelvis: mandatory for rectal cancers below peritoneal reflection — assesses mesorectal fascia clearance and guides neoadjuvant therapy"
+    ]
+  },
+  "mx": [
+    "Surgery (only curative option): resection based on tumour location and blood supply — see location table in traps",
+    "Rectal cancer: neoadjuvant chemoradiotherapy (short-course radiotherapy or long-course CRT) before TME surgery to downstage and reduce local recurrence",
+    "Adjuvant/palliative chemotherapy: FOLFOX or FOLFIRI regimens; targeted agents for metastatic disease — bevacizumab (anti-VEGF) or cetuximab (anti-EGFR, RAS wild-type only)"
+  ],
+  "traps": [
+    "Surgery by location (must memorise): Caecum/ascending/proximal transverse → RIGHT hemicolectomy (ileo-colic anastomosis) | Distal transverse/descending → LEFT hemicolectomy (colo-colic) | Sigmoid → high anterior resection | Upper rectum → anterior resection + TME | Low rectum → low anterior resection + low TME ± defunctioning stoma | Anal verge → abdomino-perineal excision of rectum (APER) — permanent colostomy, no anastomosis",
+    "Hartmann's procedure = emergency sigmoid resection + end colostomy (no anastomosis) — used when bowel perforated; colostomy can be reversed later",
+    "Extended right hemicolectomy covers caecum to splenic flexure — not appropriate for distal transverse (left hemi is correct); transverse colectomy only for central transverse lesions",
+    "MRI mesorectum is mandatory for rectal cancers — determines whether circumferential resection margin is threatened and whether neoadjuvant treatment is needed",
+    "CEA is not a screening test — used for post-operative surveillance to detect recurrence; rising CEA post-resection = recurrence until proven otherwise",
+    "HNPCC (Lynch syndrome) family: consider panproctocolectomy rather than segmental resection due to high metachronous cancer risk"
+  ]
+}
