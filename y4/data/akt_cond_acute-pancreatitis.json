@@ -1,0 +1,56 @@
+{
+  "id": "acute-pancreatitis",
+  "name": "Acute pancreatitis",
+  "system": "Gastroenterology",
+  "presentation": [
+    "Severe epigastric pain radiating to the back — onset over hours",
+    "Nausea and vomiting",
+    "Causes (GET SMASHED): Gallstones (most common ~40%), Ethanol (~30%), Trauma, Steroids, Mumps/viral, Autoimmune, Scorpion venom, Hyperlipidaemia/Hypercalcaemia, ERCP, Drugs (azathioprine, thiazides, furosemide, tetracycline, sodium valproate)"
+  ],
+  "signs": [
+    "Epigastric tenderness ± guarding — severe tenderness without peritonism initially",
+    "Ileus — absent bowel sounds, distension",
+    "Cullen's sign: periumbilical bruising (retroperitoneal haemorrhage tracking forward) — rare, severe",
+    "Grey-Turner's sign: flank bruising — rare, severe",
+    "Low-grade fever; tachycardia and hypotension in severe disease"
+  ],
+  "investigations": {
+    "bedside": [
+      "Obs: tachycardia, hypotension, hypoxia (SpO2 <95%) — all suggest severe disease",
+      "BM: hyperglycaemia — severity marker (Glasgow/Ranson score)"
+    ],
+    "bloods": [
+      "Serum amylase: >3× ULN (>420 U/L) confirms pancreatitis — but level does NOT correlate with severity",
+      "Serum lipase: more sensitive and specific than amylase; longer half-life — useful >24 h after onset",
+      "Calcium: hypocalcaemia = severity marker (fat saponification sequesters Ca2+); hypercalcaemia causes pancreatitis",
+      "WBC: >16 × 10⁹/L = severity marker",
+      "CRP: >150 mg/L at 48h = severe disease; also consider bacterial translocation if very high",
+      "LDH: >350 IU/L = severity marker",
+      "AST/ALT: elevated LFTs suggest gallstone aetiology; AST elevation is a Glasgow severity criterion",
+      "Glucose: >10 mmol/L = severity marker",
+      "U&E: creatinine elevation = renal failure (severity)",
+      "ABG: PaO2 <8 kPa (SpO2 <95%) = most strongly correlated severity marker — reflects early ARDS risk"
+    ],
+    "imaging": [
+      "USS abdomen (early): assess for gallstones and biliary dilatation — guides management (ERCP if biliary obstruction); USS cannot reliably visualise pancreas due to bowel gas",
+      "Contrast-enhanced CT abdomen: not needed for diagnosis if amylase/lipase >3× ULN + characteristic pain; used to assess complications (necrosis, pseudocyst, abscess) — typically at 48-72 h if not improving",
+      "ERCP: therapeutic — urgent if biliary obstruction/cholangitis complicating gallstone pancreatitis"
+    ]
+  },
+  "mx": [
+    "Aggressive IV fluid resuscitation: crystalloid (Hartmann's preferred) — cornerstone of treatment",
+    "Analgesia: IV opioids (morphine/tramadol) — adequate pain control",
+    "NBM initially, early enteral feeding (NG/NJ) in severe disease — parenteral nutrition only if enteral not tolerated",
+    "Oxygen: maintain SpO2 >95%; early ITU/HDU referral if hypoxic or haemodynamically unstable",
+    "Cholecystectomy: same-admission for gallstone pancreatitis (mild) — prevents recurrence; ERCP ± sphincterotomy if cholangitis present"
+  ],
+  "traps": [
+    "Amylase level does NOT predict severity — only confirms diagnosis; a mildly raised amylase can accompany severe disease and vice versa",
+    "Hypocalcaemia = severity marker; hypercalcaemia = CAUSE — opposite directions, both examinable",
+    "Glasgow severity criteria thresholds (at 48h): Age >55, WBC >16, Glucose >10, Urea >16, PaO2 <8, Calcium <2, Albumin <32, LDH >600, AST >200 — mnemonic PANCREAS (or GLASGOW)",
+    "CRP >150 mg/L at 48h = severe; the CRP in this question (120) does not meet the threshold — not a marker of severity here",
+    "LDH >350 IU/L = severity (patient has 320 — just below threshold); don't be fooled by near-threshold values",
+    "CT is NOT needed for initial diagnosis if clinical + biochemical criteria met — reserve for complications assessment at 48-72h",
+    "Early USS is mandatory to identify gallstones — aetiology determines further management"
+  ]
+}

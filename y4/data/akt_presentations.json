@@ -625,6 +625,62 @@
     ]
   },
   {
+    "id": "acute-pancreatitis",
+    "name": "Acute pancreatitis",
+    "system": "Gastroenterology",
+    "presentation": [
+      "Severe epigastric pain radiating to the back \u2014 onset over hours",
+      "Nausea and vomiting",
+      "Causes (GET SMASHED): Gallstones (most common ~40%), Ethanol (~30%), Trauma, Steroids, Mumps/viral, Autoimmune, Scorpion venom, Hyperlipidaemia/Hypercalcaemia, ERCP, Drugs (azathioprine, thiazides, furosemide, tetracycline, sodium valproate)"
+    ],
+    "signs": [
+      "Epigastric tenderness \u00b1 guarding \u2014 severe tenderness without peritonism initially",
+      "Ileus \u2014 absent bowel sounds, distension",
+      "Cullen's sign: periumbilical bruising (retroperitoneal haemorrhage tracking forward) \u2014 rare, severe",
+      "Grey-Turner's sign: flank bruising \u2014 rare, severe",
+      "Low-grade fever; tachycardia and hypotension in severe disease"
+    ],
+    "investigations": {
+      "bedside": [
+        "Obs: tachycardia, hypotension, hypoxia (SpO2 <95%) \u2014 all suggest severe disease",
+        "BM: hyperglycaemia \u2014 severity marker (Glasgow/Ranson score)"
+      ],
+      "bloods": [
+        "Serum amylase: >3\u00d7 ULN (>420 U/L) confirms pancreatitis \u2014 but level does NOT correlate with severity",
+        "Serum lipase: more sensitive and specific than amylase; longer half-life \u2014 useful >24 h after onset",
+        "Calcium: hypocalcaemia = severity marker (fat saponification sequesters Ca2+); hypercalcaemia causes pancreatitis",
+        "WBC: >16 \u00d7 10\u2079/L = severity marker",
+        "CRP: >150 mg/L at 48h = severe disease; also consider bacterial translocation if very high",
+        "LDH: >350 IU/L = severity marker",
+        "AST/ALT: elevated LFTs suggest gallstone aetiology; AST elevation is a Glasgow severity criterion",
+        "Glucose: >10 mmol/L = severity marker",
+        "U&E: creatinine elevation = renal failure (severity)",
+        "ABG: PaO2 <8 kPa (SpO2 <95%) = most strongly correlated severity marker \u2014 reflects early ARDS risk"
+      ],
+      "imaging": [
+        "USS abdomen (early): assess for gallstones and biliary dilatation \u2014 guides management (ERCP if biliary obstruction); USS cannot reliably visualise pancreas due to bowel gas",
+        "Contrast-enhanced CT abdomen: not needed for diagnosis if amylase/lipase >3\u00d7 ULN + characteristic pain; used to assess complications (necrosis, pseudocyst, abscess) \u2014 typically at 48-72 h if not improving",
+        "ERCP: therapeutic \u2014 urgent if biliary obstruction/cholangitis complicating gallstone pancreatitis"
+      ]
+    },
+    "mx": [
+      "Aggressive IV fluid resuscitation: crystalloid (Hartmann's preferred) \u2014 cornerstone of treatment",
+      "Analgesia: IV opioids (morphine/tramadol) \u2014 adequate pain control",
+      "NBM initially, early enteral feeding (NG/NJ) in severe disease \u2014 parenteral nutrition only if enteral not tolerated",
+      "Oxygen: maintain SpO2 >95%; early ITU/HDU referral if hypoxic or haemodynamically unstable",
+      "Cholecystectomy: same-admission for gallstone pancreatitis (mild) \u2014 prevents recurrence; ERCP \u00b1 sphincterotomy if cholangitis present"
+    ],
+    "traps": [
+      "Amylase level does NOT predict severity \u2014 only confirms diagnosis; a mildly raised amylase can accompany severe disease and vice versa",
+      "Hypocalcaemia = severity marker; hypercalcaemia = CAUSE \u2014 opposite directions, both examinable",
+      "Glasgow severity criteria thresholds (at 48h): Age >55, WBC >16, Glucose >10, Urea >16, PaO2 <8, Calcium <2, Albumin <32, LDH >600, AST >200 \u2014 mnemonic PANCREAS (or GLASGOW)",
+      "CRP >150 mg/L at 48h = severe; the CRP in this question (120) does not meet the threshold \u2014 not a marker of severity here",
+      "LDH >350 IU/L = severity (patient has 320 \u2014 just below threshold); don't be fooled by near-threshold values",
+      "CT is NOT needed for initial diagnosis if clinical + biochemical criteria met \u2014 reserve for complications assessment at 48-72h",
+      "Early USS is mandatory to identify gallstones \u2014 aetiology determines further management"
+    ]
+  },
+  {
     "id": "anal-fissure",
     "name": "Anal fissure",
     "system": "Gastroenterology",
