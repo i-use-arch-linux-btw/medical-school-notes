@@ -1,0 +1,45 @@
+{
+  "id": "anal-fissure",
+  "name": "Anal fissure",
+  "system": "Gastroenterology",
+  "presentation": [
+    "Severe anal pain during and after defecation — often described as 'passing broken glass'",
+    "Bright red rectal bleeding — streaking on stool or toilet paper",
+    "Acute: <6 weeks; Chronic: >6 weeks (this distinction drives management)",
+    "Risk factors: constipation, IBD (Crohn's), STIs (HIV, syphilis, herpes)"
+  ],
+  "signs": [
+    "Posterior midline tear on inspection — ~90% occur at posterior midline",
+    "Sentinel skin tag at lower end of fissure (chronic fissures)",
+    "Lateral or multiple fissures: consider Crohn's disease, syphilis, HIV"
+  ],
+  "investigations": {
+    "bedside": [
+      "Inspection only: PR examination avoided acutely — too painful; no additional diagnostic benefit over inspection",
+      "Proctoscopy/sigmoidoscopy: deferred until after treatment if IBD or malignancy suspected"
+    ],
+    "bloods": [
+      "FBC/CRP: if IBD suspected (chronic or atypical fissures)",
+      "STI screen: if non-midline or multiple fissures — HIV, syphilis, HSV"
+    ],
+    "imaging": [
+      "MRI pelvis or colonoscopy: only if Crohn's disease suspected or red flag features suggesting malignancy"
+    ]
+  },
+  "mx": [
+    "Acute (<6 weeks): stool softening — high fibre diet, increased fluids; bulk-forming laxatives first-line (lactulose if not tolerated); topical anaesthetics; lubricants (petroleum jelly) before defecation",
+    "Chronic (>6 weeks): continue above PLUS topical glyceryl trinitrate (GTN) 0.4% — first-line pharmacological treatment; relaxes internal anal sphincter, reduces pressure, promotes blood flow and healing",
+    "Topical diltiazem: second-line if GTN not tolerated (headache); oral calcium channel blockers also second-line",
+    "If topical GTN fails after 8 weeks: refer to secondary care",
+    "Lateral internal sphincterotomy: gold standard surgical treatment for chronic fissure not responding to medical therapy",
+    "Botulinum toxin injection: used if sphincterotomy fails or is contraindicated"
+  ],
+  "traps": [
+    "Acute fissure <6 weeks = laxatives + topical anaesthetic only; topical GTN is for CHRONIC fissures (>6 weeks) — do not jump to GTN for a new fissure",
+    "Topical GTN, not buccal GTN — topical application delivers local effect; buccal gives excess systemic absorption with worse headache and no extra benefit",
+    "Oral/topical calcium channel blockers (diltiazem) = second-line after GTN failure, not first-line",
+    "Topical steroids: no role — do not reduce sphincter tone; long-term use causes skin thinning",
+    "Lateral or multiple fissures ≠ idiopathic — think Crohn's, HIV, syphilis, herpes; always check location",
+    "Sphincterotomy risk: faecal incontinence (internal sphincter division) — discuss before surgery; botulinum toxin is reversible alternative"
+  ]
+}
