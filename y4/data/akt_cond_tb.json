@@ -1,0 +1,46 @@
+{
+  "id": "tb",
+  "name": "Pulmonary tuberculosis",
+  "system": "Respiratory",
+  "presentation": [
+    "Chronic productive cough >3 weeks, often with haemoptysis",
+    "Systemic B symptoms: drenching night sweats, fever, weight loss, fatigue",
+    "Risk factors: TB contact, immunosuppression (HIV, steroids), origin from high-prevalence country, homelessness, prison",
+    "May be incidental finding on CXR in asymptomatic patient — screen contacts"
+  ],
+  "signs": [
+    "Often no specific signs in early disease",
+    "Cachexia and lymphadenopathy in advanced or disseminated disease",
+    "Apical crackles or bronchial breathing — cavitating upper lobe disease",
+    "Signs of extrapulmonary TB: lymphadenopathy, spinal tenderness (Pott's disease), meningism"
+  ],
+  "investigations": {
+    "bedside": [
+      "Sputum microscopy: acid-fast bacilli (ZN stain) — 3 early morning samples; positive confirms active TB",
+      "Sputum culture (gold standard): Mycobacterium tuberculosis — takes 2–6 weeks",
+      "Tuberculin skin test (Mantoux) — positive suggests exposure/infection; false negative if immunosuppressed"
+    ],
+    "bloods": [
+      "IGRA (interferon-gamma release assay — e.g. QuantiFERON): preferred over Mantoux for latent TB screening; not affected by BCG",
+      "HIV test: all patients with TB must be offered HIV testing",
+      "LFTs/FBC: baseline before starting hepatotoxic drugs (rifampicin, isoniazid, pyrazinamide)"
+    ],
+    "imaging": [
+      "CXR: upper lobe consolidation/cavitation, fibrosis, calcified Ghon focus — apical shadowing is classic",
+      "CT chest: confirms extent, detects miliary pattern (1–2 mm nodules throughout both lungs)",
+      "CT/MRI spine if Pott's disease suspected: vertebral destruction, paraspinal abscess"
+    ]
+  },
+  "mx": [
+    "Initial phase 2 months: RIPE — Rifampicin + Isoniazid + Pyrazinamide + Ethambutol (4-drug regimen; ethambutol added routinely since 2006 NICE guidelines)",
+    "Continuation phase 4 months: Rifampicin + Isoniazid only (2 drugs, total 6 months treatment)",
+    "Latent TB: 3 months isoniazid + rifampicin OR 6 months isoniazid alone (both with pyridoxine)"
+  ],
+  "traps": [
+    "Drug side effects — must know all four: Rifampicin = orange secretions + potent enzyme INDUCER (affects OCP, warfarin, antiretrovirals); Isoniazid = peripheral neuropathy (prevent with pyridoxine/B6) + enzyme INHIBITOR; Pyrazinamide = hyperuricaemia/gout; Ethambutol = optic neuritis (check visual acuity before and during)",
+    "Rifampicin is an enzyme INDUCER, isoniazid is an enzyme INHIBITOR — opposite effects; rifampicin reduces efficacy of OCP (use alternative contraception)",
+    "TB meningitis: treat for minimum 12 months (not 6), add dexamethasone",
+    "Directly observed therapy (DOT) indicated for: homeless, poor concordance, prisoners",
+    "Notify Public Health England (notifiable disease) — all active TB cases must be reported; contact tracing required"
+  ]
+}

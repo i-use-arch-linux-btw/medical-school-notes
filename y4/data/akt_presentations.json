@@ -576,6 +576,52 @@
     ]
   },
   {
+    "id": "tb",
+    "name": "Pulmonary tuberculosis",
+    "system": "Respiratory",
+    "presentation": [
+      "Chronic productive cough >3 weeks, often with haemoptysis",
+      "Systemic B symptoms: drenching night sweats, fever, weight loss, fatigue",
+      "Risk factors: TB contact, immunosuppression (HIV, steroids), origin from high-prevalence country, homelessness, prison",
+      "May be incidental finding on CXR in asymptomatic patient \u2014 screen contacts"
+    ],
+    "signs": [
+      "Often no specific signs in early disease",
+      "Cachexia and lymphadenopathy in advanced or disseminated disease",
+      "Apical crackles or bronchial breathing \u2014 cavitating upper lobe disease",
+      "Signs of extrapulmonary TB: lymphadenopathy, spinal tenderness (Pott's disease), meningism"
+    ],
+    "investigations": {
+      "bedside": [
+        "Sputum microscopy: acid-fast bacilli (ZN stain) \u2014 3 early morning samples; positive confirms active TB",
+        "Sputum culture (gold standard): Mycobacterium tuberculosis \u2014 takes 2\u20136 weeks",
+        "Tuberculin skin test (Mantoux) \u2014 positive suggests exposure/infection; false negative if immunosuppressed"
+      ],
+      "bloods": [
+        "IGRA (interferon-gamma release assay \u2014 e.g. QuantiFERON): preferred over Mantoux for latent TB screening; not affected by BCG",
+        "HIV test: all patients with TB must be offered HIV testing",
+        "LFTs/FBC: baseline before starting hepatotoxic drugs (rifampicin, isoniazid, pyrazinamide)"
+      ],
+      "imaging": [
+        "CXR: upper lobe consolidation/cavitation, fibrosis, calcified Ghon focus \u2014 apical shadowing is classic",
+        "CT chest: confirms extent, detects miliary pattern (1\u20132 mm nodules throughout both lungs)",
+        "CT/MRI spine if Pott's disease suspected: vertebral destruction, paraspinal abscess"
+      ]
+    },
+    "mx": [
+      "Initial phase 2 months: RIPE \u2014 Rifampicin + Isoniazid + Pyrazinamide + Ethambutol (4-drug regimen; ethambutol added routinely since 2006 NICE guidelines)",
+      "Continuation phase 4 months: Rifampicin + Isoniazid only (2 drugs, total 6 months treatment)",
+      "Latent TB: 3 months isoniazid + rifampicin OR 6 months isoniazid alone (both with pyridoxine)"
+    ],
+    "traps": [
+      "Drug side effects \u2014 must know all four: Rifampicin = orange secretions + potent enzyme INDUCER (affects OCP, warfarin, antiretrovirals); Isoniazid = peripheral neuropathy (prevent with pyridoxine/B6) + enzyme INHIBITOR; Pyrazinamide = hyperuricaemia/gout; Ethambutol = optic neuritis (check visual acuity before and during)",
+      "Rifampicin is an enzyme INDUCER, isoniazid is an enzyme INHIBITOR \u2014 opposite effects; rifampicin reduces efficacy of OCP (use alternative contraception)",
+      "TB meningitis: treat for minimum 12 months (not 6), add dexamethasone",
+      "Directly observed therapy (DOT) indicated for: homeless, poor concordance, prisoners",
+      "Notify Public Health England (notifiable disease) \u2014 all active TB cases must be reported; contact tracing required"
+    ]
+  },
+  {
     "id": "cdiff",
     "name": "C. difficile",
     "system": "Gastroenterology",
@@ -2771,16 +2817,16 @@
       ]
     },
     "mx": [
-      "IM adrenaline 1:1000 (1 mg/mL) into anterolateral thigh \u2014 FIRST and most important step; repeat every 5 min if no improvement",
-      "High-flow O2 + large-bore IV access + IV crystalloid bolus for hypotension; lie flat with legs raised (avoid sitting up in shock)",
-      "Chlorphenamine (antihistamine) + hydrocortisone (steroid) as ADJUNCTS only \u2014 given after adrenaline, do not substitute for it; observe minimum 6\u201312 h for biphasic reaction"
+      "IM adrenaline 500 mcg (0.5 ml of 1:1,000) anterolateral thigh \u2014 adults and children >12 yrs; repeat every 5 min if no improvement (paediatric: <6mo 100\u2013150 mcg, 6mo\u20136yr 150 mcg, 6\u201312yr 300 mcg)",
+      "High-flow O2 + IV crystalloid for hypotension; lie flat with legs raised (never sit up a shocked patient)",
+      "Non-sedating antihistamine (e.g. loratadine) for persisting urticaria/angioedema after stabilisation \u2014 NOT as substitute for adrenaline; IV hydrocortisone removed from 2021 Resus Council guidelines"
     ],
     "traps": [
-      "Adrenaline route: IM anterolateral thigh (NOT IV except in cardiac arrest or by specialists with monitoring \u2014 IV causes fatal arrhythmias if given inappropriately)",
-      "Antihistamines and steroids are NOT acute life-saving treatments \u2014 adrenaline is; giving these instead of adrenaline delays definitive treatment",
-      "Sitting up a shocked patient can precipitate cardiac arrest \u2014 lie flat with legs elevated unless respiratory compromise forces upright posture",
-      "Biphasic (late) reaction occurs in up to 20% \u2014 observe for minimum 6\u201312 h; warn patient symptoms can recur up to 72 h later",
-      "Always prescribe self-injectable adrenaline (EpiPen) on discharge and refer to allergy clinic"
+      "Dose: 0.5 ml of 1:1,000 for adults \u2014 1:10,000 is for IV use in cardiac arrest; using the wrong concentration underdoses by 10-fold",
+      "Adrenaline must be IM (anterolateral thigh), NOT IV \u2014 IV adrenaline outside resus causes fatal arrhythmias",
+      "Antihistamines and steroids do NOT treat anaphylaxis acutely \u2014 adrenaline is the only life-saving drug; hydrocortisone removed from 2021 guidelines entirely",
+      "Sitting up a shocked patient can precipitate cardiac arrest \u2014 lie flat + legs raised unless airway compromise forces upright",
+      "Biphasic reaction in up to 20%: observe \u22656 h after single dose, \u226512 h after 2 doses; prescribe 2 adrenaline auto-injectors on discharge + allergy clinic referral; tryptase elevated up to 12 h post-reaction"
     ]
   },
   {

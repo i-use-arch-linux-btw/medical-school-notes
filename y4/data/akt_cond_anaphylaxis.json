@@ -1,0 +1,48 @@
+{
+  "id": "anaphylaxis",
+  "name": "Anaphylaxis",
+  "system": "Emergency",
+  "presentation": [
+    "Rapid onset (seconds–minutes) after trigger exposure (food, drug, insect sting)",
+    "Urticaria and/or angioedema — erythematous wheals, swelling of lips/tongue/throat",
+    "Airway compromise — stridor (upper), wheeze (lower), sensation of throat tightening",
+    "Circulatory collapse — hypotension, syncope, dizziness",
+    "GI symptoms — nausea, vomiting, abdominal cramps (esp. food allergy)"
+  ],
+  "signs": [
+    "Urticaria — raised erythematous wheals, widespread",
+    "Angioedema — non-pitting swelling of face, lips, tongue, uvula",
+    "Stridor — inspiratory noise indicating upper airway obstruction",
+    "Wheeze — expiratory, indicating bronchospasm",
+    "Hypotension + tachycardia — distributive shock",
+    "Flushing and generalised erythema"
+  ],
+  "investigations": {
+    "bedside": [
+      "Obs: continuous BP, HR, O2 sats, RR — clinical diagnosis; do not delay treatment for tests",
+      "Peak flow if able — bronchospasm severity",
+      "ECG — exclude arrhythmia if cardiovascular compromise"
+    ],
+    "bloods": [
+      "Mast cell tryptase (MCT): 3 samples — at presentation (0 h), 1–2 h post-reaction, and convalescent (>24 h or follow-up); rise confirms mast cell degranulation",
+      "FBC — eosinophilia may support allergic diathesis (not acute diagnostic)",
+      "U&E/glucose — baseline; hypoglycaemia as alternative cause of collapse"
+    ],
+    "imaging": [
+      "CXR — if aspiration suspected, significant bronchospasm, or failure to respond to treatment",
+      "Limited acute role — clinical diagnosis drives immediate management"
+    ]
+  },
+  "mx": [
+    "IM adrenaline 500 mcg (0.5 ml of 1:1,000) anterolateral thigh — adults and children >12 yrs; repeat every 5 min if no improvement (paediatric: <6mo 100–150 mcg, 6mo–6yr 150 mcg, 6–12yr 300 mcg)",
+    "High-flow O2 + IV crystalloid for hypotension; lie flat with legs raised (never sit up a shocked patient)",
+    "Non-sedating antihistamine (e.g. loratadine) for persisting urticaria/angioedema after stabilisation — NOT as substitute for adrenaline; IV hydrocortisone removed from 2021 Resus Council guidelines"
+  ],
+  "traps": [
+    "Dose: 0.5 ml of 1:1,000 for adults — 1:10,000 is for IV use in cardiac arrest; using the wrong concentration underdoses by 10-fold",
+    "Adrenaline must be IM (anterolateral thigh), NOT IV — IV adrenaline outside resus causes fatal arrhythmias",
+    "Antihistamines and steroids do NOT treat anaphylaxis acutely — adrenaline is the only life-saving drug; hydrocortisone removed from 2021 guidelines entirely",
+    "Sitting up a shocked patient can precipitate cardiac arrest — lie flat + legs raised unless airway compromise forces upright",
+    "Biphasic reaction in up to 20%: observe ≥6 h after single dose, ≥12 h after 2 doses; prescribe 2 adrenaline auto-injectors on discharge + allergy clinic referral; tryptase elevated up to 12 h post-reaction"
+  ]
+}
