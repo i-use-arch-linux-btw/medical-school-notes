@@ -37,10 +37,13 @@
     "Latent TB: 3 months isoniazid + rifampicin OR 6 months isoniazid alone (both with pyridoxine)"
   ],
   "traps": [
-    "Drug side effects — must know all four: Rifampicin = orange secretions + potent enzyme INDUCER (affects OCP, warfarin, antiretrovirals); Isoniazid = peripheral neuropathy (prevent with pyridoxine/B6) + enzyme INHIBITOR; Pyrazinamide = hyperuricaemia/gout; Ethambutol = optic neuritis (check visual acuity before and during)",
-    "Rifampicin is an enzyme INDUCER, isoniazid is an enzyme INHIBITOR — opposite effects; rifampicin reduces efficacy of OCP (use alternative contraception)",
-    "TB meningitis: treat for minimum 12 months (not 6), add dexamethasone",
-    "Directly observed therapy (DOT) indicated for: homeless, poor concordance, prisoners",
-    "Notify Public Health England (notifiable disease) — all active TB cases must be reported; contact tracing required"
+    "Drug SE — Rifampicin: orange secretions, hepatitis, flu-like symptoms, potent enzyme INDUCER (↓ OCP, warfarin, antiretrovirals — use alternative contraception)",
+    "Drug SE — Isoniazid: peripheral neuropathy (prevent with pyridoxine/B6), hepatitis, agranulocytosis; enzyme INHIBITOR (opposite to rifampicin)",
+    "Drug SE — Pyrazinamide: hyperuricaemia/gout, arthralgia, myalgia, hepatitis; Drug SE — Ethambutol: optic neuritis — check visual acuity BEFORE and DURING treatment",
+    "All of rifampicin, isoniazid and pyrazinamide are hepatotoxic — check LFTs at baseline and monitor; stop drugs if symptomatic hepatitis",
+    "Immune reconstitution inflammatory syndrome (IRIS): occurs 3–6 weeks after starting treatment; presents with enlarging lymph nodes — do not mistake for treatment failure",
+    "DOT (directly observed therapy) = 3× per week regimen; indicated for homeless, poor concordance, all prisoners",
+    "TB meningitis: minimum 12 months treatment (not 6), add dexamethasone",
+    "Notifiable disease — must report to Public Health; contact tracing required"
   ]
 }
