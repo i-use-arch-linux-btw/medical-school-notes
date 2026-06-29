@@ -1,0 +1,46 @@
+{
+  "id": "superficial-thrombophlebitis",
+  "name": "Superficial thrombophlebitis",
+  "system": "Haematology",
+  "presentation": [
+    "Pain, erythema, and tenderness along a superficial vein — usually the long (great) saphenous vein of the leg",
+    "Palpable cord along the vein — indurated, tender linear swelling",
+    "Often over a varicose vein; may follow IV cannulation or trauma",
+    "Systemically well — fever or rigors suggest secondary bacterial infection (septic thrombophlebitis)"
+  ],
+  "signs": [
+    "Tender, erythematous cord along the course of the saphenous vein",
+    "Local warmth and swelling",
+    "Surrounding skin erythema (may mimic cellulitis)",
+    "No pitting oedema of the whole limb — suggests superficial rather than deep thrombosis"
+  ],
+  "investigations": {
+    "bedside": [
+      "ABPI (ankle-brachial pressure index): measure before prescribing compression stockings — compression is contraindicated if ABPI <0.8 (severe PAD)",
+      "Clinical assessment: length of vein affected — >5 cm of inflammation carries higher risk of concurrent DVT"
+    ],
+    "bloods": [
+      "FBC/CRP: elevated WCC + CRP suggests secondary bacterial infection requiring antibiotics",
+      "D-dimer: not routinely useful — clinical decision to image is based on location and length, not D-dimer"
+    ],
+    "imaging": [
+      "Duplex USS: mandatory if affecting the proximal long saphenous vein (SIGN) or if >5 cm inflamed — to exclude concurrent DVT (present in ~20% at diagnosis)",
+      "USS at sapheno-femoral junction: if thrombosis extends towards the junction, risk of propagation to deep system is high — check urgently"
+    ]
+  },
+  "mx": [
+    "Compression stockings: reduce thrombophlebitis symptoms and DVT risk — measure ABPI first; use for all patients",
+    "Oral NSAIDs: first-line anti-inflammatory analgesia; topical NSAIDs for mild localised disease only (topical heparinoids have no significant benefit per Cochrane review)",
+    "LMWH (prophylactic dose) for up to 30 days OR fondaparinux for 45 days: reduces extension and DVT transformation — consider for all affecting the long saphenous vein (SIGN 2010)",
+    "Therapeutic anticoagulation for 6–12 weeks: for thrombophlebitis at or extending towards the sapheno-femoral junction",
+    "Antibiotics: only if secondary bacterial infection (septic thrombophlebitis) — not routine"
+  ],
+  "traps": [
+    "~20% have a concurrent DVT at presentation; 3–4% progress to DVT if untreated — USS mandatory if proximal long saphenous vein affected",
+    "Compression stockings require ABPI measurement first — contraindicated in significant PAD (ABPI <0.8)",
+    "Topical NSAIDs and heparinoids have no significant benefit for reducing DVT extension (Cochrane); oral NSAIDs reduce extension risk by 67%",
+    "EVLA and sclerotherapy are contraindicated in active thrombophlebitis — only used for quiescent varicose vein disease",
+    "Sapheno-femoral junction involvement = treat with therapeutic anticoagulation (not just prophylactic LMWH)",
+    "Antibiotics not recommended without evidence of infection — thrombophlebitis is non-infective in the vast majority"
+  ]
+}
