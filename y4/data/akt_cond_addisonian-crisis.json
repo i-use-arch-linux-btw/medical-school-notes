@@ -1,0 +1,46 @@
+{
+  "id": "addisonian-crisis",
+  "name": "Addisonian crisis",
+  "system": "Endocrinology",
+  "presentation": [
+    "Profound weakness and fatigue, often preceding collapse",
+    "Nausea, vomiting, and abdominal pain (may mimic acute abdomen)",
+    "Postural dizziness or frank syncope",
+    "Altered consciousness or confusion in severe cases",
+    "Precipitant identifiable: intercurrent illness, surgery, steroid withdrawal, trauma"
+  ],
+  "signs": [
+    "Postural or supine hypotension (circulatory shock in severe cases)",
+    "Hyperpigmentation of skin creases, buccal mucosa, and scars (primary Addison's only)",
+    "Signs of dehydration: reduced skin turgor, dry mucous membranes, tachycardia",
+    "Pyrexia if sepsis is the precipitant"
+  ],
+  "investigations": {
+    "bedside": [
+      "Obs: hypotension, tachycardia, temperature (identify septic precipitant)",
+      "BM: hypoglycaemia — a cardinal feature, may be profound",
+      "ECG: peaked T-waves or broad QRS if severe hyperkalaemia"
+    ],
+    "bloods": [
+      "U&E: hyponatraemia (↓Na) and hyperkalaemia (↑K) — the classic electrolyte pattern",
+      "Glucose: hypoglycaemia (↓glucose) — completes the triad",
+      "Serum cortisol: take before hydrocortisone if possible, but do not delay treatment",
+      "Short Synacthen test (SST): 250 mcg IM/IV tetracosactide — cortisol fails to rise adequately (peak <550 nmol/L); performed after stabilisation, not acutely"
+    ],
+    "imaging": [
+      "CT abdomen/adrenals: if bilateral adrenal haemorrhage or Waterhouse–Friderichsen syndrome suspected",
+      "CXR: to identify precipitating illness (pneumonia, TB)"
+    ]
+  },
+  "mx": [
+    "IV hydrocortisone (glucocorticoid replacement) — treat on clinical suspicion before results; take cortisol sample first if it causes no delay",
+    "IV 0.9% saline with glucose: correct hypovolaemia and hypoglycaemia simultaneously",
+    "Identify and treat precipitant (e.g. antibiotics for sepsis); do not withhold steroids pending diagnosis"
+  ],
+  "traps": [
+    "Treat on suspicion — do not wait for cortisol results; delay is life-threatening",
+    "Synacthen test is done after stabilisation, never during the acute crisis",
+    "Fludrocortisone (mineralocorticoid) is not needed acutely — high-dose hydrocortisone has sufficient mineralocorticoid activity",
+    "Sick day rules: intercurrent illness → DOUBLE the hydrocortisone dose (both AM and PM doses); fludrocortisone dose stays THE SAME (doubling it causes dehydration/electrolyte disturbance); carry IM hydrocortisone for injection if vomiting/unable to take oral"
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "id": "addisons",
+  "name": "Addison's disease",
+  "system": "Endocrinology",
+  "presentation": [
+    "Insidious fatigue, weakness, weight loss, anorexia — often months of vague symptoms before diagnosis",
+    "Postural hypotension and salt craving (mineralocorticoid deficiency)",
+    "Hyperpigmentation: sun-exposed areas, palmar creases, buccal mucosa, scars — caused by excess ACTH stimulating melanocytes (primary only)",
+    "Nausea, vomiting, abdominal pain, diarrhoea",
+    "Precipitant may unmask: surgery, infection, or steroid withdrawal triggering acute crisis"
+  ],
+  "signs": [
+    "Hyperpigmentation of skin creases, buccal mucosa, scars, nipples (primary Addison's only — absent in secondary)",
+    "Postural hypotension — mineralocorticoid deficiency",
+    "Sparse axillary/pubic hair in women (adrenal androgen deficiency)",
+    "Vitiligo — associated autoimmune condition"
+  ],
+  "investigations": {
+    "bedside": [
+      "BP: postural drop — lying and standing BP",
+      "BM: hypoglycaemia in crisis"
+    ],
+    "bloods": [
+      "U&E: hyponatraemia (↓Na), hyperkalaemia (↑K), hypoglycaemia — classic triad",
+      "Short Synacthen test (SST): 250 mcg tetracosactide IM/IV; cortisol peak <550 nmol/L = adrenal insufficiency",
+      "9am cortisol: <100 nmol/L strongly suggests insufficiency; >450 makes it unlikely; 100–450 = do SST",
+      "ACTH level: elevated in primary (↑), low/normal in secondary — distinguishes cause",
+      "Adrenal autoantibodies (21-hydroxylase Ab): positive in autoimmune Addison's (commonest cause in UK)"
+    ],
+    "imaging": [
+      "CT adrenals: calcification suggests TB or haemorrhage; small glands = autoimmune; enlarged = infection/malignancy",
+      "MRI pituitary: if secondary adrenal insufficiency suspected (low ACTH)"
+    ]
+  },
+  "mx": [
+    "Hydrocortisone: 20–30 mg/day in 2–3 divided doses — larger dose in the morning (e.g. 10 mg on waking, 5 mg at 12 noon, 5 mg at 4pm) to mimic diurnal cortisol rhythm",
+    "Fludrocortisone: 50–200 mcg once daily — mineralocorticoid replacement; titrate to BP, electrolytes, renin",
+    "Patient education: MedicAlert bracelet, steroid emergency card, self-injectable hydrocortisone kit for crisis; never stop steroids abruptly"
+  ],
+  "traps": [
+    "Sick day rules: intercurrent illness → DOUBLE the hydrocortisone dose; fludrocortisone stays THE SAME — doubling fludrocortisone causes dehydration and electrolyte imbalance",
+    "Hyperpigmentation is only in PRIMARY Addison's (high ACTH stimulates melanocytes) — absent in secondary adrenal insufficiency (pituitary cause, low ACTH)",
+    "Autoimmune Addison's is associated with other autoimmune conditions — screen for thyroid disease, T1DM, vitiligo, pernicious anaemia (autoimmune polyglandular syndrome)",
+    "In secondary adrenal insufficiency: no mineralocorticoid replacement needed (aldosterone preserved, regulated by RAAS not ACTH)",
+    "If starting levothyroxine in a patient with undiagnosed Addison's → can precipitate adrenal crisis; always replace cortisol first if dual deficiency suspected"
+  ]
+}

@@ -1098,6 +1098,53 @@
     ]
   },
   {
+    "id": "addisons",
+    "name": "Addison's disease",
+    "system": "Endocrinology",
+    "presentation": [
+      "Insidious fatigue, weakness, weight loss, anorexia \u2014 often months of vague symptoms before diagnosis",
+      "Postural hypotension and salt craving (mineralocorticoid deficiency)",
+      "Hyperpigmentation: sun-exposed areas, palmar creases, buccal mucosa, scars \u2014 caused by excess ACTH stimulating melanocytes (primary only)",
+      "Nausea, vomiting, abdominal pain, diarrhoea",
+      "Precipitant may unmask: surgery, infection, or steroid withdrawal triggering acute crisis"
+    ],
+    "signs": [
+      "Hyperpigmentation of skin creases, buccal mucosa, scars, nipples (primary Addison's only \u2014 absent in secondary)",
+      "Postural hypotension \u2014 mineralocorticoid deficiency",
+      "Sparse axillary/pubic hair in women (adrenal androgen deficiency)",
+      "Vitiligo \u2014 associated autoimmune condition"
+    ],
+    "investigations": {
+      "bedside": [
+        "BP: postural drop \u2014 lying and standing BP",
+        "BM: hypoglycaemia in crisis"
+      ],
+      "bloods": [
+        "U&E: hyponatraemia (\u2193Na), hyperkalaemia (\u2191K), hypoglycaemia \u2014 classic triad",
+        "Short Synacthen test (SST): 250 mcg tetracosactide IM/IV; cortisol peak <550 nmol/L = adrenal insufficiency",
+        "9am cortisol: <100 nmol/L strongly suggests insufficiency; >450 makes it unlikely; 100\u2013450 = do SST",
+        "ACTH level: elevated in primary (\u2191), low/normal in secondary \u2014 distinguishes cause",
+        "Adrenal autoantibodies (21-hydroxylase Ab): positive in autoimmune Addison's (commonest cause in UK)"
+      ],
+      "imaging": [
+        "CT adrenals: calcification suggests TB or haemorrhage; small glands = autoimmune; enlarged = infection/malignancy",
+        "MRI pituitary: if secondary adrenal insufficiency suspected (low ACTH)"
+      ]
+    },
+    "mx": [
+      "Hydrocortisone: 20\u201330 mg/day in 2\u20133 divided doses \u2014 larger dose in the morning (e.g. 10 mg on waking, 5 mg at 12 noon, 5 mg at 4pm) to mimic diurnal cortisol rhythm",
+      "Fludrocortisone: 50\u2013200 mcg once daily \u2014 mineralocorticoid replacement; titrate to BP, electrolytes, renin",
+      "Patient education: MedicAlert bracelet, steroid emergency card, self-injectable hydrocortisone kit for crisis; never stop steroids abruptly"
+    ],
+    "traps": [
+      "Sick day rules: intercurrent illness \u2192 DOUBLE the hydrocortisone dose; fludrocortisone stays THE SAME \u2014 doubling fludrocortisone causes dehydration and electrolyte imbalance",
+      "Hyperpigmentation is only in PRIMARY Addison's (high ACTH stimulates melanocytes) \u2014 absent in secondary adrenal insufficiency (pituitary cause, low ACTH)",
+      "Autoimmune Addison's is associated with other autoimmune conditions \u2014 screen for thyroid disease, T1DM, vitiligo, pernicious anaemia (autoimmune polyglandular syndrome)",
+      "In secondary adrenal insufficiency: no mineralocorticoid replacement needed (aldosterone preserved, regulated by RAAS not ACTH)",
+      "If starting levothyroxine in a patient with undiagnosed Addison's \u2192 can precipitate adrenal crisis; always replace cortisol first if dual deficiency suspected"
+    ]
+  },
+  {
     "id": "addisonian-crisis",
     "name": "Addisonian crisis",
     "system": "Endocrinology",
@@ -1140,7 +1187,7 @@
       "Treat on suspicion \u2014 do not wait for cortisol results; delay is life-threatening",
       "Synacthen test is done after stabilisation, never during the acute crisis",
       "Fludrocortisone (mineralocorticoid) is not needed acutely \u2014 high-dose hydrocortisone has sufficient mineralocorticoid activity",
-      "Sick day rules on discharge: patients must double or triple oral steroid dose during illness and carry an emergency hydrocortisone injection"
+      "Sick day rules: intercurrent illness \u2192 DOUBLE the hydrocortisone dose (both AM and PM doses); fludrocortisone dose stays THE SAME (doubling it causes dehydration/electrolyte disturbance); carry IM hydrocortisone for injection if vomiting/unable to take oral"
     ]
   },
   {
