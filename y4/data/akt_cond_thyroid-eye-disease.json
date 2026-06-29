@@ -1,0 +1,53 @@
+{
+  "id": "thyroid-eye-disease",
+  "name": "Thyroid eye disease (Graves' orbitopathy)",
+  "system": "Endocrinology",
+  "presentation": [
+    "Proptosis / exophthalmos — forward protrusion of the globe",
+    "Lid retraction — sclera visible above the iris (most common sign, 90%)",
+    "Gritty, red, watery eyes — exposure and inflammation",
+    "Diplopia — restrictive myopathy (inferior and medial recti most affected)",
+    "Colour vision change or visual acuity loss — implies compressive optic neuropathy (serious — urgent referral)"
+  ],
+  "signs": [
+    "Lid retraction (most common — 90%): white sclera visible above iris on primary gaze",
+    "Exophthalmos (most specific sign): Hertel exophthalmometry >21 mm or >2 mm asymmetry",
+    "Lid lag: upper lid lags on downgaze (von Graefe's sign)",
+    "Chemosis (conjunctival oedema) and periorbital oedema",
+    "Restricted extraocular movements — diplopia, worst on upgaze",
+    "Exposure keratopathy: corneal injection, punctate staining on fluorescein (most common complication)",
+    "Optic neuropathy: RAPD, reduced colour vision (red desaturation), reduced VA, field defect — most serious complication"
+  ],
+  "investigations": {
+    "bedside": [
+      "Visual acuity (Snellen) + colour vision (Ishihara): reduced = compressive optic neuropathy → immediate referral",
+      "Relative afferent pupillary defect (RAPD): swinging-light test — present in optic nerve compression",
+      "Visual field assessment: central or pericentral scotoma in optic neuropathy"
+    ],
+    "bloods": [
+      "TFTs: TSH suppressed + elevated fT4/fT3 — TED can occur with euthyroid, hypo-, or hyperthyroid state",
+      "TSH-receptor antibodies (TRAb): elevated in Graves — high TRAb correlates with severity of TED",
+      "Thyroid peroxidase antibodies (TPO Ab): positive in autoimmune thyroid disease"
+    ],
+    "imaging": [
+      "CT/MRI orbits: extraocular muscle enlargement (sparing tendons — differentiates from orbital pseudotumour), optic nerve compression at orbital apex — required before decompression surgery",
+      "CXR / chest CT: exclude sarcoidosis or lymphoma if presentation atypical"
+    ]
+  },
+  "mx": [
+    "Smoking cessation: single most important modifiable risk factor — smoking worsens severity and reduces response to treatment",
+    "Lubricants and eye protection: artificial tears, lubricating ointment at night, moisture chambers — for exposure symptoms",
+    "IV methylprednisolone: first-line for moderate-to-severe active TED — 12-week pulsed IV course; oral steroids less effective and more side effects",
+    "Orbital radiotherapy: adjunct to steroids in moderate-severe active disease with diplopia",
+    "Surgical rehabilitation (inactive disease only): orbital decompression (enlarges bony orbit) → squint surgery → eyelid surgery — always in this order",
+    "Urgent ophthalmology for sight-threatening TED: IV steroids; surgical decompression if no response in 24–48 h"
+  ],
+  "traps": [
+    "Colour vision loss (especially red desaturation) = optic neuropathy = urgent same-day ophthalmology referral — EUGOGO urgent review criteria includes unexplained VA loss, colour vision change, globe subluxation, corneal opacity, incomplete eyelid closure, disc swelling",
+    "Radioiodine (RAI) can worsen TED — if RAI is given to patients with active TED, cover with prednisolone to reduce risk of exacerbation",
+    "TED occurs in 25–50% of Graves' patients — but can occur with any thyroid status (hyper, hypo, or euthyroid); treating thyroid disease does not reliably improve eye disease",
+    "Exposure keratopathy = most common complication; optic neuropathy = most serious (irreversible blindness if untreated)",
+    "Lid retraction (most common sign) ≠ exophthalmos (most specific sign) — important distinction for MCQs",
+    "Surgical order is fixed: orbital decompression first → squint/diplopia surgery → eyelid surgery; only performed in inactive disease (CAS ≤2)"
+  ]
+}
